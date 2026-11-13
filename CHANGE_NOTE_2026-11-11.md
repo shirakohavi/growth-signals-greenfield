@@ -1,5 +1,7 @@
 # Change note: company list rebuilt (11 Nov 2026)
 
+> **Update 13 Nov 2026:** Greenfield's portfolio company (Capitolis) has since been removed from the list, which is now 40 companies. This note is kept as written on 11 Nov.
+
 Read this before continuing the build. `BUILD_BRIEF.md` and `data/companies.csv` were updated today; this note says what changed and what to redo.
 
 ## Why

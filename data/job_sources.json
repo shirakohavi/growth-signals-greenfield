@@ -585,21 +585,6 @@
     "notes": "greenhouse:parametrix exists (31 jobs, \"Parametrix\") but not tied to parametrixinsurance.com — ignored | lever:parametrix exists (3 jobs, titles: Laurel Is Hiring!; Safety Manager) but not tied to parametrixinsurance.com — ignored | checked for a hiring statement on: / /about-us /category/team | candidate for aggregator fallback (step 4)"
   },
   {
-    "company": "Capitolis",
-    "domain": "capitolis.com",
-    "website_status": "ok",
-    "careers_url": "https://capitolis.com/careers",
-    "job_source_type": "greenhouse",
-    "job_source_url": "https://boards-api.greenhouse.io/v1/boards/capitolis/jobs?content=true",
-    "ats_slug": "capitolis",
-    "open_jobs": "0",
-    "detection": "linked from website",
-    "confidence": "high",
-    "needs_rendering": "no",
-    "sources_checked": "{\"greenhouse\":\"empty\",\"lever\":\"empty\",\"ashby\":\"empty\",\"comeet\":\"not_checked\",\"workable\":\"empty\",\"getro\":\"empty\",\"careers_page\":\"empty\",\"aggregator\":\"not_checked\"}",
-    "notes": "MANUAL: Greenhouse board embedded on careers page, 0 jobs today; portfolio company, hidden from ranking anyway"
-  },
-  {
     "company": "Phytolon",
     "domain": "phytolon.com",
     "website_status": "ok",

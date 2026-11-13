@@ -2,7 +2,7 @@
 
 **Greenfield Partners · Data & AI Specialist case study · Option B: team composition as a growth signal**
 
-Growth Signals tracks 41 Israeli and Israel-related tech companies, turns dated changes in how they build their teams (new go-to-market roles abroad, senior sales hires, R&D build-ups, partner programs, expansion plans, layoffs) into scored signals, and shows Greenfield's investment team a ranked list. Every score comes with a reason line and dated source links.
+Growth Signals tracks 40 Israeli and Israel-related tech companies, turns dated changes in how they build their teams (new go-to-market roles abroad, senior sales hires, R&D build-ups, partner programs, expansion plans, layoffs) into scored signals, and shows Greenfield's investment team a ranked list. Every score comes with a reason line and dated source links.
 
 **User:** a Greenfield partner or associate. **Decision:** which companies to reach out to this week, before their next round is public.
 
@@ -31,7 +31,7 @@ npm install
 npx playwright install chromium          # renders JS careers pages and Getro boards
 echo 'ANTHROPIC_API_KEY=sk-ant-…' > .dev.vars
 npm run db:migrate                       # local D1 (SQLite) schema
-npm run db:load                          # the 41 companies, verified domains, job sources, stage fit
+npm run db:load                          # the 40 companies, verified domains, job sources, stage fit
 npm run pipeline                         # collect → enrich → compare → score → dashboard
 npm run serve                            # open http://localhost:4180
 ```
@@ -119,7 +119,7 @@ The full spec (sources, signals, weights, rules and test cases) is in **[BUILD_B
 **Data**
 - **One real run so far.** Signals that compare runs ("new market", "hiring paused") can't fire properly until the second real run, and history before the first run is dummy (labelled wherever it's shown).
 - **Postings, not hires.** A posted role isn't a person hired. "Likely filled" is an inference from how and when roles close.
-- **Uneven coverage.** 27 companies have clean job-board data; the rest rely on rendered careers pages, investor boards, websites and news. Low-coverage companies are flagged, with a "Check on LinkedIn" link.
+- **Uneven coverage.** 26 companies have clean job-board data; the rest rely on rendered careers pages, investor boards, websites and news. Low-coverage companies are flagged, with a "Check on LinkedIn" link.
 - **Company size is often old.** Headcount comes from news for about half the companies, so it's shown as context and kept out of the score.
 - **Name collisions.** Common names (four different "Grain"s) are matched by domain and HQ, never the name alone, but a wrong match is still possible.
 - **AI can misread.** Role classification and page extraction were spot-checked (and fixed where wrong), not checked one by one.

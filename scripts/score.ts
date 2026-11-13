@@ -196,7 +196,7 @@ for (const c of companies) {
 const GROUP = { ranked: 0, ranked_marked: 0, ranked_last: 1, watchlist: 2, hidden: 3 } as Record<string, number>;
 rows.sort((a, b) => (GROUP[a.visibility ?? "hidden"] - GROUP[b.visibility ?? "hidden"]) || b.score - a.score || COVERAGE_RANK[a.coverage] - COVERAGE_RANK[b.coverage]);
 let rank = 0;
-// Portfolio companies (Capitolis) are left out of the dashboard entirely: Greenfield already knows them.
+// Safeguard: a Greenfield portfolio company, if one is ever added to the list, is left out of the dashboard.
 const portfolioNames = new Set(rows.filter((r) => r.portfolio).map((r) => r.name));
 rows.splice(0, rows.length, ...rows.filter((r) => !r.portfolio));
 feed.splice(0, feed.length, ...feed.filter((f) => !portfolioNames.has(f.company)));

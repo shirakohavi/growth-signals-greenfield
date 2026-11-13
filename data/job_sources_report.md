@@ -1,12 +1,12 @@
 # Job-source report (step 1)
 
-Run: 2026-11-12 · 41 companies · ~691 open roles found
+Run: 2026-11-13 · 40 companies · ~691 open roles found
 
 ## By coverage tier
 
 | Tier | Companies | Count |
 |---|---|---|
-| ATS API (structured, dated) | Onyx Security, Zenity, Reco, Linx Security, Oasis Security, Daylight, MIND, Upwind, Unframe, Nimble, ScaleOps, groundcover, PointFive, Majestic Labs, Wonderful, AI21 Labs, Classiq, Orca AI, NoTraffic, Aligned, Second Nature, QuantHealth, PhaseV, Grain, Datarails, IVIX, Capitolis | **27** |
+| ATS API (structured, dated) | Onyx Security, Zenity, Reco, Linx Security, Oasis Security, Daylight, MIND, Upwind, Unframe, Nimble, ScaleOps, groundcover, PointFive, Majestic Labs, Wonderful, AI21 Labs, Classiq, Orca AI, NoTraffic, Aligned, Second Nature, QuantHealth, PhaseV, Grain, Datarails, IVIX | **26** |
 | Investor Getro board | Airis Labs, Quantum Art, Prisma Photonics, Visitt | **4** |
 | Own careers page (render + AI) | Vega, Qodo, Xtend, Limitless Labs, Faye, Phytolon | **6** |
 | Hiring statement, no listings (About page / careers@) | ZutaCore, UltraSight | **2** |
@@ -17,7 +17,7 @@ Run: 2026-11-12 · 41 companies · ~691 open roles found
 | Source type | Count | Companies (open roles) |
 |---|---|---|
 | comeet | 16 | Onyx Security (14), Zenity (30), Reco (9), Linx Security (14), MIND (10), Upwind (98), Nimble (24), groundcover (22), Majestic Labs (36), AI21 Labs (5), Classiq (27), Orca AI (8), NoTraffic (18), Second Nature (4), Grain (3), IVIX (5) |
-| greenhouse | 9 | Oasis Security (0), Daylight (34), Unframe (31), ScaleOps (55), Aligned (4), QuantHealth (1), PhaseV (11), Datarails (11), Capitolis (0) |
+| greenhouse | 8 | Oasis Security (0), Daylight (34), Unframe (31), ScaleOps (55), Aligned (4), QuantHealth (1), PhaseV (11), Datarails (11) |
 | careers_page | 6 | Vega (28), Qodo (7), Xtend (~14 (role-like lines; AI extraction in step 4)), Limitless Labs (~4 (role-like lines; AI extraction in step 4)), Faye (13), Phytolon (0) |
 | getro | 4 | Airis Labs (5), Quantum Art (19), Prisma Photonics (5), Visitt (5) |
 | ashby | 2 | PointFive (11), Wonderful (124) |
@@ -31,7 +31,6 @@ Run: 2026-11-12 · 41 companies · ~691 open roles found
 | In mandate | 33 | Onyx Security, Zenity, Reco, Linx Security, Vega, Daylight, MIND, Upwind, Qodo, Unframe, Nimble, ScaleOps, groundcover, PointFive, Majestic Labs, Airis Labs, Xtend, Classiq, Quantum Art, ZutaCore, Limitless Labs, Orca AI, Prisma Photonics, NoTraffic, Aligned, Second Nature, Visitt, QuantHealth, UltraSight, Datarails, Faye, IVIX, Parametrix |
 | Pre-Series B | 3 | Zenzap, PhaseV, Grain |
 | Too late | 3 | Oasis Security, Wonderful, AI21 Labs |
-| Portfolio | 1 | Capitolis |
 | Off-thesis | 1 | Phytolon |
 
 ## All companies
@@ -77,5 +76,4 @@ Run: 2026-11-12 · 41 companies · ~691 open roles found
 | 37 | Faye | Fintech | In mandate | withfaye.com | careers_page | 13 | high | portfolio (hidden) | homepage needs JS / Comeet-powered page (13 position IDs in links; no public token, so scrape the page) / e.g. Backend Architect; Business Development Manager - West Coast; Claims Experience Specialist - Richmond, VA |
 | 38 | IVIX | Fintech | In mandate | ivix.ai | comeet | 5 | high | portfolio (hidden) | e.g. AI Team Lead; AI,ML Engineer; Bookkeeper |
 | 39 | Parametrix | Fintech | In mandate | parametrixinsurance.com | none | – | low | portfolio (hidden) | greenhouse:parametrix exists (31 jobs, "Parametrix") but not tied to parametrixinsurance.com — ignored / lever:parametrix exists (3 jobs, titles: Laurel Is Hiring!; Safety Manager) but not tied to parametrixinsurance.com |
-| 40 | Capitolis | Fintech | Portfolio | capitolis.com | greenhouse | 0 | high | portfolio (hidden) | MANUAL: Greenhouse board embedded on careers page, 0 jobs today; portfolio company, hidden from ranking anyway |
-| 41 | Phytolon | Off-thesis | Off-thesis | phytolon.com | careers_page | 0 | high | portfolio (hidden) | MANUAL: page says 'no open positions' |
+| 40 | Phytolon | Off-thesis | Off-thesis | phytolon.com | careers_page | 0 | high | portfolio (hidden) | MANUAL: page says 'no open positions' |

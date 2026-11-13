@@ -15,7 +15,7 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 
 **My part**
 - **Product and signal design.** I chose Option B and defined the user (a Greenfield partner or associate) and the decision ("who should I reach out to this week, before their next round is public?"). I designed the 13-signal library and its weights, the scoring formula (points × age × evidence), the bands, and the stage-fit rules, which I based on studying where Greenfield's own portfolio entered (mostly Series B and C; Series A only in deep tech).
-- **The company list.** On 11 Nov I rebuilt the 41-company list to mirror Greenfield's five categories and stages (16 out, 16 in, one deliberate off-thesis test) and wrote the change note Claude Code worked from.
+- **The company list.** On 11 Nov I rebuilt the company list to mirror Greenfield's five categories and stages (16 out, 16 in, one deliberate off-thesis test) and wrote the change note Claude Code worked from. On 13 Nov I removed Greenfield's portfolio company, Capitolis, so the list is 40.
 - **Checking the data by hand.** I opened every job-source row that wasn't high confidence and checked it myself (fixes in `data/job_sources_overrides.csv`), spotted that Rein and Hush were hiring with no careers page, and moved Majestic Labs to Deep tech.
 - **Catching the AI's mistakes.** I caught the scoring and data-matching errors listed below by tracing real scores and reading the output.
 - **Every judgement call:** the Reach out thresholds, ranking Past Stage companies, what counts as real vs dummy, and every dashboard design decision (each dashboard change in this log came from my review).
@@ -233,4 +233,10 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 - **Claude Code** wrote `.github/workflows/weekly-run.yml` (8 named steps, one run at a time, results committed back), extended `worker/index.ts` (serves the dashboard as static assets; `/api/run` reads GitHub's live step status and starts a run), and updated the dashboard so Run now works in both modes.
 - **Keys and safety:** the Anthropic key is only a GitHub secret; the Worker holds a repo-only GitHub token and a team passcode (checked in constant time); starts are refused while a run is going; status is cached for 8 s so open dashboards don't exhaust GitHub's API limit.
 - **Tested** with `wrangler dev`: dashboard and data served, Run now hidden until it's configured, starts refused without setup (503) or without JSON (415). Going live needs my one-time account setup (README, "Hosted weekly runs").
+
+## Company list: 40, portfolio company removed (13 Nov 2026)
+
+- **My decision:** take Greenfield's own portfolio company (Capitolis) off the list completely, rather than tracking it and hiding it, so every count reads 40.
+- **Claude Code** removed it from the seven input files in `data/`, regenerated the job-source report and the seed, and reloaded both databases (local and Cloudflare D1); its jobs and events were deleted with it. It had 0 open roles and 20 footprint events, so the totals are now 40 companies, 721 open roles, 516 events, and 26 companies on job boards.
+- Re-scored with **0 AI calls**: no score or reason line changed. The "portfolio companies are left out" rule stays in the code as a safeguard. Earlier entries in this log keep the counts as they were at the time (41).
 

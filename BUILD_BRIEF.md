@@ -7,7 +7,7 @@
 
 ## 1. What it does
 
-A pipeline that tracks **41 Israeli and Israel-related tech companies** (40 shown; the Greenfield portfolio company is left out), turns dated changes in their hiring and public footprint into **scored signals**, and gives Greenfield's investment team a **ranked list** where every score has a reason line with dated source links.
+A pipeline that tracks **40 Israeli and Israel-related tech companies**, turns dated changes in their hiring and public footprint into **scored signals**, and gives Greenfield's investment team a **ranked list** where every score has a reason line with dated source links.
 
 **User:** a Greenfield partner or associate. **Decision:** "Which companies should I reach out to this week, before their next round is public?"
 
@@ -33,10 +33,10 @@ Secrets: `ANTHROPIC_API_KEY` lives in `.dev.vars` (git-ignored). In production i
 
 ## 3. Input
 
-`data/companies.csv`, 41 rows: `#, Company, Greenfield category, Sector, Latest round, Amount ($M), Round date, Fit tag, Greenfield status, Role in the list, Why included, Known jobs source, Website`.
+`data/companies.csv`, 40 rows: `#, Company, Greenfield category, Sector, Latest round, Amount ($M), Round date, Fit tag, Greenfield status, Role in the list, Why included, Known jobs source, Website`.
 
-- The list mirrors Greenfield's portfolio: its five categories from greenfield-growth.com/portfolio (Cybersecurity 9, AI infrastructure 9, Deep tech 9, Vertical AI 7, Fintech 6), plus one deliberate off-thesis test (Phytolon).
-- `Greenfield status`: `PORTFOLIO …` (Capitolis) is left out of the dashboard. `Possible conflict …` (Linx, Oasis, Daylight, Upwind, groundcover, Xtend, Limitless Labs) is kept, with a flag.
+- The list mirrors Greenfield's portfolio: its five categories from greenfield-growth.com/portfolio (Cybersecurity 9, AI infrastructure 9, Deep tech 9, Vertical AI 7, Fintech 5), plus one deliberate off-thesis test (Phytolon).
+- `Greenfield status`: Greenfield's own portfolio companies are not on the list (a `PORTFOLIO …` row would be left out of the dashboard). `Possible conflict …` (Linx, Oasis, Daylight, Upwind, groundcover, Xtend, Limitless Labs) is kept, with a flag.
 - Supporting files: `company_domains.csv` (verified domains with evidence), `job_sources.csv` / `.json` (step 1 survey), `job_sources_overrides.csv` (manual fixes), `company_hq.csv`, `fit_tags.csv`.
 - Rounds store both **closed** and **announced** dates (Zenzap: closed Aug 2025, announced Oct 2026).
 
@@ -107,12 +107,12 @@ Strict JSON via structured outputs. AI is used for:
 | Pre-Series B | **Approaching B** | Series A closed 12–24 months ago (outside deep tech) |
 | Too early | **Too Early** | Series A closed under 12 months ago (outside deep tech) |
 | Too late | **Past Stage** | Series D+, $1B+ valuation, or acquired |
-| Portfolio | (not shown) | Greenfield invested (Capitolis) |
+| Portfolio | (not shown) | Greenfield invested; none on the list |
 | Off-thesis | (no label) | Outside Greenfield's five categories (Phytolon) |
 
 **Why these stage rules:** Greenfield's portfolio page shows it leads mostly at Series B and C, and at Series A only in deep tech (Commcrete, Exodigo).
 
-**Ranking (changed on 13 Nov, user decision):** every company except the portfolio one is **ranked by score**, Past Stage included (Wonderful is #9). Stage fit is shown as a label and a filter, and it gates the **Reach out** tiers. The off-thesis company has no fit label; the dashboard shows its stage fit from the round (Phytolon, Series B → In Range) and its Type stays "Other". The scoring script still writes the original visibility to `ranking.json`; the dashboard applies the new ranking when it loads.
+**Ranking (changed on 13 Nov, user decision):** every company is **ranked by score**, Past Stage included (Wonderful is #9). Stage fit is shown as a label and a filter, and it gates the **Reach out** tiers. The off-thesis company has no fit label; the dashboard shows its stage fit from the round (Phytolon, Series B → In Range) and its Type stays "Other". The scoring script still writes the original visibility to `ranking.json`; the dashboard applies the new ranking when it loads.
 
 ## 9. Signal library
 
@@ -209,15 +209,13 @@ Expected ±10. Result from the 12 Nov run.
 | Airis Labs | ~25, Some activity | 35, Some activity |
 | Grain | ~10, Quiet, Approaching B | 10, Quiet, Approaching B |
 | AI21 Labs | 0 + decline flag, Past Stage | 3 + decline flag, Past Stage (ranked #36 since the 13 Nov ranking change) |
-| Capitolis | Not shown (portfolio) | Not shown |
 
 ## 15. Definition of done
 
 - [x] One command runs collect → enrich → compare → score → dashboard (`npm run pipeline`, or Run now in the dashboard)
-- [x] Real ingestion from job sources for real companies (721 open roles, 27 ATS companies + Getro + careers pages)
+- [x] Real ingestion from job sources for real companies (721 open roles, 26 ATS companies + Getro + careers pages)
 - [x] AI maps every role to function and seniority, and to a country where there is one (703 of 721)
 - [x] Each company shows score, band, stage fit, coverage, reason line with dated links, real / dummy labels
-- [x] Capitolis not shown
 - [x] An unreachable source keeps the last data, marked "not reached"
 - [x] Weekly schedule and hosting (GitHub Actions + Cloudflare Worker; needs the one-time setup in the README to go live)
 - [ ] README: how to run, what's real vs dummy, how AI was used (`AI_LOG.md` is kept)

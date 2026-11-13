@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-13T14:31:43.333Z",
+  "generated_at": "2026-11-13T22:25:02.767Z",
   "run_date": "2026-11-12",
   "note": "Signals marked dummy come from seeded history (is_dummy=1), not real past runs.",
   "rising_mode": "score",
   "totals": {
     "ranked": 37,
     "open_roles": 721,
-    "signals": 536
+    "signals": 516
   },
   "feed": [
     {

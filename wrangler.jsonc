@@ -11,8 +11,8 @@
     {
       "binding": "DB",
       "database_name": "team-signals",
-      // Set by the one-time cloud setup (README, "Hosted weekly runs"): `npx wrangler d1 create team-signals`
-      // prints the id to paste here. Local development works without it.
+      // Cloud database (created 13 Nov 2026, region WEUR). Local development uses a local copy.
+      "database_id": "e90a802e-376d-416c-b3d1-2984fa47d1c4",
       "migrations_dir": "migrations"
     }
   ],

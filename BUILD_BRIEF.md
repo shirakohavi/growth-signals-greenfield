@@ -23,9 +23,10 @@ Home assignment, 8–10 hours. Working end to end beats polish.
 | AI enrichment | **Claude API**, `claude-haiku-5-5`, structured outputs (`messages.parse` + Zod) | Built |
 | Dashboard | One static page (`public/index.html`) reading `public/ranking.json` | Built |
 | Worker | Read-only API over D1 (`/api/health`, `/api/companies`, `/api/coverage`) | Built |
-| Runs | `npm run pipeline`, or the dashboard's **Run now** button via a local server (`npm run serve`) | Built |
-| Schedule | Weekly Cron Trigger | **Not built** |
-| Hosting | Cloudflare Pages | **Not deployed** |
+| Runs | `npm run pipeline` locally; in the cloud, a GitHub Actions workflow (`.github/workflows/weekly-run.yml`) | Built |
+| Schedule | Weekly, Mondays 06:00 Israel time (GitHub Actions schedule) | Built; needs the one-time setup in the README |
+| Hosting | One Cloudflare Worker serves the dashboard (static assets) and the API; state in Cloudflare D1 | Built; needs the one-time setup in the README |
+| Run now | Dashboard button → Worker (team passcode) → GitHub starts the workflow; live step progress | Built (local mode via `npm run serve` too) |
 | Not in v1 | Queues, R2, LinkedIn scraping, email/Slack alerts, auto-discovery of companies | Cut on purpose |
 
 Secrets: `ANTHROPIC_API_KEY` lives in `.dev.vars` (git-ignored). In production it goes in with `wrangler secret put`. Keys are never committed or printed.
@@ -218,7 +219,7 @@ Expected ±10. Result from the 12 Nov run.
 - [x] Each company shows score, band, stage fit, coverage, reason line with dated links, real / dummy labels
 - [x] Capitolis not shown
 - [x] An unreachable source keeps the last data, marked "not reached"
-- [ ] Weekly cron and Pages deploy
+- [x] Weekly schedule and hosting (GitHub Actions + Cloudflare Worker; needs the one-time setup in the README to go live)
 - [ ] README: how to run, what's real vs dummy, how AI was used (`AI_LOG.md` is kept)
 
 ## 16. Open questions

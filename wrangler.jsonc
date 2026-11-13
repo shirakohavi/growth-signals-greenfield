@@ -5,14 +5,18 @@
   "compatibility_date": "2026-11-12",
   "compatibility_flags": ["nodejs_compat"],
   "observability": { "enabled": true },
+  // The dashboard: public/ is served as static assets; /api/* goes to the Worker first.
+  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": ["/api/*"] },
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "team-signals",
-      // No database_id yet: local dev works without one. On first deploy (step 8) Wrangler
-      // provisions the database automatically, or run `npx wrangler d1 create team-signals`.
+      // Set by the one-time cloud setup (README, "Hosted weekly runs"): `npx wrangler d1 create team-signals`
+      // prints the id to paste here. Local development works without it.
       "migrations_dir": "migrations"
     }
-  ]
-  // Cron Triggers (step 8) and the ANTHROPIC_API_KEY secret (`wrangler secret put`, step 4) are added later.
+  ],
+  // Run now: the Worker starts .github/workflows/weekly-run.yml in this repo.
+  // Secrets, set with `npx wrangler secret put`: GITHUB_TOKEN, RUN_PASSCODE.
+  "vars": { "GITHUB_REPO": "shirakohavi/growth-signals-greenfield", "WORKFLOW_FILE": "weekly-run.yml" }
 }

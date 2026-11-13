@@ -226,3 +226,11 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 - **Safety:** the server listens on 127.0.0.1 only, and a run can only be started by a JSON request, so other websites open in the browser can't trigger one.
 - Tested with a dry run (`?dryrun`), which walks the steps without collecting anything. A real full run takes about 20–40 minutes and makes a few hundred Haiku calls.
 
+## Weekly runs and one-click Run now for the team (13 Nov 2026)
+
+- **My decisions:** host on Cloudflare (as in the original plan), and make Run now a true one-click button that non-developers can use without the code or my API key.
+- **Why the run moved to GitHub Actions:** the pipeline needs a real browser (Playwright) and up to 40 minutes, which a Cloudflare Worker doesn't allow. GitHub Actions runs it weekly and on demand; the state moved to Cloudflare D1 in the cloud so history builds up between runs.
+- **Claude Code** wrote `.github/workflows/weekly-run.yml` (8 named steps, one run at a time, results committed back), extended `worker/index.ts` (serves the dashboard as static assets; `/api/run` reads GitHub's live step status and starts a run), and updated the dashboard so Run now works in both modes.
+- **Keys and safety:** the Anthropic key is only a GitHub secret; the Worker holds a repo-only GitHub token and a team passcode (checked in constant time); starts are refused while a run is going; status is cached for 8 s so open dashboards don't exhaust GitHub's API limit.
+- **Tested** with `wrangler dev`: dashboard and data served, Run now hidden until it's configured, starts refused without setup (503) or without JSON (415). Going live needs my one-time account setup (README, "Hosted weekly runs").
+

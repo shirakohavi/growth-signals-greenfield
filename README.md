@@ -42,6 +42,35 @@ You can also start a run from the dashboard's **Run now** button when it's serve
 
 Each step can be run on its own: `collect:ats`, `collect:pages`, `enrich`, `collect:footprint`, `compare`, `seed:dummy`, `score`, `build:dashboard`. `npm test` runs 38 rule tests and `npm run typecheck` runs the type checks.
 
+## Hosted weekly runs (Cloudflare + GitHub Actions)
+
+Once set up, nobody needs the code or a key:
+- **The dashboard is online** on Cloudflare, served by the Worker in `worker/`.
+- **It runs every Monday at 06:00** Israel time, by GitHub Actions (`.github/workflows/weekly-run.yml`).
+- **Anyone can press Run now.** They type the team passcode once, and the dashboard shows "Step 3 of 8" live, then updates itself.
+- **The Anthropic key stays a GitHub secret.** Nobody using the dashboard can see it, and runs are billed to the key's owner (about $0.40 each).
+- **History builds up.** The database lives in Cloudflare D1, so every run compares with the last real one.
+
+**One-time setup (about 15 minutes, by the account owner):**
+
+1. Log in to Cloudflare: `npx wrangler login`
+2. Create the cloud database: `npx wrangler d1 create team-signals`, then paste the printed `database_id` into `wrangler.jsonc` (in `d1_databases`).
+3. Copy the current data up:
+   `npx wrangler d1 export team-signals --local --output /tmp/growth-signals.sql`
+   `npx wrangler d1 execute team-signals --remote --file /tmp/growth-signals.sql`
+4. Create a GitHub token for Run now: github.com → Settings → Developer settings → Fine-grained tokens. Give it access to **this repo only**, with permissions **Actions: Read and write**.
+5. Give the Worker its two secrets (each command asks you to paste the value):
+   `npx wrangler secret put GITHUB_TOKEN`
+   `npx wrangler secret put RUN_PASSCODE` (pick a passcode to share with the team)
+6. Deploy: `npx wrangler deploy`. It prints the dashboard's address (`https://team-signals.<your-subdomain>.workers.dev`).
+7. Give GitHub Actions its three secrets (each command asks for the value):
+   `gh secret set ANTHROPIC_API_KEY`
+   `gh secret set CLOUDFLARE_API_TOKEN` (Cloudflare → My Profile → API Tokens → "Edit Cloudflare Workers" template, plus **D1: Edit**)
+   `gh secret set CLOUDFLARE_ACCOUNT_ID` (shown on the Cloudflare dashboard's home page)
+8. Test: open the dashboard, press **Run now**, enter the passcode. Or on GitHub: Actions → Weekly run → **Run workflow**.
+
+Optional: put the dashboard behind **Cloudflare Access** (Zero Trust → Access → add the Worker's address), so only people with a Greenfield email can open it.
+
 ## Real vs dummy
 
 | Real (12 Nov 2026 run) | Dummy or mock, labelled where shown |

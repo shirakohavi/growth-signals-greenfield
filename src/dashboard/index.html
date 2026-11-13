@@ -977,48 +977,68 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
   const loadData = () => fetch("ranking.json", { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
     .then((d) => { mockChanges(d); stageFits(d); rankAll(d); D = d; $("#runDate").textContent = "Run " + fmtY(d.run_date); route(); });
 
-  // ------------------------------------------------------------ Run now (only when served by `npm run serve`)
-  // The pipeline runs on this computer. A static host has no /api/run, so the button stays hidden there.
+  // ------------------------------------------------------------ Run now
+  // Two backends answer /api/run with the same shape:
+  //  - hosted (Cloudflare Worker): starts the GitHub Actions run; asks once for the team passcode;
+  //  - local (`npm run serve`): runs the pipeline on this computer.
+  // A plain static host has no /api/run, so the button stays hidden there.
   const runBtn = $("#runBtn"), runBar = $("#runBar");
-  let runPoll = null, runShowLog = false, runWasRunning = false;
-  const mmss = (ms) => { const s = Math.max(0, Math.round(ms / 1000)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; };
+  let runPoll = null, runShowLog = false, runWasRunning = false, runSeen = false, runHosted = false;
+  const mmss = (ms) => { const s = Math.max(0, Math.round(ms / 1000)); return s >= 3600 ? `${Math.floor(s / 3600)}h ${String(Math.floor(s / 60) % 60).padStart(2, "0")}m` : `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; };
   function drawRun(st) {
+    runHosted = st.mode === "hosted";
+    if (st.configured === false) { runBtn.hidden = true; runBar.hidden = true; return; }
     runBtn.hidden = false;
     runBtn.disabled = st.running; runBtn.textContent = st.running ? "Running…" : "Run now";
-    if (!st.startedAt) { runBar.hidden = true; return; }
-    const pct = st.running ? Math.max(4, ((st.step - 1) / Math.max(1, st.total)) * 100 + 100 / Math.max(1, st.total) / 2) : 100;
+    runBtn.title = st.finishedAt ? `Last run ${fmtY(st.finishedAt)}${st.trigger ? ` (${st.trigger})` : ""}${st.ok === false ? ", stopped early" : ""}` : "";
+    // Show the strip while a run is going, or when this page saw it finish; not for old runs.
+    if (!st.startedAt || !(st.running || runSeen)) { runBar.hidden = true; return; }
+    const pct = st.running ? Math.max(4, ((Math.max(1, st.step) - 1) / Math.max(1, st.total)) * 100 + 100 / Math.max(1, st.total) / 2) : 100;
     const took = mmss((st.finishedAt ? Date.parse(st.finishedAt) : Date.now()) - Date.parse(st.startedAt));
-    const head = st.running ? `<span class="spin" aria-hidden="true"></span><span><b>Step ${st.step || "–"} of ${st.total || "–"}</b> · ${esc(st.label)}</span>`
+    const head = st.running ? `<span class="spin" aria-hidden="true"></span><span><b>${st.step ? `Step ${st.step} of ${st.total}` : "Starting"}</b> · ${esc(st.label || "Setting up")}</span>`
       : st.ok ? `<span><b>Run finished</b> in ${took}${st.dryRun ? " (test run, no data changed)" : " · dashboard updated"}</span>`
-      : `<span><b>Run stopped</b> at ${esc(st.label)}. Earlier steps are saved.</span>`;
+      : `<span><b>Run stopped</b> at ${esc(st.failedStep || st.label || "setup")}. Earlier steps are saved.</span>`;
     runBar.className = "runbar" + (st.running ? "" : st.ok ? " ok" : " fail");
     runBar.innerHTML = `<div class="wrap">${head}<span class="rtrack"><span class="rfill" style="display:block;width:${pct}%"></span></span><span class="meta num">${took}</span>
-      <button class="linkbtn" data-runlog>${runShowLog ? "Hide log" : "Show log"}</button>${st.running ? "" : `<button class="linkbtn" data-rundismiss>Dismiss</button>`}
-      ${runShowLog ? `<pre>${esc(st.log.slice(-60).join("\n"))}</pre>` : ""}</div>`;
+      ${st.log?.length ? `<button class="linkbtn" data-runlog>${runShowLog ? "Hide steps" : "Show steps"}</button>` : ""}${st.url ? `<a href="${esc(st.url)}" target="_blank" rel="noopener">Open on GitHub ↗</a>` : ""}${st.running ? "" : `<button class="linkbtn" data-rundismiss>Dismiss</button>`}
+      ${runShowLog && st.log?.length ? `<pre>${esc(st.log.slice(-60).join("\n"))}</pre>` : ""}</div>`;
     runBar.hidden = false;
     if (runShowLog) { const pre = runBar.querySelector("pre"); if (pre) pre.scrollTop = pre.scrollHeight; }
   }
   async function pollRun() {
     try {
       const st = await fetch("/api/run", { cache: "no-store" }).then((r) => (r.ok ? r.json() : Promise.reject()));
+      if (st.running) runSeen = true;
       drawRun(st);
-      if (runWasRunning && !st.running && st.ok && !st.dryRun) loadData().catch(() => {});
+      // A finished run: the hosted one redeploys the site, the local one rewrites public/. Reload the data.
+      if (runWasRunning && !st.running && st.ok && !st.dryRun) setTimeout(() => loadData().catch(() => {}), runHosted ? 15000 : 0);
       runWasRunning = st.running;
-      clearTimeout(runPoll); if (st.running) runPoll = setTimeout(pollRun, 2500);
+      clearTimeout(runPoll); if (st.running) runPoll = setTimeout(pollRun, st.mode === "hosted" ? 10000 : 2500);
       return true;
     } catch { runBtn.hidden = true; return false; }
   }
+  const savedCode = { get() { try { return localStorage.getItem("ts3:runcode") || ""; } catch { return ""; } }, set(v) { try { v ? localStorage.setItem("ts3:runcode", v) : localStorage.removeItem("ts3:runcode"); } catch {} } };
   async function startRun() {
-    const dry = new URLSearchParams(location.search).has("dryrun");
-    if (!dry && !confirm("Start a full run?\n\nIt re-collects job boards, careers pages, sitemaps and news for every company, then re-scores. It takes about 20–40 minutes and makes a few hundred Claude Haiku calls (well under $1). The dashboard keeps working and updates when it finishes.")) return;
-    const r = await fetch("/api/run", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ dryRun: dry }) }).catch(() => null);
-    if (!r || (r.status !== 202 && r.status !== 409)) { alert("Couldn't start the run. Is npm run serve still running?"); return; }
-    runShowLog = false; pollRun();
+    const dry = new URLSearchParams(location.search).has("dryrun") && !runHosted;
+    const msg = runHosted
+      ? "Start a full run now?\n\nIt re-collects job boards, careers pages, sitemaps and news for every company, then re-scores. It runs in the cloud and takes about 30–40 minutes; you can close this page. It costs about $0.40 in AI calls. The dashboard updates itself when it's done."
+      : "Start a full run?\n\nIt re-collects job boards, careers pages, sitemaps and news for every company, then re-scores. It takes about 20–40 minutes and makes a few hundred Claude Haiku calls (well under $1). The dashboard updates when it finishes.";
+    if (!dry && !confirm(msg)) return;
+    let passcode = "";
+    if (runHosted) { passcode = savedCode.get() || (prompt("Team passcode for Run now:") || "").trim(); if (!passcode) return; }
+    const r = await fetch("/api/run", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(runHosted ? { passcode } : { dryRun: dry }) }).catch(() => null);
+    if (!r) { alert(runHosted ? "Couldn't reach the server. Try again in a minute." : "Couldn't start the run. Is npm run serve still running?"); return; }
+    if (r.status === 401) { savedCode.set(""); alert("That passcode isn't right. Ask the team for the current one."); return; }
+    if (r.status === 503 || r.status === 502) { const e = await r.json().catch(() => ({})); alert(e.error || "Run now isn't available right now."); return; }
+    if (r.status !== 202 && r.status !== 409) { alert("Couldn't start the run."); return; }
+    if (runHosted) savedCode.set(passcode);
+    runSeen = true; runShowLog = false;
+    setTimeout(pollRun, runHosted ? 4000 : 0); // GitHub needs a moment to list the new run
   }
   document.addEventListener("click", (e) => {
     if (e.target.closest("[data-run]")) { startRun(); return; }
     if (e.target.closest("[data-runlog]")) { runShowLog = !runShowLog; pollRun(); return; }
-    if (e.target.closest("[data-rundismiss]")) { runBar.hidden = true; return; }
+    if (e.target.closest("[data-rundismiss]")) { runBar.hidden = true; runSeen = false; return; }
   });
   pollRun();
 

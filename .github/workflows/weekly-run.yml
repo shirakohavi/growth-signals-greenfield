@@ -1,0 +1,75 @@
+# Growth Signals: the weekly run, also started on demand from the dashboard's Run now button (via the Worker)
+# or from GitHub (Actions → Weekly run → Run workflow).
+# State lives in Cloudflare D1 (remote), so every run compares with the last real one.
+# One workflow step per pipeline step: the dashboard reads these step names to show "Step 3 of 8".
+#
+# Secrets (Settings → Secrets and variables → Actions):
+#   ANTHROPIC_API_KEY      Claude Haiku for extraction, classification and reason lines
+#   CLOUDFLARE_API_TOKEN   Workers + D1 edit (to read/write D1 and deploy the dashboard)
+#   CLOUDFLARE_ACCOUNT_ID
+name: Weekly run
+
+on:
+  schedule:
+    - cron: "0 3 * * 1" # Mondays 03:00 UTC = 06:00 in Israel (05:00 in winter)
+  workflow_dispatch:
+
+concurrency:
+  group: pipeline # never two runs at once
+  cancel-in-progress: false
+
+permissions:
+  contents: write # commit the run's results back to the repo
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Set up
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Restore page cache (saves re-downloading unchanged pages)
+        uses: actions/cache@v4
+        with:
+          path: data/cache/http
+          key: http-${{ github.run_id }}
+          restore-keys: http-
+      - run: npx wrangler d1 migrations apply team-signals --remote
+
+      - name: "1 · Job boards (Greenhouse, Lever, Ashby, Comeet)"
+        run: npx tsx scripts/collect_ats.ts --remote
+      - name: "2 · Getro boards and careers pages (AI extraction)"
+        run: npx tsx scripts/collect_pages.ts --remote
+      - name: "3 · Classify roles: function, seniority, country (AI)"
+        run: npx tsx scripts/enrich_jobs.ts --remote
+      - name: "4 · Sitemaps, About pages and news in English and Hebrew (AI)"
+        run: npx tsx scripts/collect_footprint.ts --remote
+      - name: "5 · Compare with last run: new, closed, reposted roles"
+        run: npx tsx scripts/compare.ts --remote
+      - name: "6 · Dummy history where no real history exists"
+        run: npx tsx scripts/seed_dummy_history.ts --remote
+      - name: "7 · Score, rank and write reason lines (AI)"
+        run: npx tsx scripts/score.ts --remote
+      - name: "8 · Build and publish the dashboard"
+        run: |
+          npx tsx scripts/build_dashboard.ts
+          npx wrangler deploy
+
+      - name: Save results to the repo
+        if: success()
+        run: |
+          git config user.name "growth-signals-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/ranking.json public/index.html data/runs
+          git diff --cached --quiet || git commit -m "Weekly run $(date -u +%Y-%m-%d)"
+          git push

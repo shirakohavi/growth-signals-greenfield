@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Growth Signals: which companies are building teams now, from job boards, careers pages and news. A case-study prototype for Greenfield Partners.">
+<meta name="theme-color" content="#000a1f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%23000a1f'/%3E%3Cpath d='M6 18V13M10 18V9M14 18V11M18 18V6' stroke='%234a90d9' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Growth Signals</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
+<style>
+/* Visual language taken from greenfield-growth.com: near-black navy fading to deep blue, Manrope with light
+   headlines, cool lavender greys, one soft-blue accent, see-through cards with thin blue edges, pill buttons.
+   Color only where it means something; green/red are kept only for data (score up / down, risks). */
+:root {
+  --bg: #000a1f; --bg-2: #0f2847;
+  --surface: rgba(74, 144, 217, 0.045); --surface-2: rgba(74, 144, 217, 0.09); --surface-solid: #061633;
+  --ink: #c4c4d0; --ink-strong: #ffffff; --muted: #9696a8; --faint: #6a6a80;
+  --line: rgba(255, 255, 255, 0.08); --line-strong: rgba(255, 255, 255, 0.16); --edge: rgba(74, 144, 217, 0.18); --edge-strong: rgba(74, 144, 217, 0.45);
+  --accent: #4a90d9; --accent-2: #93c5fd; --accent-soft: rgba(74, 144, 217, 0.16); --on-accent: #000a1f;
+  --good: #4fc58f; --risk: #f08f78;
+  --r-sm: 8px; --r-md: 14px; --r-pill: 100px;
+  --t: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* team-mix series (dataviz validator: all checks pass, dark on #061a40) */
+  --s-rd: #4a8ad6; --s-sales: #2aa874; --s-csp: #9076cc; --s-mkt: #b0832c; --s-other: #3d5478;
+  /* sequential ramp for the map (one hue, dark -> light = more) */
+  --q1: #0f2847; --q2: #173c6b; --q3: #23558f; --q4: #3a76bf; --q5: #6fa6e6; --q-ink-dark: #011132;
+  --font: "Manrope", ui-sans-serif, -apple-system, "Segoe UI", sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg) linear-gradient(180deg, var(--bg) 0%, var(--bg) 420px, var(--bg-2) 100%) fixed; color: var(--ink); font-family: var(--font); font-size: 15px; line-height: 1.55; min-height: 100dvh; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent-2); text-decoration: none; }
+.skip { position: absolute; left: 16px; top: -48px; z-index: 70; background: var(--accent); color: var(--on-accent); padding: 8px 14px; border-radius: var(--r-pill); font-weight: 700; transition: top var(--t); }
+.skip:focus { top: 12px; }
+button, .btn, .seg button, .row, .fcard, .achip, nav.tabs a, .stseg button, .x { transition: background-color var(--t), border-color var(--t), color var(--t), box-shadow var(--t), transform var(--t); }
+.btn:active, .seg button:active, .stseg button:active, .x:active, .cmpb:active { transform: scale(0.97); }
+a:hover { text-decoration: underline; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; border-radius: 6px; }
+.num { font-variant-numeric: tabular-nums; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.muted { color: var(--muted); }
+.meta { font-size: 12px; color: var(--muted); }
+
+/* header */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(0, 10, 31, 0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; align-items: center; gap: 24px; min-height: 60px; flex-wrap: wrap; padding-block: 6px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-strong); font-size: 12.5px; }
+.brand svg { width: 22px; height: 22px; flex: none; }
+nav.tabs { display: flex; gap: 2px; }
+nav.tabs a { color: var(--ink); font-weight: 500; font-size: 13px; letter-spacing: 0.02em; padding: 8px 12px; }
+nav.tabs a:hover { color: var(--ink-strong); text-decoration: none; }
+nav.tabs a[aria-current="page"] { color: var(--ink-strong); box-shadow: inset 0 -2px 0 var(--accent); }
+.hright { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+.linkbtn { background: none; border: 0; padding: 0; color: var(--accent-2); font-weight: 600; cursor: pointer; }
+.linkbtn:hover { text-decoration: underline; }
+
+/* page title */
+.hero { padding-block: 44px 20px; }
+.hero h1 { font-size: 32px; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink-strong); font-weight: 300; margin: 0; text-wrap: balance; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p { margin: 6px 0 0; }
+
+/* controls: search + sort visible, filters in a panel */
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
+.controls input[type=search], select { font: inherit; font-size: 14px; color: var(--ink-strong); background: var(--surface-solid); border: 1px solid var(--line-strong); border-radius: var(--r-pill); padding: 8px 14px; min-width: 0; transition: border-color var(--t); }
+.controls input[type=search]:hover, select:hover { border-color: var(--edge-strong); }
+select { appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 40px !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%239696a8' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 18px center; background-size: 11px 8px; }
+select option { background: #061633; color: #ffffff; }
+.controls input[type=search]::placeholder { color: var(--faint); }
+.controls input[type=search] { width: 240px; max-width: 100%; }
+.btn { font-size: 13px; font-weight: 600; letter-spacing: 0.01em; color: var(--ink-strong); background: transparent; border: 1px solid var(--line-strong); border-radius: var(--r-pill); padding: 8px 16px; cursor: pointer; }
+.btn:hover { border-color: var(--edge-strong); background: var(--surface); }
+.btn[aria-expanded="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.grow { flex: 1; }
+.seg { display: inline-flex; gap: 2px; padding: 3px; border: 1px solid var(--line-strong); border-radius: var(--r-pill); }
+.seg button { background: transparent; border: 0; border-radius: var(--r-pill); padding: 5px 13px; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.seg button:hover { color: var(--ink-strong); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.fpanel { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; background: var(--surface); border: 1px solid var(--edge); border-radius: var(--r-md); padding: 16px; margin-bottom: 14px; }
+.fpanel label { display: flex; flex-direction: column; gap: 6px; font-size: 10.5px; color: var(--muted); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.fpanel select { text-transform: none; letter-spacing: normal; }
+.active { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.achip { font-size: 12px; font-weight: 600; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px 6px 3px 10px; display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+.achip span { color: var(--faint); }
+
+/* list (Rising + table) */
+.list { background: var(--surface); border: 1px solid var(--edge); border-radius: var(--r-md); overflow: hidden; }
+.row { display: grid; grid-template-columns: 52px minmax(150px, 1.1fr) 56px 84px 112px 112px minmax(0, 1.3fr) 64px 48px 100px; gap: 12px; align-items: center; min-height: 58px; padding: 8px 20px; border-bottom: 1px solid var(--line); cursor: pointer; text-align: left; width: 100%; background: none; border-left: 0; border-right: 0; border-top: 0; }
+.row:last-child { border-bottom: 0; }
+.row:hover { background: var(--surface-2); }
+.row:active { background: var(--accent-soft); }
+.row .rk { color: var(--faint); font-weight: 600; font-size: 13px; }
+.row .nm { font-weight: 600; color: var(--ink-strong); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: flex; gap: 8px; align-items: center; }
+.row .ow { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--ink); white-space: nowrap; overflow: hidden; min-width: 0; }
+.row .ow span:last-child { overflow: hidden; text-overflow: ellipsis; }
+.row .ow .none { color: var(--faint); }
+.row .ty, .row .st, .row .rd { font-size: 13px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row .hl { color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row .sc { font-weight: 600; font-size: 18px; color: var(--ink-strong); text-align: right; letter-spacing: -0.02em; }
+.row .dl { text-align: right; font-size: 12px; font-weight: 600; }
+.lhead { display: grid; grid-template-columns: 52px minmax(150px, 1.1fr) 56px 84px 112px 112px minmax(0, 1.3fr) 64px 48px 100px; gap: 12px; padding: 10px 20px; border-bottom: 1px solid var(--line); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.lhead .r { text-align: right; }
+.q { background: none; border: 1px solid var(--line); color: var(--faint); border-radius: 50%; width: 15px; height: 15px; font-size: 10px; line-height: 13px; padding: 0; margin-left: 4px; cursor: pointer; text-transform: none; vertical-align: 1px; }
+.q:hover { color: var(--ink-strong); border-color: var(--line-strong); }
+.sortbtn { background: none; border: 0; padding: 0; font: inherit; color: inherit; letter-spacing: inherit; text-transform: inherit; cursor: pointer; }
+.sortbtn[aria-pressed="true"] { color: var(--ink-strong); }
+.decl { color: var(--risk); display: inline-flex; }
+.decl svg { width: 12px; height: 12px; }
+.up { color: var(--good); } .down { color: var(--risk); } .new { color: var(--faint); }
+.more { display: flex; justify-content: flex-end; margin-top: 14px; font-weight: 600; }
+.subrow { padding: 12px 20px; font-size: 13px; color: var(--muted); background: var(--surface-2); cursor: pointer; border-bottom: 1px solid var(--line); }
+
+.lhead > span { white-space: nowrap; }
+
+.mix { display: flex; height: 8px; border-radius: 4px; overflow: hidden; gap: 2px; width: 100%; }
+.mix span { display: block; height: 100%; min-width: 3px; }
+.mix.big { height: 12px; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+.legend i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; }
+.cbar { display: grid; grid-template-columns: 34px minmax(0, 1fr) 30px; gap: 10px; align-items: center; padding: 4px 0; font-size: 13px; }
+.cbar .b { height: 8px; border-radius: 0 4px 4px 0; background: var(--s-rd); }
+.cbar span:last-child { text-align: right; color: var(--ink-strong); font-weight: 600; }
+.card { background: var(--surface); border: 1px solid var(--edge); border-radius: var(--r-md); padding: 18px 20px; }
+.card h4 { margin: 0 0 2px; font-size: 14px; color: var(--ink-strong); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px; margin-top: 18px; }
+.gauge { position: relative; height: 10px; border-radius: 5px; background: var(--surface-2); margin: 10px 0 6px; }
+.gauge .f { position: absolute; inset: 0 auto 0 0; border-radius: 5px; background: var(--accent); }
+.gauge .t { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--line-strong); }
+.gscale { position: relative; height: 14px; font-size: 11px; color: var(--faint); }
+.gscale span { position: absolute; transform: translateX(-50%); }
+.sigbar { height: 6px; border-radius: 0 3px 3px 0; background: var(--accent); margin-top: 6px; }
+.sigbar.neg { background: var(--risk); }
+svg.line { width: 100%; height: auto; display: block; overflow: visible; }
+svg.line text { fill: var(--faint); font-size: 11px; font-family: var(--font); }
+/* compare */
+.row .rk { display: flex; align-items: center; gap: 6px; }
+.cmpb { width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid var(--line-strong); background: none; padding: 0; cursor: pointer; flex: none; display: inline-grid; place-items: center; font-size: 11px; line-height: 1; color: var(--on-accent); }
+.cmpb[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); }
+.cmpb:hover { border-color: var(--accent); }
+.tray { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 35; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; background: #ffffff; color: #011132; border-radius: 12px; padding: 8px 8px 8px 14px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35); max-width: calc(100% - 32px); font-size: 13px; font-weight: 600; }
+.tray .tcs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tray .tc { background: #eef0f5; border: 0; border-radius: 999px; padding: 3px 10px; cursor: pointer; color: #011132; font-weight: 600; font-size: 12.5px; }
+.tray .go { background: var(--accent); color: var(--on-accent); border: 0; border-radius: var(--r-pill); padding: 7px 12px; font-weight: 800; cursor: pointer; }
+.tray .go:disabled { opacity: 0.45; cursor: default; }
+aside.panel.wide { width: min(1120px, 100%); }
+.cgrid { display: grid; gap: 0 20px; overflow-x: auto; }
+.cgrid > div { min-width: 220px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.cgrid .lab { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); min-width: 110px; }
+.cgrid h2 { margin: 0; font-size: 20px; color: var(--ink-strong); }
+.cgrid .big { font-size: 34px; font-weight: 800; color: var(--ink-strong); letter-spacing: -0.03em; line-height: 1; }
+.sigline { display: grid; grid-template-columns: minmax(0, 1fr) 36px; gap: 8px; font-size: 13px; padding: 3px 0; }
+.sigline span:last-child { text-align: right; font-weight: 700; color: var(--ink-strong); }
+
+/* map */
+.heatwrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--edge); border-radius: var(--r-md); padding: 14px; }
+.heat { border-collapse: separate; border-spacing: 2px; min-width: 720px; }
+.heat th { font-size: 11px; font-weight: 600; color: var(--muted); padding: 4px 6px; white-space: nowrap; }
+.heat th.rowh { text-align: left; color: var(--ink-strong); cursor: pointer; }
+.heat td { width: 42px; height: 30px; text-align: center; font-size: 12px; font-weight: 600; border-radius: 4px; }
+.heat td.z { background: var(--surface-2); color: transparent; }
+.heatlegend { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--muted); margin-top: 10px; flex-wrap: wrap; }
+.heatlegend i { width: 22px; height: 10px; border-radius: 2px; display: inline-block; }
+
+/* This week */
+.feed { background: var(--surface); border: 1px solid var(--edge); border-radius: var(--r-md); overflow: hidden; }
+.feed .day { padding: 10px 20px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); background: var(--surface); border-bottom: 1px solid var(--line); }
+.feed .it { display: grid; grid-template-columns: 170px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 20px; border-bottom: 1px solid var(--line); }
+.feed .it:last-child { border-bottom: 0; }
+.feed .co { font-weight: 600; color: var(--ink-strong); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.feed .co:hover { text-decoration: underline; }
+.feed .wh { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.feed .wh.risk { color: var(--risk); font-weight: 600; }
+.empty { padding: 48px 20px; text-align: center; color: var(--muted); }
+
+/* drawer + guide panel */
+.scrim { position: fixed; inset: 0; background: rgba(0, 6, 20, 0.7); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 40; }
+aside.panel { position: fixed; top: 0; right: 0; bottom: 0; width: min(520px, 100%); background: var(--surface-solid); border-left: 1px solid var(--line); z-index: 41; overflow-y: auto;
+  padding: calc(24px + env(safe-area-inset-top, 0px)) max(24px, env(safe-area-inset-right, 0px)) calc(32px + env(safe-area-inset-bottom, 0px)) 24px; }
+.ph { display: flex; align-items: flex-start; gap: 14px; }
+.ph h2 { margin: 0; font-size: 24px; letter-spacing: -0.02em; color: var(--ink-strong); line-height: 1.2; }
+.ph .big { font-size: 48px; font-weight: 200; letter-spacing: -0.04em; color: var(--ink-strong); line-height: 1; margin-left: auto; }
+.x { background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; width: 34px; height: 34px; cursor: pointer; font-size: 15px; flex: none; }
+.lede { font-weight: 600; color: var(--ink-strong); font-size: 17px; margin: 18px 0 4px; }
+.links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 14px; font-weight: 600; font-size: 14px; }
+.tabs2 { display: flex; gap: 2px; border-bottom: 1px solid var(--line); margin-top: 22px; }
+.tabs2 button { background: none; border: 0; padding: 10px 12px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.tabs2 button[aria-selected="true"] { color: var(--ink-strong); box-shadow: inset 0 -2px 0 var(--accent); }
+.tabbody { padding-top: 14px; }
+.ev { display: grid; grid-template-columns: 56px minmax(0, 1fr) 18px; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.ev:last-child { border-bottom: 0; }
+.ev .d { font-size: 13px; color: var(--muted); }
+.ev .w b { font-weight: 600; color: var(--ink-strong); }
+.ev .w div { font-size: 13px; color: var(--muted); }
+.sig { display: grid; grid-template-columns: minmax(0, 1fr) 46px; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.sig:last-child { border-bottom: 0; }
+.sig b { font-weight: 600; color: var(--ink-strong); }
+.sig p { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
+.sig .pts { text-align: right; font-weight: 800; color: var(--ink-strong); }
+.sig .pts.neg { color: var(--risk); }
+.kv { display: grid; grid-template-columns: minmax(0, 1fr) 40px; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.kv span:last-child { text-align: right; font-weight: 600; color: var(--ink-strong); }
+.kvh { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 18px 0 4px; }
+.unk { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; font-size: 12.5px; color: var(--muted); align-items: center; }
+.unk button { background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; cursor: pointer; font-size: 12px; color: var(--ink); }
+/* reach-out tiers: always a label too, never color alone */
+.pill { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; padding: 2px 8px; border-radius: 999px; }
+.pill.now { background: var(--accent); color: var(--on-accent); }
+.pill.warm { background: var(--accent-soft); color: var(--accent-2); box-shadow: inset 0 0 0 1px var(--edge-strong); }
+.reachkey { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+.reachkey .pill { min-width: 0; font-size: 11px; font-weight: 700; padding: 1px 8px; }
+.row.now { box-shadow: inset 3px 0 0 var(--accent); }
+.gf { font-size: 12px; color: var(--muted); }
+.gf a { color: var(--ink); font-weight: 600; }
+.roles { margin-top: 8px; border: 1px solid var(--line); border-radius: 10px; max-height: 300px; overflow-y: auto; }
+.roles div { display: grid; grid-template-columns: minmax(0, 1fr) 34px; gap: 8px; padding: 8px 12px; border-bottom: 1px solid var(--line); font-size: 13px; }
+.roles div:last-child { border-bottom: 0; }
+.roles a { color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+details.ds { margin-top: 18px; font-size: 13px; color: var(--muted); }
+details.ds summary { cursor: pointer; font-weight: 600; }
+details.ds ul { padding-left: 18px; margin: 8px 0 0; }
+.gtable { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 8px 0 22px; }
+.gtable td { padding: 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.gtable td:first-child { font-weight: 600; color: var(--ink-strong); width: 38%; padding-right: 12px; }
+.gtable td:last-child { color: var(--muted); }
+.panel h3 { font-size: 15px; color: var(--ink-strong); margin: 22px 0 0; }
+.panel h3:first-of-type { margin-top: 18px; }
+.tip { position: fixed; z-index: 60; pointer-events: none; background: #f4f6fb; color: #000a1f; font-size: 12px; line-height: 1.45; padding: 7px 10px; border-radius: var(--r-sm); max-width: 280px; box-shadow: 0 8px 24px rgba(0, 10, 31, 0.45); }
+footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
+
+/* company logos: favicon on a white tile; initials when there is no usable logo */
+.lg { flex: none; display: inline-grid; place-items: center; width: var(--s, 20px); height: var(--s, 20px); border-radius: calc(var(--s, 20px) / 4); background: #ffffff; overflow: hidden; }
+.lg img { width: 80%; height: 80%; object-fit: contain; opacity: 0; transition: opacity 0.15s; }
+.lg img.ok { opacity: 1; }
+.lg.ini { background: var(--surface-2); color: var(--ink-strong); box-shadow: inset 0 0 0 1px var(--line-strong); font-size: calc(var(--s, 20px) * 0.42); font-weight: 800; letter-spacing: -0.02em; }
+.feed .co { display: flex; align-items: center; gap: 8px; }
+.feed .co > span:last-child { overflow: hidden; text-overflow: ellipsis; }
+
+/* Stage Fit board */
+.fboard { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; align-items: start; }
+.fcol { background: var(--surface); border: 1px solid var(--edge); border-radius: var(--r-md); padding: 12px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.fcol h3 { margin: 0 2px 4px; display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.fcol h3 .num { color: var(--ink-strong); }
+.fcard { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.fcard:hover { border-color: var(--edge-strong); background: var(--surface-2); transform: translateY(-1px); }
+.fcard.now { box-shadow: inset 3px 0 0 var(--accent); }
+.fcard .ft { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.fcard .ft b { color: var(--ink-strong); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fcard .ft .dl { font-size: 12px; font-weight: 600; }
+.fcard .ft .sc { font-weight: 800; color: var(--ink-strong); }
+.fcard .ft .pill { min-width: 34px; font-size: 13px; }
+.fcard .fh { font-size: 13px; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fcard .fm { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+.fcard .fm > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fcard .fm .grow { flex: 1; }
+@media (max-width: 1000px) { .fboard { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .fboard { grid-template-columns: minmax(0, 1fr); } }
+
+/* loading skeleton */
+.skel i { display: block; border-radius: var(--r-md); background: linear-gradient(90deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface) 100%); background-size: 200% 100%; animation: skel 1.4s ease-in-out infinite; }
+@keyframes skel { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+
+/* tooltips on labels: dotted underline says "hover me" */
+.has-tip { text-decoration: underline dotted var(--faint); text-underline-offset: 3px; cursor: help; }
+
+/* Rising headline */
+/* Rising headline: blue eyebrow label above a light headline, as on greenfield-growth.com */
+.eyebrow { font-size: 20px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 10px; }
+.hero h1.top10 { font-size: 38px; font-weight: 300; letter-spacing: -0.02em; }
+.btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.btn.primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
+.btn.sm { font-size: 13px; padding: 6px 10px; }
+
+/* owner + outreach markers in rows */
+.av { flex: none; display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; font-size: 10px; font-weight: 800; color: var(--on-accent); }
+.av.lg { width: 30px; height: 30px; font-size: 12px; }
+.ost { flex: none; width: 8px; height: 8px; border-radius: 50%; }
+.pend { font-size: 11px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 1px 8px; }
+
+/* full-screen modal */
+.modal { position: fixed; inset: 0; z-index: 41; background: var(--bg); overflow-y: auto; padding: calc(20px + env(safe-area-inset-top, 0px)) 0 calc(32px + env(safe-area-inset-bottom, 0px)); }
+.modal .mwrap { max-width: 1240px; margin: 0 auto; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+.modal .mgrid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 24px; margin-top: 20px; align-items: start; }
+.modal .main, .modal .side { background: var(--surface); border: 1px solid var(--edge); border-radius: var(--r-md); padding: 22px 24px; }
+.modal .side { position: sticky; top: 16px; }
+.modal .side h3 { margin: 0 0 12px; font-size: 15px; color: var(--ink-strong); }
+.modal .bar { display: flex; align-items: center; gap: 12px; }
+.modal .bar .back { font-weight: 600; }
+.fld { display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 16px; }
+.fld select, .fld input, .fld textarea { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; width: 100%; }
+.fld textarea { resize: vertical; min-height: 72px; }
+.fld .err { color: var(--risk); font-weight: 600; }
+.ownerrow { display: flex; align-items: center; gap: 10px; }
+.ownerrow select { flex: 1; }
+.stseg { display: flex; flex-wrap: wrap; gap: 6px; }
+.stseg button { background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; padding: 5px 11px; font-size: 12.5px; font-weight: 600; color: var(--muted); cursor: pointer; display: inline-flex; gap: 6px; align-items: center; }
+.stseg button[aria-pressed="true"] { color: var(--ink-strong); border-color: var(--ink-strong); }
+.cmt { border-top: 1px solid var(--line); padding: 10px 0; font-size: 13.5px; }
+.cmt .who { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+.cmt .who b { color: var(--ink-strong); font-weight: 600; }
+.cmt p { margin: 6px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.cmt .del { margin-left: auto; font-size: 12px; color: var(--faint); }
+.scorebox { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 24px; margin-top: 18px; align-items: start; }
+.formgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+.dialog { position: fixed; z-index: 42; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(560px, calc(100% - 32px)); max-height: calc(100% - 32px); overflow-y: auto; background: var(--surface-solid); border: 1px solid var(--line-strong); border-radius: 14px; padding: 22px 24px; }
+.dialog h2 { margin: 0; font-size: 20px; color: var(--ink-strong); }
+.pendgrp { padding: 10px 20px; font-size: 12px; font-weight: 600; color: var(--muted); background: var(--surface-2); border-bottom: 1px solid var(--line); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.feed .it .rollup { color: var(--muted); font-size: 13px; }
+
+/* Medium widths: drop Round and Team (both are in the company popup) so the headline keeps room. */
+@media (max-width: 1140px) and (min-width: 861px) {
+  .row, .lhead { grid-template-columns: 52px minmax(150px, 1.1fr) 56px 84px 112px minmax(0, 1.3fr) 64px 48px; }
+  .row .rd, .row .mx, .lhead .hide-md { display: none; }
+}
+@media (max-width: 860px) {
+  .row, .lhead { grid-template-columns: 46px minmax(0, 1fr) 56px; }
+  .row .ty, .row .st, .row .rd, .row .dl, .row .mx, .row .ow, .lhead .hide-sm { display: none; }
+  .row .hl { grid-column: 2 / 3; grid-row: 2; font-size: 13px; color: var(--muted); }
+  .row .sc { grid-row: 1 / 3; grid-column: 3; }
+  .row { padding: 10px 16px; }
+  .lhead { padding: 10px 16px; }
+  .feed .it { grid-template-columns: minmax(0, 1fr) auto; padding: 12px 16px; }
+  .feed .wh { grid-column: 1 / -1; grid-row: 2; font-size: 13px; color: var(--muted); }
+  .modal .mgrid, .scorebox { grid-template-columns: minmax(0, 1fr); }
+  .modal .side { position: static; }
+  .modal .main, .modal .side { padding: 18px 16px; }
+  .hero h1.top10 { font-size: 28px; }
+  .eyebrow { font-size: 16px; }
+}
+@media (max-width: 600px) {
+  .formgrid { grid-template-columns: 1fr; }
+  .hright .gf, #runDate { display: none; }
+  .hright .btn { white-space: nowrap; }
+}
+@media (max-width: 600px) {
+  .tray { left: 12px; right: 12px; transform: none; max-width: none; flex-wrap: nowrap; padding-left: 10px; }
+  .tray .tl { display: none; }
+  .tray .tcs { flex: 1; min-width: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .tray .tc, .tray .go { white-space: nowrap; flex: none; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<a class="skip" href="#app">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 17V12M10 17V9M14 17V11M18 17V6" stroke="#4a90d9" stroke-width="1.8" stroke-linecap="round"/></svg>Growth Signals</div>
+    <nav class="tabs" aria-label="Views">
+      <a href="#rising" data-view="rising">Rising</a>
+      <a href="#all" data-view="all">All companies</a>
+      <a href="#week" data-view="week">What's new</a>
+    </nav>
+    <div class="hright"><span class="gf">Built for <a href="https://www.greenfield-growth.com/" target="_blank" rel="noopener">Greenfield Partners</a></span><span class="meta num" id="runDate"></span><button class="linkbtn" data-guide="top">Guide</button><button class="btn primary sm" data-add>+ Add company</button></div>
+  </div>
+</header>
+
+<main class="wrap" id="app" tabindex="-1"><div class="skel" aria-busy="true" aria-label="Loading the latest run"><i style="width:38%;height:34px;margin:48px 0 24px"></i><i style="height:64px;margin-bottom:22px"></i><i style="height:420px"></i></div></main>
+<div id="panelRoot"></div>
+<div class="tip" id="tip" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(() => {
+  "use strict";
+  const $ = (s, el = document) => el.querySelector(s);
+  const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const M = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const fmt = (d) => { if (!d) return ""; const [, m, dd] = d.slice(0, 10).split("-").map(Number); return `${dd} ${M[m - 1]}`; };
+  const fmtY = (d) => { if (!d) return ""; const [y, m, dd] = d.slice(0, 10).split("-").map(Number); return `${dd} ${M[m - 1]} ${y}`; };
+  const daysAgo = (d, today) => Math.round((Date.parse(today + "T00:00:00Z") - Date.parse(d.slice(0, 10) + "T00:00:00Z")) / 86400000);
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const store = { get(k, d) { try { const v = localStorage.getItem("ts3:" + k); return v ? { ...d, ...JSON.parse(v) } : d; } catch { return d; } }, set(k, v) { try { localStorage.setItem("ts3:" + k, JSON.stringify(v)); } catch {} } };
+  const uniq = (a) => [...new Set(a.filter(Boolean))];
+
+  const TYPE = { "Cybersecurity": "Cyber", "AI infrastructure": "AI Infra", "Deep tech": "Deep Tech", "Vertical AI": "Vertical AI", "Fintech": "Fintech", "Off-thesis": "Other" };
+  // "Outside Thesis" is not shown as a fit label: the Type column already says "Other" for those companies.
+  const FITS = ["In Range", "Approaching B", "Too Early", "Past Stage"];
+  const REACH = { now: "Reach out now", warm: "Warm" };
+  const GROUPS = [
+    { label: "R&D", fns: ["R&D"], color: "var(--s-rd)" },
+    { label: "Sales", fns: ["Sales"], color: "var(--s-sales)" },
+    { label: "CS & Partners", fns: ["Customer success", "Partnerships"], color: "var(--s-csp)" },
+    { label: "Marketing", fns: ["Marketing"], color: "var(--s-mkt)" },
+    { label: "G&A / Other", fns: ["G&A", "Other", "unknown"], color: "var(--s-other)" },
+  ];
+  const KINDS = { role: "Roles", round: "News", plan: "News", office: "News", validation: "News", page: "Site", layoff: "Risks" };
+  const DECL = '<span class="decl" data-tip="Decline: layoffs or hiring paused in the last 12 months"><svg viewBox="0 0 10 10" aria-label="Decline"><path d="M5 1v7M2 5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>';
+
+  // One source of truth for what every label means: hover tooltips and the Guide both read from here.
+  const GLOSSARY = {
+    score: "0–100. Sum of the company's growth signals (points × age × evidence). Plain arithmetic, no AI.",
+    band: "Exceptional 60+ · Strong growth story 40–59 · Some activity 20–39 · Quiet under 20.",
+    change: "Score change since the last run. \"new\" = first run, nothing to compare yet.",
+    reach: "Reach out now = score 60+ and In Range. Warm = score 40–59, In Range or Approaching B.",
+    type: "Greenfield's five investment categories: Cyber, AI Infra, Deep Tech, Vertical AI, Fintech. Other = outside them.",
+    round: "Latest funding round and the month it closed, from the company list.",
+    status: "Stage fit from the latest round and its date. Decides who is ranked, not the score.",
+    headline: "The company's strongest signal right now. Open the company → Why for all of them.",
+    team: "Open roles by function: R&D, Sales, CS & Partners, Marketing, G&A / Other.",
+    coverage: "Full = job board + history. Partial = website or news only. Low = little found.",
+    decline: "Layoffs or hiring paused in the last 12 months.",
+    country: "Countries where the company has open roles.",
+    owner: "Teammate who owns the outreach for this company.",
+    outreach: "Where the outreach stands. Saved in this browser.",
+    changes: "Dated changes: new roles, funding, plans, new site pages.",
+    why: "The signals that make up the score, with points and sources.",
+    teamtab: "Hiring vs company size, roles by team and country, roles over time.",
+    "In Range": "Series B or C, or Series A in deep tech. Ranked.",
+    "Approaching B": "Series A closed 12–24 months ago (not deep tech). Ranked.",
+    "Too Early": "Series A closed under 12 months ago. Watchlist.",
+    "Past Stage": "Series D+, $1B+ valuation, or acquired. Not ranked.",
+    Exceptional: "Score 60 and above.", "Strong growth story": "Score 40–59.", "Some activity": "Score 20–39.", Quiet: "Score under 20.",
+  };
+  const tipAttr = (k) => GLOSSARY[k] ? ` class="has-tip" tabindex="0" data-tip="${esc(GLOSSARY[k])}"` : "";
+  const tl = (k, label) => GLOSSARY[k] ? `<span${tipAttr(k)}>${label}</span>` : label;
+  // Mock team for the outreach workflow (fictional people).
+  const TEAM = [
+    { id: "nm", name: "Noa Mizrahi", role: "Partner", color: "#3dcf8e" },
+    { id: "ar", name: "Amit Rosen", role: "Principal", color: "#4a8ad6" },
+    { id: "ys", name: "Yael Shapira", role: "Associate", color: "#9076cc" },
+    { id: "db", name: "Daniel Ben-Ami", role: "Analyst", color: "#b0832c" },
+    { id: "ml", name: "Maya Levin", role: "Platform", color: "#f08f78" },
+  ];
+  const member = (id) => TEAM.find((m) => m.id === id);
+  const initials = (n) => n.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+  const avatar = (m, lg) => m ? `<span class="av${lg ? " lg" : ""}" style="background:${m.color}" data-tip="${esc(m.name)} · ${esc(m.role)}" aria-label="${esc(m.name)}">${initials(m.name)}</span>` : "";
+  const OUTREACH = [
+    { k: "none", l: "Not Contacted", c: "var(--faint)" }, { k: "reached", l: "Reached Out", c: "var(--s-rd)" },
+    { k: "talking", l: "In Conversation", c: "var(--s-csp)" }, { k: "meeting", l: "Meeting Set", c: "var(--accent)" }, { k: "passed", l: "Passed", c: "var(--risk)" },
+  ];
+  const outreach = (k) => OUTREACH.find((o) => o.k === k) || OUTREACH[0];
+  const CRM = store.get("crm", {});
+  const crm = (slug) => CRM[slug] || { owner: "", status: "none", statusAt: null, comments: [] };
+  const setCrm = (slug, patch) => { CRM[slug] = { ...crm(slug), ...patch }; store.set("crm", CRM); };
+  const ADDED = store.get("added", { list: [] });
+  const stDot = (slug) => { const s = crm(slug).status; return s && s !== "none" ? `<span class="ost" style="background:${outreach(s).c}" data-tip="${esc(outreach(s).l)}"></span>` : ""; };
+
+  let D = null;
+  const S = {
+    view: "rising", open: null, guide: null, tab: "changes", showAll: false, showRoles: false, filtersOpen: false, addOpen: false, addErr: {},
+    rising: store.get("rising", { q: "", reach: "all", type: "all", status: "all", band: "all", decline: "all", owner: "all", outreach: "all", sort: "score" }),
+    all: store.get("all", { q: "", reach: "all", type: "all", status: "all", band: "all", decline: "all", coverage: "all", country: "all", owner: "all", outreach: "all", sort: "rank", dir: 1, mode: "list", hidden: false }),
+    week: store.get("week2", { q: "", kind: "highlights", type: "all", country: "all", days: 14, sort: "date" }),
+  };
+  S.cmp = store.get("cmp", { list: [] }).list.slice(0, 3);
+  S.compareOpen = false;
+  const save = () => { store.set("rising", S.rising); store.set("all", S.all); store.set("week2", S.week); store.set("cmp", { list: S.cmp }); };
+  S.expanded = new Set();
+
+  // ------------------------------------------------------------ bits
+  const groups = (c) => { const g = GROUPS.map((x) => ({ ...x, n: 0 })); for (const [fn, n] of Object.entries(c.jobs_by_function || {})) (g.find((x) => x.fns.includes(fn)) || g[4]).n += n; return g; };
+  const mix = (c, big) => { const g = groups(c), t = g.reduce((a, x) => a + x.n, 0); return t ? `<div class="mix${big ? " big" : ""}" role="img" aria-label="Team mix">${g.filter((x) => x.n).map((x) => `<span style="flex:${x.n};background:${x.color}" data-tip="${esc(x.label)}: ${x.n} of ${t} open roles"></span>`).join("")}</div>` : `<span class="meta">no listings</span>`; };
+  const mixLegend = (g) => `<div class="legend">${g.map((x) => `<span><i style="background:${x.color}"></i>${esc(x.label)}${x.n !== undefined ? " " + x.n : ""}</span>`).join("")}</div>`;
+  // Horizontal bars, one series: [label, value] pairs.
+  const bars = (pairs) => { const mx = Math.max(1, ...pairs.map(([, v]) => v)); return pairs.map(([k, v]) => `<div class="cbar"><span class="num">${esc(k)}</span><div class="b" style="width:${(v / mx) * 100}%" data-tip="${esc(k)}: ${v}"></div><span class="num">${v}</span></div>`).join(""); };
+  // Open roles over time from snapshots; dummy points drawn dashed and hollow.
+  // opts: { key: "open" | "score", unit, maxY, color, guides: [values for dashed reference lines] }
+  function lineChart(series, opts = {}) {
+    if (typeof opts === "number") opts = { maxY: opts };
+    const key = opts.key || "open", unit = opts.unit || "open roles", col = opts.color || "var(--s-rd)", guides = opts.guides || [];
+    if (!series || series.length < 2) return `<p class="meta">Not enough runs yet for a trend.</p>`;
+    const W = 460, H = 130, pl = 28, pr = 10, pt = 10, pb = 22, mx = opts.maxY || Math.max(1, ...series.map((p) => p[key]));
+    const x = (i) => pl + (i / (series.length - 1)) * (W - pl - pr), y = (v) => pt + (1 - v / mx) * (H - pt - pb);
+    let segs = "";
+    // Each segment stops short of the point circles, so hollow (dummy) points read as clean rings.
+    const gap = 7;
+    for (let i = 1; i < series.length; i++) {
+      const d = series[i - 1].dummy || series[i].dummy, x1 = x(i - 1), y1 = y(series[i - 1][key]), x2 = x(i), y2 = y(series[i][key]);
+      const len = Math.hypot(x2 - x1, y2 - y1) || 1, ux = (x2 - x1) / len, uy = (y2 - y1) / len;
+      if (len > gap * 2) segs += `<line x1="${x1 + ux * gap}" y1="${y1 + uy * gap}" x2="${x2 - ux * gap}" y2="${y2 - uy * gap}" stroke="${col}" stroke-width="2" ${d ? 'stroke-dasharray="4 4"' : ""}/>`;
+    }
+    const pts = series.map((p, i) => `<circle cx="${x(i)}" cy="${y(p[key])}" r="4.5" fill="${p.dummy ? "none" : col}" stroke="${col}" stroke-width="2" pointer-events="all" data-tip="${fmtY(p.date)}: ${p[key]} ${unit}${p.dummy ? " (dummy)" : ""}"/>`).join("");
+    const lab = series.map((p, i) => `<text x="${x(i)}" y="${H - 4}" text-anchor="middle">${fmt(p.date)}</text>`).join("");
+    const gl = guides.map((v) => `<line x1="${pl}" x2="${W - pr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-dasharray="3 4"/><text x="${pl - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`).join("");
+    return `<svg class="line" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(unit)} over time"><line x1="${pl}" x2="${W - pr}" y1="${y(0)}" y2="${y(0)}" stroke="var(--line-strong)"/>${gl}<text x="${pl - 6}" y="${y(mx) + 4}" text-anchor="end">${mx}</text><text x="${pl - 6}" y="${y(0) + 4}" text-anchor="end">0</text>${segs}${pts}${lab}</svg>
+      <div class="legend"><span><i style="background:${col}"></i>Real run</span><span><i style="background:none;box-shadow:inset 0 0 0 2px ${col}"></i>Dummy history</span></div>`;
+  }
+  const scoreChart = (c) => lineChart(c.score_series, { key: "score", unit: "score", maxY: 100, color: "var(--accent)", guides: [20, 40, 60] });
+  // Open roles as a share of headcount (context only, not scored), with 5 / 15 / 25% scale marks.
+  function sizeGauge(c) {
+    const z = c.size;
+    if (!z) return `<p class="meta">Size unknown (no public headcount found).</p>`;
+    const cap = 50, at = (v) => Math.min(100, (v / cap) * 100);
+    return `<div class="gauge" data-tip="${z.open} open roles / ~${z.headcount} employees"><div class="f" style="width:${at(z.pct)}%"></div>${[5, 15, 25].map((v) => `<i class="t" style="left:${at(v)}%"></i>`).join("")}</div>
+      <div class="gscale">${[5, 15, 25].map((v) => `<span style="left:${at(v)}%">${v}%</span>`).join("")}<span style="left:100%;transform:translateX(-100%)">50%+</span></div>
+      <p class="meta" style="margin:6px 0 0"><b style="color:var(--ink-strong)">${z.pct}%</b> · ${z.open} open roles for ~${z.headcount} employees · context only, not scored</p>`;
+  }
+  const delta = (c) => {
+    if (c.change === null) return `<span class="new" data-tip="First real run: no earlier score to compare">new</span>`;
+    const was = c.score - c.change, tip = `Was ${was}, now ${c.score}${c.change_dummy ? " · vs dummy history (no earlier real run yet)" : " · since the last run"}`;
+    return c.change > 0 ? `<span class="up" data-tip="${esc(tip)}">▲${c.change}</span>` : c.change < 0 ? `<span class="down" data-tip="${esc(tip)}">▼${-c.change}</span>` : `<span class="new" data-tip="${esc(tip)}">=</span>`;
+  };
+  // Until a second real run exists, show the change vs the previous (dummy) point of the score history,
+  // so the arrows have something to show. Marked change_dummy and said so in the tooltip.
+  // Off-thesis companies get their stage fit from the round (same rules as src/lib/fit.ts); Type still says "Other".
+  const stageFits = (d) => { for (const c of d.companies) { if (c.fit !== "Outside Thesis") continue;
+    const r = (c.fit_explain || c.round_label || "").match(/Series\s+([A-Z])/i), k = r ? r[1].toUpperCase().charCodeAt(0) - 64 : null;
+    const dm = (c.fit_explain || "").match(/([A-Z][a-z]{2}) (\d{4})/), age = dm ? (Date.parse(d.run_date) - Date.parse(`1 ${dm[1]} ${dm[2]}`)) / 2.63e9 : null;
+    c.fit = k === null ? "" : k >= 4 ? "Past Stage" : k >= 2 ? "In Range" : k === 1 ? (age !== null && age < 12 ? "Too Early" : "Approaching B") : "Too Early"; c.off_thesis = true; } };
+  // Every company gets a rank, by score (ties keep the run's order). Past-stage companies are ranked too.
+  const rankAll = (d) => { const order = new Map(d.companies.map((c, i) => [c.slug, i]));
+    [...d.companies].sort((a, b) => b.score - a.score || order.get(a.slug) - order.get(b.slug)).forEach((c, i) => { c.rank = i + 1; }); };
+  const mockChanges = (d) => { for (const c of d.companies) { const s = c.score_series || []; if (c.change === null && s.length > 1 && s[s.length - 2].dummy) { c.change = s[s.length - 1].score - s[s.length - 2].score; c.change_dummy = true; } } };
+  const status = (c) => (c.fit && FITS.includes(c.fit) ? c.fit : "");
+  const scoreCell = (c) => c.reach ? `<span class="pill ${c.reach}" data-tip="${REACH[c.reach]}">${c.score}</span>` : String(c.score);
+  const reachKey = `<div class="reachkey"><span><span class="pill now">${REACH.now}</span> score 60+ and In Range</span><span><span class="pill warm">${REACH.warm}</span> score 40–59</span></div>`;
+
+  function pass(c, f) {
+    if (f.q && !`${c.name} ${c.sector || ""}`.toLowerCase().includes(f.q.toLowerCase())) return false;
+    if (f.type !== "all" && c.category !== f.type) return false;
+    if (f.status !== "all" && c.fit !== f.status) return false;
+    if (f.reach && f.reach !== "all" && c.reach !== f.reach) return false;
+    if (f.band !== "all" && c.band !== f.band) return false;
+    if (f.decline === "yes" && !c.decline_flag) return false;
+    if (f.decline === "no" && c.decline_flag) return false;
+    if (f.coverage && f.coverage !== "all" && c.coverage !== f.coverage) return false;
+    if (f.country && f.country !== "all" && !(c.jobs_by_country || {})[f.country]) return false;
+    if (f.owner && f.owner !== "all" && (crm(c.slug).owner || "none") !== f.owner) return false;
+    if (f.outreach && f.outreach !== "all" && crm(c.slug).status !== f.outreach) return false;
+    return true;
+  }
+  // Logos from Google's favicon service (sz=64). A missing logo comes back as a 16px globe, so anything
+  // under 32px falls back to initials. Results are remembered per domain so re-renders don't flicker.
+  const LOGO = new Map();
+  const coIni = (n) => { const w = String(n || "?").replace(/[^A-Za-z0-9 ]/g, " ").trim().split(/\s+/); return (w.length > 1 ? w[0][0] + w[1][0] : w[0].slice(0, 2)).toUpperCase(); };
+  const logo = (c, px = 20) => {
+    const d = (c.domain || "").trim(), st = d ? LOGO.get(d) : "none", ini = coIni(c.name);
+    if (st === "none") return `<span class="lg ini" style="--s:${px}px" aria-hidden="true">${esc(ini)}</span>`;
+    return `<span class="lg" style="--s:${px}px" aria-hidden="true"><img class="lgimg${st === "ok" ? " ok" : ""}" src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&amp;sz=64" alt="" decoding="async" data-domain="${esc(d)}" data-ini="${esc(ini)}"></span>`;
+  };
+  const logoFail = (img) => { LOGO.set(img.dataset.domain, "none"); const box = img.parentElement; if (box) { box.classList.add("ini"); box.textContent = img.dataset.ini; } };
+  document.addEventListener("load", (e) => { const img = e.target; if (!img.classList?.contains("lgimg")) return; if (img.naturalWidth < 32) logoFail(img); else { LOGO.set(img.dataset.domain, "ok"); img.classList.add("ok"); } }, true);
+  document.addEventListener("error", (e) => { if (e.target.classList?.contains("lgimg")) logoFail(e.target); }, true);
+  const ownerName = (c) => member(crm(c.slug).owner)?.name || "";
+  const ownerCell = (slug) => { const m = member(crm(slug).owner); return `<span class="ow">${m ? avatar(m) : ""}</span>`; };
+  const SORT = {
+    owner: (a, b) => (ownerName(a) ? 0 : 1) - (ownerName(b) ? 0 : 1) || ownerName(a).localeCompare(ownerName(b)),
+    score: (a, b) => b.score - a.score, change: (a, b) => (b.change ?? -999) - (a.change ?? -999), name: (a, b) => a.name.localeCompare(b.name),
+    rank: (a, b) => (a.rank ?? 999) - (b.rank ?? 999), type: (a, b) => (a.category || "").localeCompare(b.category || ""),
+    status: (a, b) => ((FITS.indexOf(a.fit) + 1) || 99) - ((FITS.indexOf(b.fit) + 1) || 99), round: (a, b) => (a.round_label || "").localeCompare(b.round_label || ""), open: (a, b) => b.open_jobs - a.open_jobs,
+  };
+  const sel = (id, label, opts, cur) => `<label>${label}<select id="${id}">${opts.map(([v, l]) => `<option value="${esc(v)}"${String(v) === String(cur) ? " selected" : ""}>${esc(l)}</option>`).join("")}</select></label>`;
+  // Title Case for every filter label and option (labels, chips and screen readers all match).
+  const title = (s) => String(s).replace(/(^|[\s/(-])([a-z])/g, (m, a, b) => a + b.toUpperCase());
+  const typeOpts = [["all", "All Types"], ...Object.entries(TYPE)];
+  const statusOpts = (list) => [["all", "Any Stage Fit"], ...FITS.filter((x) => list.some((c) => c.fit === x)).map((x) => [x, x])];
+  const reachOpts = [["all", "Anyone"], ["now", "Reach Out Now"], ["warm", "Warm"]];
+  const bandOpts = [["all", "All Bands"], ...["Exceptional", "Strong growth story", "Some activity", "Quiet"].map((x) => [x, title(x)])];
+  const declOpts = [["all", "Any"], ["yes", "Decline Only"], ["no", "No Decline"]];
+  const ownerOpts = [["all", "Anyone"], ["none", "Unassigned"], ...TEAM.map((m) => [m.id, m.name])];
+  const outreachOpts = [["all", "Any Status"], ...OUTREACH.map((o) => [o.k, o.l])];
+  const crmFilters = (f) => sel("f-owner", tl("owner", "Owner"), ownerOpts, f.owner || "all") + sel("f-outreach", tl("outreach", "Outreach Status"), outreachOpts, f.outreach || "all");
+  const crmChips = { owner: (v) => `Owner: ${v === "none" ? "Unassigned" : member(v)?.name || v}`, outreach: (v) => outreach(v).l };
+
+  // Active filters as removable chips (so a filtered view is never a mystery).
+  function activeChips(f, labels) {
+    const chips = Object.entries(labels).filter(([k]) => f[k] !== undefined && f[k] !== "all" && f[k] !== "" && !(k === "days" && f[k] === 14))
+      .map(([k, l]) => `<button class="achip" data-clear="${k}">${esc(l(f[k]))} <span aria-hidden="true">✕</span></button>`);
+    return chips.length ? `<div class="active">${chips.join("")}</div>` : "";
+  }
+  const nActive = (f, keys) => keys.filter((k) => f[k] !== undefined && f[k] !== "all" && f[k] !== "" && !(k === "days" && f[k] === 14)).length;
+
+  // ------------------------------------------------------------ views
+  function rising() {
+    const f = S.rising, ranked = D.companies.filter((c) => c.rank !== null);
+    const list = ranked.filter((c) => pass(c, f)).sort(SORT[f.sort] || SORT.score).slice(0, 10);
+    const n = nActive(f, ["type", "status", "band", "decline", "reach", "owner", "outreach"]);
+    return `<section class="hero"><div class="eyebrow">Top 10 rising</div><h1 class="top10">Company growth signals</h1>${reachKey}</section>
+      <div class="controls">
+        <input type="search" id="q" placeholder="Search company" value="${esc(f.q)}" aria-label="Search company">
+        <button class="btn" data-toggle-filters aria-expanded="${S.filtersOpen}">Filters${n ? ` · ${n}` : ""}</button>
+        <span class="grow"></span>
+        ${sel("sort", "", [["score", "Sort: Score"], ["change", "Sort: Change"], ["open", "Sort: Open Roles"], ["name", "Sort: Name"]], f.sort).replace(/<label>|<\/label>/g, "")}
+      </div>
+      ${S.filtersOpen ? `<div class="fpanel">${sel("f-reach", tl("reach", "Reach Out"), reachOpts, f.reach || "all")}${sel("f-type", tl("type", "Type"), typeOpts, f.type)}${sel("f-status", tl("status", "Stage Fit"), statusOpts(ranked), f.status)}${sel("f-band", tl("band", "Band"), bandOpts, f.band)}${sel("f-decline", tl("decline", "Decline"), declOpts, f.decline)}${crmFilters(f)}</div>` : ""}
+      ${activeChips(f, { reach: (v) => REACH[v], type: (v) => TYPE[v] || v, status: (v) => v, band: (v) => title(v), decline: (v) => (v === "yes" ? "Decline Only" : "No Decline"), ...crmChips })}
+      ${list.length ? `<div class="list">${listHead(false)}${list.map((c, i) => row(c, i + 1, false)).join("")}</div>` : `<p class="empty">No company matches. Clear a filter to see more.</p>`}
+      <p class="more"><a href="#all">All ${ranked.length} companies →</a></p>`;
+  }
+  const qb = (k) => `<button class="q" data-guide="${k}" aria-label="What does this mean?">?</button>`;
+  function listHead(table) {
+    const f = S.all, sb = (k, l) => table ? `<button class="sortbtn" data-sort="${k}" aria-pressed="${f.sort === k}">${l}${f.sort === k ? (f.dir === 1 ? " ↑" : " ↓") : ""}</button>` : l;
+    const h = (k, sk, l) => `<span${tipAttr(k)}>${sk ? sb(sk, l) : l}</span>`;
+    return `<div class="lhead"><span>${sb("rank", "#")}</span><span>${sb("name", "Company")}</span><span class="hide-sm">${h("owner", "owner", "Owner")}</span><span class="hide-sm">${h("type", "type", "Type")}</span><span class="hide-sm hide-md">${h("round", "round", "Round")}</span><span class="hide-sm">${h("status", "status", "Stage Fit")}</span><span class="hide-sm">${h("headline", null, "Headline")}</span><span class="r">${h("score", "score", "Score")}</span><span class="r hide-sm">${h("change", "change", "▲▼")}</span><span class="hide-sm hide-md">${h("team", null, "Team")}</span></div>`;
+  }
+  function row(c, rank, table) {
+    const on = S.cmp.includes(c.slug);
+    return `<div class="row${c.reach === "now" ? " now" : ""}" role="button" tabindex="0" data-open="${esc(c.slug)}">
+      <span class="rk num"><button class="cmpb" data-cmp="${esc(c.slug)}" aria-pressed="${on}" aria-label="Compare ${esc(c.name)}" data-tip="${on ? "Remove from compare" : "Add to compare (up to 3)"}">${on ? "✓" : ""}</button>${rank ?? "–"}</span>
+      <span class="nm">${logo(c)}<span style="overflow:hidden;text-overflow:ellipsis">${esc(c.name)}</span>${stDot(c.slug)}${c.decline_flag ? DECL : ""}</span>
+      ${ownerCell(c.slug)}
+      <span class="ty">${esc(TYPE[c.category] || c.category || "")}</span>
+      <span class="rd num">${esc(c.round_label || "")}</span>
+      <span class="st"${GLOSSARY[c.fit] ? ` data-tip="${esc(c.fit + ": " + GLOSSARY[c.fit])}"` : ""}>${esc(status(c))}</span>
+      <span class="hl">${esc(c.headline)}</span>
+      <span class="sc num">${scoreCell(c)}</span>
+      <span class="dl num">${delta(c)}</span>
+      <span class="mx">${mix(c)}</span>
+    </div>`;
+  }
+
+  function all() {
+    const f = S.all;
+    const ranked = D.companies.filter((c) => c.rank !== null && pass(c, f));
+    const hidden = D.companies.filter((c) => c.rank === null && pass(c, f));
+    ranked.sort((a, b) => (SORT[f.sort] || SORT.rank)(a, b) * f.dir);
+    const countries = uniq(D.companies.flatMap((c) => Object.keys(c.jobs_by_country || {}))).filter((k) => k !== "unknown").sort();
+    const n = nActive(f, ["type", "status", "band", "decline", "coverage", "country", "reach", "owner", "outreach"]);
+    const head = `<section class="hero"><h1>All companies</h1><p class="muted">${ranked.length} companies</p>${reachKey}</section>
+      <div class="controls">
+        <input type="search" id="q" placeholder="Search company or sector" value="${esc(f.q)}" aria-label="Search company or sector">
+        <button class="btn" data-toggle-filters aria-expanded="${S.filtersOpen}">Filters${n ? ` · ${n}` : ""}</button>
+        <span class="grow"></span>
+        ${sel("sort", "", [["rank", "Sort: Rank"], ["score", "Sort: Score"], ["change", "Sort: Change"], ["open", "Sort: Open Roles"], ["name", "Sort: Name"], ["status", "Sort: Stage Fit"], ["type", "Sort: Type"], ["round", "Sort: Round"], ["owner", "Sort: Owner"]], f.sort).replace(/<label>|<\/label>/g, "")}
+        <button class="btn primary" data-add>+ Add company</button>
+        <div class="seg" role="group" aria-label="View as"><button data-mode="list" aria-pressed="${!["map", "fit"].includes(f.mode)}">List</button><button data-mode="fit" aria-pressed="${f.mode === "fit"}" data-tip="Companies grouped by stage fit">Stage Fit</button><button data-mode="map" aria-pressed="${f.mode === "map"}">Map</button></div>
+      </div>
+      ${S.filtersOpen ? `<div class="fpanel">${sel("f-reach", tl("reach", "Reach Out"), reachOpts, f.reach || "all")}${sel("f-type", tl("type", "Type"), typeOpts, f.type)}${sel("f-status", tl("status", "Stage Fit"), statusOpts(D.companies), f.status)}${sel("f-band", tl("band", "Band"), bandOpts, f.band)}${sel("f-decline", tl("decline", "Decline"), declOpts, f.decline)}${sel("f-coverage", tl("coverage", "Coverage"), [["all", "Any Coverage"], ["full", "Full"], ["partial", "Partial"], ["low", "Low"]], f.coverage)}${sel("f-country", tl("country", "Hiring In"), [["all", "Any Country"], ...countries.map((x) => [x, x])], f.country)}${crmFilters(f)}</div>` : ""}
+      ${activeChips(f, { reach: (v) => REACH[v], type: (v) => TYPE[v] || v, status: (v) => v, band: (v) => title(v), decline: (v) => (v === "yes" ? "Decline Only" : "No Decline"), coverage: (v) => `Coverage: ${title(v)}`, country: (v) => `Hiring In ${v}`, ...crmChips })}`;
+    const added = addedCos().filter((c) => !f.q || c.name.toLowerCase().includes(f.q.toLowerCase()));
+    const pendRows = added.length ? `<div class="pendgrp"><span>Added by you · scored on the next run (${added.length})</span><span class="grow"></span><button class="linkbtn" data-csv>Copy CSV rows</button></div>`
+      + added.map((c) => `<div class="row" role="button" tabindex="0" data-open="${esc(c.slug)}"><span class="rk num"><span class="pend">New</span></span><span class="nm">${logo(c)}<span style="overflow:hidden;text-overflow:ellipsis">${esc(c.name)}</span>${stDot(c.slug)}</span>${ownerCell(c.slug)}<span class="ty">${esc(TYPE[c.category] || "")}</span><span class="rd num">${esc(c.round || "")}</span><span class="st"></span><span class="hl muted">${esc(c.domain)}</span><span class="sc num meta">–</span><span class="dl"></span><span class="mx"><button class="linkbtn" data-added-del="${esc(c.slug)}" style="font-size:12px">Remove</button></span></div>`).join("") : "";
+    if (f.mode === "map") return head + map(ranked);
+    if (f.mode === "fit") return head + fitBoard([...ranked, ...hidden], (a, b) => (SORT[f.sort] || SORT.score)(a, b) * f.dir);
+    if (!ranked.length && !hidden.length && !added.length) return head + `<p class="empty">No company matches. Clear a filter to see more.</p>`;
+    return head + `<div class="list t">${listHead(true)}${pendRows}${ranked.map((c) => row(c, c.rank, true)).join("")}
+      ${hidden.length ? `<div class="subrow" data-toggle-hidden>${f.hidden ? "▾" : "▸"} Not ranked (${hidden.length}): past stage, Series D+ or acquired. ${qb("status")}</div>${f.hidden ? hidden.map((c) => row(c, null, true)).join("") : ""}` : ""}</div>`;
+  }
+  // Stage Fit view: one column per stage, cards in the chosen sort order (score by default).
+  function fitBoard(list, order = SORT.score) {
+    const card = (c) => { const m = member(crm(c.slug).owner);
+      return `<div class="fcard${c.reach === "now" ? " now" : ""}" role="button" tabindex="0" data-open="${esc(c.slug)}">
+        <div class="ft">${logo(c)}<b>${esc(c.name)}</b>${stDot(c.slug)}<span class="grow"></span><span class="num dl">${delta(c)}</span><span class="sc num">${scoreCell(c)}</span></div>
+        <div class="fh">${esc(c.headline)}</div>
+        <div class="fm"><span>${esc([TYPE[c.category] || c.category, c.round_label].filter(Boolean).join(" · "))}</span><span class="grow"></span>${m ? avatar(m) : `<span class="meta">Unassigned</span>`}</div></div>`; };
+    const cols = FITS.map((k) => { const cs = list.filter((c) => c.fit === k).sort(order);
+      return `<section class="fcol"><h3><span${GLOSSARY[k] ? ` class="has-tip" tabindex="0" data-tip="${esc(GLOSSARY[k])}"` : ""}>${esc(k)}</span><span class="num">${cs.length}</span></h3>${cs.length ? cs.map(card).join("") : `<p class="meta" style="margin:4px 2px">No companies right now.</p>`}</section>`; }).join("");
+    const other = list.filter((c) => !FITS.includes(c.fit));
+    return `<div class="fboard">${cols}</div>${other.length ? `<div class="unk">Not in Greenfield's five types: ${other.map((c) => `<button data-open="${esc(c.slug)}">${esc(c.name)}</button>`).join("")}</div>` : ""}`;
+  }
+  function map(list) {
+    if (!list.length) return `<p class="empty">No company matches.</p>`;
+    const tot = {};
+    for (const c of list) for (const [k, v] of Object.entries(c.jobs_by_country || {})) if (k !== "unknown") tot[k] = (tot[k] || 0) + v;
+    const cols = Object.entries(tot).sort((a, b) => b[1] - a[1]).slice(0, 12).map(([k]) => k);
+    const max = Math.max(1, ...list.flatMap((c) => cols.map((k) => (c.jobs_by_country || {})[k] || 0)));
+    const step = (v) => (v <= 0 ? 0 : Math.min(5, 1 + Math.floor((Math.log(v) / Math.log(max + 1)) * 5)));
+    return `<div class="heatwrap"><table class="heat"><thead><tr><th></th>${cols.map((k) => `<th class="num">${k}</th>`).join("")}</tr></thead><tbody>
+      ${list.map((c) => `<tr><th class="rowh" data-open="${esc(c.slug)}">${esc(c.name)}</th>${cols.map((k) => { const v = (c.jobs_by_country || {})[k] || 0, s = step(v);
+        return v ? `<td class="num" style="background:var(--q${s});color:${s >= 4 ? "var(--q-ink-dark)" : "var(--ink-strong)"}" data-tip="${esc(c.name)} · ${k}: ${v} open roles">${v}</td>` : `<td class="z">0</td>`; }).join("")}</tr>`).join("")}
+      </tbody></table><div class="heatlegend">Open roles by country: fewer <i style="background:var(--q1)"></i><i style="background:var(--q2)"></i><i style="background:var(--q3)"></i><i style="background:var(--q4)"></i><i style="background:var(--q5)"></i> more</div></div>`;
+  }
+
+  function week() {
+    const f = S.week, byName = new Map(D.companies.map((c) => [c.name, c]));
+    let items = D.feed.filter((it) => daysAgo(it.date, D.run_date) <= f.days);
+    // Highlights = news and risks only (funding, plans, offices, layoffs): the changes worth a look first.
+    if (f.kind === "highlights") items = items.filter((it) => ["News", "Risks"].includes(KINDS[it.kind]));
+    else if (f.kind !== "all") items = items.filter((it) => KINDS[it.kind] === f.kind);
+    if (f.type !== "all") items = items.filter((it) => byName.get(it.company)?.category === f.type);
+    if (f.country !== "all") items = items.filter((it) => it.country === f.country);
+    if (f.q) { const q = f.q.toLowerCase(); items = items.filter((it) => `${it.company} ${it.title} ${it.detail}`.toLowerCase().includes(q)); }
+    // Roles: one line per company for the whole period (dated by its newest role). Others: per company + day + kind.
+    items.sort((a, b) => b.date.localeCompare(a.date));
+    const g = [], idx = new Map();
+    for (const it of items) {
+      const k = it.kind === "role" ? `${it.company}|role` : `${it.date}|${it.company}|${it.kind}|${it.title}`;
+      if (idx.has(k)) { const x = idx.get(k); x.n++; x.all.push(it); continue; }
+      const x = { ...it, n: 1, all: [it] }; idx.set(k, x); g.push(x);
+    }
+    const fnOf = (it) => (it.detail.split(" · ")[1] || "Other");
+    const line = (x) => {
+      const first = x.all[0].detail.split(" · ")[0];
+      if (x.kind === "role") {
+        if (x.n === 1) return `New role${x.country ? ` in ${x.country}` : ""}: ${first}`;
+        const by = {}; for (const it of x.all) by[fnOf(it)] = (by[fnOf(it)] || 0) + 1;
+        return `${x.n} new roles <span class="rollup">· ${Object.entries(by).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([k, v]) => `${esc(k)} ${v}`).join(", ")}</span>`;
+      }
+      if (x.kind === "page") return esc(x.n > 1 ? `${x.n} new ${x.title.toLowerCase()}s` : `New ${x.title.toLowerCase()}: ${first}`);
+      return esc(`${x.title}: ${first}`);
+    };
+    if (f.sort === "company") g.sort((a, b) => a.company.localeCompare(b.company) || b.date.localeCompare(a.date));
+    else g.sort((a, b) => b.date.localeCompare(a.date));
+    const countries = uniq(D.feed.map((it) => it.country)).sort();
+    const n = nActive(f, ["type", "country", "days"]);
+    let last = "", rows = "";
+    for (const x of g.slice(0, 250)) {
+      if (f.sort === "date" && x.date !== last) { rows += `<div class="day num">${fmtY(x.date)}</div>`; last = x.date; }
+      const c = byName.get(x.company), key = `${x.company}|${x.kind}|${x.date}`, open = S.expanded.has(key), multi = x.kind === "role" && x.n > 1;
+      rows += `<div class="it"><button class="co" data-open="${esc(c?.slug || "")}">${logo(c || { name: x.company })}<span>${esc(x.company)}</span></button>
+        <span class="wh${x.kind === "layoff" ? " risk" : ""}">${multi ? `<button class="linkbtn" data-expand="${esc(key)}" aria-expanded="${open}" style="color:inherit;font-weight:400;text-align:left">${open ? "▾" : "▸"} ${line(x)}</button>` : `<span data-tip="${esc(x.all[0].detail)}">${line(x)}</span>`}${f.sort !== "date" ? ` <span class="meta">${fmt(x.date)}</span>` : ""}</span>
+        ${x.url && !multi ? `<a href="${esc(x.url)}" target="_blank" rel="noopener" aria-label="Source">↗</a>` : "<span></span>"}</div>`
+        + (multi && open ? x.all.map((it) => `<div class="it" style="padding-block:6px"><span></span><span class="wh meta">${fmt(it.date)} · ${esc(it.detail)}${it.country ? ` · ${esc(it.country)}` : ""}</span>${it.url ? `<a href="${esc(it.url)}" target="_blank" rel="noopener" aria-label="Source">↗</a>` : "<span></span>"}</div>`).join("") : "");
+    }
+    const KIND_SEG = [["highlights", "Highlights"], ["all", "All"], ["Roles", "Roles"], ["News", "News"], ["Site", "Site"], ["Risks", "Risks"]];
+    return `<section class="hero"><h1>What's new</h1><p class="muted num">${g.length} updates · last ${f.days} days</p></section>
+      <div class="controls">
+        <input type="search" id="q" placeholder="Search company or update" value="${esc(f.q)}" aria-label="Search updates">
+        <div class="seg" role="group" aria-label="Kind">${KIND_SEG.map(([k, l]) => `<button data-kind="${k}" aria-pressed="${f.kind === k}"${k === "highlights" ? ` data-tip="Funding, plans, new offices and risks"` : ""}>${l}</button>`).join("")}</div>
+        <button class="btn" data-toggle-filters aria-expanded="${S.filtersOpen}">Filters${n ? ` · ${n}` : ""}</button>
+        <span class="grow"></span>
+        ${sel("sort", "", [["date", "Sort: Newest"], ["company", "Sort: Company"]], f.sort).replace(/<label>|<\/label>/g, "")}
+      </div>
+      ${S.filtersOpen ? `<div class="fpanel">${sel("f-days", "Period", [[7, "Last 7 Days"], [14, "Last 14 Days"], [30, "Last 30 Days"], [90, "Last 90 Days"]], f.days)}${sel("f-type", tl("type", "Type"), typeOpts, f.type)}${sel("f-country", tl("country", "Country"), [["all", "Any Country"], ...countries.map((x) => [x, x])], f.country)}</div>` : ""}
+      ${activeChips(f, { type: (v) => TYPE[v] || v, country: (v) => `In ${v}`, days: (v) => `Last ${v} Days` })}
+      ${g.length ? `<div class="feed">${rows}</div>` : `<p class="empty">Nothing new in this period. Try All or a longer period.</p>`}`;
+  }
+
+  // ------------------------------------------------------------ company popup (full screen)
+  function tabBody(c) {
+    const lowCov = c.coverage === "low" || ["none", "hiring_statement"].includes(c.job_source);
+    const links = [["Website", c.links?.website], ["Careers", c.links?.careers], ["Jobs", c.links?.board && c.links.board !== c.links.careers ? c.links.board : null], [lowCov ? "Check on LinkedIn" : null, lowCov ? c.links?.linkedin_jobs : null]].filter(([l, u]) => l && u);
+    const tab = S.tab;
+    let body = "";
+    if (tab === "changes") {
+      const ch = c.changes || [], shown = S.showAll ? ch : ch.slice(0, 5);
+      body = ch.length ? shown.map((x) => `<div class="ev"><span class="d num">${fmt(x.date)}</span><div class="w"><b>${esc(x.title)}</b><div>${esc(x.detail)}${x.evidence === "indirect" ? " · from the website" : ""}${x.dummy ? " · dummy" : ""}</div></div>${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener" aria-label="Source">↗</a>` : "<span></span>"}</div>`).join("")
+        + (ch.length > 5 ? `<p><button class="linkbtn" data-showall>${S.showAll ? "Show fewer" : `Show all ${ch.length}`}</button></p>` : "")
+        : `<p class="muted">No dated changes yet. This is the first run: today's roles are the starting point, and new ones appear here from the next run.</p>`;
+    } else if (tab === "why") {
+      const sigs = c.signals.slice(0, 5);
+      body = (sigs.length ? sigs.map((s) => `<div class="sig"><div><b>${esc(s.name)}</b>${s.date ? ` <span class="meta">${fmt(s.date)}</span>` : ""}<p>${esc(s.detail)}${s.evidence < 1 ? " (indirect, counts 60%)" : ""}${s.dummy ? " (dummy)" : ""}${s.source_url ? ` · <a href="${esc(s.source_url)}" target="_blank" rel="noopener">source ↗</a>` : ""}</p></div><span class="pts num${s.value < 0 ? " neg" : ""}">${s.value > 0 ? "+" : ""}${s.value}</span><div class="sigbar${s.value < 0 ? " neg" : ""}" style="grid-column:1/-1;width:${Math.min(100, Math.abs(s.value) / 25 * 100)}%"></div></div>`).join("") : `<p class="muted">No scored signals.</p>`)
+        + `<p class="meta" style="margin-top:12px">${esc(c.fit_explain)} · <button class="linkbtn" data-guide="status">What the status means</button></p>`;
+    } else {
+      const g = groups(c), total = g.reduce((a, x) => a + x.n, 0);
+      const ctry = Object.entries(c.jobs_by_country || {}).filter(([k]) => k !== "unknown").slice(0, 3);
+      const kv = (k, v) => `<div class="kv"><span>${esc(k)}</span><span class="num">${v}</span></div>`;
+      body = `<div class="kvh" style="margin-top:0">Open roles vs company size</div>${sizeGauge(c)}`
+        + (total ? `<div class="kvh">Open roles by team</div>${mix(c, true)}${mixLegend(g.filter((x) => x.n))}
+          ${c.filled ? `<p class="meta" style="margin:8px 0 0">${c.filled} roles closed in the last 90 days look filled (open 3–16 weeks, company still posting). They still count toward a build-out.</p>` : ""}
+          <div class="kvh">Top countries</div>${bars(ctry)}
+          <div class="kvh">Open roles over time</div>${lineChart(c.series)}` : `<p class="muted">No job listings. ${c.job_source === "hiring_statement" ? "The website says the company is hiring." : ""}</p>`)
+        + (c.roles?.length ? `<p style="margin-top:14px"><button class="linkbtn" data-showroles>${S.showRoles ? "Hide roles" : `See all ${c.open_jobs} roles`}</button></p>${S.showRoles ? `<div class="roles">${c.roles.map((r) => `<div>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener" title="${esc(r.title)}">${esc(r.title)}</a>` : esc(r.title)}<span class="meta num">${esc(r.country || "")}</span></div>`).join("")}</div>` : ""}` : "")
+        + `<details class="ds"><summary>Data sources</summary><ul>${Object.entries(c.sources || {}).map(([k, v]) => `<li>${esc(k)}: ${esc(v === "not_reached" ? "not reached" : v)}</li>`).join("")}<li>coverage: ${esc(c.coverage)}</li>${c.headcount ? `<li>~${c.headcount} employees${c.headcount_source ? ` (<a href="${esc(c.headcount_source.split(" ")[0])}" target="_blank" rel="noopener">source</a>)` : ""}</li>` : ""}${(c.context || []).slice(0, 5).map((x) => `<li>Seen, not scored: ${esc(x.value)}</li>`).join("")}</ul></details>`;
+    }
+    return { body, links };
+  }
+  // Companies added in this browser, shaped like ranking rows (no data until the next run).
+  const addedCos = () => ADDED.list.map((a) => ({ ...a, pending: true, rank: null, score: null, category: a.category, round_label: a.round || "", fit: "", headline: "Pending: scored on the next run", reason: a.note || "", links: { website: a.domain ? `https://${a.domain}` : null } }));
+  const findCo = (slug) => D.companies.find((x) => x.slug === slug) || addedCos().find((x) => x.slug === slug);
+
+  function outreachPanel(c) {
+    const r = crm(c.slug), me = store.get("me", { id: TEAM[0].id }).id;
+    const cm = [...(r.comments || [])].reverse();
+    return `<h3>Outreach</h3>
+      <label class="fld">${tl("owner", "Owner")}<div class="ownerrow">${avatar(member(r.owner), true) || `<span class="av lg" style="background:var(--surface-2);color:var(--faint)">?</span>`}
+        <select id="crm-owner" aria-label="Owner"><option value="">Unassigned</option>${TEAM.map((m) => `<option value="${m.id}"${r.owner === m.id ? " selected" : ""}>${esc(m.name)} · ${esc(m.role)}</option>`).join("")}</select></div></label>
+      <div class="fld"><span>${tl("outreach", "Status")}${r.statusAt ? ` <span style="font-weight:400;color:var(--faint)">· updated ${fmtY(r.statusAt)}</span>` : ""}</span>
+        <div class="stseg" role="group" aria-label="Outreach status">${OUTREACH.map((o) => `<button data-status="${o.k}" aria-pressed="${r.status === o.k}"><span class="ost" style="background:${o.c}"></span>${o.l}</button>`).join("")}</div></div>
+      <div class="fld" style="margin-bottom:8px"><label for="crm-cmt">Comments</label>
+        <textarea id="crm-cmt" placeholder="Add a note: who you spoke to, next step…"></textarea>
+        <div class="ownerrow" style="margin-top:4px"><span style="font-weight:400">As</span><select id="crm-me" aria-label="Comment as" style="flex:1">${TEAM.map((m) => `<option value="${m.id}"${me === m.id ? " selected" : ""}>${esc(m.name)}</option>`).join("")}</select><button class="btn primary sm" data-cmt-add>Add</button></div></div>
+      ${cm.length ? cm.map((x) => { const m = member(x.by); return `<div class="cmt"><div class="who">${avatar(m)}<b>${esc(m?.name || "Someone")}</b><span>${fmtY(x.at)}</span><button class="linkbtn del" data-cmt-del="${esc(x.id)}" aria-label="Delete comment">Delete</button></div><p>${esc(x.text)}</p></div>`; }).join("") : `<p class="meta" style="margin:0">No comments yet.</p>`}`;
+  }
+
+  function companyModal(c) {
+    const pend = !!c.pending;
+    const { body, links } = pend ? { body: `<p class="muted">Not collected yet. Job boards, website and news are checked on the next run, then this company gets a score.</p>`, links: [["Website", c.links.website]].filter(([, u]) => u) } : tabBody(c);
+    const tab = S.tab;
+    return `<div class="modal" role="dialog" aria-modal="true" aria-labelledby="pname"><div class="mwrap">
+      <div class="bar"><button class="linkbtn back" data-close>← Back</button><span class="grow"></span>${pend ? "" : `<button class="btn sm" data-cmp="${esc(c.slug)}">${S.cmp.includes(c.slug) ? "✓ In compare" : "+ Compare"}</button>`}<button class="x" data-close aria-label="Close">✕</button></div>
+      <div class="mgrid">
+        <section class="main">
+          <div class="ph">${logo(c, 52)}<div style="min-width:0"><h2 id="pname" style="font-size:30px">${esc(c.name)}</h2>
+            <div class="meta" style="margin-top:4px">${[TYPE[c.category] || c.category, c.round_label, status(c)].filter(Boolean).map(esc).join(" · ")}${c.decline_flag ? " · " + DECL + " decline" : ""}</div>
+            <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">${pend ? `<span class="pend">Pending</span>` : ""}${c.reach ? `<span class="pill ${c.reach}" style="font-size:12px;font-weight:700" data-tip="${esc(GLOSSARY.reach)}">${REACH[c.reach]}</span>` : ""}${c.band ? `<span class="meta has-tip" tabindex="0" data-tip="${esc(GLOSSARY.band)}">${esc(c.band)}</span>` : ""}</div></div>
+            ${pend ? "" : `<span class="big num has-tip" tabindex="0" data-tip="${esc(GLOSSARY.score)}" style="text-decoration:none">${c.score}</span>`}</div>
+          <p class="lede">${esc(c.headline)}</p>
+          ${c.reason ? `<p class="muted" style="margin:0">${esc(c.reason)}</p>` : ""}
+          <div class="links">${links.map(([l, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)} ↗</a>`).join("")}</div>
+          ${pend ? "" : `<div class="kvh">Score over time</div>${scoreChart(c)}`}
+          ${pend ? `<div class="tabbody">${body}</div>` : `<div class="tabs2" role="tablist">${[["changes", "Changes", "changes"], ["why", "Why", "why"], ["team", "Team", "teamtab"]].map(([k, l, g]) => `<button role="tab" data-tab="${k}" aria-selected="${tab === k}" data-tip="${esc(GLOSSARY[g])}">${l}</button>`).join("")}</div>
+          <div class="tabbody" role="tabpanel">${body}</div>`}
+        </section>
+        <aside class="side">${outreachPanel(c)}</aside>
+      </div></div></div>`;
+  }
+
+  // ------------------------------------------------------------ compare (2–3 companies side by side)
+  function compare() {
+    const cs = S.cmp.map((k) => D.companies.find((c) => c.slug === k)).filter(Boolean);
+    const maxY = Math.max(1, ...cs.flatMap((c) => (c.series || []).map((p) => p.open)));
+    const row = (label, f) => `<div class="lab">${label}</div>${cs.map((c) => `<div>${f(c)}</div>`).join("")}`;
+    const ctry = (c) => Object.entries(c.jobs_by_country || {}).filter(([k]) => k !== "unknown").slice(0, 3);
+    return `<div class="scrim" data-close></div>
+      <aside class="panel wide" role="dialog" aria-modal="true" aria-labelledby="cname">
+        <div class="ph"><h2 id="cname">Compare</h2><span style="margin-left:auto"></span><button class="x" data-close aria-label="Close">✕</button></div>
+        <div class="cgrid" style="grid-template-columns: 110px repeat(${cs.length}, minmax(220px, 1fr)); margin-top:12px">
+          ${row("", (c) => `<h2 style="display:flex;align-items:center;gap:10px">${logo(c, 30)}<button class="linkbtn" style="color:var(--ink-strong);font-size:20px" data-open="${esc(c.slug)}">${esc(c.name)}</button></h2><div class="meta">${esc(TYPE[c.category] || "")} · ${esc(c.round_label || "")}${status(c) ? ` · ${esc(status(c))}` : ""}</div><p style="margin:6px 0 0"><button class="linkbtn" data-cmp="${esc(c.slug)}" style="font-size:12px">Remove</button></p>`)}
+          ${row("Score", (c) => `<span class="big num">${c.score}</span>${c.reach ? ` <span class="pill ${c.reach}" style="font-size:11px;font-weight:700;margin-left:8px;vertical-align:8px">${REACH[c.reach]}</span>` : ""}<div class="meta">${esc(c.band)}${c.decline_flag ? " · decline" : ""}</div>`)}
+          ${row("Headline", (c) => `<b style="color:var(--ink-strong)">${esc(c.headline)}</b>`)}
+          ${row("Hiring vs size", (c) => sizeGauge(c))}
+          ${row("Go-to-market", (c) => c.gtm_share === null ? `<span class="meta">No listings</span>` : `<span class="big num" style="font-size:24px">${c.gtm_share}%</span> <span class="meta">of ${c.open_jobs} open roles${c.filled ? ` · ${c.filled} likely filled` : ""}</span>`)}
+          ${row("Team", (c) => { const g = groups(c); return g.some((x) => x.n) ? mix(c, true) + mixLegend(g.filter((x) => x.n)) : `<span class="meta">No listings</span>`; })}
+          ${row("Countries", (c) => ctry(c).length ? bars(ctry(c)) : `<span class="meta">None</span>`)}
+          ${row("Score over time", (c) => scoreChart(c))}
+          ${row("Open roles over time", (c) => lineChart(c.series, maxY))}
+          ${row("Signals", (c) => (c.signals || []).slice(0, 5).map((x) => `<div class="sigline"><span>${esc(x.name)}</span><span class="num" style="${x.value < 0 ? "color:var(--risk)" : ""}">${x.value > 0 ? "+" : ""}${x.value}</span></div>`).join("") || `<span class="meta">None</span>`)}
+        </div>
+        <p class="meta" style="margin-top:12px">Open roles over time share one scale, so the lines can be compared directly.</p>
+      </aside>`;
+  }
+  function tray() {
+    if (!S.cmp.length || S.compareOpen) return "";
+    const cs = S.cmp.map((k) => D.companies.find((c) => c.slug === k)).filter(Boolean);
+    return `<div class="tray" role="region" aria-label="Compare"><span class="tl">Compare</span><span class="tcs">${cs.map((c) => `<button class="tc" data-cmp="${esc(c.slug)}" aria-label="Remove ${esc(c.name)}">${esc(c.name)} ✕</button>`).join("")}</span>
+      <button class="go" data-compare ${cs.length < 2 ? "disabled" : ""}>${cs.length < 2 ? "Pick one more" : `Compare ${cs.length} →`}</button></div>`;
+  }
+
+  // ------------------------------------------------------------ add company
+  const ROUNDS = ["Seed", "Series A", "Series B", "Series C", "Series D", "Unknown"];
+  function addDialog() {
+    const e = S.addErr || {}, v = S.addDraft || {};
+    const fld = (id, label, input, err) => `<label class="fld">${label}${input}${err ? `<span class="err" role="alert">${esc(err)}</span>` : ""}</label>`;
+    return `<div class="scrim" data-add-cancel style="z-index:42"></div>
+      <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="addt">
+        <div class="ph"><h2 id="addt">Add company</h2><span style="margin-left:auto"></span><button class="x" data-add-cancel aria-label="Close">✕</button></div>
+        <p class="meta" style="margin:6px 0 16px">Tracked from now on. Scored on the next run.</p>
+        <div class="formgrid">
+          ${fld("add-name", "Company Name *", `<input id="add-name" value="${esc(v.name || "")}" autocomplete="off" aria-invalid="${!!e.name}">`, e.name)}
+          ${fld("add-domain", "Website *", `<input id="add-domain" value="${esc(v.domain || "")}" placeholder="example.com" autocomplete="off" aria-invalid="${!!e.domain}">`, e.domain)}
+          ${fld("add-type", "Type", `<select id="add-type">${Object.entries(TYPE).map(([k, l]) => `<option value="${esc(k)}"${v.category === k ? " selected" : ""}>${esc(l)}</option>`).join("")}</select>`)}
+          ${fld("add-round", "Latest Round", `<select id="add-round">${ROUNDS.map((r) => `<option${v.round === r ? " selected" : ""}>${r}</option>`).join("")}</select>`)}
+          ${fld("add-date", "Round Date", `<input id="add-date" type="month" value="${esc(v.date || "")}">`)}
+        </div>
+        ${fld("add-note", "Note", `<textarea id="add-note" placeholder="Why we're adding it">${esc(v.note || "")}</textarea>`)}
+        <div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn" data-add-cancel>Cancel</button><button class="btn primary" data-add-save>Add company</button></div>
+      </div>`;
+  }
+  const readAdd = () => ({ name: $("#add-name").value.trim(), domain: $("#add-domain").value.trim().replace(/^https?:\/\//, "").replace(/\/.*$/, "").toLowerCase(),
+    category: $("#add-type").value, round: $("#add-round").value, date: $("#add-date").value, note: $("#add-note").value.trim() });
+  const slugOf = (n) => n.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  // One line in data/companies.csv format, ready to paste in before the next load.
+  const csvCell = (v) => /[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v;
+  const csvRow = (a) => { const M2 = a.date ? `${M[Number(a.date.slice(5, 7)) - 1]} ${a.date.slice(0, 4)}` : ""; return ["", a.name, a.category, "", a.round === "Unknown" ? "" : a.round, "", M2, "", "Not in portfolio", "Added from dashboard", a.note, "", a.domain].map((x) => csvCell(x || "")).join(","); };
+
+  // ------------------------------------------------------------ guide
+  const GUIDE_ANCHOR = { top: "score", round: "type", reach: "reach", type: "type", status: "status", headline: "type", score: "score", change: "score", team: "type" };
+  function guide() {
+    const t = (rows) => `<table class="gtable">${rows.map(([a, b]) => `<tr><td>${a}</td><td>${esc(b)}</td></tr>`).join("")}</table>`;
+    return `<div class="scrim" data-close></div>
+      <aside class="panel" role="dialog" aria-modal="true" aria-labelledby="gname">
+        <div class="ph"><h2 id="gname">Guide</h2><span style="margin-left:auto"></span><button class="x" data-close aria-label="Close">✕</button></div>
+        <p class="meta" style="margin:8px 0 0">Tip: hover any underlined label for its meaning.</p>
+        <h3 id="g-score">Score</h3>${t([["Score", GLOSSARY.score], ["Band", GLOSSARY.band], ["▲ ▼", GLOSSARY.change]])}
+        <h3 id="g-reach">Reach out</h3>${t([[`<span class="pill now">${REACH.now}</span>`, "Score 60+ and In Range."], [`<span class="pill warm">${REACH.warm}</span>`, "Score 40–59, In Range or Approaching B."]])}
+        <h3 id="g-status">Stage Fit</h3>${t(FITS.map((k) => [k, GLOSSARY[k]]))}
+        <h3 id="g-type">Columns</h3>${t([["Type", GLOSSARY.type], ["Round", GLOSSARY.round], ["Headline", GLOSSARY.headline], ["Team", GLOSSARY.team], ["Coverage", GLOSSARY.coverage], ["Decline ↓", GLOSSARY.decline]])}
+        <h3 id="g-team">Outreach</h3>${t([["Owner & status", "Open a company to assign an owner, set the outreach status and add comments. Saved in this browser."], ["+ Add company", "Adds a company to track. It is scored on the next run."]])}
+        <details class="ds"><summary>How the score is calculated</summary><ul>
+          <li>Age: a signal counts fully for 30 days, half up to 90 days, then drops. Open job posts count while open.</li>
+          <li>Evidence: direct (job post, news) counts 100%; indirect (website change only) 60%.</li>
+          <li>One hiring wave counts once: of GTM build-out, Hiring speeding up, Mix shifting toward GTM and R&amp;D build-up, the strongest counts in full and the others count half.</li>
+          <li>Size: open roles ÷ employees, from news (known for about half the companies). Shown as context only; it does not change the score.</li>
+          <li>Hiring paused (−15): roles look pulled, not filled. Needs two real runs.</li>
+          <li>Roles closed after 3–16 weeks while the company keeps posting count as likely filled.</li>
+          <li>Dummy: seeded history before the first real run, always marked (hollow points, dashed lines).</li>
+        </ul></details>
+      </aside>`;
+  }
+
+  // ------------------------------------------------------------ render
+  const app = $("#app"), panel = $("#panelRoot");
+  function render(anim) {
+    document.getElementById("tip").hidden = true; // the element it pointed at is about to be replaced
+    document.querySelectorAll("nav.tabs a").forEach((a) => (a.dataset.view === S.view ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current")));
+    const focusId = document.activeElement?.id, pos = document.activeElement?.selectionStart;
+    app.innerHTML = (S.view === "all" ? all() : S.view === "week" ? week() : rising()) +
+      `<footer class="foot">Run ${fmtY(D.run_date)}. Real data from job boards, careers pages, company websites and news. Dummy history before the first run is marked. Roles and counts only, no personal data.<br>A case-study prototype built for <a href="https://www.greenfield-growth.com/" target="_blank" rel="noopener">Greenfield Partners</a>. Not an official Greenfield product.</footer>`;
+    if (focusId) { const el = document.getElementById(focusId); if (el) { el.focus(); if (pos != null && el.setSelectionRange) try { el.setSelectionRange(pos, pos); } catch {} } }
+    const c = S.open && findCo(S.open);
+    const scroller = () => $(".modal") || $(".panel");
+    const scroll = scroller()?.scrollTop;
+    panel.innerHTML = (c ? companyModal(c) : S.compareOpen ? compare() : S.guide ? guide() : "") + (S.addOpen ? addDialog() : "") + (c ? "" : tray());
+    document.body.style.overflow = c || S.guide || S.compareOpen || S.addOpen ? "hidden" : "";
+    if (anim === "panel" && window.gsap && !reduceMotion && $(".panel")) gsap.fromTo(".panel", { x: 32 }, { x: 0, duration: 0.4, ease: "expo.out", clearProps: "transform" });
+    else if (anim === "panel" && window.gsap && !reduceMotion && $(".modal")) gsap.fromTo(".modal .mwrap", { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "expo.out", clearProps: "all" });
+    else if (scroll && scroller()) scroller().scrollTop = scroll;
+    if (anim === "panel" && $(".modal")) $(".modal .back")?.focus();
+    if (S.addOpen && anim === "add") $("#add-name")?.focus();
+    if (S.guide && anim === "panel") { const t = document.getElementById("g-" + (GUIDE_ANCHOR[S.guide] || "score")); if (t && S.guide !== "top") t.scrollIntoView({ block: "start" }); }
+    if (anim === "view" && window.gsap && !reduceMotion) gsap.from(".row, .feed .it", { y: 6, duration: 0.45, ease: "expo.out", stagger: 0.02, clearProps: "transform" });
+  }
+  function route() {
+    const h = (location.hash || "#rising").slice(1), m = h.match(/^c-(.+)$/);
+    S.guide = null;
+    S.compareOpen = h === "compare" && S.cmp.length >= 2;
+    if (S.compareOpen) { S.open = null; render("panel"); return; }
+    if (m) { if (S.open !== m[1]) { S.tab = "changes"; S.showAll = false; S.showRoles = false; } S.open = m[1]; render("panel"); return; }
+    S.open = null; S.view = ["rising", "all", "week"].includes(h) ? h : "rising"; render("view");
+  }
+  const F = () => S[S.view];
+  const set = (k, v) => { F()[k] = v; save(); render(); };
+
+  document.addEventListener("click", (e) => {
+    const t = e.target.closest("[data-cmp],[data-compare],[data-open],[data-close],[data-guide],[data-tab],[data-showall],[data-showroles],[data-toggle-filters],[data-clear],[data-mode],[data-kind],[data-sort],[data-toggle-hidden],[data-add],[data-owner-set],[data-status],[data-cmt-add],[data-cmt-del],[data-add-save],[data-added-del],[data-csv],[data-expand],[data-add-cancel]");
+    if (!t) return;
+    if (t.dataset.cmp) {
+      e.stopPropagation(); const k = t.dataset.cmp, i = S.cmp.indexOf(k);
+      if (i >= 0) S.cmp.splice(i, 1); else { if (S.cmp.length >= 3) S.cmp.shift(); S.cmp.push(k); }
+      save(); if (S.compareOpen && S.cmp.length < 2) { location.hash = S.view; return; } render(); return;
+    }
+    if (t.hasAttribute("data-compare")) { location.hash = "compare"; return; }
+    if (t.dataset.guide !== undefined) { e.stopPropagation(); S.guide = t.dataset.guide || "top"; S.open = null; if (location.hash.startsWith("#c-")) history.replaceState(null, "", "#" + S.view); render("panel"); return; }
+    if (t.dataset.open) { location.hash = "c-" + t.dataset.open; return; }
+    if (t.hasAttribute("data-close")) { if (S.compareOpen) { location.hash = S.view; return; } if (S.guide) { S.guide = null; render(); } else location.hash = S.view; return; }
+    if (t.dataset.tab) { S.tab = t.dataset.tab; S.showAll = false; S.showRoles = false; render(); return; }
+    if (t.hasAttribute("data-showall")) { S.showAll = !S.showAll; render(); return; }
+    if (t.hasAttribute("data-showroles")) { S.showRoles = !S.showRoles; render(); return; }
+    if (t.hasAttribute("data-toggle-filters")) { S.filtersOpen = !S.filtersOpen; render(); return; }
+    if (t.dataset.clear) { F()[t.dataset.clear] = t.dataset.clear === "days" ? 14 : "all"; save(); render(); return; }
+    if (t.dataset.mode) return set("mode", t.dataset.mode);
+    if (t.dataset.kind) return set("kind", t.dataset.kind);
+    if (t.dataset.sort) { const f = S.all; if (f.sort === t.dataset.sort) f.dir *= -1; else { f.sort = t.dataset.sort; f.dir = 1; } save(); render(); return; }
+    if (t.hasAttribute("data-add-cancel")) { S.addOpen = false; render(); return; }
+    if (t.hasAttribute("data-add")) { S.addOpen = true; S.addErr = {}; S.addDraft = {}; render("add"); return; }
+    if (t.hasAttribute("data-add-save")) {
+      const a = readAdd(), err = {};
+      if (!a.name) err.name = "Enter the company name.";
+      else if (D.companies.some((c) => c.name.toLowerCase() === a.name.toLowerCase()) || ADDED.list.some((c) => c.name.toLowerCase() === a.name.toLowerCase())) err.name = "This company is already on the list.";
+      if (!/^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(a.domain)) err.domain = "Enter a website like example.com.";
+      if (Object.keys(err).length) { S.addErr = err; S.addDraft = a; render(); $(err.name ? "#add-name" : "#add-domain")?.focus(); return; }
+      ADDED.list.unshift({ ...a, slug: "new-" + slugOf(a.name), addedAt: D.run_date }); store.set("added", ADDED);
+      S.addOpen = false; S.addDraft = {}; S.all.hidden = S.all.hidden; location.hash = "all"; render(); return;
+    }
+    if (t.hasAttribute("data-added-del")) { e.stopPropagation(); ADDED.list = ADDED.list.filter((a) => a.slug !== t.dataset.addedDel); store.set("added", ADDED); render(); return; }
+    if (t.hasAttribute("data-csv")) { const txt = ADDED.list.map(csvRow).join("\n"); navigator.clipboard?.writeText(txt).then(() => { t.textContent = "Copied ✓"; }, () => { t.textContent = "Copy failed"; }); return; }
+    if (t.dataset.status) { setCrm(S.open, { status: t.dataset.status, statusAt: new Date().toISOString().slice(0, 10) }); render(); return; }
+    if (t.hasAttribute("data-cmt-add")) {
+      const txt = $("#crm-cmt").value.trim(); if (!txt) { $("#crm-cmt").focus(); return; }
+      const r = crm(S.open); setCrm(S.open, { comments: [...(r.comments || []), { id: Date.now().toString(36), by: $("#crm-me").value, at: new Date().toISOString(), text: txt }] }); render(); return;
+    }
+    if (t.dataset.cmtDel) { const r = crm(S.open); setCrm(S.open, { comments: (r.comments || []).filter((x) => x.id !== t.dataset.cmtDel) }); render(); return; }
+    if (t.dataset.expand) { S.expanded.has(t.dataset.expand) ? S.expanded.delete(t.dataset.expand) : S.expanded.add(t.dataset.expand); render(); return; }
+    if (t.hasAttribute("data-toggle-hidden")) { S.all.hidden = !S.all.hidden; save(); render(); return; }
+  });
+  document.addEventListener("keydown", (e) => { if ((e.key === "Enter" || e.key === " ") && e.target.matches?.(".row[data-open], .fcard[data-open]")) { e.preventDefault(); location.hash = "c-" + e.target.dataset.open; return; } if (e.key === "Tab") { const box = $(".dialog") || $(".modal"); if (box) { const f = [...box.querySelectorAll("button,select,input,textarea,a[href],[tabindex='0']")].filter((x) => !x.disabled && x.offsetParent); if (f.length) { const first = f[0], last = f[f.length - 1]; if (!box.contains(document.activeElement)) { e.preventDefault(); first.focus(); } else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } } } }
+    if (e.key === "Escape") { if (S.addOpen) { S.addOpen = false; render(); return; } if (e.target.id === "crm-cmt") { e.target.blur(); return; } if (S.compareOpen) { location.hash = S.view; return; } if (S.guide) { S.guide = null; render(); } else if (S.open) location.hash = S.view; } });
+  let typing;
+  document.addEventListener("input", (e) => { if (e.target.id !== "q") return; clearTimeout(typing); const v = e.target.value; typing = setTimeout(() => set("q", v), 160); });
+  document.addEventListener("change", (e) => {
+    const id = e.target.id, v = e.target.value;
+    if (id === "sort") { if (S.view === "all") S.all.dir = 1; return set("sort", v); }
+    if (id === "f-days") return set("days", Number(v));
+    if (id === "crm-owner") { setCrm(S.open, { owner: v }); render(); return; }
+    if (id === "crm-me") { store.set("me", { id: v }); return; }
+    if (id.startsWith("add-")) return;
+    if (id.startsWith("f-")) return set(id.slice(2), v);
+  });
+  const tip = $("#tip");
+  const showTip = (t, x, y) => {
+    if (!t) { tip.hidden = true; return; }
+    tip.textContent = t.getAttribute("data-tip"); tip.hidden = false;
+    tip.style.left = Math.max(8, Math.min(x + 12, innerWidth - tip.offsetWidth - 8)) + "px"; tip.style.top = Math.max(8, y - tip.offsetHeight - 10) + "px";
+  };
+  document.addEventListener("pointermove", (e) => { if (e.pointerType === "mouse") showTip(e.target.closest("[data-tip]"), e.clientX, e.clientY); });
+  // Touch: tap a label to see its tip. Keyboard: tab onto it.
+  document.addEventListener("pointerdown", (e) => { if (e.pointerType !== "mouse") showTip(e.target.closest("[data-tip]"), e.clientX, e.clientY); });
+  document.addEventListener("focusin", (e) => { const t = e.target.closest?.("[data-tip]"); if (!t) { tip.hidden = true; return; } const r = t.getBoundingClientRect(); showTip(t, r.left, r.top); });
+  document.addEventListener("focusout", () => { tip.hidden = true; });
+  window.addEventListener("hashchange", route);
+  fetch("ranking.json", { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then((d) => { mockChanges(d); stageFits(d); rankAll(d); D = d; $("#runDate").textContent = "Run " + fmtY(d.run_date); route(); })
+    .catch((err) => { app.innerHTML = `<p class="empty">Couldn't load ranking.json (${esc(err.message)}). Run npm run score to create it.</p>`; });
+})();
+</script>
+
+</body>
+</html>

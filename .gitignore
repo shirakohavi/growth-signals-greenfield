@@ -1,0 +1,8 @@
+node_modules/
+.wrangler/
+.dev.vars
+.env
+data/cache/
+.DS_Store
+.claude/
+Greenfield Partners Data & AI Specialist Case Study.pdf

@@ -1,0 +1,41 @@
+{
+  "name": "team-signals",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sources": "tsx scripts/find_job_sources.ts && tsx scripts/source_report.ts",
+    "sources:report": "tsx scripts/source_report.ts",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p worker",
+    "test": "tsx scripts/test_hiring.ts && tsx scripts/test_compare.ts && tsx scripts/test_filled.ts && tsx scripts/test_grouping.ts",
+    "fit": "tsx scripts/check_fit.ts",
+    "cf-typegen": "wrangler types",
+    "db:migrate": "wrangler d1 migrations apply team-signals --local",
+    "db:load": "tsx scripts/load_companies.ts",
+    "collect:ats": "tsx scripts/collect_ats.ts",
+    "collect:pages": "tsx scripts/collect_pages.ts",
+    "enrich": "tsx scripts/enrich_jobs.ts",
+    "collect:footprint": "tsx scripts/collect_footprint.ts",
+    "test:compare": "tsx scripts/test_compare.ts",
+    "test:filled": "tsx scripts/test_filled.ts",
+    "compare": "tsx scripts/compare.ts",
+    "seed:dummy": "tsx scripts/seed_dummy_history.ts",
+    "score": "tsx scripts/score.ts",
+    "score:series": "tsx scripts/add_score_series.ts",
+    "build:dashboard": "tsx scripts/build_dashboard.ts",
+    "pipeline": "tsx scripts/pipeline.ts",
+    "serve": "tsx scripts/serve.ts",
+    "test:grouping": "tsx scripts/test_grouping.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "playwright": "^1.65.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.160.1"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "zod": "^4.6.7"
+  }
+}

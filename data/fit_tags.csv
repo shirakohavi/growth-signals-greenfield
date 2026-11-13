@@ -1,0 +1,42 @@
+company,category,fit_tag,visibility,reason,flags,round_closed,round_announced,csv_fit_tag
+Onyx Security,Cybersecurity,In mandate,ranked,Series B,,2026-07,2026-07,In mandate
+Zenity,Cybersecurity,In mandate,ranked,Series C,,2026-08,2026-08,In mandate
+Reco,Cybersecurity,In mandate,ranked,Series B,,2026-02,2026-02,In mandate
+Linx Security,Cybersecurity,In mandate,ranked,Series B,possible conflict: identity security; overlaps Silverfort,2026-03,2026-03,In mandate
+Vega,Cybersecurity,In mandate,ranked,Series B,,2026-02,2026-02,In mandate
+Oasis Security,Cybersecurity,Too late,hidden,acquired,possible conflict: identity security; overlaps Silverfort,2026-03,2026-03,Too late (acquired)
+Daylight,Cybersecurity,In mandate,ranked,Series B,possible conflict: detection and response; near Cynet,2026-11,2026-11,In mandate
+MIND,Cybersecurity,In mandate,ranked,Series B,,2026-09,2026-09,In mandate
+Upwind,Cybersecurity,In mandate,ranked,Series B,possible conflict: runtime security; near Oligo,2026-01,2026-01,In mandate
+Qodo,AI infrastructure,In mandate,ranked,Series B,,2026-03,2026-03,In mandate
+Unframe,AI infrastructure,In mandate,ranked,Series B,,2026-05,2026-05,In mandate
+Nimble,AI infrastructure,In mandate,ranked,Series B,,2026-02,2026-02,In mandate
+ScaleOps,AI infrastructure,In mandate,ranked,Series C,,2026-03,2026-03,In mandate
+groundcover,AI infrastructure,In mandate,ranked,Series C,possible conflict: observability; competes with Coralogix,2026-07,2026-07,In mandate
+PointFive,AI infrastructure,In mandate,ranked,Series B,,2026-06,2026-06,In mandate
+Majestic Labs,Deep tech,In mandate,ranked,Series A in deep tech,deep tech Series A,2025-11,2025-11,In mandate (deep tech Series A)
+Wonderful,AI infrastructure,Too late,hidden,$5B valuation,,2026-01,2026-01,Too late
+AI21 Labs,AI infrastructure,Too late,hidden,Later stage (Series D+ / later stage),,2026-01,2026-01,Too late
+Airis Labs,Deep tech,In mandate,ranked,Series B,,2026-05,2026-05,In mandate
+Xtend,Deep tech,In mandate,ranked,Series B,possible conflict: drone interception; overlaps Regulus,2025-07,2025-07,In mandate
+Classiq,Deep tech,In mandate,ranked,Series C,,2025-05,2025-05,In mandate
+Quantum Art,Deep tech,In mandate,ranked,Series A in deep tech,deep tech Series A,2026-04,2026-04,In mandate (deep tech Series A)
+ZutaCore,Deep tech,In mandate,ranked,Series C,,2026-06,2026-06,In mandate
+Limitless Labs,Deep tech,In mandate,ranked,Series A in deep tech,possible conflict: industrial robotics; near RobCo; deep tech Series A,2026-06,2026-06,In mandate (deep tech Series A)
+Orca AI,Deep tech,In mandate,ranked,Series B,,2025-05,2025-05,In mandate
+Prisma Photonics,Deep tech,In mandate,ranked,growth round (B/C stage),,2025-10,2025-10,In mandate
+NoTraffic,Deep tech,In mandate,ranked,Series C,,2026-03,2026-03,In mandate
+Zenzap,Vertical AI,Pre-Series B,ranked_marked,Series A closed 15 months ago,,2025-08,2026-10,Pre-Series B
+Aligned,Vertical AI,In mandate,ranked,Series B,,2026-07,2026-07,In mandate
+Second Nature,Vertical AI,In mandate,ranked,Series B,,2025-10,2025-10,In mandate
+Visitt,Vertical AI,In mandate,ranked,Series B,,2026-01,2026-01,In mandate
+QuantHealth,Vertical AI,In mandate,ranked,Series B,,2026-08,2026-08,In mandate
+UltraSight,Vertical AI,In mandate,ranked,Series C,,2026-09,2026-09,In mandate
+PhaseV,Vertical AI,Pre-Series B,ranked_marked,Series A closed 18 months ago,,2025-05,2025-05,Pre-Series B
+Grain,Fintech,Pre-Series B,ranked_marked,Series A closed 20 months ago,,2025-03,2025-03,Pre-Series B
+Datarails,Fintech,In mandate,ranked,Series C,,2026-01,2026-01,In mandate
+Faye,Fintech,In mandate,ranked,Series C,,2026-08,2026-08,In mandate
+IVIX,Fintech,In mandate,ranked,Series B,,2025-08,2025-08,In mandate
+Parametrix,Fintech,In mandate,ranked,Series B,,2025-12,2025-12,In mandate
+Capitolis,Fintech,Portfolio,hidden,Greenfield portfolio company,monitor,2026-10,2026-10,Portfolio
+Phytolon,Off-thesis,Off-thesis,ranked_last,off-thesis sector,outside Greenfield's five categories (Off-thesis),2026-05,2026-05,Off-thesis

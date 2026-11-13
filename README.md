@@ -103,12 +103,41 @@ The full spec (sources, signals, weights, rules and test cases) is in **[BUILD_B
 
 ## What's not in v1
 
-- No weekly cron and no Cloudflare Pages deploy: it runs locally.
-- No LinkedIn data.
-- No alerts.
+- No LinkedIn data (terms of use; job postings live elsewhere anyway).
+- No alerts or CRM sync: outreach notes stay in the browser.
 - No auto-discovery of new companies.
 
-Known limits and open questions are in BUILD_BRIEF.md §15–16.
+## With four more weeks
+
+- **Back-test:** let the weekly runs build real history, then check whether high scores came before real rounds, and tune the weights on that.
+- **AI copilot:** a chatbot to ask the data questions ("who's hiring sales in Germany?"), and a "prep me for the call" brief per company, built from its signals and sources.
+- **Outreach:** a LinkedIn message or email drafted from what each company is actually doing, moving to automatic reach-out once the drafts prove good.
+- **Discovery and CRM:** find new companies from funding news, and sync owners, statuses and notes to the CRM.
+
+## Known limits
+
+**Data**
+- **One real run so far.** Signals that compare runs ("new market", "hiring paused") can't fire properly until the second real run, and history before the first run is dummy (labelled wherever it's shown).
+- **Postings, not hires.** A posted role isn't a person hired. "Likely filled" is an inference from how and when roles close.
+- **Uneven coverage.** 27 companies have clean job-board data; the rest rely on rendered careers pages, investor boards, websites and news. Low-coverage companies are flagged, with a "Check on LinkedIn" link.
+- **Company size is often old.** Headcount comes from news for about half the companies, so it's shown as context and kept out of the score.
+- **Name collisions.** Common names (four different "Grain"s) are matched by domain and HQ, never the name alone, but a wrong match is still possible.
+- **AI can misread.** Role classification and page extraction were spot-checked (and fixed where wrong), not checked one by one.
+
+**Product**
+- **Past Stage companies are ranked**, by choice, so their activity stays visible, even though they're outside Greenfield's stage.
+- **Outreach notes are per browser.** Owners, statuses and comments aren't shared between teammates yet.
+- **Open site, protected runs.** Anyone with the dashboard link can view it; only people with the team passcode can start a run.
+
+**At 10× the companies**
+- Polite fetching (3 s between requests to one site) turns a 30-minute run into hours.
+- Careers pages that change their layout break silently, and the job-source survey is still half manual.
+- Bing News returns about 10 results per query, so busy companies' news gets cut.
+
+**Open questions**
+- Should Past Stage companies stay in the ranking, or move to a filter?
+- Is a paid headcount source worth it?
+- Public companies (Xtend is NYSE-listed) aren't covered by the stage rules.
 
 ## Repo map
 

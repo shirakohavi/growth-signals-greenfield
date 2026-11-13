@@ -13,19 +13,25 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 | Claude Haiku 5.5 (API, in the pipeline) | Four jobs: extracting roles from careers pages; classifying every role (function, seniority, country); triaging and reading news / About pages into dated events; writing the reason line from the scored signals |
 | Claude Code design skills + Claude in Chrome | The dashboard's UI/UX rounds, and reading greenfield-growth.com's styles to match them |
 
-**What I decided, what the AI did**
-- I chose the option, the user and the decision, the company list (rebuilt on 11 Nov to mirror Greenfield's portfolio), the signal rules, the stage-fit rules, the Reach out thresholds and every dashboard design choice.
-- Claude Code wrote the code and ran the checks. I reviewed outputs at each step and sent back what looked wrong.
+**My part**
+- **Product and signal design.** I chose Option B and defined the user (a Greenfield partner or associate) and the decision ("who should I reach out to this week, before their next round is public?"). I designed the 13-signal library and its weights, the scoring formula (points × age × evidence), the bands, and the stage-fit rules, which I based on studying where Greenfield's own portfolio entered (mostly Series B and C; Series A only in deep tech).
+- **The company list.** On 11 Nov I rebuilt the 41-company list to mirror Greenfield's five categories and stages (16 out, 16 in, one deliberate off-thesis test) and wrote the change note Claude Code worked from.
+- **Checking the data by hand.** I opened every job-source row that wasn't high confidence and checked it myself (fixes in `data/job_sources_overrides.csv`), spotted that Rein and Hush were hiring with no careers page, and moved Majestic Labs to Deep tech.
+- **Catching the AI's mistakes.** I caught the scoring and data-matching errors listed below by tracing real scores and reading the output.
+- **Every judgement call:** the Reach out thresholds, ranking Past Stage companies, what counts as real vs dummy, and every dashboard design decision (each dashboard change in this log came from my review).
+
+**What the AI did**
+- Claude Code wrote the code, tests and dashboard from my brief, one build step at a time, and ran the checks. I reviewed the output after every step and sent back what looked wrong.
 - **The score is plain arithmetic.** AI never sets a number; it only extracts, classifies and writes the reason line, which may only use the scored signals.
 
-**Mistakes the AI made, and how they were caught**
-- Guessed job-board slugs matched the wrong company (Lever "hush", Greenhouse "slice"). Caught in review; a guessed slug now needs the company's domain in the job text.
-- Counted Directors as VP+, which would inflate "Senior GTM hire". Caught by reading 40 classified Directors.
-- Gave background facts the article's date, so an old Series D looked new. Caught in the news output.
-- The rename matcher paired the wrong roles (Faye). Caught by simulating a second run on a copy of the database.
-- Counted every existing foreign team as a "new market" on a first run (Classiq, Upwind at 100). Caught against the test cases.
-- Counted one hiring wave 4–5 times (Daylight 105 → capped 100). Caught by tracing real scores.
-- Treated a later re-score as a second run. Caught when Wonderful and Daylight jumped to 100.
+**Mistakes the AI made, and who caught them**
+- Guessed job-board slugs matched the wrong company (Lever "hush", Greenhouse "slice"). **I caught it** in my hand check; a guessed slug now needs the company's domain in the job text.
+- Gave background facts the article's date, so an old Series D looked new. **I caught it** in the news output.
+- Counted every existing foreign team as a "new market" on a first run (Classiq, Upwind at 100). **I caught it** against the test cases.
+- Counted one hiring wave 4–5 times (Daylight 105 → capped 100). **I caught it** by tracing real scores.
+- Treated a later re-score as a second run. **I caught it** when Wonderful and Daylight jumped to 100.
+- Counted Directors as VP+, which would inflate "Senior GTM hire". Caught in review by reading 40 classified Directors.
+- The rename matcher paired the wrong roles (Faye). Claude Code caught it by simulating a second run on a copy of the database.
 
 **Cost:** about 500 Claude Haiku calls across all runs and re-runs, about **$0.40** in total.
 
@@ -35,7 +41,7 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 - **Domains:** 22 of 41 domains were guessed and checked by fetching the homepage title. The rest came from web searches of funding news, then the same check. Look-alike domains were rejected (e.g. grain.com is an AI notetaker, mave.io is a video host, aligned.com is an ASIC firm, bites.com is an unrelated app). Result: `data/company_domains.csv`, with the evidence for each.
 - **Comeet endpoint (open question in brief §16), verified:** `GET https://www.comeet.co/careers-api/2.0/company/{uid}/positions?token={token}`. The uid and a public token are embedded in each company's careers page, in three different formats. Positions include `time_updated`, department, and location country.
 - **Getro:** the JSON API isn't publicly callable. We render `{board}/companies?q={name}` instead, then confirm the company's domain on its Getro profile.
-- **Manual checks:** each row that wasn't high confidence was opened and checked by hand. The fixes are in `data/job_sources_overrides.csv`. Slug guessing produced two false matches: Lever "hush" is a design agency and Greenhouse "slice" is a US consumer company. So the rule is now: a guessed slug counts only if the company's domain appears in the job text.
+- **Manual checks:** I opened each row that wasn't high confidence and checked it by hand. The fixes are in `data/job_sources_overrides.csv`. Slug guessing produced two false matches: Lever "hush" is a design agency and Greenhouse "slice" is a US consumer company. So the rule is now: a guessed slug counts only if the company's domain appears in the job text.
 - No Claude API calls yet. AI extraction starts in step 4.
 - **Run reliability (11 Nov 2026):** one full run hung for 17 h on a single stuck page, and a later run was cut short when the laptop slept. Fixes: a hard 240 s cap per company, and `--merge "A" "B" …`, which re-surveys only the named companies and merges them into the existing results. Long runs go under `caffeinate -i`. The final merged run has 41 of 41 rows and 0 errors.
 
@@ -117,7 +123,7 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 - **Fixed after reviewing output:**
   - The press writes "AI21", not "AI21 Labs", so the short name is now queried too.
   - Bing ranks by relevance and caps at ~10 items, so targeted signal queries were added (long OR-queries return almost nothing on Bing).
-  - Background facts were being given the article's date (an old Series D looked new): only main news falls back to the publication date.
+  - Background facts were being given the article's date (an old Series D looked new; I caught this): only main news falls back to the publication date.
   - "In May" now becomes the 1st of the month.
   - Duplicates come from several outlets reporting one event: dedupe is by type + canonical topic, and rounds by amount.
   - A sitemap lastmod shared by a large part of the site is a rebuild, not new pages (Reco: 34 false events → 2).
@@ -152,7 +158,7 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
   - Non-job signals need a date to score; undated ones are kept as context.
   - "Announced expansion plan" must be concrete (headcount target, office, country, numbers), not use-of-funds boilerplate.
   - Each signal counts once (its strongest instance).
-- **Calibration issue and fix:** "New market entry (+25, once per country)" can't tell a new country from an old one on a first run. Every existing foreign sales team counted, so big multi-country companies hit 100 (Classiq, Upwind). Until a company has real history, only its strongest market counts (indirect, 60%), and the other countries are listed as presence. From the second real run, new countries count fully.
+- **Calibration issue and fix (I caught it against the test cases):** "New market entry (+25, once per country)" can't tell a new country from an old one on a first run. Every existing foreign sales team counted, so big multi-country companies hit 100 (Classiq, Upwind). Until a company has real history, only its strongest market counts (indirect, 60%), and the other countries are listed as presence. From the second real run, new countries count fully.
 - **Reason-line fixes:**
   - Lines are trimmed at a sentence end.
   - The Series B window signal no longer carries the Series A close date, which the model had misread as "window opened Aug 2025".
@@ -168,7 +174,7 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 
 ## Step 8 follow-up (13 Nov): size-adjusted scoring, graphs back, run date fix
 - **Size adjustment** (`src/scoring/signals.ts`): open roles ÷ headcount (headcount from news, 19 of 40 companies). 25%+ → +10 "Hiring hard for its size"; 15–25% → +5; under 5% → GTM build-out / Hiring speeding up / R&D build-up count half. Unknown size → no adjustment, shown as "size unknown". Thresholds chosen so the §14 cases stay within ±10: Onyx 40→45 (expected ~50), Airis 35 (~25), Zenzap 34 (~31), Grain 10, AI21 3. Datarails (11 roles, ~400 people) 28→21.
-- **Bug found:** re-scoring on a later day with no new collection counted as a second run, so baseline presence became "new markets" (Wonderful and Daylight hit 100). The run date is now the latest real snapshot, not the clock.
+- **Bug I found:** re-scoring on a later day with no new collection counted as a second run, so baseline presence became "new markets" (Wonderful and Daylight hit 100). The run date is now the latest real snapshot, not the clock.
 - **Dashboard:** graphs restored after a misread ("no graphs at all" meant they were missing): team-mix column, map, Rising summary charts (hiring by function, go-to-market roles by country), and in the drawer a size gauge, roles by country, open roles over time (dummy dashed) and per-signal bars. Palette re-validated on the new dark surface.
 
 ## Step 8 follow-up (13 Nov): filled vs pulled roles, comparison chart, Compare
@@ -179,7 +185,7 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 - **Dashboard:** the two summary charts are replaced by a comparison chart (open roles as % of headcount vs go-to-market share, dot = reach tier) on Rising and as All companies → Chart. Compare: pick 2–3 companies (checkbox by the rank, or + Compare in the panel) for a side-by-side view with one shared scale for open roles over time.
 
 ## Scoring fix (13 Nov): size out of the score, one hiring wave counts once, tighter Reach out
-- **Why:** tracing real scores showed one hiring wave scoring 4–5 times. Daylight's 10 Nov burst of ~17 US sales roles fed GTM build-out, Hiring speeding up, Mix shifting toward GTM and Hiring hard for its size, so 105 was capped to 100. Company size came from news for only 19 of 40 companies, often months old. "Reach out now" spanned 40–100.
+- **Why:** I traced real scores and found one hiring wave scoring 4–5 times. Daylight's 10 Nov burst of ~17 US sales roles fed GTM build-out, Hiring speeding up, Mix shifting toward GTM and Hiring hard for its size, so 105 was capped to 100. Company size came from news for only 19 of 40 companies, often months old. "Reach out now" spanned 40–100.
 - **Changes:**
   - `src/scoring/signals.ts`: size (open roles ÷ headcount) is still computed but shown as context only. There's no `size_intensity` signal and no halving.
   - `HIRING_WAVE` group: of gtm_buildout / speeding_up / gtm_mix / rd_buildup, the strongest counts in full and the others count half, with a "(half: same hiring wave as …)" note.
@@ -212,3 +218,11 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 ## Docs (13 Nov 2026)
 
 - `BUILD_BRIEF.md` was rewritten to describe the system as built (Bing News, Hiring paused, one hiring wave counts once, Reach out tiers, stage-fit labels, the dashboard, real vs dummy, how to run). The original 10–11 Nov plan is what Claude Code built from; this log records each change.
+
+## Run now (13 Nov 2026)
+
+- I asked for a **Run now** button so a run can be started from the dashboard during the live session.
+- **Claude Code** wrote `scripts/pipeline.ts` (`npm run pipeline`: every step in order, stops at the first failure) and `scripts/serve.ts` (`npm run serve`: serves the dashboard on localhost and runs the pipeline on request, one run at a time, with live step progress and the log). The button only appears when the page is served by `npm run serve`.
+- **Safety:** the server listens on 127.0.0.1 only, and a run can only be started by a JSON request, so other websites open in the browser can't trigger one.
+- Tested with a dry run (`?dryrun`), which walks the steps without collecting anything. A real full run takes about 20–40 minutes and makes a few hundred Haiku calls.
+

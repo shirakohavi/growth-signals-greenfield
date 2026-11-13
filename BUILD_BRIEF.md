@@ -23,6 +23,7 @@ Home assignment, 8–10 hours. Working end to end beats polish.
 | AI enrichment | **Claude API**, `claude-haiku-5-5`, structured outputs (`messages.parse` + Zod) | Built |
 | Dashboard | One static page (`public/index.html`) reading `public/ranking.json` | Built |
 | Worker | Read-only API over D1 (`/api/health`, `/api/companies`, `/api/coverage`) | Built |
+| Runs | `npm run pipeline`, or the dashboard's **Run now** button via a local server (`npm run serve`) | Built |
 | Schedule | Weekly Cron Trigger | **Not built** |
 | Hosting | Cloudflare Pages | **Not deployed** |
 | Not in v1 | Queues, R2, LinkedIn scraping, email/Slack alerts, auto-discovery of companies | Cut on purpose |
@@ -175,6 +176,10 @@ One static page (`src/dashboard/index.html` → `npm run build:dashboard` → `p
 
 ## 13. How to run (local)
 
+**One command:** `npm run pipeline` runs every step below in order and stops at the first step that fails. **Or from the dashboard:** `npm run serve`, open http://localhost:4180 and press **Run now** (live progress and log; the dashboard reloads when the run finishes). Add `?dryrun` to the URL to test the button without collecting anything.
+
+The steps, which can also be run one by one:
+
 ```
 npm install
 npm run db:migrate        # D1 schema (local)
@@ -190,7 +195,7 @@ npm run build:dashboard   # public/index.html
 npm test                  # 38 rule tests
 ```
 
-Then serve `public/` (e.g. `python3 -m http.server -d public`) and open it. The AI steps need `ANTHROPIC_API_KEY` in `.dev.vars`.
+Then `npm run serve` and open http://localhost:4180 (any static server for `public/` works too; it just won't show Run now). The AI steps need `ANTHROPIC_API_KEY` in `.dev.vars`.
 
 ## 14. Test cases (manual dry run, 10 Nov 2026)
 
@@ -207,7 +212,7 @@ Expected ±10. Result from the 12 Nov run.
 
 ## 15. Definition of done
 
-- [ ] One command runs collect → enrich → compare → score → dashboard (today: the commands in §13, in order)
+- [x] One command runs collect → enrich → compare → score → dashboard (`npm run pipeline`, or Run now in the dashboard)
 - [x] Real ingestion from job sources for real companies (721 open roles, 27 ATS companies + Getro + careers pages)
 - [x] AI maps every role to function and seniority, and to a country where there is one (703 of 721)
 - [x] Each company shows score, band, stage fit, coverage, reason line with dated links, real / dummy labels

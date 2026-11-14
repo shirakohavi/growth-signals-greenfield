@@ -24,8 +24,8 @@ Home assignment, 8–10 hours. Working end to end beats polish.
 | Dashboard | One static page (`public/index.html`) reading `public/ranking.json` | Built |
 | Worker | Read-only API over D1 (`/api/health`, `/api/companies`, `/api/coverage`) | Built |
 | Runs | `npm run pipeline` locally; in the cloud, a GitHub Actions workflow (`.github/workflows/weekly-run.yml`) | Built |
-| Schedule | Weekly, Mondays 06:00 Israel time (GitHub Actions schedule) | Built; needs the one-time setup in the README |
-| Hosting | One Cloudflare Worker serves the dashboard (static assets) and the API; state in Cloudflare D1 | Built; needs the one-time setup in the README |
+| Schedule | Weekly, Mondays 03:00 UTC (05:00–06:00 Israel time), GitHub Actions | Live |
+| Hosting | One Cloudflare Worker serves the dashboard (static assets) and the API; state in Cloudflare D1 | Live: https://team-signals.team-signals.workers.dev |
 | Run now | Dashboard button → Worker (team passcode) → GitHub starts the workflow; live step progress | Built (local mode via `npm run serve` too) |
 | Not in v1 | Queues, R2, LinkedIn scraping, email/Slack alerts, auto-discovery of companies | Cut on purpose |
 
@@ -217,7 +217,7 @@ Expected ±10. Result from the 12 Nov run.
 - [x] AI maps every role to function and seniority, and to a country where there is one (703 of 721)
 - [x] Each company shows score, band, stage fit, coverage, reason line with dated links, real / dummy labels
 - [x] An unreachable source keeps the last data, marked "not reached"
-- [x] Weekly schedule and hosting (GitHub Actions + Cloudflare Worker; needs the one-time setup in the README to go live)
+- [x] Weekly schedule and hosting (GitHub Actions + Cloudflare Worker), live at https://team-signals.team-signals.workers.dev
 - [ ] README: how to run, what's real vs dummy, how AI was used (`AI_LOG.md` is kept)
 
 ## 16. Open questions

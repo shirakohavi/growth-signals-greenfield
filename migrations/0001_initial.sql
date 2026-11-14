@@ -1,4 +1,4 @@
--- Team Signals v1 schema (BUILD_BRIEF §4), with the fields step 1 showed we need.
+-- Growth Signals v1 schema (BUILD_BRIEF §4), with the fields step 1 showed we need.
 -- Privacy: roles and counts only. Never store people's names or photos.
 
 

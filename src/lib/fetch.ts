@@ -7,7 +7,8 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const USER_AGENT = "GreenfieldTeamSignals/0.1 (+contact)";
+// Says who we are and where to look: a case-study crawler, with its public dashboard as the contact page.
+export const USER_AGENT = "GrowthSignalsBot/0.1 (case-study crawler; +https://team-signals.team-signals.workers.dev)";
 const HOST_GAP_MS = 3000;
 const CACHE_DIR = join(process.cwd(), "data", "cache", "http");
 const CACHE_TTL_MS = 12 * 60 * 60 * 1000;
@@ -48,7 +49,7 @@ async function disallowedPrefixes(origin: string): Promise<string[]> {
       const val = rest.join(":").split("#")[0].trim();
       if (key === "user-agent") {
         if (sawAgentBlock) { applies = false; sawAgentBlock = false; }
-        if (val === "*" || /greenfieldteamsignals/i.test(val)) applies = true;
+        if (val === "*" || /growthsignals/i.test(val)) applies = true;
       } else if (key === "disallow" || key === "allow") {
         sawAgentBlock = true;
         if (applies && key === "disallow" && val) rules.push(val);

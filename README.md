@@ -8,21 +8,21 @@ Growth Signals tracks 40 Israeli and Israel-related tech companies, turns dated 
 
 ## See it in 1 minute
 
-The latest run's output is committed, so the dashboard works without running the pipeline.
-
-```
-npm install
-npm run serve
-```
-
-Open **http://localhost:4180**.
+**Live dashboard: https://team-signals.team-signals.workers.dev** (hosted on Cloudflare, updated every Monday).
 
 - **Rising:** the top 10 by score, with *Reach out now* (60+ and In Range) and *Warm* (40–59) tiers.
-- **All companies:** list, Stage Fit board, chart and map, with search and filters.
+- **All companies:** list, Stage Fit board and map, with search, filters and sort.
 - **What's new:** dated changes from the last 7–90 days.
 - Click any company for its full page: score over time, every signal with points and source, team breakdown, and an outreach panel (owner, status, comments).
 
-## Run the pipeline
+To open it on your own machine instead (the latest run's output is committed, so no pipeline run is needed):
+
+```
+npm install
+npm run serve        # open http://localhost:4180
+```
+
+## Run the pipeline on your own machine
 
 Needs Node 22+ and an Anthropic API key (Claude Haiku is used for extraction, classification and reason lines).
 
@@ -42,16 +42,16 @@ You can also start a run from the dashboard's **Run now** button when it's serve
 
 Each step can be run on its own: `collect:ats`, `collect:pages`, `enrich`, `collect:footprint`, `compare`, `seed:dummy`, `score`, `build:dashboard`. `npm test` runs 38 rule tests and `npm run typecheck` runs the type checks.
 
-## Hosted weekly runs (Cloudflare + GitHub Actions)
+## How it's hosted (Cloudflare + GitHub Actions)
 
-Once set up, nobody needs the code or a key:
-- **The dashboard is online** on Cloudflare, served by the Worker in `worker/`.
-- **It runs every Monday at 06:00** Israel time, by GitHub Actions (`.github/workflows/weekly-run.yml`).
-- **Anyone can press Run now.** They type the team passcode once, and the dashboard shows "Step 3 of 8" live, then updates itself.
+This is already set up and running. Nobody needs the code or a key to use it:
+- **The dashboard is online** at https://team-signals.team-signals.workers.dev, served by the Worker in `worker/`.
+- **It runs every Monday early morning** (03:00 UTC: 05:00 Israel time in winter, 06:00 in summer), by GitHub Actions (`.github/workflows/weekly-run.yml`).
+- **Anyone can press Run now.** They type the team passcode (shared separately) once, and the dashboard shows "Step 3 of 8" live, then updates itself.
 - **The Anthropic key stays a GitHub secret.** Nobody using the dashboard can see it, and runs are billed to the key's owner (about $0.40 each).
 - **History builds up.** The database lives in Cloudflare D1, so every run compares with the last real one.
 
-**One-time setup (about 15 minutes, by the account owner):**
+**To set it up again in another Cloudflare account (about 15 minutes):**
 
 1. Log in to Cloudflare: `npx wrangler login`
 2. Create the cloud database: `npx wrangler d1 create team-signals`, then paste the printed `database_id` into `wrangler.jsonc` (in `d1_databases`).
@@ -151,5 +151,6 @@ The full spec (sources, signals, weights, rules and test cases) is in **[BUILD_B
 | `scripts/` | One script per pipeline step, `pipeline.ts`, `serve.ts`, tests |
 | `migrations/` | D1 schema |
 | `data/` | Company list, verified domains, job-source survey, and SQL from each run (`data/runs/`) |
-| `worker/` | Cloudflare Worker: read-only API over D1 |
+| `worker/` | Cloudflare Worker: serves the dashboard, a read-only API over D1, and Run now |
 | `public/` | Built dashboard and `ranking.json` from the latest run |
+| `.github/workflows/` | The weekly run (GitHub Actions) |

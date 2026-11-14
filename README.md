@@ -78,7 +78,11 @@ Three tabs across the top: **Rising**, **All companies** and **What's new**. Eve
 **Company page** (click any company)
 - The score with its one-line reason, links (website, careers, jobs, and "Check on LinkedIn" when coverage is low) and **score over time**.
 - **Changes:** every dated change with its source. **Why:** the scoring signals with points and sources. **Team:** open roles vs company size, roles by team and country, open roles over time and the full role list.
-- **Outreach panel:** assign an owner, set a status (Not contacted, Reached out, In conversation, Meeting set, Passed) and leave comments.
+- **Outreach panel** (right side of the page), so the team can track who is talking to whom:
+  - **Owner:** pick the teammate who owns the relationship. Their initials then show in the Owner column.
+  - **Status:** Not contacted → Reached out → In conversation → Meeting set, or Passed. The panel shows when the status last changed, a small colored dot appears next to the company's name in every list, and Rising and All companies can be filtered by Owner and by Outreach status.
+  - **Comments:** add a note (who you spoke to, what's next), choose who it's from with "As", and it's saved with the date. Comments show newest first and can be deleted.
+  - The five teammates are fictional, for the demo.
 
 **Compare** — tick the box at the start of up to three rows (or **+ Compare** on a company page), then press **Compare** in the tray at the bottom. Companies sit side by side: score, headline, hiring vs size, go-to-market share, team, countries, score over time, open roles over time (on one shared scale) and top signals.
 

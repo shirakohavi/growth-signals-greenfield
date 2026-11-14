@@ -231,11 +231,6 @@ v1 is a modular base: the Growth Signals database (companies, roles, signals and
 - Careers pages that change their layout break silently, and the job-source survey is still half manual.
 - Bing News returns about 10 results per query, so busy companies' news gets cut.
 
-**Open questions**
-- Should Past Stage companies stay in the ranking, or move to a filter?
-- Is a paid headcount source worth it?
-- Public companies (Xtend is NYSE-listed) aren't covered by the stage rules.
-
 ## Repo map
 
 | Path | What's there |

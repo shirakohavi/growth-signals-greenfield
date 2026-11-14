@@ -25,13 +25,6 @@ Growth Signals tracks 40 Israeli and Israel-related tech companies, turns dated 
 2. **Press Run now** (top right) and enter the team passcode (shared separately). The run happens in the cloud and takes about 30–40 minutes. The dashboard shows live progress ("Step 3 of 8") and updates itself when it's done; you can close the page meanwhile.
 3. **Or do nothing:** it runs by itself every Monday morning.
 
-What you'll see:
-- **Rising:** the top 10 by score, with *Reach out now* (60+ and In Range) and *Warm* (40–59) tiers.
-- **Reach out now companies stand out in every view:** in Rising, the list, the Stage Fit board, the map and What's new their row is tinted with a blue bar, and their score is a filled circle (Warm scores are outlined).
-- **All companies:** list, Stage Fit board and map, with search, filters and sort.
-- **What's new:** dated changes from the last 7–90 days.
-- **Any company's page:** score over time, every signal with its points and source, the team breakdown, and an outreach panel (owner, status, comments).
-
 <details>
 <summary><b>For developers: run it on your own machine</b></summary>
 
@@ -62,6 +55,38 @@ npm run serve                       # open http://localhost:4180
 - Each step also runs on its own: `collect:ats`, `collect:pages`, `enrich`, `collect:footprint`, `compare`, `seed:dummy`, `score`, `build:dashboard`. `npm test` runs 38 rule tests; `npm run typecheck` checks types.
 
 </details>
+
+## Using the dashboard
+
+Three tabs across the top: **Rising**, **All companies** and **What's new**. Every column header, filter and score has a tooltip (hover or tab to it), and **Guide** (top right) explains every term in one place.
+
+**How to read a row**
+- **Reach out now** companies (score 60+ and In Range) have a tinted row with a blue bar on the left and a **filled** score circle. **Warm** companies (40–59) have an **outlined** circle. The two dots under the page title are the legend.
+- **Chips:** Type (sector, each with its own color), Round (latest round and month) and Stage Fit (green = In Range, amber = Approaching B, grey = Too Early or Past Stage).
+- **▲▼** is the score change since the last run; **Team** is the mix of open roles by function (R&D, Sales, Marketing, Customer success, Partnerships).
+- **Owner** shows the initials of the teammate who owns the outreach (empty when unassigned).
+
+**Rising** — the top 10 by score. Search, sort (score, change, open roles, name) and **Filters**: Reach out, Type, Stage Fit, Band, Decline, Owner and Outreach status. Active filters show as chips you can clear.
+
+**All companies** — all 40 companies, in three views:
+- **List:** the same table with every company, plus Coverage and Hiring-in-country filters.
+- **Stage Fit board:** one column per stage (In Range, Approaching B, Too Early, Past Stage), so you can see who is at the right stage at a glance.
+- **Map:** a heatmap of open roles by country, to spot who is building teams abroad.
+
+**What's new** — dated changes from the last 7, 14, 30 or 90 days, grouped by day. **Highlights** shows funding, plans, new offices and risks first; **Roles**, **News**, **Site** and **Risks** narrow it down. Many new roles at one company collapse into one line you can expand. Every item links to its source.
+
+**Company page** (click any company)
+- The score with its one-line reason, links (website, careers, jobs, and "Check on LinkedIn" when coverage is low) and **score over time**.
+- **Changes:** every dated change with its source. **Why:** the scoring signals with points and sources. **Team:** open roles vs company size, roles by team and country, open roles over time and the full role list.
+- **Outreach panel:** assign an owner, set a status (Not contacted, Reached out, In conversation, Meeting set, Passed) and leave comments.
+
+**Compare** — tick the box at the start of up to three rows (or **+ Compare** on a company page), then press **Compare** in the tray at the bottom. Companies sit side by side: score, headline, hiring vs size, go-to-market share, team, countries, score over time, open roles over time (on one shared scale) and top signals.
+
+**+ Add company** — add a company by name and website. It appears as **Pending** in All companies and is scored on the next run; **Copy CSV rows** gives the lines to paste into `data/companies.csv`.
+
+**Run now** — starts a full run in the cloud with the team passcode (see above). Progress shows live, and the dashboard refreshes itself when it's done.
+
+Owners, statuses, comments and added companies are saved in your browser only (see Known limits).
 
 ## How it's hosted (Cloudflare + GitHub Actions)
 

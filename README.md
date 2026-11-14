@@ -123,10 +123,10 @@ Optional: put the dashboard behind **Cloudflare Access** (Zero Trust → Access 
 
 ## Real vs dummy
 
-| Real (12 Nov 2026 run) | Dummy or mock, labelled where shown |
+| Real (runs of 12 and 14 Nov 2026) | Dummy or mock, labelled where shown |
 |---|---|
 | Company list and funding facts | Past snapshots before the first run: 3 per company (−90/−60/−30 days), drawn dashed and hollow |
-| 721 open roles from job boards, Getro boards and careers pages, with posting dates | Score history and ▲▼ changes before a second real run (based on those dummy snapshots) |
+| 717 open roles (14 Nov) from job boards, Getro boards and careers pages, with posting dates | Score history before the first real run (12 Nov), based on those dummy snapshots |
 | Every role classified by function, seniority and country (Claude Haiku) | The five outreach teammates (fictional), and owners, statuses and comments (saved in your browser only) |
 | Sitemaps, About and newsroom pages, news in English and Hebrew | Companies added with + Add company (saved in your browser, scored on the next run) |
 | Scores, bands and reason lines | Logos are fetched live from Google's favicon service |
@@ -157,7 +157,7 @@ Every week, from a list of companies to who to call:
 4. **Score:** growth signals become a 0–100 score, with plain arithmetic.
 5. **Act:** a ranked Top 10 with sources. 60+ and at the right stage = Reach out now.
 
-It runs on its own every Monday, or with one click (**Run now**). This run: 721 roles, about $0.40 of AI.
+It runs on its own every Monday, or with one click (**Run now**). Latest run (14 Nov, the first in the cloud): 717 roles, 17 minutes, well under $1 of AI.
 
 ```
 companies.csv ──► collectors ──────────────► AI enrichment ─────────► compare ──► score ──► dashboard
@@ -212,7 +212,7 @@ v1 is a modular base: the Growth Signals database (companies, roles, signals and
 ## Known limits
 
 **Data**
-- **One real run so far.** Signals that compare runs ("new market", "hiring paused") can't fire properly until the second real run, and history before the first run is dummy (labelled wherever it's shown).
+- **Short history.** Two real runs so far (12 and 14 Nov). Signals that compare runs have started to work (Upwind's first Japan sales role showed up as a new market), but trends like "hiring paused" need a few more weeks, and history before 12 Nov is dummy (labelled wherever it's shown).
 - **Postings, not hires.** A posted role isn't a person hired. "Likely filled" is an inference from how and when roles close.
 - **Uneven coverage.** 26 companies have clean job-board data; the rest rely on rendered careers pages, investor boards, websites and news. Low-coverage companies are flagged, with a "Check on LinkedIn" link.
 - **Company size is often old.** Headcount comes from news for about half the companies, so it's shown as context and kept out of the score.

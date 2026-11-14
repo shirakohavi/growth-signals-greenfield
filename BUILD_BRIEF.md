@@ -213,8 +213,8 @@ Expected ±10. Result from the 12 Nov run.
 ## 15. Definition of done
 
 - [x] One command runs collect → enrich → compare → score → dashboard (`npm run pipeline`, or Run now in the dashboard)
-- [x] Real ingestion from job sources for real companies (721 open roles, 26 ATS companies + Getro + careers pages)
-- [x] AI maps every role to function and seniority, and to a country where there is one (703 of 721)
+- [x] Real ingestion from job sources for real companies (717 open roles on 14 Nov, job boards + Getro + careers pages)
+- [x] AI maps every role to function and seniority, and to a country where there is one (699 of 717 on 14 Nov)
 - [x] Each company shows score, band, stage fit, coverage, reason line with dated links, real / dummy labels
 - [x] An unreachable source keeps the last data, marked "not reached"
 - [x] Weekly schedule and hosting (GitHub Actions + Cloudflare Worker), live at https://team-signals.team-signals.workers.dev

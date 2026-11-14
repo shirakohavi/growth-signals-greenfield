@@ -223,7 +223,7 @@ aside.panel { position: fixed; top: 0; right: 0; bottom: 0; width: min(520px, 10
 .heat tr.now th.rowh { box-shadow: inset 3px 0 0 var(--accent); background: rgba(74, 144, 217, 0.09); }
 .nowdot { flex: none; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); margin-left: 8px; vertical-align: 1px; }
 .heat th.rowh .nowtag { margin-left: 6px; vertical-align: 1px; }
-.it .co .nowtag { margin-left: 2px; }
+.it.now { box-shadow: inset 3px 0 0 var(--accent); background: rgba(74, 144, 217, 0.09); }
 .tray .tc .nowtag { margin-right: 6px; }
 .gf { font-size: 12px; color: var(--muted); }
 .gf a { color: var(--ink); font-weight: 600; }
@@ -721,7 +721,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     for (const x of g.slice(0, 250)) {
       if (f.sort === "date" && x.date !== last) { rows += `<div class="day num">${fmtY(x.date)}</div>`; last = x.date; }
       const c = byName.get(x.company), key = `${x.company}|${x.kind}|${x.date}`, open = S.expanded.has(key), multi = x.kind === "role" && x.n > 1;
-      rows += `<div class="it"><button class="co" data-open="${esc(c?.slug || "")}">${logo(c || { name: x.company })}<span>${esc(x.company)}</span>${NOW(c)}</button>
+      rows += `<div class="it${c?.reach === "now" ? " now" : ""}"><button class="co" data-open="${esc(c?.slug || "")}">${logo(c || { name: x.company })}<span>${esc(x.company)}</span>${NOWSR(c)}</button>
         <span class="wh${x.kind === "layoff" ? " risk" : ""}">${multi ? `<button class="linkbtn" data-expand="${esc(key)}" aria-expanded="${open}" style="color:inherit;font-weight:400;text-align:left">${open ? "▾" : "▸"} ${line(x)}</button>` : `<span data-tip="${esc(x.all[0].detail)}">${line(x)}</span>`}${f.sort !== "date" ? ` <span class="meta">${fmt(x.date)}</span>` : ""}</span>
         ${x.url && !multi ? `<a href="${esc(x.url)}" target="_blank" rel="noopener" aria-label="Source">↗</a>` : "<span></span>"}</div>`
         + (multi && open ? x.all.map((it) => `<div class="it" style="padding-block:6px"><span></span><span class="wh meta">${fmt(it.date)} · ${esc(it.detail)}${it.country ? ` · ${esc(it.country)}` : ""}</span>${it.url ? `<a href="${esc(it.url)}" target="_blank" rel="noopener" aria-label="Source">↗</a>` : "<span></span>"}</div>`).join("") : "");

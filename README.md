@@ -27,7 +27,7 @@ Growth Signals tracks 40 Israeli and Israel-related tech companies, turns dated 
 
 What you'll see:
 - **Rising:** the top 10 by score, with *Reach out now* (60+ and In Range) and *Warm* (40–59) tiers.
-- **Reach out now companies stand out in every view:** in Rising, the list and the Stage Fit board their row is tinted, with a blue bar and a filled score circle (Warm scores are outlined); the map, What's new and Compare mark them with the same filled dot as the legend.
+- **Reach out now companies stand out in every view:** in Rising, the list, the Stage Fit board, the map and What's new their row is tinted with a blue bar, and their score is a filled circle (Warm scores are outlined).
 - **All companies:** list, Stage Fit board and map, with search, filters and sort.
 - **What's new:** dated changes from the last 7–90 days.
 - **Any company's page:** score over time, every signal with its points and source, the team breakdown, and an outreach panel (owner, status, comments).

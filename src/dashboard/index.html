@@ -417,7 +417,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
 
   // One source of truth for what every label means: hover tooltips and the Guide both read from here.
   const GLOSSARY = {
-    score: "0–100. Sum of the company's growth signals (points × age × evidence). Plain arithmetic, no AI.",
+    score: "0–100. Sum of the company's growth signals (signal points × recency × confidence). Plain arithmetic, no AI.",
     band: "Exceptional 60+ · Strong growth story 40–59 · Some activity 20–39 · Quiet under 20.",
     change: "Score change since the last run. \"new\" = first run, nothing to compare yet.",
     reach: "Reach out now = score 60+ and In Range. Warm = score 40–59, In Range or Approaching B.",
@@ -882,8 +882,8 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
         <h3 id="g-type">Columns</h3>${t([["Type", GLOSSARY.type], ["Round", GLOSSARY.round], ["Headline", GLOSSARY.headline], ["Team", GLOSSARY.team], ["Coverage", GLOSSARY.coverage], ["Decline ↓", GLOSSARY.decline]])}
         <h3 id="g-team">Outreach</h3>${t([["Owner & status", "Open a company to assign an owner, set the outreach status and add comments. Saved in this browser."], ["+ Add company", "Adds a company to track. It is scored on the next run."]])}
         <details class="ds"><summary>How the score is calculated</summary><ul>
-          <li>Age: a signal counts fully for 30 days, half up to 90 days, then drops. Open job posts count while open.</li>
-          <li>Evidence: direct (job post, news) counts 100%; indirect (website change only) 60%.</li>
+          <li>Recency: a signal counts fully for 30 days, half up to 90 days, then drops. Open job posts count while open.</li>
+          <li>Confidence: direct (job post, news) counts 100%; indirect (website change only) 60%.</li>
           <li>One hiring wave counts once: of GTM build-out, Hiring speeding up, Mix shifting toward GTM and R&amp;D build-up, the strongest counts in full and the others count half.</li>
           <li>Size: open roles ÷ employees, from news (known for about half the companies). Shown as context only; it does not change the score.</li>
           <li>Hiring paused (−15): roles look pulled, not filled. Needs two real runs.</li>

@@ -108,7 +108,7 @@ Optional: put the dashboard behind **Cloudflare Access** (Zero Trust → Access 
 |---|---|---|---|
 | Job boards (Greenhouse, Lever, Ashby, Comeet) | Every open role, with ids and posting dates | Free public APIs | 65% (26 of 40) |
 | Getro investor boards, careers pages | Roles behind JavaScript | Opened in a browser, then read by AI | 25% |
-| Sitemaps, About and newsroom pages | New partner, country and industry pages, new offices, headcount | Public pages, robots.txt respected | 98% |
+| Sitemaps, About and newsroom pages | New partnership program, country and industry pages, office announcements and headcount references | Public pages, robots.txt respected | 98% |
 | News, English and Hebrew | Rounds, plans, layoffs, validation | Bing News RSS (Google's robots.txt blocks bots) | 90% |
 
 | What's missing | How the gap is filled |
@@ -133,14 +133,14 @@ It runs on its own every Monday, or with one click (**Run now**). This run: 721 
 ```
 companies.csv ──► collectors ──────────────► AI enrichment ─────────► compare ──► score ──► dashboard
                   Greenhouse, Lever, Ashby,   Claude Haiku: extract      new / closed   13 signals,    ranking.json
-                  Comeet, Getro, careers      roles, classify function,  / reposted     points × age   + index.html
-                  pages, sitemaps, About,     seniority, country; read   roles,         × evidence
-                  Bing News (EN + HE)         news into dated events     baseline
+                  Comeet, Getro, careers      roles, classify function,  / reposted     points ×      + index.html
+                  pages, sitemaps, About,     seniority, country; read   roles,         recency ×
+                  Bing News (EN + HE)         news into dated events     baseline       confidence
 ```
 
-- **The score is plain arithmetic**, not AI: `max(0, min(100, Σ points × age × evidence))`. AI only extracts and classifies, and writes the reason line from the scored signals.
+- **The score is plain arithmetic**, not AI: `Score = Σ (signal points × recency × confidence)`, kept between 0 and 100. AI only extracts and classifies, and writes the reason line from the scored signals.
 
-| Points: what happened | | Age: how recent | | Evidence: how sure | |
+| Signal points: how important | | Recency: how recent | | Confidence: how reliable | |
 |---|---|---|---|---|---|
 | New market abroad | +25 | Last 30 days, or the job post is still open | 100% | Job post or news | 100% |
 | GTM team build-out | +20 | 1–3 months | 50% | Website hint only | 60% |

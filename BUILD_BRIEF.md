@@ -137,11 +137,11 @@ Strict JSON via structured outputs. AI is used for:
 ## 10. Scoring
 
 ```
-Score = max(0, min(100, Σ Points_i × Age_i × Evidence_i))
+Score = max(0, min(100, Σ SignalPoints_i × Recency_i × Confidence_i))
 ```
 
-- **Age:** open job posts 100% while open. Other positive signals: 0–30 days 100%, 31–90 days 50%, older dropped. Plans and negative signals: 0–90 days 100%, up to 12 months 50%. Series B window doesn't age. Non-job signals need a date to score; undated ones are kept as context.
-- **Evidence:** direct (job post, news report) 100%; indirect (website change only, or presence with no start date) 60%.
+- **Recency:** open job posts 100% while open. Other positive signals: 0–30 days 100%, 31–90 days 50%, older dropped. Plans and negative signals: 0–90 days 100%, up to 12 months 50%. Series B window doesn't age. Non-job signals need a date to score; undated ones are kept as context.
+- **Confidence:** direct (job post, news report) 100%; indirect (website change only, or presence with no start date) 60%.
 - **Each signal counts once** (its strongest instance).
 - **One hiring wave counts once:** of GTM build-out, Hiring speeding up, Mix shifting toward GTM and R&D build-up, the strongest counts in full and the others count half.
 - **New markets on a first run:** with no history, a foreign team can't be told from a new one, so only the strongest market counts (indirect, 60%) until the second real run.

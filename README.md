@@ -6,46 +6,53 @@ Growth Signals tracks 40 Israeli and Israel-related tech companies, turns dated 
 
 **User:** a Greenfield partner or associate. **Decision:** which companies to reach out to this week, before their next round is public.
 
-## See it in 1 minute
+## How to run it
 
-**Live dashboard: https://team-signals.team-signals.workers.dev** (hosted on Cloudflare, updated every Monday).
+1. **Open the live dashboard:** **https://team-signals.team-signals.workers.dev**
+2. **Press Run now** (top right) and enter the team passcode (shared separately). The run happens in the cloud and takes about 30–40 minutes. The dashboard shows live progress ("Step 3 of 8") and updates itself when it's done; you can close the page meanwhile.
+3. **Or do nothing:** it runs by itself every Monday morning.
 
+What you'll see:
 - **Rising:** the top 10 by score, with *Reach out now* (60+ and In Range) and *Warm* (40–59) tiers.
 - **All companies:** list, Stage Fit board and map, with search, filters and sort.
 - **What's new:** dated changes from the last 7–90 days.
-- Click any company for its full page: score over time, every signal with points and source, team breakdown, and an outreach panel (owner, status, comments).
+- **Any company's page:** score over time, every signal with its points and source, the team breakdown, and an outreach panel (owner, status, comments).
 
-To open it on your own machine instead (the latest run's output is committed, so no pipeline run is needed):
+<details>
+<summary><b>For developers: run it on your own machine</b></summary>
 
-```
-npm install
-npm run serve        # open http://localhost:4180
-```
+<br>
 
-## Run the pipeline on your own machine
-
-Needs Node 22+ and an Anthropic API key (Claude Haiku is used for extraction, classification and reason lines).
+**Just view it.** The latest run's output is committed, so no pipeline run is needed:
 
 ```
 npm install
-npx playwright install chromium          # renders JS careers pages and Getro boards
+npm run serve                       # open http://localhost:4180
+```
+
+**Run the whole pipeline.** Needs Node 22+ and your own Anthropic API key (Claude Haiku does extraction, classification and reason lines):
+
+```
+npm install
+npx playwright install chromium     # browser for JS careers pages
 echo 'ANTHROPIC_API_KEY=sk-ant-…' > .dev.vars
-npm run db:migrate                       # local D1 (SQLite) schema
-npm run db:load                          # the 40 companies, verified domains, job sources, stage fit
-npm run pipeline                         # collect → enrich → compare → score → dashboard
-npm run serve                            # open http://localhost:4180
+npm run db:migrate                  # local database schema
+npm run db:load                     # the 40 companies
+npm run pipeline                    # collect → AI → compare → score → dashboard
+npm run serve                       # open http://localhost:4180
 ```
 
-`npm run pipeline` runs every step in order and stops at the first one that fails. Sources that fail inside a step keep their last data and are marked "not reached". A full run takes about 20–40 minutes, because sites are fetched politely (3 s between requests to one host). It makes a few hundred Haiku calls, well under $1.
+- `npm run pipeline` runs every step in order and stops at the first one that fails. Sources that fail inside a step keep their last data and are marked "not reached".
+- A full run takes about 20–40 minutes, because sites are fetched politely (3 s between requests to one site), and makes a few hundred Haiku calls, well under $1.
+- Locally, the dashboard's **Run now** button runs the pipeline on your machine; add `?dryrun` to the URL to try it without collecting anything.
+- Each step also runs on its own: `collect:ats`, `collect:pages`, `enrich`, `collect:footprint`, `compare`, `seed:dummy`, `score`, `build:dashboard`. `npm test` runs 38 rule tests; `npm run typecheck` checks types.
 
-You can also start a run from the dashboard's **Run now** button when it's served by `npm run serve`. It shows live step progress and the log, then reloads the dashboard. Add `?dryrun` to the URL to try the button without collecting anything.
-
-Each step can be run on its own: `collect:ats`, `collect:pages`, `enrich`, `collect:footprint`, `compare`, `seed:dummy`, `score`, `build:dashboard`. `npm test` runs 38 rule tests and `npm run typecheck` runs the type checks.
+</details>
 
 ## How it's hosted (Cloudflare + GitHub Actions)
 
-This is already set up and running. Nobody needs the code or a key to use it:
-- **The dashboard is online** at https://team-signals.team-signals.workers.dev, served by the Worker in `worker/`.
+Already set up and running; nobody needs the code or a key to use it:
+- **The dashboard** is served by the Cloudflare Worker in `worker/`.
 - **It runs every Monday early morning** (03:00 UTC: 05:00 Israel time in winter, 06:00 in summer), by GitHub Actions (`.github/workflows/weekly-run.yml`).
 - **Anyone can press Run now.** They type the team passcode (shared separately) once, and the dashboard shows "Step 3 of 8" live, then updates itself.
 - **The Anthropic key stays a GitHub secret.** Nobody using the dashboard can see it, and runs are billed to the key's owner (about $0.40 each).

@@ -6,6 +6,19 @@ Growth Signals tracks 40 Israeli and Israel-related tech companies, turns dated 
 
 **User:** a Greenfield partner or associate. **Decision:** which companies to reach out to this week, before their next round is public.
 
+**The idea:** teams move before rounds do. New sales roles abroad or a growing R&D team show up months before the funding news.
+
+**Worth a call = right stage + right moment.**
+- **Right stage:** *In Range*, meaning Series B or C, or Series A in deep tech. This is a gate, not points.
+- **Right moment:** a score of 60 or more, meaning the team is gearing up to sell (new markets, go-to-market hires abroad).
+- **Both together = Reach out now.** Today that's Daylight, Zenity, Unframe and Upwind.
+
+| Score | Reads as |
+|---|---|
+| 0–39 | Not yet |
+| 40–59 | Warm |
+| 60–100 | Reach out now (if In Range) |
+
 ## How to run it
 
 1. **Open the live dashboard:** **https://team-signals.team-signals.workers.dev**
@@ -14,6 +27,7 @@ Growth Signals tracks 40 Israeli and Israel-related tech companies, turns dated 
 
 What you'll see:
 - **Rising:** the top 10 by score, with *Reach out now* (60+ and In Range) and *Warm* (40–59) tiers.
+- **Reach out now companies stand out in every view:** in Rising, the list and the Stage Fit board their row is tinted, with a blue bar and a filled score circle (Warm scores are outlined); the map, What's new and Compare mark them with a "Now" tag.
 - **All companies:** list, Stage Fit board and map, with search, filters and sort.
 - **What's new:** dated changes from the last 7–90 days.
 - **Any company's page:** score over time, every signal with its points and source, the team breakdown, and an outreach panel (owner, status, comments).
@@ -88,7 +102,33 @@ Optional: put the dashboard behind **Cloudflare Access** (Zero Trust → Access 
 | Sitemaps, About and newsroom pages, news in English and Hebrew | Companies added with + Add company (saved in your browser, scored on the next run) |
 | Scores, bands and reason lines | Logos are fetched live from Google's favicon service |
 
+## Where team data lives
+
+| Source | What it gives | Access | Coverage |
+|---|---|---|---|
+| Job boards (Greenhouse, Lever, Ashby, Comeet) | Every open role, with ids and posting dates | Free public APIs | 65% (26 of 40) |
+| Getro investor boards, careers pages | Roles behind JavaScript | Opened in a browser, then read by AI | 25% |
+| Sitemaps, About and newsroom pages | New partner, country and industry pages, new offices, headcount | Public pages, robots.txt respected | 98% |
+| News, English and Hebrew | Rounds, plans, layoffs, validation | Bing News RSS (Google's robots.txt blocks bots) | 90% |
+
+| What's missing | How the gap is filled |
+|---|---|
+| Actual hires (only postings) | Roles closed after 3–16 weeks, while the company keeps posting, count as likely filled |
+| Posting dates on Comeet | First-seen dates |
+| Up-to-date headcount | Headcount from news, shown as context only |
+| History before the first run | Dummy history, always labelled |
+| LinkedIn | A "Check on LinkedIn" link for low-coverage companies |
+
 ## How it works
+
+Every week, from a list of companies to who to call:
+1. **Collect:** open roles, website changes and news for each company.
+2. **Read and tag (AI):** Claude Haiku pulls roles off careers pages, tags each by team, level and country, and turns news into dated events.
+3. **Compare:** against last week: what's new, closed or reposted.
+4. **Score:** growth signals become a 0–100 score, with plain arithmetic.
+5. **Act:** a ranked Top 10 with sources. 60+ and at the right stage = Reach out now.
+
+It runs on its own every Monday, or with one click (**Run now**). This run: 721 roles, about $0.40 of AI.
 
 ```
 companies.csv ──► collectors ──────────────► AI enrichment ─────────► compare ──► score ──► dashboard
@@ -99,6 +139,21 @@ companies.csv ──► collectors ──────────────►
 ```
 
 - **The score is plain arithmetic**, not AI: `max(0, min(100, Σ points × age × evidence))`. AI only extracts and classifies, and writes the reason line from the scored signals.
+
+| Points: what happened | | Age: how recent | | Evidence: how sure | |
+|---|---|---|---|---|---|
+| New market abroad | +25 | Last 30 days, or the job post is still open | 100% | Job post or news | 100% |
+| GTM team build-out | +20 | 1–3 months | 50% | Website hint only | 60% |
+| Senior GTM hire | +20 | Older | 0% | | |
+| Hiring speeding up | +15 | Plans and layoffs count for up to a year | | | |
+| Expansion plan, partner program, Series B window, mix shifting to GTM | +10 | | | | |
+| New industry pages, market validation, R&D build-up | +5 | | | | |
+| Layoffs | −25 | | | | |
+| Hiring paused | −15 | | | | |
+
+- **One hiring wave counts once.** A wave shows up several ways (GTM build-out, faster hiring, GTM mix, R&D build-up). The strongest sign counts in full and each related sign counts half, so it isn't counted twice.
+- **Company size is context, not points.** Open roles ÷ employees is shown on the company page, but headcount is missing or old for half the companies, so it's kept out of the score.
+- **Why trust it:** every point links to its source and date; each score has a one-line reason; missing and dummy data are always shown; sample companies scored by hand all landed within ±10 of the pipeline.
 - **Stage fit** (In Range, Approaching B, Too Early, Past Stage) comes from the round and its date, based on where Greenfield's own portfolio entered. It sets the reach-out tiers, not the score.
 - **Sources are used politely:** robots.txt respected (which is why news comes from Bing, not Google), a clear User-Agent, conditional requests, no LinkedIn scraping, and roles and counts only, never people's names.
 
@@ -108,18 +163,22 @@ The full spec (sources, signals, weights, rules and test cases) is in **[BUILD_B
 
 **[AI_LOG.md](AI_LOG.md)** records it step by step: what I decided, what Claude Code built, the mistakes the AI made and who caught them, and what the API calls cost (about $0.40 in total).
 
-## What's not in v1
+## What's not in v1 (cut on purpose)
 
-- No LinkedIn data (terms of use; job postings live elsewhere anyway).
-- No alerts or CRM sync: outreach notes stay in the browser.
-- No auto-discovery of new companies.
+- **LinkedIn:** terms of use (job postings live elsewhere anyway).
+- **CRM sync and alerts:** outreach notes stay in the browser.
+- **Auto-discovery** of new companies.
+- **Founder signals and paid data.**
+- **Parallel fetching:** not needed at 40 companies.
 
 ## With four more weeks
 
 - **Back-test:** let the weekly runs build real history, then check whether high scores came before real rounds, and tune the weights on that.
 - **AI copilot:** a chatbot to ask the data questions ("who's hiring sales in Germany?"), and a "prep me for the call" brief per company, built from its signals and sources.
 - **Outreach:** a LinkedIn message or email drafted from what each company is actually doing, moving to automatic reach-out once the drafts prove good.
-- **Discovery and CRM:** find new companies from funding news, and sync owners, statuses and notes to the CRM.
+- **Manage the list:** discover new companies from funding news, remove ones that no longer fit, and sync owners, statuses and notes to the CRM.
+
+v1 is a modular base: the Growth Signals database (companies, roles, signals and scores, kept week after week) sits in the middle, and sourcing and CRM sync plug into it without a rebuild.
 
 ## Known limits
 
@@ -135,6 +194,8 @@ The full spec (sources, signals, weights, rules and test cases) is in **[BUILD_B
 - **Past Stage companies are ranked**, by choice, so their activity stays visible, even though they're outside Greenfield's stage.
 - **Outreach notes are per browser.** Owners, statuses and comments aren't shared between teammates yet.
 - **Open site, protected runs.** Anyone with the dashboard link can view it; only people with the team passcode can start a run.
+
+**Scale:** fine at about 100 companies; 400+ needs parallel runs.
 
 **At 10× the companies**
 - Polite fetching (3 s between requests to one site) turns a 30-minute run into hours.

@@ -38,7 +38,7 @@ export interface Signal {
   points: number;         // base points
   age: number;            // 0..1
   evidence: number;       // 1 or 0.6
-  value: number;          // points × age × evidence, rounded to 0.1
+  value: number;          // points × recency × confidence, rounded to 0.1
   date: string | null;
   detail: string;         // what was seen (no people's names)
   source_url: string | null;

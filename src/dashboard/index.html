@@ -207,10 +207,23 @@ aside.panel { position: fixed; top: 0; right: 0; bottom: 0; width: min(520px, 10
 /* reach-out tiers: always a label too, never color alone */
 .pill { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; padding: 2px 8px; border-radius: 999px; }
 .pill.now { background: var(--accent); color: var(--on-accent); }
-.pill.warm { background: var(--accent-soft); color: var(--accent-2); box-shadow: inset 0 0 0 1px var(--edge-strong); }
+.pill.warm { background: transparent; color: var(--accent-2); box-shadow: inset 0 0 0 1.5px var(--accent); }
+.sc .pill { width: 42px; height: 42px; min-width: 0; padding: 0; border-radius: 50%; font-weight: 700; }
 .reachkey { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); margin-top: 10px; }
-.reachkey .pill { min-width: 0; font-size: 11px; font-weight: 700; padding: 1px 8px; }
-.row.now { box-shadow: inset 3px 0 0 var(--accent); }
+.reachkey > span { display: inline-flex; align-items: center; gap: 8px; }
+.reachkey .dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+.reachkey .dot.now { background: var(--accent); }
+.reachkey .dot.warm { box-shadow: inset 0 0 0 1.5px var(--accent); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.row.now { box-shadow: inset 3px 0 0 var(--accent); background: rgba(74, 144, 217, 0.09); }
+.row.now:hover { background: rgba(74, 144, 217, 0.15); }
+/* "Reach out now" tag: the same mark in every view (list, board, map, feed, compare, company page) */
+.nowtag { flex: none; display: inline-flex; align-items: center; gap: 4px; padding: 1px 7px; border-radius: 999px; background: var(--accent); color: var(--on-accent); font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.5; white-space: nowrap; }
+.nowtag::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.heat tr.now th.rowh { box-shadow: inset 3px 0 0 var(--accent); }
+.heat th.rowh .nowtag { margin-left: 6px; vertical-align: 1px; }
+.it .co .nowtag { margin-left: 2px; }
+.tray .tc .nowtag { margin-right: 6px; }
 .gf { font-size: 12px; color: var(--muted); }
 .gf a { color: var(--ink); font-weight: 600; }
 .roles { margin-top: 8px; border: 1px solid var(--line); border-radius: 10px; max-height: 300px; overflow-y: auto; }
@@ -244,12 +257,12 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
 .fcol h3 .num { color: var(--ink-strong); }
 .fcard { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .fcard:hover { border-color: var(--edge-strong); background: var(--surface-2); transform: translateY(-1px); }
-.fcard.now { box-shadow: inset 3px 0 0 var(--accent); }
+.fcard.now { box-shadow: inset 3px 0 0 var(--accent); background: rgba(74, 144, 217, 0.09); }
 .fcard .ft { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .fcard .ft b { color: var(--ink-strong); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .fcard .ft .dl { font-size: 12px; font-weight: 600; }
 .fcard .ft .sc { font-weight: 800; color: var(--ink-strong); }
-.fcard .ft .pill { min-width: 34px; font-size: 13px; }
+.fcard .ft .pill { width: 34px; height: 34px; font-size: 13px; }
 .fcard .fh { font-size: 13px; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .fcard .fm { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
 .fcard .fm > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -517,8 +530,10 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     [...d.companies].sort((a, b) => b.score - a.score || order.get(a.slug) - order.get(b.slug)).forEach((c, i) => { c.rank = i + 1; }); };
   const mockChanges = (d) => { for (const c of d.companies) { const s = c.score_series || []; if (c.change === null && s.length > 1 && s[s.length - 2].dummy) { c.change = s[s.length - 1].score - s[s.length - 2].score; c.change_dummy = true; } } };
   const status = (c) => (c.fit && FITS.includes(c.fit) ? c.fit : "");
+  const NOW = (c) => c?.reach === "now" ? `<span class="nowtag" data-tip="Reach out now: score 60+ and In Range" aria-label="Reach out now">Now</span>` : "";
   const scoreCell = (c) => c.reach ? `<span class="pill ${c.reach}" data-tip="${REACH[c.reach]}">${c.score}</span>` : String(c.score);
-  const reachKey = `<div class="reachkey"><span><span class="pill now">${REACH.now}</span> score 60+ and In Range</span><span><span class="pill warm">${REACH.warm}</span> score 40–59</span></div>`;
+  const reachKey = `<div class="reachkey"><span><i class="dot now" aria-hidden="true"></i>Reach out now: score 60+ and In Range</span><span><i class="dot warm" aria-hidden="true"></i>Warm: score 40–59</span></div>`;
+  const NOWSR = (c) => c?.reach === "now" ? `<span class="sr">, reach out now</span>` : "";
 
   function pass(c, f) {
     if (f.q && !`${c.name} ${c.sector || ""}`.toLowerCase().includes(f.q.toLowerCase())) return false;
@@ -605,7 +620,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     const on = S.cmp.includes(c.slug);
     return `<div class="row${c.reach === "now" ? " now" : ""}" role="button" tabindex="0" data-open="${esc(c.slug)}">
       <span class="rk num"><button class="cmpb" data-cmp="${esc(c.slug)}" aria-pressed="${on}" aria-label="Compare ${esc(c.name)}" data-tip="${on ? "Remove from compare" : "Add to compare (up to 3)"}">${on ? "✓" : ""}</button>${rank ?? "–"}</span>
-      <span class="nm">${logo(c)}<span style="overflow:hidden;text-overflow:ellipsis">${esc(c.name)}</span>${stDot(c.slug)}${c.decline_flag ? DECL : ""}</span>
+      <span class="nm">${logo(c)}<span style="overflow:hidden;text-overflow:ellipsis">${esc(c.name)}</span>${NOWSR(c)}${stDot(c.slug)}${c.decline_flag ? DECL : ""}</span>
       ${ownerCell(c.slug)}
       <span class="ty">${esc(TYPE[c.category] || c.category || "")}</span>
       <span class="rd num">${esc(c.round_label || "")}</span>
@@ -649,7 +664,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     const card = (c) => { const m = member(crm(c.slug).owner);
       return `<div class="fcard${c.reach === "now" ? " now" : ""}" role="button" tabindex="0" data-open="${esc(c.slug)}">
         <div class="ft">${logo(c)}<b>${esc(c.name)}</b>${stDot(c.slug)}<span class="grow"></span><span class="num dl">${delta(c)}</span><span class="sc num">${scoreCell(c)}</span></div>
-        <div class="fh">${esc(c.headline)}</div>
+        <div class="fh">${NOWSR(c)}${esc(c.headline)}</div>
         <div class="fm"><span>${esc([TYPE[c.category] || c.category, c.round_label].filter(Boolean).join(" · "))}</span><span class="grow"></span>${m ? avatar(m) : `<span class="meta">Unassigned</span>`}</div></div>`; };
     const cols = FITS.map((k) => { const cs = list.filter((c) => c.fit === k).sort(order);
       return `<section class="fcol"><h3><span${GLOSSARY[k] ? ` class="has-tip" tabindex="0" data-tip="${esc(GLOSSARY[k])}"` : ""}>${esc(k)}</span><span class="num">${cs.length}</span></h3>${cs.length ? cs.map(card).join("") : `<p class="meta" style="margin:4px 2px">No companies right now.</p>`}</section>`; }).join("");
@@ -664,7 +679,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     const max = Math.max(1, ...list.flatMap((c) => cols.map((k) => (c.jobs_by_country || {})[k] || 0)));
     const step = (v) => (v <= 0 ? 0 : Math.min(5, 1 + Math.floor((Math.log(v) / Math.log(max + 1)) * 5)));
     return `<div class="heatwrap"><table class="heat"><thead><tr><th></th>${cols.map((k) => `<th class="num">${k}</th>`).join("")}</tr></thead><tbody>
-      ${list.map((c) => `<tr><th class="rowh" data-open="${esc(c.slug)}">${esc(c.name)}</th>${cols.map((k) => { const v = (c.jobs_by_country || {})[k] || 0, s = step(v);
+      ${list.map((c) => `<tr${c.reach === "now" ? ' class="now"' : ""}><th class="rowh" data-open="${esc(c.slug)}">${esc(c.name)}${NOW(c)}</th>${cols.map((k) => { const v = (c.jobs_by_country || {})[k] || 0, s = step(v);
         return v ? `<td class="num" style="background:var(--q${s});color:${s >= 4 ? "var(--q-ink-dark)" : "var(--ink-strong)"}" data-tip="${esc(c.name)} · ${k}: ${v} open roles">${v}</td>` : `<td class="z">0</td>`; }).join("")}</tr>`).join("")}
       </tbody></table><div class="heatlegend">Open roles by country: fewer <i style="background:var(--q1)"></i><i style="background:var(--q2)"></i><i style="background:var(--q3)"></i><i style="background:var(--q4)"></i><i style="background:var(--q5)"></i> more</div></div>`;
   }
@@ -705,7 +720,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     for (const x of g.slice(0, 250)) {
       if (f.sort === "date" && x.date !== last) { rows += `<div class="day num">${fmtY(x.date)}</div>`; last = x.date; }
       const c = byName.get(x.company), key = `${x.company}|${x.kind}|${x.date}`, open = S.expanded.has(key), multi = x.kind === "role" && x.n > 1;
-      rows += `<div class="it"><button class="co" data-open="${esc(c?.slug || "")}">${logo(c || { name: x.company })}<span>${esc(x.company)}</span></button>
+      rows += `<div class="it"><button class="co" data-open="${esc(c?.slug || "")}">${logo(c || { name: x.company })}<span>${esc(x.company)}</span>${NOW(c)}</button>
         <span class="wh${x.kind === "layoff" ? " risk" : ""}">${multi ? `<button class="linkbtn" data-expand="${esc(key)}" aria-expanded="${open}" style="color:inherit;font-weight:400;text-align:left">${open ? "▾" : "▸"} ${line(x)}</button>` : `<span data-tip="${esc(x.all[0].detail)}">${line(x)}</span>`}${f.sort !== "date" ? ` <span class="meta">${fmt(x.date)}</span>` : ""}</span>
         ${x.url && !multi ? `<a href="${esc(x.url)}" target="_blank" rel="noopener" aria-label="Source">↗</a>` : "<span></span>"}</div>`
         + (multi && open ? x.all.map((it) => `<div class="it" style="padding-block:6px"><span></span><span class="wh meta">${fmt(it.date)} · ${esc(it.detail)}${it.country ? ` · ${esc(it.country)}` : ""}</span>${it.url ? `<a href="${esc(it.url)}" target="_blank" rel="noopener" aria-label="Source">↗</a>` : "<span></span>"}</div>`).join("") : "");
@@ -821,7 +836,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
   function tray() {
     if (!S.cmp.length || S.compareOpen) return "";
     const cs = S.cmp.map((k) => D.companies.find((c) => c.slug === k)).filter(Boolean);
-    return `<div class="tray" role="region" aria-label="Compare"><span class="tl">Compare</span><span class="tcs">${cs.map((c) => `<button class="tc" data-cmp="${esc(c.slug)}" aria-label="Remove ${esc(c.name)}">${esc(c.name)} ✕</button>`).join("")}</span>
+    return `<div class="tray" role="region" aria-label="Compare"><span class="tl">Compare</span><span class="tcs">${cs.map((c) => `<button class="tc" data-cmp="${esc(c.slug)}" aria-label="Remove ${esc(c.name)}">${NOW(c)}${esc(c.name)} ✕</button>`).join("")}</span>
       <button class="go" data-compare ${cs.length < 2 ? "disabled" : ""}>${cs.length < 2 ? "Pick one more" : `Compare ${cs.length} →`}</button></div>`;
   }
 

@@ -218,10 +218,4 @@ Expected ±10. Result from the 12 Nov run.
 - [x] Each company shows score, band, stage fit, coverage, reason line with dated links, real / dummy labels
 - [x] An unreachable source keeps the last data, marked "not reached"
 - [x] Weekly schedule and hosting (GitHub Actions + Cloudflare Worker), live at https://team-signals.team-signals.workers.dev
-- [ ] README: how to run, what's real vs dummy, how AI was used (`AI_LOG.md` is kept)
-
-## 16. Open questions
-
-- Ranking Past Stage companies: useful to see, but they can't be reached out to. Keep, or show them only as a filter?
-- Headcount comes from news for about half the companies and is often months old: is it worth a paid source later?
-- Xtend is NYSE-listed; §8 has no rule for public companies.
+- [x] README: how to run, what's real vs dummy, how AI was used (`AI_LOG.md` is kept)

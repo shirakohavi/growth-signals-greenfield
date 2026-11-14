@@ -87,7 +87,7 @@ select option { background: #061633; color: #ffffff; }
 
 /* list (Rising + table) */
 .list { background: var(--surface); border: 1px solid var(--edge); border-radius: var(--r-md); overflow: hidden; }
-.row { display: grid; grid-template-columns: 52px minmax(150px, 1.1fr) 56px 84px 112px 112px minmax(0, 1.3fr) 64px 48px 100px; gap: 12px; align-items: center; min-height: 58px; padding: 8px 20px; border-bottom: 1px solid var(--line); cursor: pointer; text-align: left; width: 100%; background: none; border-left: 0; border-right: 0; border-top: 0; }
+.row { display: grid; grid-template-columns: 52px minmax(150px, 1.1fr) 56px 92px 140px 120px minmax(0, 1.3fr) 64px 48px 100px; gap: 12px; align-items: center; min-height: 58px; padding: 8px 20px; border-bottom: 1px solid var(--line); cursor: pointer; text-align: left; width: 100%; background: none; border-left: 0; border-right: 0; border-top: 0; }
 .row:last-child { border-bottom: 0; }
 .row:hover { background: var(--surface-2); }
 .row:active { background: var(--accent-soft); }
@@ -97,10 +97,23 @@ select option { background: #061633; color: #ffffff; }
 .row .ow span:last-child { overflow: hidden; text-overflow: ellipsis; }
 .row .ow .none { color: var(--faint); }
 .row .ty, .row .st, .row .rd { font-size: 13px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* chips: type (category hue), round (neutral), stage fit (green = In Range, amber = Approaching B, grey = outside) */
+.chip { display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 500; line-height: 1.4; vertical-align: middle; }
+.chip.t-cyber { background: rgba(127, 119, 221, 0.18); color: #b3adf0; }
+.chip.t-ai-infra { background: rgba(93, 202, 165, 0.16); color: #8fe0c2; }
+.chip.t-deep-tech { background: rgba(237, 147, 177, 0.16); color: #f4b6cb; }
+.chip.t-vertical-ai { background: rgba(250, 199, 117, 0.15); color: #f5d299; }
+.chip.t-fintech { background: rgba(133, 183, 235, 0.16); color: #a9cdf3; }
+.chip.t-other { background: rgba(150, 150, 168, 0.14); color: #b4b4c4; }
+.chip.rnd { background: rgba(147, 197, 253, 0.06); color: var(--ink); box-shadow: inset 0 0 0 1px var(--edge); }
+.chip.f-in-range { background: rgba(79, 197, 143, 0.15); color: #7ee0b0; }
+.chip.f-approaching-b { background: rgba(239, 159, 39, 0.15); color: #f5c26b; }
+.chip.f-too-early { background: rgba(150, 150, 168, 0.16); color: #b4b4c4; }
+.chip.f-past-stage { background: rgba(150, 150, 168, 0.08); color: #8a8a9c; }
 .row .hl { color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .row .sc { font-weight: 600; font-size: 18px; color: var(--ink-strong); text-align: right; letter-spacing: -0.02em; }
 .row .dl { text-align: right; font-size: 12px; font-weight: 600; }
-.lhead { display: grid; grid-template-columns: 52px minmax(150px, 1.1fr) 56px 84px 112px 112px minmax(0, 1.3fr) 64px 48px 100px; gap: 12px; padding: 10px 20px; border-bottom: 1px solid var(--line); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.lhead { display: grid; grid-template-columns: 52px minmax(150px, 1.1fr) 56px 92px 140px 120px minmax(0, 1.3fr) 64px 48px 100px; gap: 12px; padding: 10px 20px; border-bottom: 1px solid var(--line); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
 .lhead .r { text-align: right; }
 .q { background: none; border: 1px solid var(--line); color: var(--faint); border-radius: 50%; width: 15px; height: 15px; font-size: 10px; line-height: 13px; padding: 0; margin-left: 4px; cursor: pointer; text-transform: none; vertical-align: 1px; }
 .q:hover { color: var(--ink-strong); border-color: var(--line-strong); }
@@ -337,7 +350,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
 
 /* Medium widths: drop Round and Team (both are in the company popup) so the headline keeps room. */
 @media (max-width: 1140px) and (min-width: 861px) {
-  .row, .lhead { grid-template-columns: 52px minmax(150px, 1.1fr) 56px 84px 112px minmax(0, 1.3fr) 64px 48px; }
+  .row, .lhead { grid-template-columns: 52px minmax(150px, 1.1fr) 56px 92px 120px minmax(0, 1.3fr) 64px 48px; }
   .row .rd, .row .mx, .lhead .hide-md { display: none; }
 }
 @media (max-width: 860px) {
@@ -422,7 +435,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     change: "Score change since the last run. \"new\" = first run, nothing to compare yet.",
     reach: "Reach out now = score 60+ and In Range. Warm = score 40–59, In Range or Approaching B.",
     type: "Greenfield's five investment categories: Cyber, AI Infra, Deep Tech, Vertical AI, Fintech. Other = outside them.",
-    round: "Latest funding round and the month it closed, from the company list.",
+    round: "Latest funding round and the month it closed. Researched by hand for each of the 40 tracked companies (data/companies.csv) and checked against the news.",
     status: "Stage fit from the latest round and its date. Decides who is ranked, not the score.",
     headline: "The company's strongest signal right now. Open the company → Why for all of them.",
     team: "Open roles by function: R&D, Sales, CS & Partners, Marketing, G&A / Other.",
@@ -623,9 +636,9 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
       <span class="rk num"><button class="cmpb" data-cmp="${esc(c.slug)}" aria-pressed="${on}" aria-label="Compare ${esc(c.name)}" data-tip="${on ? "Remove from compare" : "Add to compare (up to 3)"}">${on ? "✓" : ""}</button>${rank ?? "–"}</span>
       <span class="nm">${logo(c)}<span style="overflow:hidden;text-overflow:ellipsis">${esc(c.name)}</span>${NOWSR(c)}${stDot(c.slug)}${c.decline_flag ? DECL : ""}</span>
       ${ownerCell(c.slug)}
-      <span class="ty">${esc(TYPE[c.category] || c.category || "")}</span>
-      <span class="rd num">${esc(c.round_label || "")}</span>
-      <span class="st"${GLOSSARY[c.fit] ? ` data-tip="${esc(c.fit + ": " + GLOSSARY[c.fit])}"` : ""}>${esc(status(c))}</span>
+      <span class="ty">${TYPE[c.category] || c.category ? `<span class="chip t-${(TYPE[c.category] || "Other").toLowerCase().replace(/\s+/g, "-")}">${esc(TYPE[c.category] || c.category)}</span>` : ""}</span>
+      <span class="rd num">${c.round_label ? `<span class="chip rnd">${esc(c.round_label)}</span>` : ""}</span>
+      <span class="st"${GLOSSARY[c.fit] ? ` data-tip="${esc(c.fit + ": " + GLOSSARY[c.fit])}"` : ""}>${status(c) ? `<span class="chip f-${status(c).toLowerCase().replace(/\s+/g, "-")}">${esc(status(c))}</span>` : ""}</span>
       <span class="hl">${esc(c.headline)}</span>
       <span class="sc num">${scoreCell(c)}</span>
       <span class="dl num">${delta(c)}</span>

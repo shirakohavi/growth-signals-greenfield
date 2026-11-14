@@ -231,7 +231,8 @@ aside.panel { position: fixed; top: 0; right: 0; bottom: 0; width: min(520px, 10
 /* "Reach out now" tag: the same mark in every view (list, board, map, feed, compare, company page) */
 .nowtag { flex: none; display: inline-flex; align-items: center; gap: 4px; padding: 1px 7px; border-radius: 999px; background: var(--accent); color: var(--on-accent); font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.5; white-space: nowrap; }
 .nowtag::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
-.heat tr.now th.rowh { box-shadow: inset 3px 0 0 var(--accent); }
+.heat tr.now th.rowh { box-shadow: inset 3px 0 0 var(--accent); background: rgba(74, 144, 217, 0.09); }
+.nowdot { flex: none; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); margin-left: 8px; vertical-align: 1px; }
 .heat th.rowh .nowtag { margin-left: 6px; vertical-align: 1px; }
 .it .co .nowtag { margin-left: 2px; }
 .tray .tc .nowtag { margin-right: 6px; }
@@ -541,7 +542,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     [...d.companies].sort((a, b) => b.score - a.score || order.get(a.slug) - order.get(b.slug)).forEach((c, i) => { c.rank = i + 1; }); };
   const mockChanges = (d) => { for (const c of d.companies) { const s = c.score_series || []; if (c.change === null && s.length > 1 && s[s.length - 2].dummy) { c.change = s[s.length - 1].score - s[s.length - 2].score; c.change_dummy = true; } } };
   const status = (c) => (c.fit && FITS.includes(c.fit) ? c.fit : "");
-  const NOW = (c) => c?.reach === "now" ? `<span class="nowtag" data-tip="Reach out now: score 60+ and In Range" aria-label="Reach out now">Now</span>` : "";
+  const NOW = (c) => c?.reach === "now" ? `<i class="nowdot" data-tip="Reach out now: score 60+ and In Range" aria-hidden="true"></i><span class="sr">, reach out now</span>` : "";
   const scoreCell = (c) => c.reach ? `<span class="pill ${c.reach}" data-tip="${REACH[c.reach]}">${c.score}</span>` : String(c.score);
   const reachKey = `<div class="reachkey"><span><i class="dot now" aria-hidden="true"></i>Reach out now: score 60+ and In Range</span><span><i class="dot warm" aria-hidden="true"></i>Warm: score 40–59</span></div>`;
   const NOWSR = (c) => c?.reach === "now" ? `<span class="sr">, reach out now</span>` : "";

@@ -73,7 +73,7 @@ Three tabs across the top: **Rising**, **All companies** and **What's new**. Eve
 - **Stage Fit board:** one column per stage (In Range, Approaching B, Too Early, Past Stage), so you can see who is at the right stage at a glance.
 - **Map:** a heatmap of open roles by country, to spot who is building teams abroad.
 
-**What's new** — dated changes from the last 7, 14, 30 or 90 days, grouped by day. **Highlights** shows funding, plans, new offices and risks first; **Roles**, **News**, **Site** and **Risks** narrow it down. Many new roles at one company collapse into one line you can expand. Every item links to its source.
+**What's new** — dated changes from the last 7, 14, 30 or 90 days, grouped by day. **Highlights** shows new markets (a country where a company posts its first sales role), funding, plans, new offices and risks first; **Roles**, **News**, **Site** and **Risks** narrow it down. Many new roles at one company collapse into one line you can expand. Every item links to its source.
 
 **Company page** (click any company)
 - The score with its one-line reason, links (website, careers, jobs, and "Check on LinkedIn" when coverage is low) and **score over time**.

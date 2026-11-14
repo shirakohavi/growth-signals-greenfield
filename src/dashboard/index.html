@@ -425,7 +425,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     { label: "Marketing", fns: ["Marketing"], color: "var(--s-mkt)" },
     { label: "G&A / Other", fns: ["G&A", "Other", "unknown"], color: "var(--s-other)" },
   ];
-  const KINDS = { role: "Roles", round: "News", plan: "News", office: "News", validation: "News", page: "Site", layoff: "Risks" };
+  const KINDS = { role: "Roles", market: "Roles", round: "News", plan: "News", office: "News", validation: "News", page: "Site", layoff: "Risks" };
   const DECL = '<span class="decl" data-tip="Decline: layoffs or hiring paused in the last 12 months"><svg viewBox="0 0 10 10" aria-label="Decline"><path d="M5 1v7M2 5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span>';
 
   // One source of truth for what every label means: hover tooltips and the Guide both read from here.
@@ -701,8 +701,8 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
   function week() {
     const f = S.week, byName = new Map(D.companies.map((c) => [c.name, c]));
     let items = D.feed.filter((it) => daysAgo(it.date, D.run_date) <= f.days);
-    // Highlights = news and risks only (funding, plans, offices, layoffs): the changes worth a look first.
-    if (f.kind === "highlights") items = items.filter((it) => ["News", "Risks"].includes(KINDS[it.kind]));
+    // Highlights = new markets, news and risks (funding, plans, offices, layoffs): the changes worth a look first.
+    if (f.kind === "highlights") items = items.filter((it) => it.kind === "market" || ["News", "Risks"].includes(KINDS[it.kind]));
     else if (f.kind !== "all") items = items.filter((it) => KINDS[it.kind] === f.kind);
     if (f.type !== "all") items = items.filter((it) => byName.get(it.company)?.category === f.type);
     if (f.country !== "all") items = items.filter((it) => it.country === f.country);
@@ -743,7 +743,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     return `<section class="hero"><h1>What's new</h1><p class="muted num">${g.length} updates · last ${f.days} days</p></section>
       <div class="controls">
         <input type="search" id="q" placeholder="Search company or update" value="${esc(f.q)}" aria-label="Search updates">
-        <div class="seg" role="group" aria-label="Kind">${KIND_SEG.map(([k, l]) => `<button data-kind="${k}" aria-pressed="${f.kind === k}"${k === "highlights" ? ` data-tip="Funding, plans, new offices and risks"` : ""}>${l}</button>`).join("")}</div>
+        <div class="seg" role="group" aria-label="Kind">${KIND_SEG.map(([k, l]) => `<button data-kind="${k}" aria-pressed="${f.kind === k}"${k === "highlights" ? ` data-tip="New markets, funding, plans, new offices and risks"` : ""}>${l}</button>`).join("")}</div>
         <button class="btn" data-toggle-filters aria-expanded="${S.filtersOpen}">Filters${n ? ` · ${n}` : ""}</button>
         <span class="grow"></span>
         ${sel("sort", "", [["date", "Sort: Newest"], ["company", "Sort: Company"]], f.sort).replace(/<label>|<\/label>/g, "")}

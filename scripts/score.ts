@@ -120,6 +120,13 @@ for (const c of companies) {
     if (!date || j.is_repost || ageDays(date) > 90) continue;
     changes.push({ date, company: c.name, kind: "role", title: `New role${j.country ? ` in ${j.country}` : ""}`, detail: `${j.title}${j.function ? ` · ${j.function}` : ""}`, url: j.url, evidence: "direct", dummy: false, country: j.country });
   }
+  // A genuinely new market (a country whose first role appeared after the company's first run) is a highlight.
+  // Only these score as direct evidence; first-run markets are indirect.
+  for (const s of r.signals) {
+    if (!s.key.startsWith("new_market:") || s.evidence < 1 || !s.date) continue;
+    const iso = s.key.slice(11);
+    changes.push({ date: s.date, company: c.name, kind: "market", title: `New market in ${iso}`, detail: s.detail.replace(/^\d+ open GTM role\(s\) in [A-Z]{2}, e\.g\. /, "First sales role there: "), url: s.source_url, evidence: "direct", dummy: s.dummy, country: iso });
+  }
   const KIND: Record<string, string> = { new_page: "page", round: "round", office: "office", plan: "plan", validation: "validation", layoff: "layoff" };
   for (const e of eventsBy.get(c.id) ?? []) {
     // Drawer timeline keeps a year of dated events (the This week feed below keeps 90 days).
@@ -133,7 +140,7 @@ for (const c of companies) {
   // Several outlets reporting one story become one line: same kind of news within 10 days -> "· N reports".
   const merged: (Change & { reports?: number })[] = [];
   for (const ch of changes) {
-    const prev = merged.find((m) => ch.kind !== "role" && ch.kind !== "page" && m.kind === ch.kind && Math.abs(Date.parse(m.date) - Date.parse(ch.date)) <= 10 * 86400000);
+    const prev = merged.find((m) => ch.kind !== "role" && ch.kind !== "page" && ch.kind !== "market" && m.kind === ch.kind && Math.abs(Date.parse(m.date) - Date.parse(ch.date)) <= 10 * 86400000);
     if (prev) { prev.reports = (prev.reports ?? 1) + 1; continue; }
     merged.push({ ...ch });
   }

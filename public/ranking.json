@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T22:02:54.677Z",
+  "generated_at": "2026-11-14T22:06:47.170Z",
   "run_date": "2026-11-14",
   "note": "Signals marked dummy come from seeded history (is_dummy=1), not real past runs.",
   "rising_mode": "change",
@@ -30,6 +30,17 @@
       "evidence": "direct",
       "dummy": false,
       "country": "IL"
+    },
+    {
+      "date": "2026-11-14",
+      "company": "Upwind",
+      "kind": "market",
+      "title": "New market in JP",
+      "detail": "First sales role there: \"Enterprise Account Executive- Japan\"",
+      "url": "https://www.upwind.io/careers/co/japan/B3.570/enterprise-account-executive-japan/all",
+      "evidence": "direct",
+      "dummy": false,
+      "country": "JP"
     },
     {
       "date": "2026-11-14",
@@ -2783,6 +2794,17 @@
           "evidence": "direct",
           "dummy": false,
           "country": "IL"
+        },
+        {
+          "date": "2026-11-14",
+          "company": "Upwind",
+          "kind": "market",
+          "title": "New market in JP",
+          "detail": "First sales role there: \"Enterprise Account Executive- Japan\"",
+          "url": "https://www.upwind.io/careers/co/japan/B3.570/enterprise-account-executive-japan/all",
+          "evidence": "direct",
+          "dummy": false,
+          "country": "JP"
         },
         {
           "date": "2026-11-03",

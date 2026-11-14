@@ -139,17 +139,43 @@ export function scoreCompany(c: CompanyIn, jobs: JobIn[], events: EventIn[], sna
   }
   // Without real history we can't tell a NEW country from one the company has sold in for years, so on a
   // company's baseline run only the strongest market counts (indirect); other countries are shown as presence.
-  // From the second real run, a country is new when it first appears after the first run (direct, each counted).
-  const hasRealHistory = snaps.some((s) => !s.is_dummy && s.run_date < today);
+  // From the second real run, a country is new only when it first appears AFTER the company's first real run:
+  // every role there (open or closed) was first seen later, or the office news is dated later. Countries that
+  // were already there at the first run are presence, not new markets.
+  const realRuns = snaps.filter((s) => !s.is_dummy).map((s) => s.run_date).sort();
+  const firstRun = realRuns[0] ?? today;
+  const hasRealHistory = realRuns.some((d) => d < today);
+  const firstSeenIn = new Map<string, string>();
+  for (const j of [...gtmJobs, ...closed.filter((j) => GTM.has(j.function ?? ""))]) {
+    if (!j.country) continue;
+    const fs = firstSeenIn.get(j.country);
+    if (!fs || j.first_seen < fs) firstSeenIn.set(j.country, j.first_seen);
+  }
+  const isNew = (iso: string, m: { date: string | null }) => {
+    const fs = firstSeenIn.get(iso);
+    if (fs) return fs > firstRun;
+    return !!m.date && m.date > firstRun; // office news with no roles: new only if dated after the first run
+  };
   const entries = [...markets].map(([iso, m]) => {
-    const age = m.date ? agePositive(ageDays(m.date, today)) || 1 : 1; // presence still visible today
-    const evidence = hasRealHistory ? EVIDENCE[m.evidence] : EVIDENCE.indirect;
-    return sig(`new_market:${iso}`, `New market entry (${iso})`, 25, age, evidence, m.date, m.detail, m.url, m.dummy);
-  }).sort((a, b) => b.value - a.value || (b.date ?? "").localeCompare(a.date ?? "") || gtmJobs.filter((j) => j.country === b.key.slice(11)).length - gtmJobs.filter((j) => j.country === a.key.slice(11)).length);
-  if (hasRealHistory) out.push(...entries);
-  else if (entries.length) {
-    out.push(entries[0]);
-    for (const e of entries.slice(1)) context.push({ type: "presence", value: `${e.name.replace("New market entry", "Presence")}: ${e.detail}`, source_url: e.source_url });
+    const fresh = hasRealHistory && isNew(iso, m);
+    const date = fresh ? (m.date ?? firstSeenIn.get(iso) ?? null) : m.date;
+    const age = date ? agePositive(ageDays(date, today)) || 1 : 1; // presence still visible today
+    const evidence = fresh ? EVIDENCE[m.evidence === "indirect" && firstSeenIn.has(iso) ? "direct" : m.evidence] : EVIDENCE.indirect;
+    return { fresh, s: sig(`new_market:${iso}`, `New market entry (${iso})`, 25, age, evidence, date, m.detail, m.url, m.dummy) };
+  }).sort((a, b) => b.s.value - a.s.value || (b.s.date ?? "").localeCompare(a.s.date ?? "") || gtmJobs.filter((j) => j.country === b.s.key.slice(11)).length - gtmJobs.filter((j) => j.country === a.s.key.slice(11)).length);
+  const presence = (e: Signal) => context.push({ type: "presence", value: `${e.name.replace("New market entry", "Presence")}: ${e.detail}`, source_url: e.source_url });
+  if (hasRealHistory) {
+    // Countries that appeared after the first run: each counts in full. Countries already there at the first
+    // run keep the first-run treatment (strongest only, indirect) while the first run is under 90 days old,
+    // because a short history still can't tell when they started.
+    const old = entries.filter((e) => !e.fresh);
+    for (const e of entries.filter((e) => e.fresh)) out.push(e.s);
+    const keepBaseline = ageDays(firstRun, today) <= 90 && old.length;
+    if (keepBaseline) out.push(old[0].s);
+    for (const e of old.slice(keepBaseline ? 1 : 0)) presence(e.s);
+  } else if (entries.length) {
+    out.push(entries[0].s);
+    for (const e of entries.slice(1)) presence(e.s);
   }
 
   // ---- GTM team build-out (+20): 4+ GTM roles in one country (open now; posted in the last 90 days when dated).

@@ -240,3 +240,10 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 - **Claude Code** removed it from the seven input files in `data/`, regenerated the job-source report and the seed, and reloaded both databases (local and Cloudflare D1); its jobs and events were deleted with it. It had 0 open roles and 20 footprint events, so the totals are now 40 companies, 721 open roles, 516 events, and 26 companies on job boards.
 - Re-scored with **0 AI calls**: no score or reason line changed. The "portfolio companies are left out" rule stays in the code as a safeguard. Earlier entries in this log keep the counts as they were at the time (41).
 
+
+## First cloud run and a scoring bug I caught (14 Nov 2026)
+
+- **What happened:** I pressed Run now for the first full run in the cloud (17 minutes, all 8 steps passed). The new ranking looked suspiciously high: Daylight, Upwind, Classiq and Wonderful all at 100, Classiq up 82.
+- **The cause (AI's mistake):** the "New market entry" rule was meant to count a country only when it first appears after the first run. The code skipped that check, so from the second run on it counted every foreign country with sales roles as a new market, +15 or +25 each (Classiq got 10 of them).
+- **The fix:** a country is new only when its first role (open or closed) was first seen after the company's first run. Countries already there keep the first-run treatment (strongest one only, at 60%) for 90 days, because two days of history still can't say when they started. 6 new tests cover it (44 in all).
+- **Result after re-scoring:** most scores are back to where they were. Upwind is the one real mover (+25): its first Japan sales role appeared in this run. 27 AI calls for the changed reason lines.

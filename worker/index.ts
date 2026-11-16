@@ -59,6 +59,12 @@ async function runStatus(env: RunEnv) {
     const pick = failed ?? current ?? steps[steps.length - 1];
     if (pick?.m) { out.step = Number(pick.m[1]); out.label = pick.m[2]; out.key = `step${pick.m[1]}`; }
     if (failed?.m) out.failedStep = failed.m[2];
+    // The 8 numbered steps are the pipeline; after them, "Save results to the repo" is bookkeeping (the
+    // dashboard is already published). If all 8 succeeded, the run counts as done even if saving failed.
+    if (!running && steps.length && steps.every((s) => s.conclusion === "success")) {
+      out.ok = true; out.failedStep = null;
+      if (run.conclusion !== "success") (out as Record<string, unknown>).note = "Dashboard updated; saving results to the repo failed (see GitHub).";
+    }
     if (running && !current) out.label = "Setting up";
     out.log = steps.map((s) => `${s.conclusion === "success" ? "✓" : s.conclusion === "failure" ? "✗" : s.status === "in_progress" ? "…" : "·"} ${s.m![1]} · ${s.m![2]}`);
   }

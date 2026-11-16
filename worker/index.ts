@@ -35,7 +35,7 @@ const gh = (env: RunEnv, path: string, init: RequestInit = {}) =>
     },
   });
 
-type GhRun = { id: number; status: string; conclusion: string | null; created_at: string; updated_at: string; html_url: string; event: string };
+type GhRun = { id: number; status: string; conclusion: string | null; created_at: string; updated_at: string; html_url: string; event: string; display_title?: string };
 type GhStep = { name: string; status: string; conclusion: string | null };
 
 /** Latest run of the workflow, shaped like the local server's state (scripts/serve.ts) so the dashboard reads both. */
@@ -47,7 +47,7 @@ async function runStatus(env: RunEnv) {
   const run = ((await runs.json()) as { workflow_runs: GhRun[] }).workflow_runs[0];
   if (!run) return { ...base, configured: true };
   const running = run.status !== "completed";
-  const out = { ...base, configured: true, running, startedAt: run.created_at, finishedAt: running ? null : run.updated_at, ok: running ? null : run.conclusion === "success", url: run.html_url, trigger: run.event === "schedule" ? "weekly" : "manual" };
+  const out = { ...base, configured: true, running, startedAt: run.created_at, finishedAt: running ? null : run.updated_at, ok: running ? null : run.conclusion === "success", url: run.html_url, trigger: run.event === "schedule" || /scheduled/i.test(run.display_title ?? "") ? "weekly" : "manual" };
   // Step progress from the job's steps named "N · label" in the workflow.
   const jobs = await gh(env, `/actions/runs/${run.id}/jobs`);
   if (jobs.ok) {
@@ -99,7 +99,27 @@ async function handleRun(request: Request, env: RunEnv, ctx: ExecutionContext): 
   return json({ ...status, running: true, step: 0, label: "Starting…", startedAt: new Date().toISOString(), finishedAt: null, ok: null }, 202);
 }
 
+/** The Monday timer (Cloudflare Cron Trigger). Starts the weekly run unless one is running or already succeeded
+ * today (UTC); the later check retries if the first start failed or never happened. Logs every decision. */
+async function weeklyTick(env: RunEnv, when: Date): Promise<void> {
+  if (!env.GITHUB_TOKEN) { console.log("weekly: GITHUB_TOKEN missing, nothing started"); return; }
+  const day = when.toISOString().slice(0, 10);
+  const res = await gh(env, `/actions/workflows/${env.WORKFLOW_FILE}/runs?created=%3E%3D${day}&per_page=20`);
+  if (!res.ok) { console.log(`weekly: GitHub ${res.status} while checking today's runs`); return; }
+  const runs = ((await res.json()) as { workflow_runs: GhRun[] }).workflow_runs;
+  if (runs.some((r) => r.status !== "completed")) { console.log(`weekly ${day}: a run is in progress, nothing to do`); return; }
+  if (runs.some((r) => r.conclusion === "success")) { console.log(`weekly ${day}: already succeeded today, nothing to do`); return; }
+  const go = await gh(env, `/actions/workflows/${env.WORKFLOW_FILE}/dispatches`, {
+    method: "POST", body: JSON.stringify({ ref: "main", inputs: { trigger: "weekly" } }), headers: { "content-type": "application/json" },
+  });
+  console.log(go.status === 204 ? `weekly ${day}: started the run${runs.length ? " (earlier run today did not succeed)" : ""}` : `weekly ${day}: GitHub refused to start the run (${go.status})`);
+}
+
 export default {
+  async scheduled(controller, env, ctx): Promise<void> {
+    ctx.waitUntil(weeklyTick(env as unknown as RunEnv, new Date(controller.scheduledTime)));
+  },
+
   async fetch(request, env, ctx): Promise<Response> {
     const e = env as unknown as RunEnv;
     const url = new URL(request.url);

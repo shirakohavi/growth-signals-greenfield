@@ -8,11 +8,18 @@
 #   CLOUDFLARE_API_TOKEN   Workers + D1 edit (to read/write D1 and deploy the dashboard)
 #   CLOUDFLARE_ACCOUNT_ID
 name: Weekly run
+run-name: ${{ inputs.trigger == 'weekly' && 'Weekly run (scheduled)' || 'Weekly run (Run now)' }}
 
+# The Monday timer is a Cloudflare Cron Trigger on the Worker (wrangler.jsonc), not GitHub's schedule:
+# GitHub's schedule is best effort and can be delayed for hours or skipped. The Worker starts this workflow
+# on Mondays at 03:17 UTC and checks again at 06:17 UTC, starting it again if no run succeeded that day.
 on:
-  schedule:
-    - cron: "0 3 * * 1" # Mondays 03:00 UTC = 06:00 in Israel (05:00 in winter)
   workflow_dispatch:
+    inputs:
+      trigger:
+        description: "weekly (Cloudflare timer) or manual (Run now)"
+        required: false
+        default: manual
 
 concurrency:
   group: pipeline # never two runs at once

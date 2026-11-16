@@ -1,14 +1,92 @@
 {
-  "generated_at": "2026-11-14T22:06:47.170Z",
-  "run_date": "2026-11-14",
+  "generated_at": "2026-11-16T10:25:15.058Z",
+  "run_date": "2026-11-16",
   "note": "Signals marked dummy come from seeded history (is_dummy=1), not real past runs.",
   "rising_mode": "change",
   "totals": {
     "ranked": 37,
-    "open_roles": 717,
-    "signals": 571
+    "open_roles": 716,
+    "signals": 590
   },
   "feed": [
+    {
+      "date": "2026-11-16",
+      "company": "Onyx Security",
+      "kind": "role",
+      "title": "New role in US",
+      "detail": "Operations Manager · G&A",
+      "url": "https://www.comeet.com/jobs/onyxsecurity/BA.005/operations-manager/14.574",
+      "evidence": "direct",
+      "dummy": false,
+      "country": "US"
+    },
+    {
+      "date": "2026-11-16",
+      "company": "Linx Security",
+      "kind": "role",
+      "title": "New role in IL",
+      "detail": "Talent & Sourcing Partner · G&A",
+      "url": "https://www.linx.security/careers/talent-sourcing-partner-c4-574",
+      "evidence": "direct",
+      "dummy": false,
+      "country": "IL"
+    },
+    {
+      "date": "2026-11-16",
+      "company": "Vega",
+      "kind": "role",
+      "title": "New role in GB",
+      "detail": "Technical Account Manager - EMEA · Customer success",
+      "url": "https://vega.io/careers/technical-account-manager-emea-c6.378",
+      "evidence": "direct",
+      "dummy": false,
+      "country": "GB"
+    },
+    {
+      "date": "2026-11-16",
+      "company": "Upwind",
+      "kind": "role",
+      "title": "New role in IL",
+      "detail": "Legal Counsel · G&A",
+      "url": "https://www.upwind.io/careers/co/tel-aviv/80.574/legal-counsel/all?#brxe-rkmjgc",
+      "evidence": "direct",
+      "dummy": false,
+      "country": "IL"
+    },
+    {
+      "date": "2026-11-16",
+      "company": "Wonderful",
+      "kind": "role",
+      "title": "New role in US",
+      "detail": "USA Regional Marketing Leader · Marketing",
+      "url": "https://jobs.ashbyhq.com/wonderful/01af940c-35c9-4c8c-8036-0ed0aade102c",
+      "evidence": "direct",
+      "dummy": false,
+      "country": "US"
+    },
+    {
+      "date": "2026-11-16",
+      "company": "Wonderful",
+      "kind": "market",
+      "title": "New market in US",
+      "detail": "First sales role there: \"USA Regional Marketing Leader\"",
+      "url": "https://jobs.ashbyhq.com/wonderful/01af940c-35c9-4c8c-8036-0ed0aade102c",
+      "evidence": "direct",
+      "dummy": false,
+      "country": "US"
+    },
+    {
+      "date": "2026-11-14",
+      "company": "Daylight",
+      "kind": "plan",
+      "title": "Plan · 7 reports",
+      "detail": "Use round proceeds to enter more markets in Europe, Middle East, Africa and Asia-Pacific",
+      "url": "https://www.israeldefense.co.il/node/72787",
+      "evidence": "direct",
+      "dummy": false,
+      "country": null,
+      "reports": 7
+    },
     {
       "date": "2026-11-14",
       "company": "Upwind",
@@ -89,6 +167,17 @@
     {
       "date": "2026-11-12",
       "company": "Daylight",
+      "kind": "role",
+      "title": "New role in IL",
+      "detail": "Senior Product Designer · R&D",
+      "url": "https://job-boards.greenhouse.io/daylightsecurity/jobs/4504644009",
+      "evidence": "direct",
+      "dummy": false,
+      "country": "IL"
+    },
+    {
+      "date": "2026-11-12",
+      "company": "Daylight",
       "kind": "round",
       "title": "Funding",
       "detail": "Series B $80mn led by Goldman Sachs Alternatives Growth Equity; new investor Okta Ventures; existing backers Bain Capital, Craft Ventures, Vintage Partners, Maple Capital; total funding $120mn",
@@ -96,18 +185,6 @@
       "evidence": "direct",
       "dummy": false,
       "country": null
-    },
-    {
-      "date": "2026-11-12",
-      "company": "Daylight",
-      "kind": "plan",
-      "title": "Plan · 6 reports",
-      "detail": "Expand across US, EMEA and APAC, entering additional markets in Europe, Middle East, Africa and Asia-Pacific with the new capital",
-      "url": "https://beinsure.com/news/daylight-raises-80mn-to-expand-ai-powered-cybersecurity-operations/",
-      "evidence": "direct",
-      "dummy": false,
-      "country": null,
-      "reports": 6
     },
     {
       "date": "2026-11-12",
@@ -749,17 +826,6 @@
     },
     {
       "date": "2026-11-04",
-      "company": "Unframe",
-      "kind": "role",
-      "title": "New role in IL",
-      "detail": "AI Engineer · R&D",
-      "url": "https://job-boards.eu.greenhouse.io/unframe/jobs/5027524101",
-      "evidence": "direct",
-      "dummy": false,
-      "country": "IL"
-    },
-    {
-      "date": "2026-11-04",
       "company": "PointFive",
       "kind": "role",
       "title": "New role in US",
@@ -1074,17 +1140,6 @@
       "title": "New role in IL",
       "detail": "Technical Product Manager · R&D",
       "url": "https://jobs.ashbyhq.com/wonderful/2bcdf568-896d-454a-bbf8-6ce1899eb3bc",
-      "evidence": "direct",
-      "dummy": false,
-      "country": "IL"
-    },
-    {
-      "date": "2026-10-26",
-      "company": "Unframe",
-      "kind": "role",
-      "title": "New role in IL",
-      "detail": "Forward Deployed Engineer · R&D",
-      "url": "https://job-boards.eu.greenhouse.io/unframe/jobs/5016554101",
       "evidence": "direct",
       "dummy": false,
       "country": "IL"
@@ -2640,17 +2695,6 @@
       "evidence": "direct",
       "dummy": false,
       "country": "US"
-    },
-    {
-      "date": "2026-08-17",
-      "company": "Parametrix",
-      "kind": "validation",
-      "title": "Validation",
-      "detail": "AIG partners with Parametrix on a new cloud outage coverage solution for US businesses, offered within cyber insurance",
-      "url": "https://www.funder.co.il/article/207785",
-      "evidence": "direct",
-      "dummy": false,
-      "country": null
     }
   ],
   "companies": [
@@ -2671,15 +2715,15 @@
       "portfolio": false,
       "score": 86,
       "band": "Exceptional",
-      "change": 25,
+      "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Upwind opened a Japan market entry with an Enterprise Account Executive role (14 Nov 2026), and has 21 US GTM roles with one likely filled. It also hired Regional VPs of Sales for Benelux and DACH, and launched a partner page (3 Nov 2026).",
-      "open_jobs": 100,
-      "gtm_jobs": 66,
+      "reason": "Upwind opened a Japan market entry role on 14 Nov 2026 (Enterprise Account Executive- Japan). It is also building GTM out in the US with 21 roles and recently hired Regional VPs of Sales for Benelux and DACH.",
+      "open_jobs": 98,
+      "gtm_jobs": 65,
       "jobs_by_country": {
-        "IL": 27,
-        "US": 26,
+        "IL": 26,
+        "US": 25,
         "GB": 13,
         "DE": 4,
         "IN": 4,
@@ -2700,7 +2744,7 @@
         "JP": 1
       },
       "gtm_by_country": {
-        "US": 20,
+        "US": 19,
         "IL": 9,
         "GB": 8,
         "DE": 4,
@@ -2722,13 +2766,13 @@
       },
       "jobs_by_function": {
         "Sales": 46,
-        "R&D": 29,
-        "Customer success": 14,
+        "R&D": 27,
+        "Customer success": 13,
         "Marketing": 6,
-        "G&A": 5
+        "G&A": 6
       },
       "size": null,
-      "filled": 1,
+      "filled": 4,
       "gtm_share": 66,
       "headcount": null,
       "headcount_source": null,
@@ -2751,6 +2795,11 @@
           "date": "2026-11-14",
           "open": 100,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 98,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -2763,6 +2812,11 @@
           "date": "2026-11-14",
           "score": 86,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 86,
+          "dummy": false
         }
       ],
       "sources": {
@@ -2773,6 +2827,17 @@
         "news": "ok"
       },
       "changes": [
+        {
+          "date": "2026-11-16",
+          "company": "Upwind",
+          "kind": "role",
+          "title": "New role in IL",
+          "detail": "Legal Counsel · G&A",
+          "url": "https://www.upwind.io/careers/co/tel-aviv/80.574/legal-counsel/all?#brxe-rkmjgc",
+          "evidence": "direct",
+          "dummy": false,
+          "country": "IL"
+        },
         {
           "date": "2026-11-14",
           "company": "Upwind",
@@ -2856,7 +2921,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "BE",
-          "url": "https://www.upwind.io/careers/co/benelux/B0.D6A/account-executive-benelux/all",
+          "url": "https://www.upwind.io/careers/co/benelux/b0.d6a/account-executive-benelux/all",
           "posted": null,
           "new": false
         },
@@ -2866,15 +2931,6 @@
           "seniority": "IC",
           "country": "SG",
           "url": "https://www.upwind.io/careers/co/singapore-remote/4D.179/account-executive-asean/all",
-          "posted": null,
-          "new": false
-        },
-        {
-          "title": "AI Engineer",
-          "function": "R&D",
-          "seniority": "IC",
-          "country": "IL",
-          "url": "https://www.upwind.io/careers/co/tel-aviv/5C.375/ai-engineer/all",
           "posted": null,
           "new": false
         },
@@ -2901,7 +2957,7 @@
           "function": "R&D",
           "seniority": "IC",
           "country": "IL",
-          "url": "https://www.upwind.io/careers/co/tel-aviv/BA.04A/backend-software-engineer/all",
+          "url": "https://www.upwind.io/careers/co/tel-aviv/BA.04A/backend-software-engineer/all#brxe-rkmjgc",
           "posted": null,
           "new": false
         },
@@ -2955,7 +3011,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "AE",
-          "url": "https://www.upwind.io/careers/co/united-arab-emirates/14.277/commercial-account-executive/all",
+          "url": "https://www.upwind.io/careers/co/united-arab-emirates/14.277/commercial-account-executive/all?t=1792916982263",
           "posted": null,
           "new": false
         },
@@ -2964,7 +3020,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "CA",
-          "url": "https://www.upwind.io/careers/co/greater-toronto/D5.47F/commercial-account-executive-canada/all",
+          "url": "https://www.upwind.io/careers/co/eastern-canada/D5.47F/commercial-account-executive-eastern-canada/all",
           "posted": null,
           "new": false
         },
@@ -2982,7 +3038,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.upwind.io/careers/co/greater-boston/F6.272/commercial-account-executive-east/all",
+          "url": "https://www.upwind.io/careers/co/east-coast-remote/F6.272/commercial-account-executive-east/all",
           "posted": null,
           "new": false
         },
@@ -2991,7 +3047,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.upwind.io/careers/co/denver-co/2E.278/commercial-account-executive-denver/all",
+          "url": "https://www.upwind.io/careers/co/san-francisco/2E.278/commercial-account-executive-west/all",
           "posted": null,
           "new": false
         },
@@ -3000,7 +3056,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "GB",
-          "url": "https://www.upwind.io/careers/co/united-kingdom/76.37A/commercial-account-executive-smb-startups-uki/all#jobs",
+          "url": "https://www.upwind.io/careers/co/united-kingdom/76.37A/commercial-account-executive-smb-startups-uki/all",
           "posted": null,
           "new": false
         },
@@ -3019,15 +3075,6 @@
           "seniority": "IC",
           "country": "GB",
           "url": "https://www.upwind.io/careers/co/united-kingdom/E5.47E/customer-success-manager/all",
-          "posted": null,
-          "new": false
-        },
-        {
-          "title": "Customer Success Manager (US Remote)",
-          "function": "Customer success",
-          "seniority": "IC",
-          "country": "US",
-          "url": "https://www.upwind.io/careers/co/us-remote/E9.264/customer-success-manager-us-remote/all",
           "posted": null,
           "new": false
         },
@@ -3099,7 +3146,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "SE",
-          "url": "https://www.upwind.io/careers/co/nordics-remote/B0.D67/account-executive-nordics/all",
+          "url": "https://www.upwind.io/careers/co/nordics-remote/B0.D67/enterprise-account-executive-nordics/all",
           "posted": null,
           "new": false
         },
@@ -3108,7 +3155,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.upwind.io/careers/co/new-york/A1.47E/enterprise-account-executive-nyc/all",
+          "url": "https://www.upwind.io/careers/co/new-york/A1.47E/enterprise-account-executive-nyc/all#brxe-rkmjgc",
           "posted": null,
           "new": false
         },
@@ -3144,7 +3191,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.upwind.io/careers/co/san-francisco/5D.07B/enterprise-account-executive-san-francisco/all#brxe-rkmjgc",
+          "url": "https://www.upwind.io/careers/co/san-francisco/5D.07B/enterprise-account-executive-san-francisco/all",
           "posted": null,
           "new": false
         },
@@ -3198,7 +3245,7 @@
           "function": "Marketing",
           "seniority": "IC",
           "country": "GB",
-          "url": "https://www.upwind.io/careers/co/united-kingdom/79.375/field-marketing-specialist-emea/all?#jobs",
+          "url": "https://www.upwind.io/careers/co/united-kingdom/79.375/field-marketing-specialist-emea/all",
           "posted": null,
           "new": false
         },
@@ -3234,7 +3281,7 @@
           "function": "R&D",
           "seniority": "IC",
           "country": "UA",
-          "url": "https://www.upwind.io/careers/co/ukraine/25.A68/junior-cloud-security-validation-engineer/all",
+          "url": "https://www.upwind.io/careers/co/ukraine/25.A68/junior-cloud-security-validation-engineer/all#brxe-rkmjgc",
           "posted": null,
           "new": false
         },
@@ -3261,7 +3308,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "DE",
-          "url": "https://www.upwind.io/careers/co/germany/77.479/pre-sales-engineer-dach/all",
+          "url": "https://www.upwind.io/careers/co/germany/77.479/pre-sales-engineer-dach/all#brxe-rkmjgc",
           "posted": null,
           "new": false
         },
@@ -3315,7 +3362,7 @@
           "function": "Marketing",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.upwind.io/careers/co/us-remote/05.473/product-marketing-manager/all#brxe-rkmjgc",
+          "url": "https://www.upwind.io/careers/co/us-remote/05.473/product-marketing-manager/all",
           "posted": null,
           "new": false
         },
@@ -3324,7 +3371,7 @@
           "function": "Sales",
           "seniority": "Manager",
           "country": "US",
-          "url": "https://www.upwind.io/careers/co/florida/7B.27F/regional-director-southeast/all",
+          "url": "https://www.upwind.io/careers/co/florida/7B.27F/regional-sales-director-enterprise-southeast/all",
           "posted": null,
           "new": false
         },
@@ -3342,7 +3389,7 @@
           "function": "Sales",
           "seniority": "Manager",
           "country": "US",
-          "url": "https://www.upwind.io/careers/co/texas/7B.271/regional-director-south-central/all",
+          "url": "https://www.upwind.io/careers/co/texas/7B.271/regional-sales-director-south-central/all",
           "posted": null,
           "new": false
         },
@@ -3369,7 +3416,7 @@
           "function": "Sales",
           "seniority": "VP+",
           "country": "DE",
-          "url": "https://www.upwind.io/careers/co/germany/FB.270/rvp-of-sales-germany/all",
+          "url": "https://www.upwind.io/careers/co/germany/FB.270/regional-vice-president-of-sales-dach/all",
           "posted": null,
           "new": false
         },
@@ -3392,20 +3439,11 @@
           "new": false
         },
         {
-          "title": "Security Analyst (Student Position)",
-          "function": "R&D",
-          "seniority": "IC",
-          "country": "IL",
-          "url": "https://www.upwind.io/careers/co/tel-aviv/A1.543/security-analyst-student-position/all",
-          "posted": null,
-          "new": false
-        },
-        {
           "title": "Security Engineer",
           "function": "R&D",
           "seniority": "IC",
           "country": "AU",
-          "url": "https://www.upwind.io/careers/co/australia-remote/0D.F6E/security-engineer/all",
+          "url": "https://www.upwind.io/careers/co/australia-remote/0D.F6E/security-engineer?pms_record_id=CAND_20260910_103323_fc877a1f&pms_email=manoj12kr.work%40gmail.com&pms_log_id=f63fe1a3-53e7-40ff-9872-4931520fe098",
           "posted": null,
           "new": false
         },
@@ -3423,7 +3461,7 @@
           "function": "R&D",
           "seniority": "IC",
           "country": "SG",
-          "url": "https://www.upwind.io/careers/co/singapore-remote/E0.37F/security-engineer/all",
+          "url": "https://www.upwind.io/careers/co/singapore-remote/E0.37F/security-engineer/all?ref=trueup",
           "posted": null,
           "new": false
         },
@@ -3432,7 +3470,7 @@
           "function": "R&D",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.upwind.io/careers/co/us-remote/39.56D/security-engineer-us/all",
+          "url": "https://www.upwind.io/careers/co/us-remote/39.56D/security-engineer-us/all#brxe-rkmjgc",
           "posted": null,
           "new": false
         },
@@ -3459,7 +3497,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "IN",
-          "url": "https://www.upwind.io/careers/co/mumbai-india/DD.170/senior-enterprise-account-executive-west/all",
+          "url": "https://www.upwind.io/careers/co/mumbai-india/DD.170/senior-enterprise-account-executive-west?t=1792888772006",
           "posted": null,
           "new": false
         },
@@ -3567,7 +3605,7 @@
           "function": "G&A",
           "seniority": "IC",
           "country": "IL",
-          "url": "https://www.upwind.io/careers/co/tel-aviv/7F.F61/talent-network-builder/all",
+          "url": "https://www.upwind.io/careers/co/tel-aviv/7F.F61/talent-acquisition-partner/all",
           "posted": null,
           "new": false
         },
@@ -3594,7 +3632,7 @@
           "function": "G&A",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.upwind.io/careers/co/east-coast-remote/26.27F/talent-sourcing-partner-east-coast/all",
+          "url": "https://www.upwind.io/careers/co/east-coast-remote/26.27F/talent-sourcing-partner-east-coast/all?t=1792887246354",
           "posted": null,
           "new": false
         },
@@ -3621,7 +3659,7 @@
           "function": "Customer success",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.upwind.io/careers/co/us-remote/CE.659/technical-account-manager-us-remote/all",
+          "url": "https://www.upwind.io/careers/co/us-remote/CE.659/technical-account-manager-us-remote/all?ref=oneremotejobs.com",
           "posted": null,
           "new": false
         },
@@ -3731,7 +3769,7 @@
           "country": "JP",
           "url": "https://www.upwind.io/careers/co/japan/B3.570/enterprise-account-executive-japan/all",
           "posted": null,
-          "new": true
+          "new": false
         },
         {
           "title": "Mid Enterprise- Account Executive",
@@ -3739,6 +3777,15 @@
           "seniority": "IC",
           "country": "IL",
           "url": "https://www.upwind.io/careers/co/tel-aviv/E3.571/mid-enterprise-account-executive/all",
+          "posted": null,
+          "new": false
+        },
+        {
+          "title": "Legal Counsel",
+          "function": "G&A",
+          "seniority": "IC",
+          "country": "IL",
+          "url": "https://www.upwind.io/careers/co/tel-aviv/80.574/legal-counsel/all?#brxe-rkmjgc",
           "posted": null,
           "new": true
         }
@@ -3764,7 +3811,7 @@
           "evidence": 1,
           "value": 20,
           "date": null,
-          "detail": "21 GTM roles in US, 1 now likely filled",
+          "detail": "21 GTM roles in US, 2 now likely filled",
           "source_url": "https://www.upwind.io/careers/co/central-remote/75.272/commercial-account-executive-central/all",
           "dummy": false
         },
@@ -3788,7 +3835,7 @@
           "evidence": 0.6,
           "value": 15,
           "date": null,
-          "detail": "20 open GTM role(s) in US, e.g. \"Commercial Account Executive - Central\"",
+          "detail": "19 open GTM role(s) in US, e.g. \"Commercial Account Executive - Central\"",
           "source_url": "https://www.upwind.io/careers/co/central-remote/75.272/commercial-account-executive-central/all",
           "dummy": false
         },
@@ -3809,7 +3856,7 @@
         {
           "type": "presence",
           "value": "Presence (GB): 8 open GTM role(s) in GB, e.g. \"Commercial Account Executive – SMB & Startups, UK&I\"",
-          "source_url": "https://www.upwind.io/careers/co/united-kingdom/76.37A/commercial-account-executive-smb-startups-uki/all#jobs"
+          "source_url": "https://www.upwind.io/careers/co/united-kingdom/76.37A/commercial-account-executive-smb-startups-uki/all"
         },
         {
           "type": "presence",
@@ -3829,17 +3876,17 @@
         {
           "type": "presence",
           "value": "Presence (BE): 2 open GTM role(s) in BE, e.g. \"Account Executive - Benelux\"",
-          "source_url": "https://www.upwind.io/careers/co/benelux/B0.D6A/account-executive-benelux/all"
+          "source_url": "https://www.upwind.io/careers/co/benelux/b0.d6a/account-executive-benelux/all"
         },
         {
           "type": "presence",
           "value": "Presence (AE): 2 open GTM role(s) in AE, e.g. \"Commercial Account Executive\"",
-          "source_url": "https://www.upwind.io/careers/co/united-arab-emirates/14.277/commercial-account-executive/all"
+          "source_url": "https://www.upwind.io/careers/co/united-arab-emirates/14.277/commercial-account-executive/all?t=1792916982263"
         },
         {
           "type": "presence",
           "value": "Presence (CA): 2 open GTM role(s) in CA, e.g. \"Commercial Account Executive - Canada\"",
-          "source_url": "https://www.upwind.io/careers/co/greater-toronto/D5.47F/commercial-account-executive-canada/all"
+          "source_url": "https://www.upwind.io/careers/co/eastern-canada/D5.47F/commercial-account-executive-eastern-canada/all"
         },
         {
           "type": "presence",
@@ -3869,12 +3916,12 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "19 open GTM roles in US with an announced expansion plan (12 Nov) into EMEA and APAC. Senior GTM hires for RVP EMEA and RVP West (3 Nov), plus 2 open GTM roles in GB (3 Nov), show early market entry.",
-      "open_jobs": 34,
+      "reason": "Strongest signals: 19 open GTM roles in US, and a senior GTM hire for RVP EMEA and RVP West on 3 Nov. A 2 open GTM roles in GB were posted 3 Nov, and an expansion plan across US, EMEA and APAC was announced 12 Nov.",
+      "open_jobs": 35,
       "gtm_jobs": 23,
       "jobs_by_country": {
         "US": 23,
-        "IL": 8,
+        "IL": 9,
         "GB": 2,
         "SG": 1
       },
@@ -3884,7 +3931,7 @@
       },
       "jobs_by_function": {
         "Sales": 18,
-        "R&D": 10,
+        "R&D": 11,
         "Partnerships": 3,
         "Customer success": 1,
         "Marketing": 1,
@@ -3892,11 +3939,11 @@
       },
       "size": {
         "headcount": 80,
-        "open": 34,
-        "pct": 43
+        "open": 35,
+        "pct": 44
       },
       "filled": 0,
-      "gtm_share": 68,
+      "gtm_share": 66,
       "headcount": 80,
       "headcount_source": "https://www.ice.co.il/digital-140/news/article/1137061",
       "job_source": "greenhouse",
@@ -3918,6 +3965,11 @@
           "date": "2026-11-14",
           "open": 34,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 35,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -3930,6 +3982,11 @@
           "date": "2026-11-14",
           "score": 80,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 80,
+          "dummy": false
         }
       ],
       "sources": {
@@ -3940,6 +3997,29 @@
       },
       "changes": [
         {
+          "date": "2026-11-14",
+          "company": "Daylight",
+          "kind": "plan",
+          "title": "Plan · 7 reports",
+          "detail": "Use round proceeds to enter more markets in Europe, Middle East, Africa and Asia-Pacific",
+          "url": "https://www.israeldefense.co.il/node/72787",
+          "evidence": "direct",
+          "dummy": false,
+          "country": null,
+          "reports": 7
+        },
+        {
+          "date": "2026-11-12",
+          "company": "Daylight",
+          "kind": "role",
+          "title": "New role in IL",
+          "detail": "Senior Product Designer · R&D",
+          "url": "https://job-boards.greenhouse.io/daylightsecurity/jobs/4504644009",
+          "evidence": "direct",
+          "dummy": false,
+          "country": "IL"
+        },
+        {
           "date": "2026-11-12",
           "company": "Daylight",
           "kind": "round",
@@ -3949,18 +4029,6 @@
           "evidence": "direct",
           "dummy": false,
           "country": null
-        },
-        {
-          "date": "2026-11-12",
-          "company": "Daylight",
-          "kind": "plan",
-          "title": "Plan · 6 reports",
-          "detail": "Expand across US, EMEA and APAC, entering additional markets in Europe, Middle East, Africa and Asia-Pacific with the new capital",
-          "url": "https://beinsure.com/news/daylight-raises-80mn-to-expand-ai-powered-cybersecurity-operations/",
-          "evidence": "direct",
-          "dummy": false,
-          "country": null,
-          "reports": 6
         },
         {
           "date": "2026-11-11",
@@ -4261,6 +4329,15 @@
         }
       ],
       "roles": [
+        {
+          "title": "Senior Product Designer",
+          "function": "R&D",
+          "seniority": "IC",
+          "country": "IL",
+          "url": "https://job-boards.greenhouse.io/daylightsecurity/jobs/4504644009",
+          "posted": "2026-11-12",
+          "new": false
+        },
         {
           "title": "Senior DevOps Engineer",
           "function": "R&D",
@@ -4625,7 +4702,7 @@
           "evidence": 1,
           "value": 7.5,
           "date": null,
-          "detail": "27 of 34 open roles posted in the last 90 days (half: same hiring wave as GTM team build-out)",
+          "detail": "28 of 35 open roles posted in the last 90 days (half: same hiring wave as GTM team build-out)",
           "source_url": "https://job-boards.greenhouse.io/daylightsecurity/jobs/4409284009",
           "dummy": false
         },
@@ -4637,7 +4714,7 @@
           "evidence": 1,
           "value": 5,
           "date": null,
-          "detail": "GTM share 78% of recent vs 29% of older roles (half: same hiring wave as GTM team build-out)",
+          "detail": "GTM share 75% of recent vs 29% of older roles (half: same hiring wave as GTM team build-out)",
           "source_url": null,
           "dummy": false
         },
@@ -4649,7 +4726,7 @@
           "evidence": 1,
           "value": 2.5,
           "date": null,
-          "detail": "5 R&D roles posted in the last 90 days (half: same hiring wave as GTM team build-out)",
+          "detail": "6 R&D roles posted in the last 90 days (half: same hiring wave as GTM team build-out)",
           "source_url": "https://job-boards.greenhouse.io/daylightsecurity/jobs/4409284009",
           "dummy": false
         }
@@ -4674,6 +4751,11 @@
           "type": "round",
           "value": "Earlier $40M funding round (Series A), about a year before the Series B",
           "source_url": "https://www.mako.co.il/nexter-news/Article-3165b56ea15c1a1026.htm"
+        },
+        {
+          "type": "office",
+          "value": "Company is based in New York",
+          "source_url": "https://www.israeldefense.co.il/node/72787"
         }
       ],
       "uses_dummy": false
@@ -4698,12 +4780,12 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Zenity has 14 open GTM roles in the US and a Head of Social hire, with US market entry signaled by Account Executive openings. It also announced a plan on 3 Aug to use Series C funds for Europe and Asia-Pacific expansion.",
-      "open_jobs": 30,
+      "reason": "Zenity has 14 open GTM roles in the US with a Head of Social hire, signaling a US go-to-market build-out. It also announced on 3 Aug plans to use Series C funding to expand in Europe and Asia-Pacific.",
+      "open_jobs": 29,
       "gtm_jobs": 17,
       "jobs_by_country": {
         "US": 16,
-        "IL": 11,
+        "IL": 10,
         "GB": 2,
         "JP": 1
       },
@@ -4714,19 +4796,19 @@
       },
       "jobs_by_function": {
         "Sales": 13,
-        "R&D": 12,
+        "R&D": 11,
         "Marketing": 4,
         "G&A": 1
       },
       "size": {
         "headcount": 230,
-        "open": 30,
+        "open": 29,
         "pct": 13
       },
       "filled": 0,
-      "gtm_share": 57,
+      "gtm_share": 59,
       "headcount": 230,
-      "headcount_source": "https://www.unite.ai/zenity-raises-125-million-as-enterprises-confront-the-security-risks-of-autonomous-ai-agents/",
+      "headcount_source": "https://aithority.com/security/zenity-raises-125-million-to-secure-the-era-of-1-billion-ai-agents/",
       "job_source": "comeet",
       "careers_url": "https://zenity.io/careers",
       "slug": "zenity",
@@ -4746,6 +4828,11 @@
           "date": "2026-11-14",
           "open": 30,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 29,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -4756,6 +4843,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 66,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 66,
           "dummy": false
         }
@@ -4999,6 +5091,17 @@
           "country": null
         },
         {
+          "date": "2026-04-01",
+          "company": "Zenity",
+          "kind": "validation",
+          "title": "Validation",
+          "detail": "Gartner recognized Zenity in report 'AI Vendor Race: Zenity Is the Company to Beat in AI Agent Governance'",
+          "url": "https://aithority.com/security/zenity-raises-125-million-to-secure-the-era-of-1-billion-ai-agents/",
+          "evidence": "direct",
+          "dummy": false,
+          "country": null
+        },
+        {
           "date": "2026-01-06",
           "company": "Zenity",
           "kind": "validation",
@@ -5053,7 +5156,7 @@
           "function": "R&D",
           "seniority": "IC",
           "country": "IL",
-          "url": "https://zenity.io/careers/tel-aviv-jaffa-tel-aviv-district-israel/cto-office-team-member/74.270",
+          "url": "https://zenity.io/careers/hybrid-tel-aviv-jaffa-tel-aviv-district-israel/cto-office-team-member/74.270",
           "posted": null,
           "new": false
         },
@@ -5071,7 +5174,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "US",
-          "url": "https://zenity.io/careers/hybrid-new-york-ny-united-states/enterprise-account-executive/54.76C",
+          "url": "https://zenity.io/careers/hybrid-new-york-ny-united-states/enterprise-account-executive/54.76C?gtm_latency=1",
           "posted": null,
           "new": false
         },
@@ -5089,7 +5192,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "US",
-          "url": "https://zenity.io/careers/remote-los-angeles-ca-united-states/enterprise-account-executive/7B.370",
+          "url": "https://zenity.io/careers/remote-los-angeles-ca-united-states/enterprise-account-executive/7B.370?gh_src=UpWest+job+board",
           "posted": null,
           "new": false
         },
@@ -5148,15 +5251,6 @@
           "new": false
         },
         {
-          "title": "Senior AI Researcher",
-          "function": "R&D",
-          "seniority": "IC",
-          "country": "IL",
-          "url": "https://zenity.io/careers/tel-aviv-jaffa-tel-aviv-district-israel/senior-ai-researcher/77.067",
-          "posted": null,
-          "new": false
-        },
-        {
           "title": "Senior Applied AI Scientist",
           "function": "R&D",
           "seniority": "IC",
@@ -5188,7 +5282,7 @@
           "function": "R&D",
           "seniority": "IC",
           "country": "IL",
-          "url": "https://zenity.io/careers/hybrid-tel-aviv-jaffa-tel-aviv-district-israel/senior-product-manager/57.47E?+job+board&gh_src=UpWest+job+board",
+          "url": "https://zenity.io/careers/hybrid-tel-aviv-jaffa-tel-aviv-district-israel/senior-product-manager/57.47E",
           "posted": null,
           "new": false
         },
@@ -5233,7 +5327,7 @@
           "function": "R&D",
           "seniority": "IC",
           "country": "IL",
-          "url": "https://zenity.io/careers/hybrid-tel-aviv-jaffa-tel-aviv-district-israel/senior-security-researcher/6A.D32",
+          "url": "https://zenity.io/careers/hybrid-tel-aviv-jaffa-tel-aviv-district-israel/senior-security-researcher/6A.D32?+job+board&gh_src=UpWest+job+board",
           "posted": null,
           "new": false
         },
@@ -5421,7 +5515,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Senior GTM hire: Regional GM roles in Atlanta, Boston and California (Remote) posted 30 Jun. New market entry in DE: 5 open GTM roles from 19 Oct, e.g. AI Transformation Architect EMEA. Hiring speeding up: 17 of 30 open roles posted in the last 90 days.",
+      "reason": "Senior GTM hiring includes Regional GM roles in Atlanta, Boston and California (Remote), dated 30 Jun. Hiring is speeding up, with 15 of 30 open roles posted in the last 90 days, and 5 GTM roles are open in DE from 19 Oct.",
       "open_jobs": 30,
       "gtm_jobs": 17,
       "jobs_by_country": {
@@ -5447,7 +5541,7 @@
         "open": 30,
         "pct": 23
       },
-      "filled": 0,
+      "filled": 1,
       "gtm_share": 57,
       "headcount": 130,
       "headcount_source": "https://www.calcalistech.com/ctechnews/article/sjzf1rfyzl",
@@ -5470,6 +5564,11 @@
           "date": "2026-11-14",
           "open": 30,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 30,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -5480,6 +5579,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 66,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 66,
           "dummy": false
         }
@@ -5548,17 +5652,6 @@
           "country": "IL"
         },
         {
-          "date": "2026-11-04",
-          "company": "Unframe",
-          "kind": "role",
-          "title": "New role in IL",
-          "detail": "AI Engineer · R&D",
-          "url": "https://job-boards.eu.greenhouse.io/unframe/jobs/5027524101",
-          "evidence": "direct",
-          "dummy": false,
-          "country": "IL"
-        },
-        {
           "date": "2026-11-03",
           "company": "Unframe",
           "kind": "page",
@@ -5601,17 +5694,6 @@
           "evidence": "direct",
           "dummy": false,
           "country": null
-        },
-        {
-          "date": "2026-10-26",
-          "company": "Unframe",
-          "kind": "role",
-          "title": "New role in IL",
-          "detail": "Forward Deployed Engineer · R&D",
-          "url": "https://job-boards.eu.greenhouse.io/unframe/jobs/5016554101",
-          "evidence": "direct",
-          "dummy": false,
-          "country": "IL"
         },
         {
           "date": "2026-10-26",
@@ -5792,6 +5874,24 @@
       ],
       "roles": [
         {
+          "title": "AI Engineer",
+          "function": "R&D",
+          "seniority": "IC",
+          "country": "IL",
+          "url": "https://job-boards.eu.greenhouse.io/unframe/jobs/5036369101",
+          "posted": "2026-11-15",
+          "new": false
+        },
+        {
+          "title": "Forward Deployed Engineer",
+          "function": "R&D",
+          "seniority": "IC",
+          "country": "IL",
+          "url": "https://job-boards.eu.greenhouse.io/unframe/jobs/5036373101",
+          "posted": "2026-11-15",
+          "new": false
+        },
+        {
           "title": "Applied AI Engineer",
           "function": "R&D",
           "seniority": "IC",
@@ -5819,15 +5919,6 @@
           "new": false
         },
         {
-          "title": "AI Engineer",
-          "function": "R&D",
-          "seniority": "IC",
-          "country": "IL",
-          "url": "https://job-boards.eu.greenhouse.io/unframe/jobs/5027524101",
-          "posted": "2026-11-04",
-          "new": false
-        },
-        {
           "title": "Full Stack Software Engineer",
           "function": "R&D",
           "seniority": "IC",
@@ -5843,15 +5934,6 @@
           "country": "IL",
           "url": "https://job-boards.eu.greenhouse.io/unframe/jobs/5020195101",
           "posted": "2026-10-29",
-          "new": false
-        },
-        {
-          "title": "Forward Deployed Engineer",
-          "function": "R&D",
-          "seniority": "IC",
-          "country": "IL",
-          "url": "https://job-boards.eu.greenhouse.io/unframe/jobs/5016554101",
-          "posted": "2026-10-26",
           "new": false
         },
         {
@@ -6095,8 +6177,8 @@
           "evidence": 1,
           "value": 15,
           "date": null,
-          "detail": "17 of 30 open roles posted in the last 90 days",
-          "source_url": "https://job-boards.eu.greenhouse.io/unframe/jobs/5027524101",
+          "detail": "15 of 30 open roles posted in the last 90 days",
+          "source_url": "https://job-boards.eu.greenhouse.io/unframe/jobs/5010240101",
           "dummy": false
         },
         {
@@ -6143,8 +6225,8 @@
           "evidence": 1,
           "value": 2.5,
           "date": null,
-          "detail": "11 R&D roles posted in the last 90 days (half: same hiring wave as Hiring speeding up)",
-          "source_url": "https://job-boards.eu.greenhouse.io/unframe/jobs/5027524101",
+          "detail": "9 R&D roles posted in the last 90 days (half: same hiring wave as Hiring speeding up)",
+          "source_url": "https://job-boards.eu.greenhouse.io/unframe/jobs/5032551101",
           "dummy": false
         }
       ],
@@ -6212,11 +6294,11 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Senior GTM hires dated 04 Aug 2026 include Head of Channels, Head of Global Account Management, and Head of Technical Account Management. The company has 13 open US GTM roles, and 18 of 55 open roles were posted in the last 90 days.",
-      "open_jobs": 55,
+      "reason": "Senior GTM hires dated 4 Aug 2026 include Head of Channels and Head of Global Account Management. Open roles rose to 18 of 54 posted in the last 90 days, and 13 GTM roles are open in the US.",
+      "open_jobs": 54,
       "gtm_jobs": 26,
       "jobs_by_country": {
-        "IL": 33,
+        "IL": 32,
         "US": 19,
         "GB": 2,
         "unknown": 1
@@ -6230,18 +6312,18 @@
       "jobs_by_function": {
         "R&D": 23,
         "Sales": 14,
-        "G&A": 6,
+        "G&A": 5,
         "Customer success": 5,
         "Marketing": 4,
         "Partnerships": 3
       },
       "size": {
         "headcount": 120,
-        "open": 55,
-        "pct": 46
+        "open": 54,
+        "pct": 45
       },
-      "filled": 1,
-      "gtm_share": 47,
+      "filled": 2,
+      "gtm_share": 48,
       "headcount": 120,
       "headcount_source": "https://finance.walla.co.il/item/3827417",
       "job_source": "greenhouse",
@@ -6263,6 +6345,11 @@
           "date": "2026-11-14",
           "open": 55,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 54,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -6275,13 +6362,18 @@
           "date": "2026-11-14",
           "score": 58,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 58,
+          "dummy": false
         }
       ],
       "sources": {
         "greenhouse": "ok",
         "sitemap": "ok",
         "about": "ok",
-        "news": "ok"
+        "news": "empty"
       },
       "changes": [
         {
@@ -6915,15 +7007,6 @@
           "new": false
         },
         {
-          "title": "Legal Counsel",
-          "function": "G&A",
-          "seniority": "IC",
-          "country": "IL",
-          "url": "https://job-boards.eu.greenhouse.io/scaleops/jobs/4921303101",
-          "posted": "2026-08-04",
-          "new": false
-        },
-        {
           "title": "Product Designer",
           "function": "R&D",
           "seniority": "IC",
@@ -7047,7 +7130,7 @@
           "evidence": 1,
           "value": 15,
           "date": null,
-          "detail": "18 of 55 open roles posted in the last 90 days",
+          "detail": "18 of 54 open roles posted in the last 90 days",
           "source_url": "https://job-boards.eu.greenhouse.io/scaleops/jobs/4999682101",
           "dummy": false
         },
@@ -7125,7 +7208,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Faye has 8 open GTM roles in the US, a New market entry (US) signal, and a senior GTM hire for Head of Strategic Partnerships. Dates are not given for these signals.",
+      "reason": "Faye shows a GTM team build-out with 8 open US GTM roles and a senior GTM hire for Head of Strategic Partnerships. Its hiring also points to a new US market entry, with 8 open GTM roles there.",
       "open_jobs": 16,
       "gtm_jobs": 9,
       "jobs_by_country": {
@@ -7171,6 +7254,11 @@
           "date": "2026-11-14",
           "open": 16,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 16,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -7181,6 +7269,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 55,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 55,
           "dummy": false
         }
@@ -7441,7 +7534,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Placed a team in the United Kingdom and Ireland on 8 Jun 2026 and hired a UKI Sales Director to lead regional go-to-market. Also has 5 open US GTM roles, a Databricks Connected Partner validation dated 10 Nov, and a channel account manager page dated 23 Oct.",
+      "reason": "Placed a team in the United Kingdom and Ireland on 8 Jun 2026 and hired a UKI Sales Director to lead regional go-to-market. Also has 5 open US GTM roles, a Databricks Connected Partner validation dated 10 Nov, and a channel program page dated 23 Oct.",
       "open_jobs": 9,
       "gtm_jobs": 6,
       "jobs_by_country": {
@@ -7483,6 +7576,11 @@
           "date": "2026-11-14",
           "open": 9,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 9,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -7495,6 +7593,11 @@
           "date": "2026-11-14",
           "score": 46,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 46,
+          "dummy": false
         }
       ],
       "sources": {
@@ -7502,7 +7605,7 @@
         "sitemap": "ok",
         "about": "ok",
         "newsroom": "ok",
-        "news": "ok"
+        "news": "empty"
       },
       "changes": [
         {
@@ -7771,12 +7874,12 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Linx Security has 9 open GTM roles in the US, including a Channel Account Manager, West, pointing to a US market entry. It was named a Representative Vendor in the 2026 Gartner Market Guide for Identity Governance and Administration (21 Sep), and added an industry page dated 30 Oct.",
-      "open_jobs": 14,
+      "reason": "Linx Security has 9 open GTM roles in the US, including a Channel Account Manager, West, pointing to a US market entry. It was named a Representative Vendor in the 2026 Gartner Market Guide for Identity Governance and Administration on 21 Sep, and added an industry page dated 30 Oct.",
+      "open_jobs": 15,
       "gtm_jobs": 9,
       "jobs_by_country": {
         "US": 9,
-        "IL": 5
+        "IL": 6
       },
       "gtm_by_country": {
         "US": 9
@@ -7784,11 +7887,12 @@
       "jobs_by_function": {
         "Sales": 8,
         "R&D": 5,
-        "Partnerships": 1
+        "Partnerships": 1,
+        "G&A": 1
       },
       "size": null,
       "filled": 0,
-      "gtm_share": 64,
+      "gtm_share": 60,
       "headcount": null,
       "headcount_source": null,
       "job_source": "comeet",
@@ -7810,6 +7914,11 @@
           "date": "2026-11-14",
           "open": 14,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 15,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -7822,6 +7931,11 @@
           "date": "2026-11-14",
           "score": 41,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 41,
+          "dummy": false
         }
       ],
       "sources": {
@@ -7832,6 +7946,17 @@
         "news": "ok"
       },
       "changes": [
+        {
+          "date": "2026-11-16",
+          "company": "Linx Security",
+          "kind": "role",
+          "title": "New role in IL",
+          "detail": "Talent & Sourcing Partner · G&A",
+          "url": "https://www.linx.security/careers/talent-sourcing-partner-c4-574",
+          "evidence": "direct",
+          "dummy": false,
+          "country": "IL"
+        },
         {
           "date": "2026-10-30",
           "company": "Linx Security",
@@ -8091,6 +8216,15 @@
           "url": "https://www.linx.security/careers/senior-platform-engineer-37-66d",
           "posted": null,
           "new": false
+        },
+        {
+          "title": "Talent & Sourcing Partner",
+          "function": "G&A",
+          "seniority": "IC",
+          "country": "IL",
+          "url": "https://www.linx.security/careers/talent-sourcing-partner-c4-574",
+          "posted": null,
+          "new": true
         }
       ],
       "signals": [
@@ -8197,11 +8331,11 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Onyx Security has 9 open GTM roles in the US, signaling a go-to-market team build-out and new US market entry. It also announced an expansion plan dated 01 Aug 2026 to use new funds for AI development and US and other market growth.",
-      "open_jobs": 14,
+      "reason": "Onyx Security has 9 open GTM roles in the US, signaling a go-to-market team build-out and new market entry. It also announced an expansion plan on 01 Aug to use new funds for AI development and US and other market growth.",
+      "open_jobs": 15,
       "gtm_jobs": 9,
       "jobs_by_country": {
-        "US": 9,
+        "US": 10,
         "IL": 5
       },
       "gtm_by_country": {
@@ -8211,17 +8345,18 @@
         "R&D": 5,
         "Sales": 4,
         "Marketing": 3,
-        "Customer success": 2
+        "Customer success": 2,
+        "G&A": 1
       },
       "size": {
-        "headcount": 70,
-        "open": 14,
-        "pct": 20
+        "headcount": 80,
+        "open": 15,
+        "pct": 19
       },
       "filled": 0,
-      "gtm_share": 64,
-      "headcount": 70,
-      "headcount_source": "https://pulse2.com/onyx-security-40-million-raised-to-build-secure-ai-control-plane-for-enterprise-ai-agents/",
+      "gtm_share": 60,
+      "headcount": 80,
+      "headcount_source": "https://thenextweb.com/news/onyx-security-113m-series-b-ai-agent-control-plane",
       "job_source": "comeet",
       "careers_url": "https://www.onyx.security/careers",
       "slug": "onyx-security",
@@ -8241,6 +8376,11 @@
           "date": "2026-11-14",
           "open": 14,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 15,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -8251,6 +8391,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 40,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 40,
           "dummy": false
         }
@@ -8264,16 +8409,27 @@
       },
       "changes": [
         {
+          "date": "2026-11-16",
+          "company": "Onyx Security",
+          "kind": "role",
+          "title": "New role in US",
+          "detail": "Operations Manager · G&A",
+          "url": "https://www.comeet.com/jobs/onyxsecurity/BA.005/operations-manager/14.574",
+          "evidence": "direct",
+          "dummy": false,
+          "country": "US"
+        },
+        {
           "date": "2026-08-01",
           "company": "Onyx Security",
           "kind": "plan",
-          "title": "Plan · 5 reports",
+          "title": "Plan · 6 reports",
           "detail": "Use new funds to keep developing AI technology and expand business in the US and other markets",
           "url": "https://www.israeldefense.co.il/node/70024",
           "evidence": "direct",
           "dummy": false,
           "country": null,
-          "reports": 5
+          "reports": 6
         }
       ],
       "roles": [
@@ -8402,6 +8558,15 @@
           "url": "https://www.comeet.com/jobs/onyxsecurity/BA.005/webinar--podcast-manager/9E.274",
           "posted": null,
           "new": false
+        },
+        {
+          "title": "Operations Manager",
+          "function": "G&A",
+          "seniority": "Manager",
+          "country": "US",
+          "url": "https://www.comeet.com/jobs/onyxsecurity/BA.005/operations-manager/14.574",
+          "posted": null,
+          "new": true
         }
       ],
       "signals": [
@@ -8503,10 +8668,10 @@
       "portfolio": false,
       "score": 40,
       "band": "Strong growth story",
-      "change": -13,
+      "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Quantum Art hired a Head of U.S. strategic Growth and Business on 15 Jul, signaling a U.S. market entry with 1 open GTM role there. It also posted 4 R&D roles in the last 90 days.",
+      "reason": "Quantum Art hired a Head of U.S. strategic Growth and Business on 15 Jul, signaling a US market entry with 1 open GTM role there. It also posted 4 R&D roles in the last 90 days, indicating R&D build-up.",
       "open_jobs": 19,
       "gtm_jobs": 1,
       "jobs_by_country": {
@@ -8545,6 +8710,11 @@
           "date": "2026-11-14",
           "open": 19,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 19,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -8555,6 +8725,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 40,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 40,
           "dummy": false
         }
@@ -8880,10 +9055,10 @@
       "portfolio": false,
       "score": 40,
       "band": "Strong growth story",
-      "change": 5,
+      "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "NoTraffic has 10 open GTM roles in the US, including an Account Executive for Mountain States, signaling a US market entry. It also announced on 24 Mar a plan to reach 1 in 10 traffic agencies in the U.S. and Canada by mid-2026.",
+      "reason": "NoTraffic has 10 open GTM roles in the US, including an Account Executive role for Mountain States, signaling a US market entry. On 24 Mar 2026 it announced plans to accelerate North American rollout, targeting 1 in 10 US and Canadian traffic agencies by mid-2026.",
       "open_jobs": 18,
       "gtm_jobs": 10,
       "jobs_by_country": {
@@ -8924,6 +9099,11 @@
           "date": "2026-11-14",
           "open": 18,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 18,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -8936,13 +9116,18 @@
           "date": "2026-11-14",
           "score": 40,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 40,
+          "dummy": false
         }
       ],
       "sources": {
         "comeet": "ok",
         "sitemap": "ok",
         "about": "ok",
-        "news": "ok"
+        "news": "empty"
       },
       "changes": [
         {
@@ -8985,7 +9170,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.notraffic.com/careers/co/sales/F2.279/account-executive-mountain-states/all/",
+          "url": "https://www.notraffic.com/careers/co/sales/F2.279/account-executive-mountain-states/all/?gh_src=lool+ventures+job+board",
           "posted": null,
           "new": false
         },
@@ -9021,7 +9206,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.notraffic.com/careers/co/sales/30.17D/account-executive-pacific-northwest/all/",
+          "url": "https://www.notraffic.com/careers/co/sales/30.17D/account-executive-pacific-north-west/all/?gh_src=lool+ventures+job+board",
           "posted": null,
           "new": false
         },
@@ -9093,7 +9278,7 @@
           "function": "Customer success",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.notraffic.com/careers/co/operations/30.763/product-specialist-california/all/",
+          "url": "https://www.notraffic.com/careers/co/operations/30.763/product-specialist/all/?gh_src=Grove+Ventures+job+board",
           "posted": null,
           "new": false
         },
@@ -9120,7 +9305,7 @@
           "function": "R&D",
           "seniority": "IC",
           "country": "IL",
-          "url": "https://www.notraffic.com/careers/co/rd/28.378/senior-full-stack-developer/all/?t=1793280794200",
+          "url": "https://www.notraffic.com/careers/co/rd/28.378/senior-full-stack-developer/all/",
           "posted": null,
           "new": false
         },
@@ -9153,7 +9338,7 @@
           "value": 20,
           "date": null,
           "detail": "10 open GTM roles in US",
-          "source_url": "https://www.notraffic.com/careers/co/sales/F2.279/account-executive-mountain-states/all/",
+          "source_url": "https://www.notraffic.com/careers/co/sales/F2.279/account-executive-mountain-states/all/?gh_src=lool+ventures+job+board",
           "dummy": false
         },
         {
@@ -9165,7 +9350,7 @@
           "value": 15,
           "date": null,
           "detail": "10 open GTM role(s) in US, e.g. \"Account Executive - Mountain States\"",
-          "source_url": "https://www.notraffic.com/careers/co/sales/F2.279/account-executive-mountain-states/all/",
+          "source_url": "https://www.notraffic.com/careers/co/sales/F2.279/account-executive-mountain-states/all/?gh_src=lool+ventures+job+board",
           "dummy": false
         },
         {
@@ -9220,7 +9405,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Nimble shows 16 GTM roles in the US with 3 now likely filled, plus a US market entry signal dated 14 Nov with 13 open GTM roles, including an Enterprise Account Executive role in Financial Services & Alternative Data. A new retail industry page was added 27 Oct.",
+      "reason": "Nimble shows 16 GTM roles in the US with 3 now likely filled, and 13 open US GTM roles including an Enterprise Account Executive for Financial Services & Alternative Data dated 14 Nov, suggesting US market entry. A new retail industry page appeared 27 Oct.",
       "open_jobs": 22,
       "gtm_jobs": 13,
       "jobs_by_country": {
@@ -9266,6 +9451,11 @@
           "date": "2026-11-14",
           "open": 22,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 22,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -9276,6 +9466,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 38,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 38,
           "dummy": false
         }
@@ -9471,7 +9666,7 @@
           "function": "G&A",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.nimbleway.com/open-position?executive-assistant-to-the-ceo--office-manager&uid=41.47B",
+          "url": "https://www.nimbleway.com/open-position?executive-assistent-to-the-ceo--office-manager&uid=41.47B",
           "posted": null,
           "new": false
         },
@@ -9480,7 +9675,7 @@
           "function": "G&A",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.nimbleway.com/open-position?developer-relation-advocate=&executive-business-partner-to-the-ceo=&uid=55.470&uid=D0.F6B",
+          "url": "https://www.nimbleway.com/open-position?executive-business-partner-to-the-ceo&uid=55.470",
           "posted": null,
           "new": false
         },
@@ -9507,7 +9702,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.nimbleway.com/open-position?director---agentic-search--data-infrastructure&founding-enterprise-account-executive---west&office-manager&outbound-ai-engineer&senior-field-marketing-manager&senior-infrastructure-engineer---proxy-network&uid=37.36F&uid=54.270&uid=B5.073&uid=BF.F68&uid=CE.E6B&uid=D4.76E&uid=E3.27B",
+          "url": "https://www.nimbleway.com/open-position?founding-enterprise-account-executive---west&office-manager&senior-field-marketing-manager&senior-solution-consultant&senior-solution-consultant&uid=37.36F&uid=A3.27B&uid=A3.27B&uid=BF.F68&uid=E3.27B&uid=E3.27C",
           "posted": null,
           "new": false
         },
@@ -9534,7 +9729,7 @@
           "function": "G&A",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.nimbleway.com/open-position?office-manager&uid=E3.27B",
+          "url": "https://www.nimbleway.com/open-position?office-manager---part-time&uid=E3.27B",
           "posted": null,
           "new": false
         },
@@ -9543,7 +9738,7 @@
           "function": "R&D",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.nimbleway.com/open-position?outbound-ai-engineer&uid=54.270&ai-ecosystem-engineer&uid=D9.E66",
+          "url": "https://www.nimbleway.com/open-position?outbound-ai-engineer&uid=54.270",
           "posted": null,
           "new": false
         },
@@ -9597,7 +9792,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.nimbleway.com/open-position?data-engineering-tech-lead&executive-assistant-to-the-ceo&executive-assistant-to-the-ceo&senior-field-marketing-manager&senior-solution-consultant&uid=63.F68&uid=BF.F68&uid=D0.F6B&uid=D4.76E&uid=E3.27C&uid=E3.27C",
+          "url": "https://www.nimbleway.com/open-position?senior-solution-consultant&uid=63.F68",
           "posted": null,
           "new": false
         },
@@ -9606,7 +9801,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.nimbleway.com/open-position?senior-solution-consultant&uid=A3.27B",
+          "url": "https://www.nimbleway.com/open-position?head-of-devops--cloud-infrastructure&head-of-devops--cloud-infrastructure&senior-solution-consultant&uid=A3.27B&uid=D0.F6B&uid=FB.F67&uid=FB.F67",
           "posted": null,
           "new": false
         },
@@ -9617,7 +9812,7 @@
           "country": "US",
           "url": "https://www.nimbleway.com/open-position?enterprise-account-executive--financial-services--alternative-data&uid=54.57D",
           "posted": null,
-          "new": true
+          "new": false
         }
       ],
       "signals": [
@@ -9712,7 +9907,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Strongest signal: hiring is speeding up, with 9 of 11 open roles posted in the last 90 days. Also 3 open US go-to-market roles (4 Nov 2026), and an announced plan (9 Jun 2026) to use round proceeds to expand the US market.",
+      "reason": "Hiring is speeding up, with 9 of 11 open roles posted in the last 90 days. Signals also include a US market entry with 3 GTM roles (4 Nov 2026) and an announced expansion plan (9 Jun 2026) to grow AI, data and cloud activity in the US.",
       "open_jobs": 11,
       "gtm_jobs": 4,
       "jobs_by_country": {
@@ -9758,6 +9953,11 @@
           "date": "2026-11-14",
           "open": 11,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 11,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -9770,6 +9970,11 @@
           "date": "2026-11-14",
           "score": 38,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 38,
+          "dummy": false
         }
       ],
       "sources": {
@@ -9777,7 +9982,7 @@
         "sitemap": "ok",
         "about": "ok",
         "newsroom": "ok",
-        "news": "ok"
+        "news": "empty"
       },
       "changes": [
         {
@@ -10118,33 +10323,33 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Vega is building out its go-to-market team with 14 open GTM roles in the US. It also appears to be entering the US market, with openings such as Field Marketing Manager - Central.",
-      "open_jobs": 28,
-      "gtm_jobs": 17,
+      "reason": "Vega is building out its go-to-market team with 14 open GTM roles in the US. It also shows a new market entry in GB, with 3 open GTM roles there, dated 16 Nov.",
+      "open_jobs": 29,
+      "gtm_jobs": 18,
       "jobs_by_country": {
         "US": 17,
         "IL": 9,
-        "GB": 2
+        "GB": 3
       },
       "gtm_by_country": {
         "US": 14,
-        "GB": 2,
+        "GB": 3,
         "IL": 1
       },
       "jobs_by_function": {
         "Sales": 12,
         "R&D": 9,
-        "Customer success": 3,
+        "Customer success": 4,
         "G&A": 2,
         "Marketing": 2
       },
       "size": {
         "headcount": 100,
-        "open": 28,
-        "pct": 28
+        "open": 29,
+        "pct": 29
       },
       "filled": 0,
-      "gtm_share": 61,
+      "gtm_share": 62,
       "headcount": 100,
       "headcount_source": "https://en.globes.co.il/en/article-israeli-security-analytics-co-vega-raises-120m-1001534518",
       "job_source": "careers_page",
@@ -10166,6 +10371,11 @@
           "date": "2026-11-14",
           "open": 28,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 29,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -10178,6 +10388,11 @@
           "date": "2026-11-14",
           "score": 35,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 35,
+          "dummy": false
         }
       ],
       "sources": {
@@ -10185,9 +10400,21 @@
         "sitemap": "ok",
         "about": "ok",
         "newsroom": "ok",
-        "news": "empty"
+        "news": "ok"
       },
-      "changes": [],
+      "changes": [
+        {
+          "date": "2026-11-16",
+          "company": "Vega",
+          "kind": "role",
+          "title": "New role in GB",
+          "detail": "Technical Account Manager - EMEA · Customer success",
+          "url": "https://vega.io/careers/technical-account-manager-emea-c6.378",
+          "evidence": "direct",
+          "dummy": false,
+          "country": "GB"
+        }
+      ],
       "roles": [
         {
           "title": "Solutions Architect, CTO Office",
@@ -10237,7 +10464,7 @@
         {
           "title": "Field Marketing Manager - Central",
           "function": "Marketing",
-          "seniority": "Manager",
+          "seniority": "IC",
           "country": "US",
           "url": "https://vega.io/careers/field-marketing-manager-central-79.47c",
           "posted": null,
@@ -10246,7 +10473,7 @@
         {
           "title": "Field Marketing Manager - EMEA",
           "function": "Marketing",
-          "seniority": "Manager",
+          "seniority": "IC",
           "country": "GB",
           "url": "https://vega.io/careers/field-marketing-manager-emea-ae.17a",
           "posted": null,
@@ -10440,6 +10667,15 @@
           "url": "https://vega.io/careers/sales-engineering-director-east-3d.76f",
           "posted": null,
           "new": false
+        },
+        {
+          "title": "Technical Account Manager - EMEA",
+          "function": "Customer success",
+          "seniority": "IC",
+          "country": "GB",
+          "url": "https://vega.io/careers/technical-account-manager-emea-c6.378",
+          "posted": null,
+          "new": true
         }
       ],
       "signals": [
@@ -10456,23 +10692,23 @@
           "dummy": false
         },
         {
-          "key": "new_market:US",
-          "name": "New market entry (US)",
+          "key": "new_market:GB",
+          "name": "New market entry (GB)",
           "points": 25,
           "age": 1,
           "evidence": 0.6,
           "value": 15,
-          "date": null,
-          "detail": "14 open GTM role(s) in US, e.g. \"Field Marketing Manager - Central\"",
-          "source_url": "https://vega.io/careers/field-marketing-manager-central-79.47c",
+          "date": "2026-11-16",
+          "detail": "3 open GTM role(s) in GB, e.g. \"Technical Account Manager - EMEA\"",
+          "source_url": "https://vega.io/careers/technical-account-manager-emea-c6.378",
           "dummy": false
         }
       ],
       "context": [
         {
           "type": "presence",
-          "value": "Presence (GB): 2 open GTM role(s) in GB, e.g. \"Field Marketing Manager - EMEA\"",
-          "source_url": "https://vega.io/careers/field-marketing-manager-emea-ae.17a"
+          "value": "Presence (US): 14 open GTM role(s) in US, e.g. \"Field Marketing Manager - Central\"",
+          "source_url": "https://vega.io/careers/field-marketing-manager-central-79.47c"
         },
         {
           "type": "round",
@@ -10527,7 +10763,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Groundcover has 10 open GTM roles in the US, a go-to-market team build-out. Its US market entry is signaled by the same 10 GTM roles, including Account Executive openings.",
+      "reason": "Groundcover has 10 open GTM roles in the US, signalling a go-to-market team build-out. The same openings, including Account Executive roles, also point to new US market entry.",
       "open_jobs": 22,
       "gtm_jobs": 12,
       "jobs_by_country": {
@@ -10575,6 +10811,11 @@
           "date": "2026-11-14",
           "open": 22,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 22,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -10585,6 +10826,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 35,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 35,
           "dummy": false
         }
@@ -10887,7 +11133,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Announced US market entry operating from Washington DC on 27 May, plus a plan to double headcount in 2026 mainly in Israel. Hiring is speeding up, with 5 of 5 open roles posted in the last 90 days.",
+      "reason": "Airis Labs entered the US market, with operations run from Washington DC (27 May). Hiring is speeding up, with 5 of 5 open roles posted in the last 90 days, and it plans to double headcount during 2026.",
       "open_jobs": 5,
       "gtm_jobs": 2,
       "jobs_by_country": {
@@ -10928,6 +11174,11 @@
           "date": "2026-11-14",
           "open": 5,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 5,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -10940,13 +11191,18 @@
           "date": "2026-11-14",
           "score": 35,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 35,
+          "dummy": false
         }
       ],
       "sources": {
         "getro": "ok",
         "sitemap": "ok",
         "about": "ok",
-        "news": "ok"
+        "news": "empty"
       },
       "changes": [
         {
@@ -11179,7 +11435,7 @@
       "change": 0,
       "coverage": "partial",
       "decline_flag": false,
-      "reason": "Team based in the United States (New market entry). Series A closed 15 months ago (2025-08), placing it in the usual Series B window. A partner page /partners-program/ was updated 09 Nov, and an industry page /solutions/franchise/ on 16 Oct.",
+      "reason": "Team is based in the United States, a new market entry. Series A closed 16 months ago (Aug 2025), placing it in the usual Series B window. A partner page (/partners-program/) was updated 9 Nov, and a hospitality industry page was added 19 Oct.",
       "open_jobs": 0,
       "gtm_jobs": 0,
       "jobs_by_country": {},
@@ -11212,6 +11468,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 34,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 34,
           "dummy": false
         }
@@ -11457,7 +11718,7 @@
           "evidence": 1,
           "value": 10,
           "date": null,
-          "detail": "Series A closed 15 months ago (2025-08): in the usual Series B window",
+          "detail": "Series A closed 16 months ago (2025-08): in the usual Series B window",
           "source_url": null,
           "dummy": false
         },
@@ -11480,9 +11741,9 @@
           "age": 1,
           "evidence": 0.6,
           "value": 3,
-          "date": "2026-10-16",
-          "detail": "industry page /solutions/franchise/ (sitemap lastmod 2026-10-16)",
-          "source_url": "https://www.zenzap.co/solutions/franchise/",
+          "date": "2026-10-19",
+          "detail": "industry page /solutions/hospitality/ (sitemap lastmod 2026-10-19)",
+          "source_url": "https://www.zenzap.co/solutions/hospitality/",
           "dummy": false
         }
       ],
@@ -11530,18 +11791,18 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Majestic Labs is hiring a VP of Sales for California and New York, a senior go-to-market hire. Its Series A closed 12 months ago (Nov 2025), placing it in the usual Series B window.",
-      "open_jobs": 37,
+      "reason": "Majestic Labs is hiring a VP of Sales for California and New York, a senior go-to-market signal. Its Series A closed about 12 months ago (Nov 2025), placing it in the usual Series B window.",
+      "open_jobs": 35,
       "gtm_jobs": 1,
       "jobs_by_country": {
-        "US": 19,
-        "IL": 18
+        "US": 18,
+        "IL": 17
       },
       "gtm_by_country": {
         "US": 1
       },
       "jobs_by_function": {
-        "R&D": 35,
+        "R&D": 33,
         "Sales": 1,
         "G&A": 1
       },
@@ -11569,6 +11830,11 @@
           "date": "2026-11-14",
           "open": 37,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 35,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -11581,13 +11847,18 @@
           "date": "2026-11-14",
           "score": 30,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 30,
+          "dummy": false
         }
       ],
       "sources": {
         "comeet": "ok",
         "sitemap": "failed",
         "about": "empty",
-        "news": "ok"
+        "news": "empty"
       },
       "changes": [
         {
@@ -11605,13 +11876,12 @@
           "date": "2025-11-21",
           "company": "Majestic Labs",
           "kind": "round",
-          "title": "Funding · 2 reports",
+          "title": "Funding",
           "detail": "$100m Series A led by Bow Wave Capital; Lux Capital, SBI, Upfront, Grove Ventures and others participated",
           "url": "https://www.datacenterdynamics.com/en/news/majestic-labs-raises-100m-for-its-all-in-one-servers-designed-to-eliminate-the-memory-wall/",
           "evidence": "direct",
           "dummy": false,
-          "country": null,
-          "reports": 2
+          "country": null
         }
       ],
       "roles": [
@@ -11666,24 +11936,6 @@
           "seniority": "IC",
           "country": "US",
           "url": "https://www.comeet.com/jobs/majesticlabs/AA.004/ai-soc-architect-networking/3D.F6F-7F.506",
-          "posted": null,
-          "new": false
-        },
-        {
-          "title": "AI SoC Security Architect",
-          "function": "R&D",
-          "seniority": "IC",
-          "country": "IL",
-          "url": "https://www.comeet.com/jobs/majesticlabs/AA.004/ai-soc-security-architect/7D.B61",
-          "posted": null,
-          "new": false
-        },
-        {
-          "title": "AI SoC Security Architect",
-          "function": "R&D",
-          "seniority": "IC",
-          "country": "US",
-          "url": "https://www.comeet.com/jobs/majesticlabs/AA.004/ai-soc-security-architect/7D.B61-7F.506",
           "posted": null,
           "new": false
         },
@@ -12024,7 +12276,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Hiring has sped up, with 8 of 12 open roles posted in the last 90 days. Recent moves include GB go-to-market hiring (2 roles, 8 Oct), a Google Sheets integration announced 1 Oct, and a new real-estate industry page dated 11 Nov.",
+      "reason": "Hiring has sped up, with 8 of 12 open roles posted in the last 90 days. Datarails also entered GB (2 GTM roles, 08 Oct), added a real-estate industry page (11 Nov), and announced a Google Sheets integration (01 Oct).",
       "open_jobs": 12,
       "gtm_jobs": 9,
       "jobs_by_country": {
@@ -12072,6 +12324,11 @@
           "date": "2026-11-14",
           "open": 12,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 12,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -12082,6 +12339,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 28,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 28,
           "dummy": false
         }
@@ -12278,7 +12540,7 @@
           "country": "GB",
           "url": "https://job-boards.greenhouse.io/datarails/jobs/4483669009",
           "posted": "2026-11-12",
-          "new": true
+          "new": false
         },
         {
           "title": "Solutions Consultant",
@@ -12435,6 +12697,11 @@
           "type": "presence",
           "value": "Presence (US): 6 open GTM role(s) in US, e.g. \"Account Executive\"",
           "source_url": "https://job-boards.greenhouse.io/datarails/jobs/4375296009"
+        },
+        {
+          "type": "validation",
+          "value": "Chosen as Globes startup of the year in 2021 (Globes business news)",
+          "source_url": "https://en.globes.co.il/en/article-israeli-financial-planning-co-datarails-raises-70m-1001532635"
         }
       ],
       "uses_dummy": false
@@ -12459,7 +12726,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "PhaseV has one open US go-to-market role, a Senior Director of Alliance Management, Strategic Accounts. Its Series A closed in May 2025, about 18 months ago, which puts it in the usual Series B window.",
+      "reason": "PhaseV has 1 open go-to-market role in the US, such as Senior Director of Alliance Management, Strategic Accounts, suggesting a US market entry. Its Series A closed 19 months ago (May 2025), placing it in the usual Series B window.",
       "open_jobs": 10,
       "gtm_jobs": 1,
       "jobs_by_country": {
@@ -12499,6 +12766,11 @@
           "date": "2026-11-14",
           "open": 10,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 10,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -12511,13 +12783,18 @@
           "date": "2026-11-14",
           "score": 25,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 25,
+          "dummy": false
         }
       ],
       "sources": {
         "greenhouse": "ok",
         "sitemap": "failed",
         "about": "ok",
-        "news": "ok"
+        "news": "empty"
       },
       "changes": [
         {
@@ -12667,7 +12944,7 @@
           "evidence": 1,
           "value": 10,
           "date": null,
-          "detail": "Series A closed 18 months ago (2025-05): in the usual Series B window",
+          "detail": "Series A closed 19 months ago (2025-05): in the usual Series B window",
           "source_url": null,
           "dummy": false
         }
@@ -12703,10 +12980,10 @@
       "portfolio": false,
       "score": 24,
       "band": "Some activity",
-      "change": 6,
+      "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Orca AI has one open go-to-market role in GB, Director of Business Development - Defense (Europe), with no posting date given. A partner program page (/partners/) appeared 14 Nov, and a commercial shipping industry page appeared 10 Nov.",
+      "reason": "Orca AI has one open go-to-market role in Great Britain, a Director of Business Development for Defense (Europe), with no date given. A partner page at /partners/ dated 14 Nov and a new commercial shipping industry page dated 10 Nov were also found.",
       "open_jobs": 8,
       "gtm_jobs": 4,
       "jobs_by_country": {
@@ -12752,6 +13029,11 @@
           "date": "2026-11-14",
           "open": 8,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 8,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -12764,13 +13046,18 @@
           "date": "2026-11-14",
           "score": 24,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 24,
+          "dummy": false
         }
       ],
       "sources": {
         "comeet": "ok",
         "sitemap": "ok",
         "about": "ok",
-        "news": "ok"
+        "news": "empty"
       },
       "changes": [
         {
@@ -12864,7 +13151,7 @@
           "function": "R&D",
           "seniority": "IC",
           "country": "IL",
-          "url": "https://www.orca-ai.io/careers/co/israel/7D.868/ai-software-engineer/all/?=&t=1787662186320",
+          "url": "https://www.orca-ai.io/careers/co/israel/7D.868/ai-software-engineer/all/?=&t=1787662186320&employee",
           "posted": null,
           "new": false
         },
@@ -13024,6 +13311,11 @@
           "date": "2026-11-14",
           "open": 7,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 7,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -13036,13 +13328,18 @@
           "date": "2026-11-14",
           "score": 22,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 22,
+          "dummy": false
         }
       ],
       "sources": {
         "careers_page": "ok",
         "sitemap": "ok",
         "about": "ok",
-        "news": "ok"
+        "news": "empty"
       },
       "changes": [
         {
@@ -13226,7 +13523,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Two open go-to-market roles in the US, including a Founding Support Engineer, suggest a new US market entry. On 16 Jun 2026, the company announced plans to roughly double headcount over the next 12 months.",
+      "reason": "Announced plan to roughly double headcount over the next 12 months (16 Jun). Two open US go-to-market roles, including a Founding Support Engineer, suggest a new US market entry.",
       "open_jobs": 4,
       "gtm_jobs": 2,
       "jobs_by_country": {
@@ -13265,6 +13562,11 @@
           "date": "2026-11-14",
           "open": 4,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 4,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -13277,6 +13579,11 @@
           "date": "2026-11-14",
           "score": 20,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 20,
+          "dummy": false
         }
       ],
       "sources": {
@@ -13284,7 +13591,7 @@
         "sitemap": "ok",
         "about": "ok",
         "newsroom": "ok",
-        "news": "empty"
+        "news": "ok"
       },
       "changes": [
         {
@@ -13488,6 +13795,11 @@
           "date": "2026-11-14",
           "open": 27,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 27,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -13498,6 +13810,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 18,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 18,
           "dummy": false
         }
@@ -13562,11 +13879,11 @@
           "new": false
         },
         {
-          "title": "Quantum Algorithm Engineer",
+          "title": "R&D Engineer",
           "function": "R&D",
           "seniority": "IC",
           "country": "IL",
-          "url": "https://www.classiq.io/positions/position-65_d6d",
+          "url": "https://www.classiq.io/positions/position-65_d6d?t=1792584878207",
           "posted": null,
           "new": false
         },
@@ -13584,7 +13901,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "SG",
-          "url": "https://www.classiq.io/positions/position-84_27e",
+          "url": "https://www.classiq.io/positions/position-84_27e#c-form",
           "posted": null,
           "new": false
         },
@@ -13620,7 +13937,7 @@
           "function": "Sales",
           "seniority": "IC",
           "country": "US",
-          "url": "https://www.classiq.io/positions/position-68_371",
+          "url": "https://www.classiq.io/positions/position-68_371?t=1793623204003",
           "posted": null,
           "new": false
         },
@@ -13656,7 +13973,7 @@
           "function": "Sales",
           "seniority": "Manager",
           "country": "PL",
-          "url": "https://www.classiq.io/positions/position-72_275",
+          "url": "https://www.classiq.io/positions/position-72_275#c-form",
           "posted": null,
           "new": false
         },
@@ -13665,7 +13982,7 @@
           "function": "Sales",
           "seniority": "Manager",
           "country": "RO",
-          "url": "https://www.classiq.io/positions/position-72_275",
+          "url": "https://www.classiq.io/positions/position-72_275#c-form",
           "posted": null,
           "new": false
         },
@@ -13710,7 +14027,7 @@
           "function": "R&D",
           "seniority": "IC",
           "country": "IL",
-          "url": "https://www.classiq.io/positions/position-22_f66?t=1792604694607",
+          "url": "https://www.classiq.io/positions/position-22_f66",
           "posted": null,
           "new": false
         },
@@ -13813,7 +14130,7 @@
         {
           "type": "presence",
           "value": "Presence (US): 2 open GTM role(s) in US, e.g. \"Quantum Solutions Architect\"",
-          "source_url": "https://www.classiq.io/positions/position-68_371"
+          "source_url": "https://www.classiq.io/positions/position-68_371?t=1793623204003"
         },
         {
           "type": "presence",
@@ -13823,17 +14140,17 @@
         {
           "type": "presence",
           "value": "Presence (SG): 1 open GTM role(s) in SG, e.g. \"Quantum Application Engineer\"",
-          "source_url": "https://www.classiq.io/positions/position-84_27e"
+          "source_url": "https://www.classiq.io/positions/position-84_27e#c-form"
         },
         {
           "type": "presence",
           "value": "Presence (PL): 1 open GTM role(s) in PL, e.g. \"Regional Sales Director CEE\"",
-          "source_url": "https://www.classiq.io/positions/position-72_275"
+          "source_url": "https://www.classiq.io/positions/position-72_275#c-form"
         },
         {
           "type": "presence",
           "value": "Presence (RO): 1 open GTM role(s) in RO, e.g. \"Regional Sales Director CEE\"",
-          "source_url": "https://www.classiq.io/positions/position-72_275"
+          "source_url": "https://www.classiq.io/positions/position-72_275#c-form"
         },
         {
           "type": "presence",
@@ -13868,7 +14185,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Second Nature has a New York, USA office with open positions, the strongest signal here. It also added an industry page at /use-case/customer-support/, last modified 27 Aug.",
+      "reason": "Second Nature has a New York, USA office with open positions, the strongest signal here. It also added a customer-support industry page, with sitemap lastmod dated 27 Aug.",
       "open_jobs": 4,
       "gtm_jobs": 0,
       "jobs_by_country": {
@@ -13902,6 +14219,11 @@
           "date": "2026-11-14",
           "open": 4,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 4,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -13912,6 +14234,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 17,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 17,
           "dummy": false
         }
@@ -13972,7 +14299,7 @@
           "function": "R&D",
           "seniority": "IC",
           "country": "IL",
-          "url": "https://secondnature.ai/?comeet_all=all&comeet_cat=israel&comeet_pos=D0.E6D&pagename=careers&rd=",
+          "url": "https://secondnature.ai/careers/co/israel/D0.E6D/senior-applied-researcher/all/??ref=linkedinnewsletter?ref=website",
           "posted": null,
           "new": false
         },
@@ -14055,7 +14382,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "MIND has 3 open go-to-market roles in the US, such as Content Marketing Manager, suggesting a new market entry. No date was given for these postings.",
+      "reason": "MIND has 3 open go-to-market roles in the US, including a Content Marketing Manager posting, which points to a new market entry. No date was given for these postings.",
       "open_jobs": 10,
       "gtm_jobs": 5,
       "jobs_by_country": {
@@ -14095,6 +14422,11 @@
           "date": "2026-11-14",
           "open": 10,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 10,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -14107,6 +14439,11 @@
           "date": "2026-11-14",
           "score": 15,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 15,
+          "dummy": false
         }
       ],
       "sources": {
@@ -14114,7 +14451,7 @@
         "sitemap": "ok",
         "about": "ok",
         "newsroom": "ok",
-        "news": "ok"
+        "news": "empty"
       },
       "changes": [],
       "roles": [
@@ -14269,10 +14606,10 @@
       "portfolio": false,
       "score": 15,
       "band": "Quiet",
-      "change": 7,
+      "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Prisma Photonics has 1 open go-to-market role in the US, such as \"Executive Sales Director, US\", which points to a new market entry. No date was given for this signal.",
+      "reason": "Prisma Photonics has 1 open go-to-market role in the US, such as Executive Sales Director, US, which points to a new market entry. No date was given for this signal.",
       "open_jobs": 5,
       "gtm_jobs": 1,
       "jobs_by_country": {
@@ -14310,6 +14647,11 @@
           "date": "2026-11-14",
           "open": 5,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 5,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -14322,13 +14664,18 @@
           "date": "2026-11-14",
           "score": 15,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 15,
+          "dummy": false
         }
       ],
       "sources": {
         "getro": "ok",
         "sitemap": "ok",
         "about": "ok",
-        "news": "empty"
+        "news": "ok"
       },
       "changes": [
         {
@@ -14427,7 +14774,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Visitt opened 2 go-to-market roles in the US on 3 Nov, including a Director of Marketing, pointing to a new US market entry.",
+      "reason": "Visitt shows a New market entry signal in the US, dated 03 Nov, with 2 open go-to-market roles there, including a Director of Marketing position.",
       "open_jobs": 5,
       "gtm_jobs": 3,
       "jobs_by_country": {
@@ -14469,6 +14816,11 @@
           "date": "2026-11-14",
           "open": 5,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 5,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -14479,6 +14831,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 15,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 15,
           "dummy": false
         }
@@ -14619,7 +14976,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "QuantHealth is expanding its clinical trial simulation offering into the US market, per the signal data. No date was provided for this move.",
+      "reason": "QuantHealth is expanding its clinical trial simulation offering into the US market, per a newly reported market entry with no date given.",
       "open_jobs": 1,
       "gtm_jobs": 0,
       "jobs_by_country": {
@@ -14657,6 +15014,11 @@
           "date": "2026-11-14",
           "open": 1,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 1,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -14667,6 +15029,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 15,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 15,
           "dummy": false
         }
@@ -14780,7 +15147,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Series A closed 20 months ago (2025-03), placing the company in the usual Series B window.",
+      "reason": "Series A closed 21 months ago (2025-03), placing Grain in the usual Series B window.",
       "open_jobs": 3,
       "gtm_jobs": 0,
       "jobs_by_country": {
@@ -14816,6 +15183,11 @@
           "date": "2026-11-14",
           "open": 3,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 3,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -14826,6 +15198,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 10,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 10,
           "dummy": false
         }
@@ -14876,7 +15253,7 @@
           "evidence": 1,
           "value": 10,
           "date": null,
-          "detail": "Series A closed 20 months ago (2025-03): in the usual Series B window",
+          "detail": "Series A closed 21 months ago (2025-03): in the usual Series B window",
           "source_url": null,
           "dummy": false
         }
@@ -14910,7 +15287,7 @@
       "change": 0,
       "coverage": "partial",
       "decline_flag": false,
-      "reason": "UltraSight announced an expansion plan on 23 Sep to use $24M in Series B2 funds to grow in the US market.",
+      "reason": "UltraSight announced an expansion plan on 23 Sep to use $24M in Series B2 funds to expand in the US market.",
       "open_jobs": 0,
       "gtm_jobs": 0,
       "jobs_by_country": {},
@@ -14943,6 +15320,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 10,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 10,
           "dummy": false
         }
@@ -15078,6 +15460,11 @@
           "date": "2026-11-14",
           "score": 3,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 3,
+          "dummy": false
         }
       ],
       "sources": {
@@ -15152,115 +15539,6 @@
     },
     {
       "rank": 33,
-      "name": "Parametrix",
-      "domain": "parametrixinsurance.com",
-      "category": "Fintech",
-      "sector": "Insurance for cloud and data-center outages",
-      "fit_tag": "In mandate",
-      "visibility": "ranked",
-      "fit_reason": "Series B",
-      "headline": "Market validation",
-      "fit": "In Range",
-      "round_label": "Series B · Dec 25",
-      "fit_explain": "Series B · Dec 2025 → In Range",
-      "reach": null,
-      "portfolio": false,
-      "score": 3,
-      "band": "Quiet",
-      "change": 0,
-      "coverage": "partial",
-      "decline_flag": false,
-      "reason": "17 Aug: AIG partnered with Parametrix on a new cloud outage coverage solution for US businesses, offered within cyber insurance, signaling market validation.",
-      "open_jobs": 0,
-      "gtm_jobs": 0,
-      "jobs_by_country": {},
-      "gtm_by_country": {},
-      "jobs_by_function": {},
-      "size": null,
-      "filled": 0,
-      "gtm_share": null,
-      "headcount": null,
-      "headcount_source": null,
-      "job_source": "none",
-      "careers_url": null,
-      "slug": "parametrix",
-      "links": {
-        "website": "https://parametrixinsurance.com",
-        "careers": null,
-        "board": null,
-        "linkedin_jobs": "https://www.linkedin.com/jobs/search/?keywords=Parametrix"
-      },
-      "series": [],
-      "score_series": [
-        {
-          "date": "2026-11-12",
-          "score": 3,
-          "dummy": false
-        },
-        {
-          "date": "2026-11-14",
-          "score": 3,
-          "dummy": false
-        }
-      ],
-      "sources": {
-        "website": "empty",
-        "ats": "empty",
-        "getro": "empty",
-        "sitemap": "ok",
-        "about": "ok",
-        "news": "empty"
-      },
-      "changes": [
-        {
-          "date": "2026-08-17",
-          "company": "Parametrix",
-          "kind": "validation",
-          "title": "Validation",
-          "detail": "AIG partners with Parametrix on a new cloud outage coverage solution for US businesses, offered within cyber insurance",
-          "url": "https://www.funder.co.il/article/207785",
-          "evidence": "direct",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2025-12-29",
-          "company": "Parametrix",
-          "kind": "round",
-          "title": "Funding",
-          "detail": "Series B of $27M led by Mundi Ventures, FirstMark Capital and Hannover Digital Investments (HDI CVC), with F2 Venture Capital and strategic investors participating",
-          "url": "https://www.insurzine.com/2025/12/29/parametrix-raccoglie-27-milioni-di-dollari/",
-          "evidence": "direct",
-          "dummy": false,
-          "country": null
-        }
-      ],
-      "roles": [],
-      "signals": [
-        {
-          "key": "validation",
-          "name": "Market validation",
-          "points": 5,
-          "age": 0.5,
-          "evidence": 1,
-          "value": 2.5,
-          "date": "2026-08-17",
-          "detail": "AIG partners with Parametrix on a new cloud outage coverage solution for US businesses, offered within cyber insurance",
-          "source_url": "https://www.funder.co.il/article/207785",
-          "dummy": false
-        }
-      ],
-      "context": [
-        {
-          "type": "office",
-          "value": "Company founded in Israel, later developed in London",
-          "source_url": "https://www.insurzine.com/2025/12/29/parametrix-raccoglie-27-milioni-di-dollari/"
-        }
-      ],
-      "uses_dummy": false
-    },
-    {
-      "rank": 34,
       "name": "Xtend",
       "domain": "xtend.me",
       "category": "Deep tech",
@@ -15279,7 +15557,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": true,
-      "reason": "Layoffs reported 3 Nov: ~10% of ~267 staff cut after ~80% share price drop. Two US go-to-market roles open (e.g. UAS Sales Manager); top performer in Gauntlet II drone program, advancing to Gauntlet III (13 Oct).",
+      "reason": "Xtend has 2 open US go-to-market roles, e.g. \"UAS Sales Manager\". It was selected as a top performer in the Close Quarters Battle segment of Gauntlet II of the US Dept of War Drone Dominance Program (13 Oct). Layoffs of an estimated ~10% of ~267 staff were reported (3 Nov).",
       "open_jobs": 18,
       "gtm_jobs": 2,
       "jobs_by_country": {
@@ -15324,6 +15602,11 @@
           "date": "2026-11-14",
           "open": 18,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 18,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -15334,6 +15617,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 0,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 0,
           "dummy": false
         }
@@ -15634,7 +15922,7 @@
       "uses_dummy": false
     },
     {
-      "rank": 35,
+      "rank": 34,
       "name": "Aligned",
       "domain": "alignedup.com",
       "category": "Vertical AI",
@@ -15691,6 +15979,11 @@
           "date": "2026-11-14",
           "open": 4,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 4,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -15703,13 +15996,18 @@
           "date": "2026-11-14",
           "score": 0,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 0,
+          "dummy": false
         }
       ],
       "sources": {
         "greenhouse": "ok",
         "sitemap": "ok",
         "about": "ok",
-        "news": "ok"
+        "news": "empty"
       },
       "changes": [
         {
@@ -15783,7 +16081,7 @@
       "uses_dummy": false
     },
     {
-      "rank": 36,
+      "rank": 35,
       "name": "IVIX",
       "domain": "ivix.ai",
       "category": "Fintech",
@@ -15842,6 +16140,11 @@
           "date": "2026-11-14",
           "open": 5,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 5,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -15852,6 +16155,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 0,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 0,
           "dummy": false
         }
@@ -15961,6 +16269,107 @@
       "uses_dummy": false
     },
     {
+      "rank": 36,
+      "name": "Parametrix",
+      "domain": "parametrixinsurance.com",
+      "category": "Fintech",
+      "sector": "Insurance for cloud and data-center outages",
+      "fit_tag": "In mandate",
+      "visibility": "ranked",
+      "fit_reason": "Series B",
+      "headline": "No growth signals",
+      "fit": "In Range",
+      "round_label": "Series B · Dec 25",
+      "fit_explain": "Series B · Dec 2025 → In Range",
+      "reach": null,
+      "portfolio": false,
+      "score": 0,
+      "band": "Quiet",
+      "change": -3,
+      "coverage": "partial",
+      "decline_flag": false,
+      "reason": "No growth signals found in this run.",
+      "open_jobs": 0,
+      "gtm_jobs": 0,
+      "jobs_by_country": {},
+      "gtm_by_country": {},
+      "jobs_by_function": {},
+      "size": null,
+      "filled": 0,
+      "gtm_share": null,
+      "headcount": null,
+      "headcount_source": null,
+      "job_source": "none",
+      "careers_url": null,
+      "slug": "parametrix",
+      "links": {
+        "website": "https://parametrixinsurance.com",
+        "careers": null,
+        "board": null,
+        "linkedin_jobs": "https://www.linkedin.com/jobs/search/?keywords=Parametrix"
+      },
+      "series": [],
+      "score_series": [
+        {
+          "date": "2026-11-12",
+          "score": 3,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-14",
+          "score": 3,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 0,
+          "dummy": false
+        }
+      ],
+      "sources": {
+        "website": "empty",
+        "ats": "empty",
+        "getro": "empty",
+        "sitemap": "ok",
+        "about": "ok",
+        "news": "ok"
+      },
+      "changes": [
+        {
+          "date": "2026-08-17",
+          "company": "Parametrix",
+          "kind": "validation",
+          "title": "Validation",
+          "detail": "AIG partners with Parametrix on a new cloud outage coverage solution for US businesses, offered within cyber insurance",
+          "url": "https://www.funder.co.il/article/207785",
+          "evidence": "direct",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2025-12-29",
+          "company": "Parametrix",
+          "kind": "round",
+          "title": "Funding",
+          "detail": "Series B of $27M led by Mundi Ventures, FirstMark Capital and Hannover Digital Investments (HDI CVC), with F2 Venture Capital and strategic investors participating",
+          "url": "https://www.insurzine.com/2025/12/29/parametrix-raccoglie-27-milioni-di-dollari/",
+          "evidence": "direct",
+          "dummy": false,
+          "country": null
+        }
+      ],
+      "roles": [],
+      "signals": [],
+      "context": [
+        {
+          "type": "office",
+          "value": "Company founded in Israel, later developed in London",
+          "source_url": "https://www.insurzine.com/2025/12/29/parametrix-raccoglie-27-milioni-di-dollari/"
+        }
+      ],
+      "uses_dummy": false
+    },
+    {
       "rank": 37,
       "name": "Phytolon",
       "domain": "phytolon.com",
@@ -15980,7 +16389,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Phytolon announced an expansion plan on 26 May, using new funding to support sales and supply to CPGs and distribution partners in the U.S. and beyond.",
+      "reason": "Phytolon announced an expansion plan on 26 May, saying new funding will support sales and supply to CPGs and distribution partners in the U.S. and beyond.",
       "open_jobs": 0,
       "gtm_jobs": 0,
       "jobs_by_country": {},
@@ -16010,6 +16419,11 @@
           "date": "2026-11-14",
           "open": 0,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 0,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -16020,6 +16434,11 @@
         },
         {
           "date": "2026-11-14",
+          "score": 5,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
           "score": 5,
           "dummy": false
         }
@@ -16088,20 +16507,20 @@
       "fit_tag": "Too late",
       "visibility": "hidden",
       "fit_reason": "$5B valuation",
-      "headline": "New market · AE",
+      "headline": "New market · US",
       "fit": "Past Stage",
       "round_label": "Series C · Jan 26",
       "fit_explain": "Series C · Jan 2026 → Past Stage",
       "reach": null,
       "portfolio": false,
-      "score": 43,
-      "band": "Strong growth story",
-      "change": 0,
+      "score": 68,
+      "band": "Exceptional",
+      "change": 25,
       "coverage": "full",
       "decline_flag": false,
-      "reason": "Wonderful opened 2 GTM roles in the United Arab Emirates on 10 Nov, and 40 of its 125 open roles were posted in the last 90 days. It also announced on 12 Mar plans to grow headcount from 350 to about 900 by year-end.",
-      "open_jobs": 125,
-      "gtm_jobs": 71,
+      "reason": "US market entry signaled by a regional marketing leader role posted 16 Nov, and UAE entry via two GTM roles posted 10 Nov. Hiring is speeding up, with 41 of 126 open roles posted in the last 90 days.",
+      "open_jobs": 126,
+      "gtm_jobs": 72,
       "jobs_by_country": {
         "IL": 14,
         "unknown": 7,
@@ -16144,7 +16563,8 @@
         "ES": 1,
         "NO": 1,
         "CH": 1,
-        "IN": 1
+        "IN": 1,
+        "US": 1
       },
       "gtm_by_country": {
         "KR": 4,
@@ -16186,24 +16606,25 @@
         "IL": 1,
         "NO": 1,
         "CH": 1,
-        "GB": 1
+        "GB": 1,
+        "US": 1
       },
       "jobs_by_function": {
         "R&D": 48,
         "Customer success": 32,
         "Sales": 27,
-        "Marketing": 12,
+        "Marketing": 13,
         "G&A": 6
       },
       "size": {
         "headcount": 350,
-        "open": 125,
+        "open": 126,
         "pct": 36
       },
       "filled": 0,
       "gtm_share": 57,
       "headcount": 350,
-      "headcount_source": "https://thenextweb.com/news/wonderful-series-b-enterprise-ai-agents",
+      "headcount_source": "https://ventureburn.com/wonderful-raises-150m/",
       "job_source": "ashby",
       "careers_url": "https://www.wonderful.ai/careers",
       "slug": "wonderful",
@@ -16223,6 +16644,11 @@
           "date": "2026-11-14",
           "open": 125,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 126,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -16235,6 +16661,11 @@
           "date": "2026-11-14",
           "score": 43,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 68,
+          "dummy": false
         }
       ],
       "sources": {
@@ -16242,9 +16673,31 @@
         "sitemap": "ok",
         "about": "ok",
         "newsroom": "ok",
-        "news": "empty"
+        "news": "ok"
       },
       "changes": [
+        {
+          "date": "2026-11-16",
+          "company": "Wonderful",
+          "kind": "role",
+          "title": "New role in US",
+          "detail": "USA Regional Marketing Leader · Marketing",
+          "url": "https://jobs.ashbyhq.com/wonderful/01af940c-35c9-4c8c-8036-0ed0aade102c",
+          "evidence": "direct",
+          "dummy": false,
+          "country": "US"
+        },
+        {
+          "date": "2026-11-16",
+          "company": "Wonderful",
+          "kind": "market",
+          "title": "New market in US",
+          "detail": "First sales role there: \"USA Regional Marketing Leader\"",
+          "url": "https://jobs.ashbyhq.com/wonderful/01af940c-35c9-4c8c-8036-0ed0aade102c",
+          "evidence": "direct",
+          "dummy": false,
+          "country": "US"
+        },
         {
           "date": "2026-11-12",
           "company": "Wonderful",
@@ -16711,13 +17164,13 @@
           "date": "2026-03-12",
           "company": "Wonderful",
           "kind": "plan",
-          "title": "Plan · 2 reports",
+          "title": "Plan · 3 reports",
           "detail": "Scale headcount from 350 to approximately 900 by year-end to serve more enterprises with locally embedded deployment teams",
           "url": "https://www.prnewswire.com/news-releases/wonderful-raises-150m-series-b-to-accelerate-enterprise-ai-adoption-in-30-markets-302712238.html",
           "evidence": "direct",
           "dummy": false,
           "country": null,
-          "reports": 2
+          "reports": 3
         },
         {
           "date": "2026-03-12",
@@ -16732,6 +17185,15 @@
         }
       ],
       "roles": [
+        {
+          "title": "USA Regional Marketing Leader",
+          "function": "Marketing",
+          "seniority": "Manager",
+          "country": "US",
+          "url": "https://jobs.ashbyhq.com/wonderful/01af940c-35c9-4c8c-8036-0ed0aade102c",
+          "posted": "2026-11-16",
+          "new": true
+        },
         {
           "title": "Executive Assistant, Singapore",
           "function": "G&A",
@@ -17860,6 +18322,18 @@
       ],
       "signals": [
         {
+          "key": "new_market:US",
+          "name": "New market entry (US)",
+          "points": 25,
+          "age": 1,
+          "evidence": 1,
+          "value": 25,
+          "date": "2026-11-16",
+          "detail": "1 open GTM role(s) in US, e.g. \"USA Regional Marketing Leader\"",
+          "source_url": "https://jobs.ashbyhq.com/wonderful/01af940c-35c9-4c8c-8036-0ed0aade102c",
+          "dummy": false
+        },
+        {
           "key": "new_market:AE",
           "name": "New market entry (AE)",
           "points": 25,
@@ -17879,7 +18353,7 @@
           "evidence": 1,
           "value": 15,
           "date": null,
-          "detail": "40 of 125 open roles posted in the last 90 days",
+          "detail": "41 of 126 open roles posted in the last 90 days",
           "source_url": "https://jobs.ashbyhq.com/wonderful/5d9886f1-79e3-4d6d-be53-ece9c104f28e",
           "dummy": false
         },
@@ -17928,11 +18402,6 @@
         },
         {
           "type": "presence",
-          "value": "Presence (DE): 2 open GTM role(s) in DE, e.g. \"AI Enablement Engineer\"",
-          "source_url": "https://jobs.ashbyhq.com/wonderful/4dc8b7d5-ac58-4ae1-bcf5-cf29b619f062"
-        },
-        {
-          "type": "presence",
           "value": "Presence (AU): 3 open GTM role(s) in AU, e.g. \"GTM\"",
           "source_url": "https://jobs.ashbyhq.com/wonderful/76909e3e-3399-4e76-af09-d88a898aaacf"
         },
@@ -17960,6 +18429,11 @@
           "type": "presence",
           "value": "Presence (TR): 2 open GTM role(s) in TR, e.g. \"GTM\"",
           "source_url": "https://jobs.ashbyhq.com/wonderful/10c52a37-8ff3-4eec-a1f3-5f56dcce6407"
+        },
+        {
+          "type": "presence",
+          "value": "Presence (NL): 2 open GTM role(s) in NL, e.g. \"Deployment Strategist\"",
+          "source_url": "https://jobs.ashbyhq.com/wonderful/8303778b-ea04-4dda-a3d6-ff6437ed4e82"
         }
       ],
       "uses_dummy": false
@@ -17984,7 +18458,7 @@
       "change": 0,
       "coverage": "full",
       "decline_flag": true,
-      "reason": "AI21 Labs opened one US go-to-market role, including a Senior Account Executive – US Market position. A layoff on 01 May cut staff from 180 to 70, more than 60% of employees, while refocusing on new activity.",
+      "reason": "AI21 Labs opened a US go-to-market role (Senior Account Executive, US Market) with no date given. It also reported layoffs on 01 May, cutting staff from 180 to 70 while refocusing.",
       "open_jobs": 5,
       "gtm_jobs": 2,
       "jobs_by_country": {
@@ -18028,6 +18502,11 @@
           "date": "2026-11-14",
           "open": 5,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 5,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -18040,6 +18519,11 @@
           "date": "2026-11-14",
           "score": 3,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 3,
+          "dummy": false
         }
       ],
       "sources": {
@@ -18047,7 +18531,7 @@
         "sitemap": "ok",
         "about": "ok",
         "newsroom": "ok",
-        "news": "empty"
+        "news": "ok"
       },
       "changes": [
         {
@@ -18068,6 +18552,17 @@
           "title": "Validation",
           "detail": "Signed agreement worth tens of millions of dollars with cloud provider Nebius, announced alongside layoffs",
           "url": "https://www.ynet.co.il/economy/article/byrlvocqgl",
+          "evidence": "direct",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2025-12-08",
+          "company": "AI21 Labs",
+          "kind": "validation",
+          "title": "Validation",
+          "detail": "Strategic AI partnership with Fnac Darty, starting with after-sales service using Maestro platform",
+          "url": "https://www.newswire.com/view/content/ai21-labs-and-fnac-darty-partner-to-drive-retail-ai-transformation",
           "evidence": "direct",
           "dummy": false,
           "country": null
@@ -18240,6 +18735,11 @@
           "date": "2026-11-14",
           "open": 0,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 0,
+          "dummy": false
         }
       ],
       "score_series": [
@@ -18252,6 +18752,11 @@
           "date": "2026-11-14",
           "score": 0,
           "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 0,
+          "dummy": false
         }
       ],
       "sources": {
@@ -18259,7 +18764,7 @@
         "sitemap": "ok",
         "about": "ok",
         "newsroom": "ok",
-        "news": "ok"
+        "news": "empty"
       },
       "changes": [
         {

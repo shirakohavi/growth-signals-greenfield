@@ -52,7 +52,7 @@ npm run serve                       # open http://localhost:4180
 - `npm run pipeline` runs every step in order and stops at the first one that fails. Sources that fail inside a step keep their last data and are marked "not reached".
 - A full run takes about 20–40 minutes, because sites are fetched politely (3 s between requests to one site), and makes a few hundred Haiku calls, well under $1.
 - Locally, the dashboard's **Run now** button runs the pipeline on your machine; add `?dryrun` to the URL to try it without collecting anything.
-- Each step also runs on its own: `collect:ats`, `collect:pages`, `enrich`, `collect:footprint`, `compare`, `seed:dummy`, `score`, `build:dashboard`. `npm test` runs 44 rule tests; `npm run typecheck` checks types.
+- Each step also runs on its own: `collect:ats`, `collect:pages`, `enrich`, `collect:footprint`, `compare`, `seed:dummy`, `score`, `build:dashboard`. `npm test` runs 53 rule tests; `npm run typecheck` checks types.
 
 </details>
 
@@ -206,6 +206,7 @@ The full spec (sources, signals, weights, rules and test cases) is in **[BUILD_B
 - **AI copilot:** a chatbot to ask the data questions ("who's hiring sales in Germany?"), and a "prep me for the call" brief per company, built from its signals and sources.
 - **Outreach:** a LinkedIn message or email drafted from what each company is actually doing, moving to automatic reach-out once the drafts prove good.
 - **Manage the list:** discover new companies from funding news, remove ones that no longer fit, and sync owners, statuses and notes to the CRM.
+- **Stage-change alerts:** when the news reports a newer, completed round than the list has (say a Series C after a Series B), flag it on the company page and in What's new for a person to confirm.
 
 v1 is a modular base: the Growth Signals database (companies, roles, signals and scores, kept week after week) sits in the middle, and sourcing and CRM sync plug into it without a rebuild.
 
@@ -216,6 +217,7 @@ v1 is a modular base: the Growth Signals database (companies, roles, signals and
 - **Postings, not hires.** A posted role isn't a person hired. "Likely filled" is an inference from how and when roles close.
 - **Uneven coverage.** 26 companies have clean job-board data; the rest rely on rendered careers pages, investor boards, websites and news. Low-coverage companies are flagged, with a "Check on LinkedIn" link.
 - **Company size is often old.** Headcount comes from news for about half the companies, so it's shown as context and kept out of the score.
+- **Stage comes from the researched company list.** Each run recalculates the time-based part (a Series A turning 12 months old moves to Approaching B), but a new round reported in the news doesn't change the stage: news can be a rumor or a raise still in progress (Wonderful "seeking to raise $500M, not closed"), so a person confirms the round and updates the list.
 - **Name collisions.** Common names (four different "Grain"s) are matched by domain and HQ, never the name alone, but a wrong match is still possible.
 - **AI can misread.** Role classification and page extraction were spot-checked (and fixed where wrong), not checked one by one.
 

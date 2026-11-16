@@ -93,3 +93,23 @@ export function computeFit(c: CompanyInput, today = new Date()): FitResult {
 
   return { ...base, tag: "Too early", visibility: "watchlist", flags: [...flags, `unrecognised round "${round}"`], reason: "stage unknown or seed" };
 }
+
+/**
+ * Time-based stage moves, recomputed on every run (the rest of the stage comes from the researched list).
+ * Only Series A outside deep tech changes with time: under 12 months Too early, then Pre-Series B
+ * (Approaching B). Returns null when nothing changes. A newer round reported in the news does NOT
+ * change the stage here: rounds go into the list after a person confirms them (BUILD_BRIEF §8).
+ */
+export function refreshTimeFit(
+  c: { last_round: string | null; round_closed: string | null; category: string | null; fit_tag: string | null },
+  today: Date,
+): { tag: FitTag; visibility: Visibility; reason: string } | null {
+  if (!c.fit_tag || !["Too early", "Pre-Series B"].includes(c.fit_tag)) return null;
+  if (stageRank(c.last_round ?? "") !== 1 || c.category === "Deep tech" || !c.round_closed) return null;
+  const [y, m] = c.round_closed.split("-").map(Number);
+  const age = monthsBetween({ y, m }, today);
+  const tag: FitTag = age < 12 ? "Too early" : "Pre-Series B";
+  if (tag === c.fit_tag) return null;
+  return { tag, visibility: tag === "Too early" ? "watchlist" : "ranked_marked", reason: `Series A closed ${age} months ago` };
+}
+

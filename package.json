@@ -7,7 +7,7 @@
     "sources": "tsx scripts/find_job_sources.ts && tsx scripts/source_report.ts",
     "sources:report": "tsx scripts/source_report.ts",
     "typecheck": "tsc --noEmit && tsc --noEmit -p worker",
-    "test": "tsx scripts/test_hiring.ts && tsx scripts/test_compare.ts && tsx scripts/test_filled.ts && tsx scripts/test_grouping.ts && tsx scripts/test_markets.ts",
+    "test": "tsx scripts/test_hiring.ts && tsx scripts/test_compare.ts && tsx scripts/test_filled.ts && tsx scripts/test_grouping.ts && tsx scripts/test_markets.ts && tsx scripts/test_stage.ts",
     "fit": "tsx scripts/check_fit.ts",
     "cf-typegen": "wrangler types",
     "db:migrate": "wrangler d1 migrations apply team-signals --local",
@@ -25,7 +25,7 @@
     "build:dashboard": "tsx scripts/build_dashboard.ts",
     "pipeline": "tsx scripts/pipeline.ts",
     "serve": "tsx scripts/serve.ts",
-    "test:grouping": "tsx scripts/test_grouping.ts && tsx scripts/test_markets.ts"
+    "test:grouping": "tsx scripts/test_grouping.ts && tsx scripts/test_markets.ts && tsx scripts/test_stage.ts"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

@@ -110,6 +110,8 @@ Strict JSON via structured outputs. AI is used for:
 | Portfolio | (not shown) | Greenfield invested; none on the list |
 | Off-thesis | (no label) | Outside Greenfield's five categories (Phytolon) |
 
+**When stage is calculated:** from the list when it's loaded, and again on every run for the time-based part (a Series A turning 12 months old moves to Approaching B). A newer round in the news never changes the stage by itself; a person confirms it and updates the list.
+
 **Why these stage rules:** Greenfield's portfolio page shows it leads mostly at Series B and C, and at Series A only in deep tech (Commcrete, Exodigo).
 
 **Ranking (changed on 13 Nov, user decision):** every company is **ranked by score**, Past Stage included (Wonderful is #9). Stage fit is shown as a label and a filter, and it gates the **Reach out** tiers. The off-thesis company has no fit label; the dashboard shows its stage fit from the round (Phytolon, Series B → In Range) and its Type stays "Other". The scoring script still writes the original visibility to `ranking.json`; the dashboard applies the new ranking when it loads.
@@ -193,7 +195,7 @@ npm run compare           # dedupe, reposts, baseline
 npm run seed:dummy        # dummy history where no real history exists
 npm run score             # scores table + public/ranking.json (Claude Haiku reason lines)
 npm run build:dashboard   # public/index.html
-npm test                  # 44 rule tests
+npm test                  # 53 rule tests
 ```
 
 Then `npm run serve` and open http://localhost:4180 (any static server for `public/` works too; it just won't show Run now). The AI steps need `ANTHROPIC_API_KEY` in `.dev.vars`.

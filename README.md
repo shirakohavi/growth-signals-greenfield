@@ -96,7 +96,7 @@ Owners, statuses, comments and added companies are saved in your browser only (s
 
 Already set up and running; nobody needs the code or a key to use it:
 - **The dashboard** is served by the Cloudflare Worker in `worker/`.
-- **It runs every Monday early morning** (03:00 UTC: 05:00 Israel time in winter, 06:00 in summer), by GitHub Actions (`.github/workflows/weekly-run.yml`).
+- **It runs every Monday early morning** (03:17 UTC: 05:17 Israel time in winter, 06:17 in summer). The timer is a Cloudflare Cron Trigger on the Worker, which starts the GitHub Actions workflow (`.github/workflows/weekly-run.yml`). GitHub's own schedule is best effort and skipped the first Monday, so it isn't used. **Safety check:** at 06:17 UTC the Worker checks again and starts the run if nothing succeeded that day. Every decision is logged in the Worker's logs (Cloudflare → Workers → team-signals → Logs).
 - **Anyone can press Run now.** They type the team passcode (shared separately) once, and the dashboard shows "Step 3 of 8" live, then updates itself.
 - **The Anthropic key stays a GitHub secret.** Nobody using the dashboard can see it, and runs are billed to the key's owner (about $0.40 each).
 - **History builds up.** The database lives in Cloudflare D1, so every run compares with the last real one.

@@ -248,3 +248,11 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 - **The fix:** a country is new only when its first role (open or closed) was first seen after the company's first run. Countries already there keep the first-run treatment (strongest one only, at 60%) for 90 days, because two days of history still can't say when they started. 6 new tests cover it (44 in all).
 - **Result after re-scoring:** most scores are back to where they were. Upwind is the one real mover (+25): its first Japan sales role appeared in this run. 27 AI calls for the changed reason lines.
 - **Then I asked** for genuinely new markets to show in What's new → Highlights. Upwind's first Japan sales role now appears there on 14 Nov.
+
+## The Monday run: a timer I can rely on (16 Nov 2026)
+
+- **What happened:** the first scheduled Monday run (GitHub's own schedule, 03:00 UTC) never started; by 10:00 UTC GitHub had not created it. GitHub's schedule is best effort and can be delayed for hours or skipped, especially on the hour.
+- **My decision:** don't guess, make it reliable and prove it.
+- **Claude Code** moved the timer to a Cloudflare Cron Trigger on the Worker (Mondays 03:17 UTC), using the same GitHub start call as Run now, plus a safety check at 06:17 UTC that starts the run again if nothing succeeded that day. GitHub's schedule was removed so runs never double up.
+- **Proved live:** a one-time trigger at 10:07 UTC started "Weekly run (scheduled)" on GitHub, which became this Monday's run. A second test trigger at 10:10, while that run was going, started nothing. The test trigger was then removed.
+

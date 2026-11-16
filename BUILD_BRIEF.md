@@ -24,7 +24,7 @@ Home assignment, 8–10 hours. Working end to end beats polish.
 | Dashboard | One static page (`public/index.html`) reading `public/ranking.json` | Built |
 | Worker | Read-only API over D1 (`/api/health`, `/api/companies`, `/api/coverage`) | Built |
 | Runs | `npm run pipeline` locally; in the cloud, a GitHub Actions workflow (`.github/workflows/weekly-run.yml`) | Built |
-| Schedule | Weekly, Mondays 03:00 UTC (05:00–06:00 Israel time), GitHub Actions | Live |
+| Schedule | Weekly, Mondays 03:17 UTC (05:17–06:17 Israel time): a Cloudflare Cron Trigger starts the GitHub Actions run, with a safety re-check at 06:17 UTC | Live |
 | Hosting | One Cloudflare Worker serves the dashboard (static assets) and the API; state in Cloudflare D1 | Live: https://team-signals.team-signals.workers.dev |
 | Run now | Dashboard button → Worker (team passcode) → GitHub starts the workflow; live step progress | Built (local mode via `npm run serve` too) |
 | Not in v1 | Queues, R2, LinkedIn scraping, email/Slack alerts, auto-discovery of companies | Cut on purpose |

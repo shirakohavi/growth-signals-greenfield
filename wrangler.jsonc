@@ -19,7 +19,6 @@
   // Run now: the Worker starts .github/workflows/weekly-run.yml in this repo.
   // Secrets, set with `npx wrangler secret put`: GITHUB_TOKEN, RUN_PASSCODE.
   // The Monday run: 03:17 UTC starts it, 06:17 UTC checks it and starts it again if no run succeeded today.
-  // (The extra one-time line is a live test and is removed after it fires.)
-  "triggers": { "crons": ["17 3 * * 1", "17 6 * * 1", "7 10 16 11 *"] },
+  "triggers": { "crons": ["17 3 * * 1", "17 6 * * 1"] },
   "vars": { "GITHUB_REPO": "shirakohavi/growth-signals-greenfield", "WORKFLOW_FILE": "weekly-run.yml" }
 }

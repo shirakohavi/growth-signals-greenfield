@@ -114,7 +114,7 @@ Strict JSON via structured outputs. AI is used for:
 
 **Why these stage rules:** Greenfield's portfolio page shows it leads mostly at Series B and C, and at Series A only in deep tech (Commcrete, Exodigo).
 
-**Ranking (changed on 13 Nov, user decision):** every company is **ranked by score**, Past Stage included (Wonderful is #9). Stage fit is shown as a label and a filter, and it gates the **Reach out** tiers. The off-thesis company has no fit label; the dashboard shows its stage fit from the round (Phytolon, Series B → In Range) and its Type stays "Other". The scoring script still writes the original visibility to `ranking.json`; the dashboard applies the new ranking when it loads.
+**Ranking (changed on 13 Nov, user decision):** every company is **ranked by score** in All companies, Past Stage included (Wonderful is #9). Since 17 Nov, Rising shows In Range companies only. Stage fit is shown as a label and a filter, and it gates the **Reach out** tiers. The off-thesis company has no fit label; the dashboard shows its stage fit from the round (Phytolon, Series B → In Range) and its Type stays "Other". The scoring script still writes the original visibility to `ranking.json`; the dashboard applies the new ranking when it loads.
 
 ## 9. Signal library
 
@@ -158,7 +158,7 @@ Score = max(0, min(100, Σ SignalPoints_i × Recency_i × Confidence_i))
 
 One static page (`src/dashboard/index.html` → `npm run build:dashboard` → `public/index.html`), styled after greenfield-growth.com (navy, Manrope, one soft-blue accent).
 
-- **Rising:** the top 10 by score (biggest movers once there are two real runs), with Reach out tiers.
+- **Rising:** the top 10 **In Range** companies by score (biggest movers once there are two real runs), with Reach out tiers. Off-thesis companies are left out. Changed on 17 Nov: Rising is the list to act on, so it shows only companies inside the mandate; All companies still ranks every stage.
 - **All companies:** List, **Stage Fit** board (one column per stage), Chart and Map (open roles by country). Search, filters (reach, type, stage fit, band, decline, coverage, country, owner, outreach status) and sorting.
 - **What's new:** dated changes over the last 7–90 days. Highlights (funding, plans, offices, risks) by default; new roles rolled up per company.
 - **Company page (full screen):** score, band, reach tier, headline, reason line, links, **score over time**, and tabs for Changes, Why (every signal with points and source) and Team (hiring vs size, roles by function and country, open roles over time). A "Check on LinkedIn" link for low-coverage companies.

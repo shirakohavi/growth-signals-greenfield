@@ -256,3 +256,8 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 - **Claude Code** moved the timer to a Cloudflare Cron Trigger on the Worker (Mondays 03:17 UTC), using the same GitHub start call as Run now, plus a safety check at 06:17 UTC that starts the run again if nothing succeeded that day. GitHub's schedule was removed so runs never double up.
 - **Proved live:** a one-time trigger at 10:07 UTC started "Weekly run (scheduled)" on GitHub, which became this Monday's run. A second test trigger at 10:10, while that run was going, started nothing. The test trigger was then removed.
 
+
+## Rising shows In Range companies only (17 Nov 2026)
+
+- **My decision:** Rising is the list the team acts on, so it should only hold companies inside Greenfield's mandate. Wonderful (Past Stage) and Phytolon (off-thesis) were taking two of the ten places.
+- **Claude Code** limited Rising to In Range, on-thesis companies, removed its Stage Fit filter (it no longer does anything there), and added a line under the title linking to All companies, which still ranks every stage.

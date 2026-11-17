@@ -319,6 +319,8 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
 /* Rising headline: blue eyebrow label above a light headline, as on greenfield-growth.com */
 .eyebrow { font-size: 20px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 10px; }
 .hero h1.top10 { font-size: 38px; font-weight: 300; letter-spacing: -0.02em; }
+.hero .scope { margin: 6px 0 0; font-size: 14px; color: var(--muted); }
+.hero .scope a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
 .btn.primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
 .btn.sm { font-size: 13px; padding: 6px 10px; }
@@ -620,20 +622,21 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
 
   // ------------------------------------------------------------ views
   function rising() {
-    const f = S.rising, ranked = D.companies.filter((c) => c.rank !== null);
+    // Rising is the "who fits our mandate" list: In Range companies on thesis only. All companies ranks every stage.
+    const f = { ...S.rising, status: "all" }, ranked = D.companies.filter((c) => c.rank !== null && c.fit === "In Range" && !c.off_thesis);
     const list = ranked.filter((c) => pass(c, f)).sort(SORT[f.sort] || SORT.score).slice(0, 10);
-    const n = nActive(f, ["type", "status", "band", "decline", "reach", "owner", "outreach"]);
-    return `<section class="hero"><div class="eyebrow">Top 10 rising</div><h1 class="top10">Company growth signals</h1>${reachKey}</section>
+    const n = nActive(f, ["type", "band", "decline", "reach", "owner", "outreach"]);
+    return `<section class="hero"><div class="eyebrow">Top 10 rising</div><h1 class="top10">Company growth signals</h1><p class="scope">In Range companies only (Series A in deep tech, Series B or C) · <a href="#all">see every stage in All companies</a></p>${reachKey}</section>
       <div class="controls">
         <input type="search" id="q" placeholder="Search company" value="${esc(f.q)}" aria-label="Search company">
         <button class="btn" data-toggle-filters aria-expanded="${S.filtersOpen}">Filters${n ? ` · ${n}` : ""}</button>
         <span class="grow"></span>
         ${sel("sort", "", [["score", "Sort: Score"], ["change", "Sort: Change"], ["open", "Sort: Open Roles"], ["name", "Sort: Name"]], f.sort).replace(/<label>|<\/label>/g, "")}
       </div>
-      ${S.filtersOpen ? `<div class="fpanel">${sel("f-reach", tl("reach", "Reach Out"), reachOpts, f.reach || "all")}${sel("f-type", tl("type", "Type"), typeOpts, f.type)}${sel("f-status", tl("status", "Stage Fit"), statusOpts(ranked), f.status)}${sel("f-band", tl("band", "Band"), bandOpts, f.band)}${sel("f-decline", tl("decline", "Decline"), declOpts, f.decline)}${crmFilters(f)}</div>` : ""}
-      ${activeChips(f, { reach: (v) => REACH[v], type: (v) => TYPE[v] || v, status: (v) => v, band: (v) => title(v), decline: (v) => (v === "yes" ? "Decline Only" : "No Decline"), ...crmChips })}
+      ${S.filtersOpen ? `<div class="fpanel">${sel("f-reach", tl("reach", "Reach Out"), reachOpts, f.reach || "all")}${sel("f-type", tl("type", "Type"), typeOpts, f.type)}${sel("f-band", tl("band", "Band"), bandOpts, f.band)}${sel("f-decline", tl("decline", "Decline"), declOpts, f.decline)}${crmFilters(f)}</div>` : ""}
+      ${activeChips(f, { reach: (v) => REACH[v], type: (v) => TYPE[v] || v, band: (v) => title(v), decline: (v) => (v === "yes" ? "Decline Only" : "No Decline"), ...crmChips })}
       ${list.length ? `<div class="list">${listHead(false)}${list.map((c, i) => row(c, i + 1, false)).join("")}</div>` : `<p class="empty">No company matches. Clear a filter to see more.</p>`}
-      <p class="more"><a href="#all">All ${ranked.length} companies →</a></p>`;
+      <p class="more"><a href="#all">All ${D.companies.filter((c) => c.rank !== null).length} companies →</a></p>`;
   }
   const qb = (k) => `<button class="q" data-guide="${k}" aria-label="What does this mean?">?</button>`;
   function listHead(table) {

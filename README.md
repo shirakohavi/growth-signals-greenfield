@@ -66,7 +66,7 @@ Three tabs across the top: **Rising**, **All companies** and **What's new**. Eve
 - **▲▼** is the score change since the last run; **Team** is the mix of open roles by function (R&D, Sales, Marketing, Customer success, Partnerships).
 - **Owner** shows the initials of the teammate who owns the outreach (empty when unassigned).
 
-**Rising** — the top 10 by score. Search, sort (score, change, open roles, name) and **Filters**: Reach out, Type, Stage Fit, Band, Decline, Owner and Outreach status. Active filters show as chips you can clear.
+**Rising** — the top 10 **In Range** companies by score (Series B or C, or Series A in deep tech; off-thesis companies left out). Too Early, Approaching B and Past Stage companies are still ranked in **All companies**. Search, sort (score, change, open roles, name) and **Filters**: Reach out, Type, Band, Decline, Owner and Outreach status. Active filters show as chips you can clear.
 
 **All companies** — all 40 companies, in three views:
 - **List:** the same table with every company, plus Coverage and Hiring-in-country filters.

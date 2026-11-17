@@ -626,7 +626,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     const f = { ...S.rising, status: "all" }, ranked = D.companies.filter((c) => c.rank !== null && c.fit === "In Range" && !c.off_thesis);
     const list = ranked.filter((c) => pass(c, f)).sort(SORT[f.sort] || SORT.score).slice(0, 10);
     const n = nActive(f, ["type", "band", "decline", "reach", "owner", "outreach"]);
-    return `<section class="hero"><div class="eyebrow">Top 10 rising</div><h1 class="top10">Company growth signals</h1><p class="scope">In Range companies only (Series A in deep tech, Series B or C) · <a href="#all">see every stage in All companies</a></p>${reachKey}</section>
+    return `<section class="hero"><div class="eyebrow">Top 10 rising</div><h1 class="top10">Company growth signals</h1><p class="scope">In Range companies only</p>${reachKey}</section>
       <div class="controls">
         <input type="search" id="q" placeholder="Search company" value="${esc(f.q)}" aria-label="Search company">
         <button class="btn" data-toggle-filters aria-expanded="${S.filtersOpen}">Filters${n ? ` · ${n}` : ""}</button>

@@ -260,4 +260,4 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 ## Rising shows In Range companies only (17 Nov 2026)
 
 - **My decision:** Rising is the list the team acts on, so it should only hold companies inside Greenfield's mandate. Wonderful (Past Stage) and Phytolon (off-thesis) were taking two of the ten places.
-- **Claude Code** limited Rising to In Range, on-thesis companies, removed its Stage Fit filter (it no longer does anything there), and added a line under the title linking to All companies, which still ranks every stage.
+- **Claude Code** limited Rising to In Range, on-thesis companies, removed its Stage Fit filter (it no longer does anything there), and added "In Range companies only" under the title. All companies still ranks every stage.

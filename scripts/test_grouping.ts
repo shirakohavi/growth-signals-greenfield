@@ -27,8 +27,8 @@ check("strongest (GTM build-out) counts in full", b?.value === 20);
 check("speeding up counts half (15 -> 7.5)", s?.value === 7.5 && /half: same hiring wave as GTM team build-out/.test(s.detail));
 check("mix shift counts half (10 -> 5)", m?.value === 5);
 check("R&D build-up counts half (5 -> 2.5)", d?.value === 2.5);
-// New market US (+15, first run = indirect) is not part of the wave and stays as is.
-check("score = 20 + 7.5 + 5 + 2.5 + new market 15 = 50", r.score === 50);
+// The US first-run market hint (+15) is not added: the same US roles already earned GTM build-out (count once).
+check("score = 20 + 7.5 + 5 + 2.5 = 35 (no US market hint on top of the US build-out)", r.score === 35 && !has(r, "new_market:US"));
 
 // Size is context only: a tiny or a huge headcount gives the same score, and size is still reported.
 const small = scoreCompany({ ...co, headcount: 20 }, jobs, [], snaps, today);

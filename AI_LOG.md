@@ -271,3 +271,10 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 
 - **Ranking:** `ranking.json` still ranked companies in stage groups and left Past Stage ones unranked, while the dashboard re-ranked them by score on load. **Claude Code** made the scoring script rank every company by score, so the file and the dashboard agree (40 ranked; Wonderful #3 at 68). Re-ranked from the cloud database with 0 AI calls.
 - **Classiq:** I checked the news that Intel signed a definitive agreement to acquire it (26 Oct 2026, closing expected H1 2027) and updated its row in `data/companies.csv`. Its stage is now Past Stage; its score (18) didn't change. This is the case the planned stage-change alert would flag automatically.
+
+## Count a market once (18 Nov 2026)
+
+- **What I noticed:** the same US sales roles could score twice: +20 for GTM team build-out and +15 as the first-run "maybe new" market hint (e.g. Onyx, 35 points for one fact).
+- **Options I weighed:** remove the 15-point hint everywhere (31 companies drop 15; only 2 left at 60+), or count once. **My decision:** count once.
+- **Claude Code** dropped the hint when the same country already earns GTM build-out (it's shown as presence instead); markets seen arriving still get the full +25. 3 new tests, 1 updated (56 in all).
+- **Result after re-scoring (8 AI calls, reason lines only):** 8 companies changed, each −15: Upwind 71, Zenity 51, Faye 40, Linx 26, Onyx 25, NoTraffic 25, Nimble 23, groundcover 20. Reach out now: Daylight, Upwind and Unframe; Zenity moved to Warm.

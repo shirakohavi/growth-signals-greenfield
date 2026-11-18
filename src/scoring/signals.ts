@@ -10,6 +10,8 @@
 //  - Each signal counts once (strongest instance), except New market entry: once per country.
 //  - One hiring wave counts once: of GTM build-out, Hiring speeding up, Mix shifting toward GTM and R&D build-up,
 //    the strongest counts in full and the rest count half.
+//  - Count a market once: a first-run market hint (not seen arriving) is dropped when GTM build-out already
+//    counts the same country's roles.
 //  - Company size (open roles / headcount) is shown as context only; it does not change the score.
 
 /** Signals that all measure the same hiring wave: the strongest counts in full, the others count half. */
@@ -163,6 +165,7 @@ export function scoreCompany(c: CompanyIn, jobs: JobIn[], events: EventIn[], sna
     const evidence = fresh ? EVIDENCE[m.evidence === "indirect" && firstSeenIn.has(iso) ? "direct" : m.evidence] : EVIDENCE.indirect;
     return { fresh, s: sig(`new_market:${iso}`, `New market entry (${iso})`, 25, age, evidence, date, m.detail, m.url, m.dummy) };
   }).sort((a, b) => b.s.value - a.s.value || (b.s.date ?? "").localeCompare(a.s.date ?? "") || gtmJobs.filter((j) => j.country === b.s.key.slice(11)).length - gtmJobs.filter((j) => j.country === a.s.key.slice(11)).length);
+  const hints = new Set<Signal>(); // first-run "maybe new" markets (not seen arriving), see "Count a market once" below
   const presence = (e: Signal) => context.push({ type: "presence", value: `${e.name.replace("New market entry", "Presence")}: ${e.detail}`, source_url: e.source_url });
   if (hasRealHistory) {
     // Countries that appeared after the first run: each counts in full. Countries already there at the first
@@ -171,10 +174,10 @@ export function scoreCompany(c: CompanyIn, jobs: JobIn[], events: EventIn[], sna
     const old = entries.filter((e) => !e.fresh);
     for (const e of entries.filter((e) => e.fresh)) out.push(e.s);
     const keepBaseline = ageDays(firstRun, today) <= 90 && old.length;
-    if (keepBaseline) out.push(old[0].s);
+    if (keepBaseline) { out.push(old[0].s); hints.add(old[0].s); }
     for (const e of old.slice(keepBaseline ? 1 : 0)) presence(e.s);
   } else if (entries.length) {
-    out.push(entries[0].s);
+    out.push(entries[0].s); hints.add(entries[0].s);
     for (const e of entries.slice(1)) presence(e.s);
   }
 
@@ -193,6 +196,15 @@ export function scoreCompany(c: CompanyIn, jobs: JobIn[], events: EventIn[], sna
     const n = x.open.length + x.filled;
     if (n >= 4) out.push(sig("gtm_buildout", "GTM team build-out", 20, 1, 1, null,
       x.filled ? `${n} GTM roles in ${ctry}, ${x.filled} now likely filled` : `${n} open GTM roles in ${ctry}`, x.open[0]?.url ?? null));
+  }
+  // ---- Count a market once: a first-run market hint is dropped when the same roles already earned GTM team
+  // build-out in that country (one fact, "they're hiring sales in the US", shouldn't score twice). It is shown
+  // as presence instead. Markets seen arriving after the first run always keep their full +25.
+  for (const h of hints) {
+    const iso = h.key.slice(11);
+    if (!byCountry.has(iso) || (byCountry.get(iso)!.open.length + byCountry.get(iso)!.filled) < 4) continue;
+    out.splice(out.indexOf(h), 1);
+    presence(h);
   }
 
   // ---- Senior GTM hire (+20): VP/Head/Chief in Sales, Revenue, CS, Partnerships, Marketing (open post).

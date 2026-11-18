@@ -35,6 +35,17 @@ check("plus the first-run market at 15 (two markets in all)", markets(r3).length
 const r4 = scoreCompany(co, withNew.map((j) => j.country === "KR" ? { ...j, first_seen: "2027-02-20" } : j), [], [snap("2026-11-12"), snap("2027-02-20")], "2027-02-20");
 check("after 90 days: only the newly entered country counts", markets(r4).length === 1 && markets(r4)[0].key === "new_market:KR");
 
+// Count a market once: 5 US sales roles at the first run earn GTM build-out (+20); the US first-run hint
+// (+15) is dropped instead of counting the same roles twice.
+const us5 = [1, 2, 3, 4, 5].map((i) => job({ country: "US", title: `AE US ${i}` }));
+const r5 = scoreCompany(co, [...us5, job({ country: "GB", title: "AE UK" })], [], [snap("2026-11-12"), snap("2026-11-14")], "2026-11-14");
+check("build-out country: hint dropped, build-out kept", markets(r5).length === 0 && r5.signals.some((s) => s.key === "gtm_buildout"));
+check("dropped hint shown as presence", r5.context.some((c) => c.type === "presence" && c.value.includes("(US)")));
+// A market seen arriving after the first run keeps its full +25 even with a build-out there.
+const krWave = [1, 2, 3, 4].map((i) => job({ country: "KR", title: `AE KR ${i}`, first_seen: "2026-11-14", is_baseline: 0 }));
+const r6 = scoreCompany(co, [...base, ...krWave], [], [snap("2026-11-12"), snap("2026-11-14")], "2026-11-14");
+check("new country with a build-out still counts +25", markets(r6).find((s) => s.key === "new_market:KR")?.value === 25);
+
 let failed = 0;
 for (const [name, ok] of checks) { console.log(`${ok ? "ok  " : "FAIL"} ${name}`); if (!ok) failed++; }
 console.log(`${checks.length - failed}/${checks.length} passed`);

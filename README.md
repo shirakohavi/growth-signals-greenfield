@@ -214,7 +214,7 @@ v1 is a modular base: the Growth Signals database (companies, roles, signals and
 ## Known limits
 
 **Data**
-- **Short history.** Two real runs so far (12 and 14 Nov). Signals that compare runs have started to work (Upwind's first Japan sales role showed up as a new market), but trends like "hiring paused" need a few more weeks, and history before 12 Nov is dummy (labelled wherever it's shown).
+- **Short history.** Two real runs so far (12 and 14 Nov). Signals that compare runs have started to work (Upwind's first Japan sales role showed up as a new market), but trends like "hiring paused" need a few more weeks, and history before 12 Nov is dummy (labelled wherever it's shown). Until then, each company's strongest existing foreign market gets a 15-point hint (25 × 60%), because we can't tell how old it is. The hint is skipped when the same country already scores as a GTM build-out, so the same roles never count twice.
 - **Postings, not hires.** A posted role isn't a person hired. "Likely filled" is an inference from how and when roles close.
 - **Uneven coverage.** 26 companies have clean job-board data; the rest rely on rendered careers pages, investor boards, websites and news. Low-coverage companies are flagged, with a "Check on LinkedIn" link.
 - **Company size is often old.** Headcount comes from news for about half the companies, so it's shown as context and kept out of the score.

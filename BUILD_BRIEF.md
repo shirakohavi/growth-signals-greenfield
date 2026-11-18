@@ -114,7 +114,9 @@ Strict JSON via structured outputs. AI is used for:
 
 **Why these stage rules:** Greenfield's portfolio page shows it leads mostly at Series B and C, and at Series A only in deep tech (Commcrete, Exodigo).
 
-**Ranking (changed on 13 Nov, user decision):** every company is **ranked by score** in All companies, Past Stage included (Wonderful is #9). Since 17 Nov, Rising shows In Range companies only. Stage fit is shown as a label and a filter, and it gates the **Reach out** tiers. The off-thesis company has no fit label; the dashboard shows its stage fit from the round (Phytolon, Series B → In Range) and its Type stays "Other". The scoring script still writes the original visibility to `ranking.json`; the dashboard applies the new ranking when it loads.
+**Stage updates by hand:** Classiq moved to Past Stage on 18 Nov: Intel signed a definitive agreement to acquire it (26 Oct 2026, closing expected H1 2027). Stage comes from the researched list in `data/companies.csv`; news never changes it automatically.
+
+**Ranking (changed on 13 Nov, user decision):** every company is **ranked by score** in All companies, Past Stage included (Wonderful is #9). Since 17 Nov, Rising shows In Range companies only. Stage fit is shown as a label and a filter, and it gates the **Reach out** tiers. The off-thesis company has no fit label; the dashboard shows its stage fit from the round (Phytolon, Series B → In Range) and its Type stays "Other". Since 18 Nov the scoring script ranks every company by score too (ties: better coverage first), so `ranking.json` and the dashboard show the same order.
 
 ## 9. Signal library
 

@@ -266,3 +266,8 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 
 - **My decisions:** say "GTM" everywhere instead of "go-to-market"; show full country names in the country filters; take the Team bar out of the main lists (it stays on the company page and in Compare); remove Band from the dashboard, since the score and Reach out tiers already say it.
 - **Claude Code** changed the headline templates and the reason-line prompt to write "GTM", and made the dashboard rewrite older text on load, so the current run's reason lines read the same without new AI calls.
+
+## Same ranking everywhere, and Classiq to Past Stage (18 Nov 2026)
+
+- **Ranking:** `ranking.json` still ranked companies in stage groups and left Past Stage ones unranked, while the dashboard re-ranked them by score on load. **Claude Code** made the scoring script rank every company by score, so the file and the dashboard agree (40 ranked; Wonderful #3 at 68). Re-ranked from the cloud database with 0 AI calls.
+- **Classiq:** I checked the news that Intel signed a definitive agreement to acquire it (26 Oct 2026, closing expected H1 2027) and updated its row in `data/companies.csv`. Its stage is now Past Stage; its score (18) didn't change. This is the case the planned stage-change alert would flag automatically.

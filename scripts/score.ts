@@ -166,7 +166,7 @@ for (const c of companies) {
   const byKey = (k: (j: JobIn) => string | null) => Object.entries(cj.reduce((a, j) => { const v = k(j) ?? "unknown"; a[v] = (a[v] ?? 0) + 1; return a; }, {} as Record<string, number>)).sort((a, b) => b[1] - a[1]);
   rows.push({
     name: c.name, domain: c.domain, category: c.category, sector: c.sector,
-    fit_tag: c.fit_tag, visibility: c.fit_visibility, fit_reason: c.fit_reason,
+    fit_tag: c.fit_tag, fit_reason: c.fit_reason,
     headline: headlineOf(r.signals, r.decline_flag),
     // "Series B · Nov 2026 → In mandate": what the fit status is based on (§8, src/lib/fit.ts).
     fit: FIT_LABEL[c.fit_tag ?? ""] ?? c.fit_tag,
@@ -208,15 +208,14 @@ for (const c of companies) {
     decline_flag = excluded.decline_flag, reason = excluded.reason, signals_json = excluded.signals_json;`);
 }
 
-// Ranking: ranked (In mandate) and ranked_marked (Pre-Series B) by score; off-thesis last; watchlist; hidden at the end.
-const GROUP = { ranked: 0, ranked_marked: 0, ranked_last: 1, watchlist: 2, hidden: 3 } as Record<string, number>;
-rows.sort((a, b) => (GROUP[a.visibility ?? "hidden"] - GROUP[b.visibility ?? "hidden"]) || b.score - a.score || COVERAGE_RANK[a.coverage] - COVERAGE_RANK[b.coverage]);
-let rank = 0;
+// Ranking (13 Nov decision): every company is ranked by score, whatever its stage; stage fit is a label and
+// a filter, and Rising shows In Range only. Ties: better coverage first. Same order the dashboard uses.
+rows.sort((a, b) => b.score - a.score || COVERAGE_RANK[a.coverage] - COVERAGE_RANK[b.coverage]);
 // Safeguard: a Greenfield portfolio company, if one is ever added to the list, is left out of the dashboard.
 const portfolioNames = new Set(rows.filter((r) => r.portfolio).map((r) => r.name));
 rows.splice(0, rows.length, ...rows.filter((r) => !r.portfolio));
 feed.splice(0, feed.length, ...feed.filter((f) => !portfolioNames.has(f.company)));
-const ranked = rows.map((r) => ({ rank: GROUP[r.visibility ?? "hidden"] <= 1 ? ++rank : null, ...r }));
+const ranked = rows.map((r, i) => ({ ...r, rank: i + 1 }));
 
 await mkdir("data/runs", { recursive: true });
 const path = `data/runs/scores-${today}.sql`;

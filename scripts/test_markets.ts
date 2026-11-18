@@ -1,6 +1,6 @@
 // Tests for "New market entry" across runs: countries already present at the first run are not new markets.
 // Run: npx tsx scripts/test_markets.ts
-import { scoreCompany, type CompanyIn, type JobIn, type SnapshotIn } from "../src/scoring/signals.ts";
+import { scoreCompany, type CompanyIn, type EventIn, type JobIn, type SnapshotIn } from "../src/scoring/signals.ts";
 
 const co: CompanyIn = { id: 1, name: "TestCo", hq_country: "IL", last_round: "Series B", round_closed: "2026-06-01", fit_tag: "In mandate",
   fit_visibility: "ranked", greenfield_status: "open", job_source_type: "greenhouse", headcount: null };
@@ -45,6 +45,13 @@ check("dropped hint shown as presence", r5.context.some((c) => c.type === "prese
 const krWave = [1, 2, 3, 4].map((i) => job({ country: "KR", title: `AE KR ${i}`, first_seen: "2026-11-14", is_baseline: 0 }));
 const r6 = scoreCompany(co, [...base, ...krWave], [], [snap("2026-11-12"), snap("2026-11-14")], "2026-11-14");
 check("new country with a build-out still counts +25", markets(r6).find((s) => s.key === "new_market:KR")?.value === 25);
+
+// News about an office: undated news never scores as a market (presence only); dated news can.
+const office = (d: string | null): EventIn => ({ type: "office", value: "Team based in the United States", event_date: d, evidence: "indirect", source_url: null, is_dummy: 0 });
+const r7 = scoreCompany(co, [], [office(null)], [snap("2026-11-12"), snap("2026-11-14")], "2026-11-14");
+check("undated office news: no market points", markets(r7).length === 0 && r7.context.some((c) => c.type === "presence" && c.value.includes("(US)")));
+const r8 = scoreCompany(co, [], [office("2026-06-08")], [snap("2026-11-12"), snap("2026-11-14")], "2026-11-14");
+check("dated office news can still count", markets(r8).length === 1);
 
 let failed = 0;
 for (const [name, ok] of checks) { console.log(`${ok ? "ok  " : "FAIL"} ${name}`); if (!ok) failed++; }

@@ -12,6 +12,7 @@
 //    the strongest counts in full and the rest count half.
 //  - Count a market once: a first-run market hint (not seen arriving) is dropped when GTM build-out already
 //    counts the same country's roles.
+//  - Undated news (an office or team mentioned without a date) never scores a market: presence only.
 //  - Company size (open roles / headcount) is shown as context only; it does not change the score.
 
 /** Signals that all measure the same hiring wave: the strongest counts in full, the others count half. */
@@ -135,7 +136,10 @@ export function scoreCompany(c: CompanyIn, jobs: JobIn[], events: EventIn[], sna
     if (!m) continue;
     const iso = ({ "united states": "US", "u.s.": "US", usa: "US", us: "US", uk: "GB", "united kingdom": "GB", germany: "DE", france: "FR", japan: "JP", india: "IN", singapore: "SG", canada: "CA", brazil: "BR", mexico: "MX", spain: "ES", italy: "IT", netherlands: "NL", australia: "AU" } as Record<string, string>)[m[1].toLowerCase()];
     if (!iso || home.has(iso) || markets.has(iso)) continue;
-    const old = e.event_date && ageDays(e.event_date, today) > 365;
+    // Undated news can't show WHEN a team arrived, so it never scores as a market (non-job facts need a
+    // date to score). It is kept as presence context.
+    if (!e.event_date) { context.push({ type: "presence", value: `Presence (${iso}): ${e.value}`, source_url: e.source_url }); continue; }
+    const old = ageDays(e.event_date, today) > 365;
     if (old) continue; // presence older than 12 months: not new
     markets.set(iso, { date: e.event_date, detail: e.value, url: e.source_url, evidence: e.event_date && ageDays(e.event_date, today) <= 90 ? e.evidence : "indirect", dummy: !!e.is_dummy });
   }

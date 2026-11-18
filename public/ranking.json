@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T21:06:41.809Z",
+  "generated_at": "2026-11-18T21:13:59.069Z",
   "run_date": "2026-11-16",
   "note": "Signals marked dummy come from seeded history (is_dummy=1), not real past runs.",
   "rising_mode": "change",
@@ -6643,6 +6643,11 @@
       "context": [
         {
           "type": "presence",
+          "value": "Presence (IN): Active in India, one of its fastest growing markets outside the US",
+          "source_url": "https://en.globes.co.il/en/article-israeli-ai-agents-co-wonderful-seeks-to-raise-500m-1001552121"
+        },
+        {
+          "type": "presence",
           "value": "Presence (GB): 1 open GTM role(s) in GB, e.g. \"Global Partner Marketing Lead, Hyperscalers\"",
           "source_url": "https://jobs.ashbyhq.com/wonderful/9f7c7329-5cb3-491a-9a7b-54dbb6722e96"
         },
@@ -6675,11 +6680,6 @@
           "type": "presence",
           "value": "Presence (TR): 2 open GTM role(s) in TR, e.g. \"GTM\"",
           "source_url": "https://jobs.ashbyhq.com/wonderful/10c52a37-8ff3-4eec-a1f3-5f56dcce6407"
-        },
-        {
-          "type": "presence",
-          "value": "Presence (NL): 2 open GTM role(s) in NL, e.g. \"Deployment Strategist\"",
-          "source_url": "https://jobs.ashbyhq.com/wonderful/8303778b-ea04-4dda-a3d6-ff6437ed4e82"
         }
       ],
       "uses_dummy": false,
@@ -11292,361 +11292,6 @@
       "rank": 12
     },
     {
-      "name": "Zenzap",
-      "domain": "zenzap.co",
-      "category": "Vertical AI",
-      "sector": "AI work chat",
-      "fit_tag": "Pre-Series B",
-      "fit_reason": "Series A closed 15 months ago",
-      "headline": "New market · US",
-      "fit": "Approaching B",
-      "round_label": "Series A · Aug 25",
-      "fit_explain": "Series A · Aug 2025 → Approaching B",
-      "reach": null,
-      "portfolio": false,
-      "score": 34,
-      "band": "Some activity",
-      "change": 0,
-      "coverage": "partial",
-      "decline_flag": false,
-      "reason": "Team is based in the United States, a new market entry. Series A closed 16 months ago (Aug 2025), placing it in the usual Series B window. A partner page (/partners-program/) was updated 9 Nov, and a hospitality industry page was added 19 Oct.",
-      "open_jobs": 0,
-      "gtm_jobs": 0,
-      "jobs_by_country": {},
-      "gtm_by_country": {},
-      "jobs_by_function": {},
-      "size": {
-        "headcount": 45,
-        "open": 0,
-        "pct": 0
-      },
-      "filled": 0,
-      "gtm_share": null,
-      "headcount": 45,
-      "headcount_source": "https://www.ice.co.il/finance/news/article/1133649",
-      "job_source": "none",
-      "careers_url": null,
-      "slug": "zenzap",
-      "links": {
-        "website": "https://zenzap.co",
-        "careers": null,
-        "board": null,
-        "linkedin_jobs": "https://www.linkedin.com/jobs/search/?keywords=Zenzap"
-      },
-      "series": [],
-      "score_series": [
-        {
-          "date": "2026-11-12",
-          "score": 34,
-          "dummy": false
-        },
-        {
-          "date": "2026-11-14",
-          "score": 34,
-          "dummy": false
-        },
-        {
-          "date": "2026-11-16",
-          "score": 34,
-          "dummy": false
-        }
-      ],
-      "sources": {
-        "website": "empty",
-        "ats": "empty",
-        "getro": "empty",
-        "sitemap": "ok",
-        "about": "ok",
-        "news": "ok"
-      },
-      "changes": [
-        {
-          "date": "2026-11-12",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/food-service/",
-          "url": "https://www.zenzap.co/solutions/food-service/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-11-11",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/ai-agents-for-hr/",
-          "url": "https://www.zenzap.co/solutions/ai-agents-for-hr/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-11-11",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/wellness-fitness/",
-          "url": "https://www.zenzap.co/solutions/wellness-fitness/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-11-11",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/retail/",
-          "url": "https://www.zenzap.co/solutions/retail/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-11-11",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/consultants/",
-          "url": "https://www.zenzap.co/solutions/consultants/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-11-09",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Partner page",
-          "detail": "/partners-program/",
-          "url": "https://www.zenzap.co/partners-program/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-11-03",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/healthcare/",
-          "url": "https://www.zenzap.co/solutions/healthcare/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-10-20",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/venture-capital/",
-          "url": "https://www.zenzap.co/solutions/venture-capital/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-10-19",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/hospitality/",
-          "url": "https://www.zenzap.co/solutions/hospitality/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-10-16",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/franchise/",
-          "url": "https://www.zenzap.co/solutions/franchise/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-10-16",
-          "company": "Zenzap",
-          "kind": "round",
-          "title": "Funding",
-          "detail": "Raised USD 44M Series B led by Bessemer Venture Partners and Lightspeed Venture Partners, with The Garage participating",
-          "url": "https://www.analyticsinsight.net/news/weekly-startup-funding-roundup-ramp-raises-usd-185-b-labelbox-secures-over-usd-100m-ultra-receives-usd-62m",
-          "evidence": "direct",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-10-14",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Partner page",
-          "detail": "/partners/",
-          "url": "https://www.zenzap.co/partners/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-10-14",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/sales/",
-          "url": "https://www.zenzap.co/solutions/sales/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-10-14",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/nonprofits/",
-          "url": "https://www.zenzap.co/solutions/nonprofits/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-10-14",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/finance/",
-          "url": "https://www.zenzap.co/solutions/finance/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-10-14",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/marketing/",
-          "url": "https://www.zenzap.co/solutions/marketing/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-10-14",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/education/",
-          "url": "https://www.zenzap.co/solutions/education/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-10-12",
-          "company": "Zenzap",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/solutions/construction/",
-          "url": "https://www.zenzap.co/solutions/construction/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-10-01",
-          "company": "Zenzap",
-          "kind": "round",
-          "title": "Funding",
-          "detail": "$44M funding led by Bessemer Venture Partners and Lightspeed Venture Partners, with The Garage investing; emerged from stealth",
-          "url": "https://www.zenzap.co/about-us/",
-          "evidence": "direct",
-          "dummy": false,
-          "country": null
-        }
-      ],
-      "roles": [],
-      "signals": [
-        {
-          "key": "new_market:US",
-          "name": "New market entry (US)",
-          "points": 25,
-          "age": 1,
-          "evidence": 0.6,
-          "value": 15,
-          "date": null,
-          "detail": "Team based in the United States",
-          "source_url": "https://www.unite.ai/zenzap-44m-total-funding-collaborative-ai-agents/",
-          "dummy": false
-        },
-        {
-          "key": "series_b_window",
-          "name": "Series B window",
-          "points": 10,
-          "age": 1,
-          "evidence": 1,
-          "value": 10,
-          "date": null,
-          "detail": "Series A closed 16 months ago (2025-08): in the usual Series B window",
-          "source_url": null,
-          "dummy": false
-        },
-        {
-          "key": "partner_program",
-          "name": "Partner or channel program",
-          "points": 10,
-          "age": 1,
-          "evidence": 0.6,
-          "value": 6,
-          "date": "2026-11-09",
-          "detail": "partner page /partners-program/ (sitemap lastmod 2026-11-09)",
-          "source_url": "https://www.zenzap.co/partners-program/",
-          "dummy": false
-        },
-        {
-          "key": "industry_pages",
-          "name": "New industry pages",
-          "points": 5,
-          "age": 1,
-          "evidence": 0.6,
-          "value": 3,
-          "date": "2026-10-19",
-          "detail": "industry page /solutions/hospitality/ (sitemap lastmod 2026-10-19)",
-          "source_url": "https://www.zenzap.co/solutions/hospitality/",
-          "dummy": false
-        }
-      ],
-      "context": [
-        {
-          "type": "office",
-          "value": "Team based in Tel Aviv",
-          "source_url": "https://www.unite.ai/zenzap-44m-total-funding-collaborative-ai-agents/"
-        },
-        {
-          "type": "office",
-          "value": "Team based in the United States",
-          "source_url": "https://www.unite.ai/zenzap-44m-total-funding-collaborative-ai-agents/"
-        },
-        {
-          "type": "office",
-          "value": "Team based in Europe",
-          "source_url": "https://www.unite.ai/zenzap-44m-total-funding-collaborative-ai-agents/"
-        },
-        {
-          "type": "office",
-          "value": "Local team in Israel (Sharona, Tel Aviv)",
-          "source_url": "https://www.ice.co.il/finance/news/article/1133649"
-        }
-      ],
-      "uses_dummy": false,
-      "rank": 13
-    },
-    {
       "name": "Majestic Labs",
       "domain": "majestic-labs.ai",
       "category": "Deep tech",
@@ -12128,7 +11773,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 14
+      "rank": 13
     },
     {
       "name": "Datarails",
@@ -12577,7 +12222,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 15
+      "rank": 14
     },
     {
       "name": "Linx Security",
@@ -13026,7 +12671,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 16
+      "rank": 15
     },
     {
       "name": "Onyx Security",
@@ -13353,7 +12998,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 17
+      "rank": 16
     },
     {
       "name": "NoTraffic",
@@ -13692,7 +13337,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 18
+      "rank": 17
     },
     {
       "name": "PhaseV",
@@ -13948,7 +13593,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 19
+      "rank": 18
     },
     {
       "name": "Orca AI",
@@ -14237,7 +13882,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 20
+      "rank": 19
     },
     {
       "name": "Nimble",
@@ -14731,7 +14376,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 21
+      "rank": 20
     },
     {
       "name": "Qodo",
@@ -14980,7 +14625,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 22
+      "rank": 21
     },
     {
       "name": "groundcover",
@@ -15337,7 +14982,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 23
+      "rank": 22
     },
     {
       "name": "Limitless Labs",
@@ -15545,6 +15190,354 @@
           "type": "validation",
           "value": "CAM Agent works inside Mastercam, Siemens NX and PTC Creo CAM systems",
           "source_url": "https://finance.yahoo.com/technology/ai/articles/limitless-labs-raises-20m-series-130000187.html"
+        }
+      ],
+      "uses_dummy": false,
+      "rank": 23
+    },
+    {
+      "name": "Zenzap",
+      "domain": "zenzap.co",
+      "category": "Vertical AI",
+      "sector": "AI work chat",
+      "fit_tag": "Pre-Series B",
+      "fit_reason": "Series A closed 15 months ago",
+      "headline": "Series B window",
+      "fit": "Approaching B",
+      "round_label": "Series A · Aug 25",
+      "fit_explain": "Series A · Aug 2025 → Approaching B",
+      "reach": null,
+      "portfolio": false,
+      "score": 19,
+      "band": "Quiet",
+      "change": 0,
+      "coverage": "partial",
+      "decline_flag": false,
+      "reason": "Series A closed 16 months ago (Aug 2025), placing Zenzap in the usual Series B window. A partner program page was updated 9 Nov, and a hospitality industry page was added 19 Oct.",
+      "open_jobs": 0,
+      "gtm_jobs": 0,
+      "jobs_by_country": {},
+      "gtm_by_country": {},
+      "jobs_by_function": {},
+      "size": {
+        "headcount": 45,
+        "open": 0,
+        "pct": 0
+      },
+      "filled": 0,
+      "gtm_share": null,
+      "headcount": 45,
+      "headcount_source": "https://www.ice.co.il/finance/news/article/1133649",
+      "job_source": "none",
+      "careers_url": null,
+      "slug": "zenzap",
+      "links": {
+        "website": "https://zenzap.co",
+        "careers": null,
+        "board": null,
+        "linkedin_jobs": "https://www.linkedin.com/jobs/search/?keywords=Zenzap"
+      },
+      "series": [],
+      "score_series": [
+        {
+          "date": "2026-11-12",
+          "score": 19,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-14",
+          "score": 19,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 19,
+          "dummy": false
+        }
+      ],
+      "sources": {
+        "website": "empty",
+        "ats": "empty",
+        "getro": "empty",
+        "sitemap": "ok",
+        "about": "ok",
+        "news": "ok"
+      },
+      "changes": [
+        {
+          "date": "2026-11-12",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/food-service/",
+          "url": "https://www.zenzap.co/solutions/food-service/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-11-11",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/ai-agents-for-hr/",
+          "url": "https://www.zenzap.co/solutions/ai-agents-for-hr/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-11-11",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/wellness-fitness/",
+          "url": "https://www.zenzap.co/solutions/wellness-fitness/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-11-11",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/retail/",
+          "url": "https://www.zenzap.co/solutions/retail/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-11-11",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/consultants/",
+          "url": "https://www.zenzap.co/solutions/consultants/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-11-09",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Partner page",
+          "detail": "/partners-program/",
+          "url": "https://www.zenzap.co/partners-program/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-11-03",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/healthcare/",
+          "url": "https://www.zenzap.co/solutions/healthcare/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-10-20",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/venture-capital/",
+          "url": "https://www.zenzap.co/solutions/venture-capital/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-10-19",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/hospitality/",
+          "url": "https://www.zenzap.co/solutions/hospitality/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-10-16",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/franchise/",
+          "url": "https://www.zenzap.co/solutions/franchise/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-10-16",
+          "company": "Zenzap",
+          "kind": "round",
+          "title": "Funding",
+          "detail": "Raised USD 44M Series B led by Bessemer Venture Partners and Lightspeed Venture Partners, with The Garage participating",
+          "url": "https://www.analyticsinsight.net/news/weekly-startup-funding-roundup-ramp-raises-usd-185-b-labelbox-secures-over-usd-100m-ultra-receives-usd-62m",
+          "evidence": "direct",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-10-14",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Partner page",
+          "detail": "/partners/",
+          "url": "https://www.zenzap.co/partners/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-10-14",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/sales/",
+          "url": "https://www.zenzap.co/solutions/sales/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-10-14",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/nonprofits/",
+          "url": "https://www.zenzap.co/solutions/nonprofits/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-10-14",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/finance/",
+          "url": "https://www.zenzap.co/solutions/finance/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-10-14",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/marketing/",
+          "url": "https://www.zenzap.co/solutions/marketing/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-10-14",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/education/",
+          "url": "https://www.zenzap.co/solutions/education/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-10-12",
+          "company": "Zenzap",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/solutions/construction/",
+          "url": "https://www.zenzap.co/solutions/construction/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-10-01",
+          "company": "Zenzap",
+          "kind": "round",
+          "title": "Funding",
+          "detail": "$44M funding led by Bessemer Venture Partners and Lightspeed Venture Partners, with The Garage investing; emerged from stealth",
+          "url": "https://www.zenzap.co/about-us/",
+          "evidence": "direct",
+          "dummy": false,
+          "country": null
+        }
+      ],
+      "roles": [],
+      "signals": [
+        {
+          "key": "series_b_window",
+          "name": "Series B window",
+          "points": 10,
+          "age": 1,
+          "evidence": 1,
+          "value": 10,
+          "date": null,
+          "detail": "Series A closed 16 months ago (2025-08): in the usual Series B window",
+          "source_url": null,
+          "dummy": false
+        },
+        {
+          "key": "partner_program",
+          "name": "Partner or channel program",
+          "points": 10,
+          "age": 1,
+          "evidence": 0.6,
+          "value": 6,
+          "date": "2026-11-09",
+          "detail": "partner page /partners-program/ (sitemap lastmod 2026-11-09)",
+          "source_url": "https://www.zenzap.co/partners-program/",
+          "dummy": false
+        },
+        {
+          "key": "industry_pages",
+          "name": "New industry pages",
+          "points": 5,
+          "age": 1,
+          "evidence": 0.6,
+          "value": 3,
+          "date": "2026-10-19",
+          "detail": "industry page /solutions/hospitality/ (sitemap lastmod 2026-10-19)",
+          "source_url": "https://www.zenzap.co/solutions/hospitality/",
+          "dummy": false
+        }
+      ],
+      "context": [
+        {
+          "type": "presence",
+          "value": "Presence (US): Team based in the United States",
+          "source_url": "https://www.unite.ai/zenzap-44m-total-funding-collaborative-ai-agents/"
+        },
+        {
+          "type": "office",
+          "value": "Team based in Tel Aviv",
+          "source_url": "https://www.unite.ai/zenzap-44m-total-funding-collaborative-ai-agents/"
+        },
+        {
+          "type": "office",
+          "value": "Team based in the United States",
+          "source_url": "https://www.unite.ai/zenzap-44m-total-funding-collaborative-ai-agents/"
+        },
+        {
+          "type": "office",
+          "value": "Team based in Europe",
+          "source_url": "https://www.unite.ai/zenzap-44m-total-funding-collaborative-ai-agents/"
+        },
+        {
+          "type": "office",
+          "value": "Local team in Israel (Sharona, Tel Aviv)",
+          "source_url": "https://www.ice.co.il/finance/news/article/1133649"
         }
       ],
       "uses_dummy": false,
@@ -16000,202 +15993,6 @@
       "rank": 25
     },
     {
-      "name": "Second Nature",
-      "domain": "secondnature.ai",
-      "category": "Vertical AI",
-      "sector": "AI sales training",
-      "fit_tag": "In mandate",
-      "fit_reason": "Series B",
-      "headline": "New market · US",
-      "fit": "In Range",
-      "round_label": "Series B · Oct 25",
-      "fit_explain": "Series B · Oct 2025 → In Range",
-      "reach": null,
-      "portfolio": false,
-      "score": 17,
-      "band": "Quiet",
-      "change": 0,
-      "coverage": "full",
-      "decline_flag": false,
-      "reason": "Second Nature has a New York, USA office with open positions, the strongest signal here. It also added a customer-support industry page, with sitemap lastmod dated 27 Aug.",
-      "open_jobs": 4,
-      "gtm_jobs": 0,
-      "jobs_by_country": {
-        "IL": 4
-      },
-      "gtm_by_country": {},
-      "jobs_by_function": {
-        "R&D": 4
-      },
-      "size": null,
-      "filled": 0,
-      "gtm_share": 0,
-      "headcount": null,
-      "headcount_source": null,
-      "job_source": "comeet",
-      "careers_url": "https://secondnature.ai/careers",
-      "slug": "second-nature",
-      "links": {
-        "website": "https://secondnature.ai",
-        "careers": "https://secondnature.ai/careers",
-        "board": "https://secondnature.ai/careers",
-        "linkedin_jobs": "https://www.linkedin.com/jobs/search/?keywords=Second%20Nature"
-      },
-      "series": [
-        {
-          "date": "2026-11-12",
-          "open": 4,
-          "dummy": false
-        },
-        {
-          "date": "2026-11-14",
-          "open": 4,
-          "dummy": false
-        },
-        {
-          "date": "2026-11-16",
-          "open": 4,
-          "dummy": false
-        }
-      ],
-      "score_series": [
-        {
-          "date": "2026-11-12",
-          "score": 17,
-          "dummy": false
-        },
-        {
-          "date": "2026-11-14",
-          "score": 17,
-          "dummy": false
-        },
-        {
-          "date": "2026-11-16",
-          "score": 17,
-          "dummy": false
-        }
-      ],
-      "sources": {
-        "comeet": "ok",
-        "sitemap": "ok",
-        "about": "ok",
-        "news": "empty"
-      },
-      "changes": [
-        {
-          "date": "2026-09-29",
-          "company": "Second Nature",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/use-case/sales/",
-          "url": "https://secondnature.ai/use-case/sales/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-08-27",
-          "company": "Second Nature",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/use-case/customer-support/",
-          "url": "https://secondnature.ai/use-case/customer-support/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-08-27",
-          "company": "Second Nature",
-          "kind": "page",
-          "title": "Industry page",
-          "detail": "/use-case/call-center/",
-          "url": "https://secondnature.ai/use-case/call-center/",
-          "evidence": "indirect",
-          "dummy": false,
-          "country": null
-        }
-      ],
-      "roles": [
-        {
-          "title": "Conversation Quality Specialist",
-          "function": "R&D",
-          "seniority": "IC",
-          "country": "IL",
-          "url": "https://secondnature.ai/careers/co/israel/8C.D62/conversation-quality-specialist/all/",
-          "posted": null,
-          "new": false
-        },
-        {
-          "title": "Senior Applied Researcher",
-          "function": "R&D",
-          "seniority": "IC",
-          "country": "IL",
-          "url": "https://secondnature.ai/careers/co/israel/D0.E6D/senior-applied-researcher/all/??ref=linkedinnewsletter?ref=website",
-          "posted": null,
-          "new": false
-        },
-        {
-          "title": "Senior Full Stack Developer",
-          "function": "R&D",
-          "seniority": "IC",
-          "country": "IL",
-          "url": "https://secondnature.ai/careers/co/israel/7B.763/senior-full-stack-developer/all/",
-          "posted": null,
-          "new": false
-        },
-        {
-          "title": "Senior Product Manager",
-          "function": "R&D",
-          "seniority": "IC",
-          "country": "IL",
-          "url": "https://secondnature.ai/careers/co/israel/B6.37F/senior-product-manager/all/",
-          "posted": null,
-          "new": false
-        }
-      ],
-      "signals": [
-        {
-          "key": "new_market:US",
-          "name": "New market entry (US)",
-          "points": 25,
-          "age": 1,
-          "evidence": 0.6,
-          "value": 15,
-          "date": null,
-          "detail": "New York, USA office where positions are available",
-          "source_url": "https://secondnature.ai/company/",
-          "dummy": false
-        },
-        {
-          "key": "industry_pages",
-          "name": "New industry pages",
-          "points": 5,
-          "age": 0.5,
-          "evidence": 0.6,
-          "value": 1.5,
-          "date": "2026-08-27",
-          "detail": "industry page /use-case/customer-support/ (sitemap lastmod 2026-08-27)",
-          "source_url": "https://secondnature.ai/use-case/customer-support/",
-          "dummy": false
-        }
-      ],
-      "context": [
-        {
-          "type": "office",
-          "value": "Tel-Aviv, Israel office where positions are available",
-          "source_url": "https://secondnature.ai/company/"
-        },
-        {
-          "type": "office",
-          "value": "New York, USA office where positions are available",
-          "source_url": "https://secondnature.ai/company/"
-        }
-      ],
-      "uses_dummy": false,
-      "rank": 26
-    },
-    {
       "name": "MIND",
       "domain": "mind.io",
       "category": "Cybersecurity",
@@ -16419,7 +16216,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 27
+      "rank": 26
     },
     {
       "name": "Prisma Photonics",
@@ -16583,7 +16380,7 @@
       ],
       "context": [],
       "uses_dummy": false,
-      "rank": 28
+      "rank": 27
     },
     {
       "name": "Visitt",
@@ -16784,177 +16581,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 29
-    },
-    {
-      "name": "QuantHealth",
-      "domain": "quanthealth.ai",
-      "category": "Vertical AI",
-      "sector": "AI clinical trial simulation",
-      "fit_tag": "In mandate",
-      "fit_reason": "Series B",
-      "headline": "New market · US",
-      "fit": "In Range",
-      "round_label": "Series B · Aug 26",
-      "fit_explain": "Series B · Aug 2026 → In Range",
-      "reach": null,
-      "portfolio": false,
-      "score": 15,
-      "band": "Quiet",
-      "change": 0,
-      "coverage": "full",
-      "decline_flag": false,
-      "reason": "QuantHealth is expanding its clinical trial simulation offering into the US market, per a newly reported market entry with no date given.",
-      "open_jobs": 1,
-      "gtm_jobs": 0,
-      "jobs_by_country": {
-        "IL": 1
-      },
-      "gtm_by_country": {},
-      "jobs_by_function": {
-        "G&A": 1
-      },
-      "size": {
-        "headcount": 85,
-        "open": 1,
-        "pct": 1
-      },
-      "filled": 0,
-      "gtm_share": 0,
-      "headcount": 85,
-      "headcount_source": "https://www.calcalistech.com/ctechnews/article/skzri8y8zl",
-      "job_source": "greenhouse",
-      "careers_url": "https://quanthealth.ai/careers",
-      "slug": "quanthealth",
-      "links": {
-        "website": "https://quanthealth.ai",
-        "careers": "https://quanthealth.ai/careers",
-        "board": "https://job-boards.greenhouse.io/quanthealth",
-        "linkedin_jobs": "https://www.linkedin.com/jobs/search/?keywords=QuantHealth"
-      },
-      "series": [
-        {
-          "date": "2026-11-12",
-          "open": 1,
-          "dummy": false
-        },
-        {
-          "date": "2026-11-14",
-          "open": 1,
-          "dummy": false
-        },
-        {
-          "date": "2026-11-16",
-          "open": 1,
-          "dummy": false
-        }
-      ],
-      "score_series": [
-        {
-          "date": "2026-11-12",
-          "score": 15,
-          "dummy": false
-        },
-        {
-          "date": "2026-11-14",
-          "score": 15,
-          "dummy": false
-        },
-        {
-          "date": "2026-11-16",
-          "score": 15,
-          "dummy": false
-        }
-      ],
-      "sources": {
-        "greenhouse": "ok",
-        "sitemap": "ok",
-        "about": "ok",
-        "news": "ok"
-      },
-      "changes": [
-        {
-          "date": "2026-10-06",
-          "company": "QuantHealth",
-          "kind": "office",
-          "title": "Office / team",
-          "detail": "Entry into Korean life sciences market via GC Cell collaboration; company says it has established presence in Korea",
-          "url": "https://finance.yahoo.com/healthcare/articles/gc-cell-quanthealth-collaborate-optimize-130000670.html",
-          "evidence": "direct",
-          "dummy": false,
-          "country": null
-        },
-        {
-          "date": "2026-08-04",
-          "company": "QuantHealth",
-          "kind": "round",
-          "title": "Funding",
-          "detail": "$45M Series B led by Qumra Capital; investors include Sanofi Ventures, Pitango HealthTech, Bertelsmann Healthcare Investments",
-          "url": "https://hitconsultant.net/2026/08/04/beyond-real-world-trial-iteration-quanthealth-secures-45m-for-ai-clinical-simulation/",
-          "evidence": "direct",
-          "dummy": false,
-          "country": null
-        }
-      ],
-      "roles": [
-        {
-          "title": "Operations Manager",
-          "function": "G&A",
-          "seniority": "Manager",
-          "country": "IL",
-          "url": "https://job-boards.eu.greenhouse.io/quanthealth/jobs/4941510101",
-          "posted": "2026-08-02",
-          "new": false
-        }
-      ],
-      "signals": [
-        {
-          "key": "new_market:US",
-          "name": "New market entry (US)",
-          "points": 25,
-          "age": 1,
-          "evidence": 0.6,
-          "value": 15,
-          "date": null,
-          "detail": "Expansion of clinical trial simulation offering into the US market",
-          "source_url": "https://quanthealth.ai/about-us",
-          "dummy": false
-        }
-      ],
-      "context": [
-        {
-          "type": "round",
-          "value": "$15M round to bring AI-informed clinical drug trial simulation to the US",
-          "source_url": "https://quanthealth.ai/about-us"
-        },
-        {
-          "type": "office",
-          "value": "Expansion of clinical trial simulation offering into the US market",
-          "source_url": "https://quanthealth.ai/about-us"
-        },
-        {
-          "type": "validation",
-          "value": "Named one of Fast Company's Most Innovative Companies in Europe, the Middle East, and Africa for 2024",
-          "source_url": "https://quanthealth.ai/about-us"
-        },
-        {
-          "type": "validation",
-          "value": "Listed among six Israeli startups selected for BeyondBio SCALE (AstraZeneca, Accenture, Clalit, AWS)",
-          "source_url": "https://quanthealth.ai/about-us"
-        },
-        {
-          "type": "office",
-          "value": "Tel Aviv, Israel headquarters (Tel Aviv-based company)",
-          "source_url": "https://hitconsultant.net/2026/08/04/beyond-real-world-trial-iteration-quanthealth-secures-45m-for-ai-clinical-simulation/"
-        },
-        {
-          "type": "office",
-          "value": "Office in Tel Aviv",
-          "source_url": "https://www.calcalistech.com/ctechnews/article/skzri8y8zl"
-        }
-      ],
-      "uses_dummy": false,
-      "rank": 30
+      "rank": 28
     },
     {
       "name": "Grain",
@@ -17093,7 +16720,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 31
+      "rank": 29
     },
     {
       "name": "UltraSight",
@@ -17234,7 +16861,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 32
+      "rank": 30
     },
     {
       "name": "Phytolon",
@@ -17362,7 +16989,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 33
+      "rank": 31
     },
     {
       "name": "AI21 Labs",
@@ -17608,7 +17235,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 34
+      "rank": 32
     },
     {
       "name": "ZutaCore",
@@ -17735,7 +17362,196 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 35
+      "rank": 33
+    },
+    {
+      "name": "Second Nature",
+      "domain": "secondnature.ai",
+      "category": "Vertical AI",
+      "sector": "AI sales training",
+      "fit_tag": "In mandate",
+      "fit_reason": "Series B",
+      "headline": "New industry pages",
+      "fit": "In Range",
+      "round_label": "Series B · Oct 25",
+      "fit_explain": "Series B · Oct 2025 → In Range",
+      "reach": null,
+      "portfolio": false,
+      "score": 2,
+      "band": "Quiet",
+      "change": 0,
+      "coverage": "full",
+      "decline_flag": false,
+      "reason": "Second Nature added a new industry page, /use-case/customer-support/, with a sitemap date of 27 Aug. This is the only signal available for this company.",
+      "open_jobs": 4,
+      "gtm_jobs": 0,
+      "jobs_by_country": {
+        "IL": 4
+      },
+      "gtm_by_country": {},
+      "jobs_by_function": {
+        "R&D": 4
+      },
+      "size": null,
+      "filled": 0,
+      "gtm_share": 0,
+      "headcount": null,
+      "headcount_source": null,
+      "job_source": "comeet",
+      "careers_url": "https://secondnature.ai/careers",
+      "slug": "second-nature",
+      "links": {
+        "website": "https://secondnature.ai",
+        "careers": "https://secondnature.ai/careers",
+        "board": "https://secondnature.ai/careers",
+        "linkedin_jobs": "https://www.linkedin.com/jobs/search/?keywords=Second%20Nature"
+      },
+      "series": [
+        {
+          "date": "2026-11-12",
+          "open": 4,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-14",
+          "open": 4,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 4,
+          "dummy": false
+        }
+      ],
+      "score_series": [
+        {
+          "date": "2026-11-12",
+          "score": 2,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-14",
+          "score": 2,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 2,
+          "dummy": false
+        }
+      ],
+      "sources": {
+        "comeet": "ok",
+        "sitemap": "ok",
+        "about": "ok",
+        "news": "empty"
+      },
+      "changes": [
+        {
+          "date": "2026-09-29",
+          "company": "Second Nature",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/use-case/sales/",
+          "url": "https://secondnature.ai/use-case/sales/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-08-27",
+          "company": "Second Nature",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/use-case/customer-support/",
+          "url": "https://secondnature.ai/use-case/customer-support/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-08-27",
+          "company": "Second Nature",
+          "kind": "page",
+          "title": "Industry page",
+          "detail": "/use-case/call-center/",
+          "url": "https://secondnature.ai/use-case/call-center/",
+          "evidence": "indirect",
+          "dummy": false,
+          "country": null
+        }
+      ],
+      "roles": [
+        {
+          "title": "Conversation Quality Specialist",
+          "function": "R&D",
+          "seniority": "IC",
+          "country": "IL",
+          "url": "https://secondnature.ai/careers/co/israel/8C.D62/conversation-quality-specialist/all/",
+          "posted": null,
+          "new": false
+        },
+        {
+          "title": "Senior Applied Researcher",
+          "function": "R&D",
+          "seniority": "IC",
+          "country": "IL",
+          "url": "https://secondnature.ai/careers/co/israel/D0.E6D/senior-applied-researcher/all/??ref=linkedinnewsletter?ref=website",
+          "posted": null,
+          "new": false
+        },
+        {
+          "title": "Senior Full Stack Developer",
+          "function": "R&D",
+          "seniority": "IC",
+          "country": "IL",
+          "url": "https://secondnature.ai/careers/co/israel/7B.763/senior-full-stack-developer/all/",
+          "posted": null,
+          "new": false
+        },
+        {
+          "title": "Senior Product Manager",
+          "function": "R&D",
+          "seniority": "IC",
+          "country": "IL",
+          "url": "https://secondnature.ai/careers/co/israel/B6.37F/senior-product-manager/all/",
+          "posted": null,
+          "new": false
+        }
+      ],
+      "signals": [
+        {
+          "key": "industry_pages",
+          "name": "New industry pages",
+          "points": 5,
+          "age": 0.5,
+          "evidence": 0.6,
+          "value": 1.5,
+          "date": "2026-08-27",
+          "detail": "industry page /use-case/customer-support/ (sitemap lastmod 2026-08-27)",
+          "source_url": "https://secondnature.ai/use-case/customer-support/",
+          "dummy": false
+        }
+      ],
+      "context": [
+        {
+          "type": "presence",
+          "value": "Presence (US): New York, USA office where positions are available",
+          "source_url": "https://secondnature.ai/company/"
+        },
+        {
+          "type": "office",
+          "value": "Tel-Aviv, Israel office where positions are available",
+          "source_url": "https://secondnature.ai/company/"
+        },
+        {
+          "type": "office",
+          "value": "New York, USA office where positions are available",
+          "source_url": "https://secondnature.ai/company/"
+        }
+      ],
+      "uses_dummy": false,
+      "rank": 34
     },
     {
       "name": "Oasis Security",
@@ -17854,7 +17670,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 36
+      "rank": 35
     },
     {
       "name": "Xtend",
@@ -18237,7 +18053,7 @@
         }
       ],
       "uses_dummy": false,
-      "rank": 37
+      "rank": 36
     },
     {
       "name": "Aligned",
@@ -18392,6 +18208,168 @@
           "type": "office",
           "value": "Tel Aviv-based company location; Israeli-founded",
           "source_url": "https://www.ynetnews.com/business/article/hkkvgugqme"
+        }
+      ],
+      "uses_dummy": false,
+      "rank": 37
+    },
+    {
+      "name": "QuantHealth",
+      "domain": "quanthealth.ai",
+      "category": "Vertical AI",
+      "sector": "AI clinical trial simulation",
+      "fit_tag": "In mandate",
+      "fit_reason": "Series B",
+      "headline": "No growth signals",
+      "fit": "In Range",
+      "round_label": "Series B · Aug 26",
+      "fit_explain": "Series B · Aug 2026 → In Range",
+      "reach": null,
+      "portfolio": false,
+      "score": 0,
+      "band": "Quiet",
+      "change": 0,
+      "coverage": "full",
+      "decline_flag": false,
+      "reason": "No growth signals found in this run.",
+      "open_jobs": 1,
+      "gtm_jobs": 0,
+      "jobs_by_country": {
+        "IL": 1
+      },
+      "gtm_by_country": {},
+      "jobs_by_function": {
+        "G&A": 1
+      },
+      "size": {
+        "headcount": 85,
+        "open": 1,
+        "pct": 1
+      },
+      "filled": 0,
+      "gtm_share": 0,
+      "headcount": 85,
+      "headcount_source": "https://www.calcalistech.com/ctechnews/article/skzri8y8zl",
+      "job_source": "greenhouse",
+      "careers_url": "https://quanthealth.ai/careers",
+      "slug": "quanthealth",
+      "links": {
+        "website": "https://quanthealth.ai",
+        "careers": "https://quanthealth.ai/careers",
+        "board": "https://job-boards.greenhouse.io/quanthealth",
+        "linkedin_jobs": "https://www.linkedin.com/jobs/search/?keywords=QuantHealth"
+      },
+      "series": [
+        {
+          "date": "2026-11-12",
+          "open": 1,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-14",
+          "open": 1,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "open": 1,
+          "dummy": false
+        }
+      ],
+      "score_series": [
+        {
+          "date": "2026-11-12",
+          "score": 0,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-14",
+          "score": 0,
+          "dummy": false
+        },
+        {
+          "date": "2026-11-16",
+          "score": 0,
+          "dummy": false
+        }
+      ],
+      "sources": {
+        "greenhouse": "ok",
+        "sitemap": "ok",
+        "about": "ok",
+        "news": "ok"
+      },
+      "changes": [
+        {
+          "date": "2026-10-06",
+          "company": "QuantHealth",
+          "kind": "office",
+          "title": "Office / team",
+          "detail": "Entry into Korean life sciences market via GC Cell collaboration; company says it has established presence in Korea",
+          "url": "https://finance.yahoo.com/healthcare/articles/gc-cell-quanthealth-collaborate-optimize-130000670.html",
+          "evidence": "direct",
+          "dummy": false,
+          "country": null
+        },
+        {
+          "date": "2026-08-04",
+          "company": "QuantHealth",
+          "kind": "round",
+          "title": "Funding",
+          "detail": "$45M Series B led by Qumra Capital; investors include Sanofi Ventures, Pitango HealthTech, Bertelsmann Healthcare Investments",
+          "url": "https://hitconsultant.net/2026/08/04/beyond-real-world-trial-iteration-quanthealth-secures-45m-for-ai-clinical-simulation/",
+          "evidence": "direct",
+          "dummy": false,
+          "country": null
+        }
+      ],
+      "roles": [
+        {
+          "title": "Operations Manager",
+          "function": "G&A",
+          "seniority": "Manager",
+          "country": "IL",
+          "url": "https://job-boards.eu.greenhouse.io/quanthealth/jobs/4941510101",
+          "posted": "2026-08-02",
+          "new": false
+        }
+      ],
+      "signals": [],
+      "context": [
+        {
+          "type": "presence",
+          "value": "Presence (US): Expansion of clinical trial simulation offering into the US market",
+          "source_url": "https://quanthealth.ai/about-us"
+        },
+        {
+          "type": "round",
+          "value": "$15M round to bring AI-informed clinical drug trial simulation to the US",
+          "source_url": "https://quanthealth.ai/about-us"
+        },
+        {
+          "type": "office",
+          "value": "Expansion of clinical trial simulation offering into the US market",
+          "source_url": "https://quanthealth.ai/about-us"
+        },
+        {
+          "type": "validation",
+          "value": "Named one of Fast Company's Most Innovative Companies in Europe, the Middle East, and Africa for 2024",
+          "source_url": "https://quanthealth.ai/about-us"
+        },
+        {
+          "type": "validation",
+          "value": "Listed among six Israeli startups selected for BeyondBio SCALE (AstraZeneca, Accenture, Clalit, AWS)",
+          "source_url": "https://quanthealth.ai/about-us"
+        },
+        {
+          "type": "office",
+          "value": "Tel Aviv, Israel headquarters (Tel Aviv-based company)",
+          "source_url": "https://hitconsultant.net/2026/08/04/beyond-real-world-trial-iteration-quanthealth-secures-45m-for-ai-clinical-simulation/"
+        },
+        {
+          "type": "office",
+          "value": "Office in Tel Aviv",
+          "source_url": "https://www.calcalistech.com/ctechnews/article/skzri8y8zl"
         }
       ],
       "uses_dummy": false,

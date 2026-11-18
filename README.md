@@ -52,7 +52,7 @@ npm run serve                       # open http://localhost:4180
 - `npm run pipeline` runs every step in order and stops at the first one that fails. Sources that fail inside a step keep their last data and are marked "not reached".
 - A full run takes about 20–40 minutes, because sites are fetched politely (3 s between requests to one site), and makes a few hundred Haiku calls, well under $1.
 - Locally, the dashboard's **Run now** button runs the pipeline on your machine; add `?dryrun` to the URL to try it without collecting anything.
-- Each step also runs on its own: `collect:ats`, `collect:pages`, `enrich`, `collect:footprint`, `compare`, `seed:dummy`, `score`, `build:dashboard`. `npm test` runs 56 rule tests; `npm run typecheck` checks types.
+- Each step also runs on its own: `collect:ats`, `collect:pages`, `enrich`, `collect:footprint`, `compare`, `seed:dummy`, `score`, `build:dashboard`. `npm test` runs 58 rule tests; `npm run typecheck` checks types.
 
 </details>
 
@@ -214,7 +214,7 @@ v1 is a modular base: the Growth Signals database (companies, roles, signals and
 ## Known limits
 
 **Data**
-- **Short history.** Two real runs so far (12 and 14 Nov). Signals that compare runs have started to work (Upwind's first Japan sales role showed up as a new market), but trends like "hiring paused" need a few more weeks, and history before 12 Nov is dummy (labelled wherever it's shown). Until then, each company's strongest existing foreign market gets a 15-point hint (25 × 60%), because we can't tell how old it is. The hint is skipped when the same country already scores as a GTM build-out, so the same roles never count twice.
+- **Short history.** Two real runs so far (12 and 14 Nov). Signals that compare runs have started to work (Upwind's first Japan sales role showed up as a new market), but trends like "hiring paused" need a few more weeks, and history before 12 Nov is dummy (labelled wherever it's shown). Until then, each company's strongest existing foreign market gets a 15-point hint (25 × 60%), because we can't tell how old it is. The hint is skipped when the same country already scores as a GTM build-out, so the same roles never count twice. A market from news (an office or team mentioned in an article) counts only when the news is dated.
 - **Postings, not hires.** A posted role isn't a person hired. "Likely filled" is an inference from how and when roles close.
 - **Uneven coverage.** 26 companies have clean job-board data; the rest rely on rendered careers pages, investor boards, websites and news. Low-coverage companies are flagged, with a "Check on LinkedIn" link.
 - **Company size is often old.** Headcount comes from news for about half the companies, so it's shown as context and kept out of the score.

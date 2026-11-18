@@ -284,3 +284,9 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 - **What I noticed:** after "count once", Upwind showed ▼15. Nothing changed at Upwind; only the rule did.
 - **Claude Code** wrote `scripts/restate_scores.ts`, which re-applies the new rule to the 12 and 14 Nov runs from their stored signals (18 past scores, no AI). Now ▲▼ shows only data changes: Upwind, Zenity, Faye and the rest are back to "=". Vega shows ▲15 because a new UK role was posted on 16 Nov. The rule now drops the hint only when its country is the one the build-out counted.
 - **Dashboard:** map with full country names and wider columns (US, UK and UAE short; Turkey in English); "Sort: Score Change ▲▼"; a third tier, **Watch**, for everyone who is neither Reach out now nor Warm; the company-size bar on a 0–100% scale; "G&A / Other" renamed "Admin & Other"; values shown on every chart point and whole-number lines on the open-roles chart.
+
+## Undated news no longer scores a market (18 Nov 2026)
+
+- **What I noticed:** Zenzap had +15 for a US market from one undated line in a funding article ("Team based in the United States"); it has no job listings.
+- **My decision:** score a market from news only when the news is dated, as the rule for non-job facts already says. Undated mentions stay visible as presence.
+- **Claude Code** changed the rule, added 2 tests (58 in all), and restated the 12 and 14 Nov runs the same way so ▲▼ stays clean. Zenzap 34 → 19, Second Nature 17 → 2, QuantHealth 15 → 0; no tier changes. Reco and Airis Labs keep theirs (dated news). 2 AI calls for reason lines.

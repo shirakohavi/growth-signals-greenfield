@@ -3,12 +3,14 @@
 // Rules applied (BUILD_BRIEF §10):
 //  - Count a market once (18 Nov 2026): a first-run market hint (indirect new_market) is dropped when the
 //    run's GTM build-out counts the same country.
+//  - Undated news never scores a market (18 Nov 2026): a new_market signal with no date that isn't based on
+//    job posts (from an office/team mention in news) is dropped.
 // Usage: npx tsx scripts/restate_scores.ts [--remote] [--dry-run]
 import { writeFile, mkdir } from "node:fs/promises";
 import { d1ExecFile, d1Query, sq } from "../src/lib/d1.ts";
 import { bandOf } from "../src/scoring/signals.ts";
 
-type Sig = { key: string; value: number; evidence: number; detail: string; points: number };
+type Sig = { key: string; value: number; evidence: number; detail: string; points: number; date: string | null };
 const remote = process.argv.includes("--remote"), dry = process.argv.includes("--dry-run");
 const latest = d1Query<{ d: string }>("SELECT MAX(run_date) AS d FROM scores", remote)[0]?.d;
 const rows = d1Query<{ company_id: number; name: string; run_date: string; score: number; signals_json: string }>(
@@ -18,7 +20,8 @@ const sql: string[] = [];
 for (const r of rows) {
   const sigs = JSON.parse(r.signals_json || "[]") as Sig[];
   const built = sigs.find((s) => s.key === "gtm_buildout")?.detail.match(/ in ([A-Z]{2})\b/)?.[1];
-  const keep = sigs.filter((s) => !(built && s.key === `new_market:${built}` && s.evidence < 1));
+  const undatedNews = (s: Sig) => s.key.startsWith("new_market:") && !s.date && !/open GTM role/.test(s.detail);
+  const keep = sigs.filter((s) => !(built && s.key === `new_market:${built}` && s.evidence < 1) && !undatedNews(s));
   if (keep.length === sigs.length) continue;
   const score = Math.max(0, Math.min(100, Math.round(keep.reduce((a, s) => a + s.value, 0))));
   console.log(`${r.run_date}  ${r.name.padEnd(18)} ${r.score} -> ${score}`);

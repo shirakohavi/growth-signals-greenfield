@@ -148,7 +148,7 @@ Score = max(0, min(100, Σ SignalPoints_i × Recency_i × Confidence_i))
 - **Confidence:** direct (job post, news report) 100%; indirect (website change only, or presence with no start date) 60%.
 - **Each signal counts once** (its strongest instance).
 - **One hiring wave counts once:** of GTM build-out, Hiring speeding up, Mix shifting toward GTM and R&D build-up, the strongest counts in full and the others count half.
-- **New markets:** with no history, a foreign team can't be told from a new one, so only the strongest market counts (indirect, 60%). From the second real run, a country whose first role appears after the first run counts in full (+25 each); countries already there at the first run stay as one indirect market for 90 days, then only newly entered countries count. **Count once (18 Nov):** that first-run hint is dropped when the same country already earns GTM team build-out (4+ GTM roles there), so the same roles don't score twice; it's shown as presence instead. Countries seen arriving keep their full +25.
+- **New markets:** with no history, a foreign team can't be told from a new one, so only the strongest market counts (indirect, 60%). From the second real run, a country whose first role appears after the first run counts in full (+25 each); countries already there at the first run stay as one indirect market for 90 days, then only newly entered countries count. **Count once (18 Nov):** that first-run hint is dropped when the same country already earns GTM team build-out (4+ GTM roles there), so the same roles don't score twice; it's shown as presence instead. Countries seen arriving keep their full +25. **Undated news never scores a market (18 Nov):** an office or team mentioned in news without a date can't show when the team arrived, so it is presence only.
 - **Company size is context, not score:** open roles ÷ headcount (headcount from news, about half the companies) is shown on the company page.
 - **Decline flag:** any negative signal in the last 12 months.
 - **Coverage:** full (job data + history), partial (website / news only), low (little found). "Not checked" is shown apart from "checked, nothing found".
@@ -199,7 +199,7 @@ npm run compare           # dedupe, reposts, baseline
 npm run seed:dummy        # dummy history where no real history exists
 npm run score             # scores table + public/ranking.json (Claude Haiku reason lines)
 npm run build:dashboard   # public/index.html
-npm test                  # 56 rule tests
+npm test                  # 58 rule tests
 ```
 
 Then `npm run serve` and open http://localhost:4180 (any static server for `public/` works too; it just won't show Run now). The AI steps need `ANTHROPIC_API_KEY` in `.dev.vars`.

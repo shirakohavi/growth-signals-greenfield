@@ -261,3 +261,8 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 
 - **My decision:** Rising is the list the team acts on, so it should only hold companies inside Greenfield's mandate. Wonderful (Past Stage) and Phytolon (off-thesis) were taking two of the ten places.
 - **Claude Code** limited Rising to In Range, on-thesis companies, removed its Stage Fit filter (it no longer does anything there), and added "In Range companies only" under the title. All companies still ranks every stage.
+
+## Dashboard clean-up: GTM wording, country names, fewer columns (18 Nov 2026)
+
+- **My decisions:** say "GTM" everywhere instead of "go-to-market"; show full country names in the country filters; take the Team bar out of the main lists (it stays on the company page and in Compare); remove Band from the dashboard, since the score and Reach out tiers already say it.
+- **Claude Code** changed the headline templates and the reason-line prompt to write "GTM", and made the dashboard rewrite older text on load, so the current run's reason lines read the same without new AI calls.

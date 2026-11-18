@@ -182,7 +182,7 @@ const Reason = z.object({ reason: z.string().describe("one or two plain sentence
 export async function writeReason(company: string, score: number, band: string, signals: { name: string; value: number; date: string | null; detail: string; dummy: boolean }[], declineFlag: boolean): Promise<string> {
   if (!signals.length) return declineFlag ? "Negative signal only; no growth signals found." : "No growth signals found in this run.";
   const out = await parse(Reason, `Write the reason line for ${company} (score ${score}, ${band}) for a VC analyst.
-Use ONLY the signals below: no other facts, no adjectives like "impressive". Lead with the strongest signals, include their dates when given (format "22 Oct"), and say "(dummy)" after any signal marked dummy. Do not mention the score, the band, or points. Plain English, at most 2 short sentences and 260 characters, no bullet points, no people's names.
+Use ONLY the signals below: no other facts, no adjectives like "impressive". Lead with the strongest signals, include their dates when given (format "22 Oct"), and say "(dummy)" after any signal marked dummy. Do not mention the score, the band, or points. Plain English, at most 2 short sentences and 260 characters, no bullet points, no people's names. Write "GTM", never "go-to-market".
 
 <signals>
 ${signals.map((s) => JSON.stringify(s)).join("\n")}

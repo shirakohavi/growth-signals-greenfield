@@ -2,7 +2,7 @@
 
 **Greenfield Partners · Data & AI Specialist case study · Option B: team composition as a growth signal**
 
-Growth Signals tracks 40 Israeli and Israel-related tech companies, turns dated changes in how they build their teams (new go-to-market roles abroad, senior sales hires, R&D build-ups, partner programs, expansion plans, layoffs) into scored signals, and shows Greenfield's investment team a ranked list. Every score comes with a reason line and dated source links.
+Growth Signals tracks 40 Israeli and Israel-related tech companies, turns dated changes in how they build their teams (new GTM (sales and marketing) roles abroad, senior sales hires, R&D build-ups, partner programs, expansion plans, layoffs) into scored signals, and shows Greenfield's investment team a ranked list. Every score comes with a reason line and dated source links.
 
 **User:** a Greenfield partner or associate. **Decision:** which companies to reach out to this week, before their next round is public.
 
@@ -10,7 +10,7 @@ Growth Signals tracks 40 Israeli and Israel-related tech companies, turns dated 
 
 **Worth a call = right stage + right moment.**
 - **Right stage:** *In Range*, meaning Series B or C, or Series A in deep tech. This is a gate, not points.
-- **Right moment:** a score of 60 or more, meaning the team is gearing up to sell (new markets, go-to-market hires abroad).
+- **Right moment:** a score of 60 or more, meaning the team is gearing up to sell (new markets, GTM hires abroad).
 - **Both together = Reach out now.** Today that's Daylight, Zenity, Unframe and Upwind.
 
 | Score | Reads as |
@@ -63,13 +63,14 @@ Three tabs across the top: **Rising**, **All companies** and **What's new**. Eve
 **How to read a row**
 - **Reach out now** companies (score 60+ and In Range) have a tinted row with a blue bar on the left and a **filled** score circle. **Warm** companies (40–59) have an **outlined** circle. The two dots under the page title are the legend.
 - **Chips:** Type (sector, each with its own color), Round (latest round and month) and Stage Fit (green = In Range, amber = Approaching B, grey = Too Early or Past Stage).
-- **▲▼** is the score change since the last run; **Team** is the mix of open roles by function (R&D, Sales, Marketing, Customer success, Partnerships).
+- **▲▼** is the score change since the last run. The mix of open roles by team (R&D, Sales, Marketing, Customer success, Partnerships) is on each company page and in Compare, not in the main list.
+- **Wording:** the dashboard says **GTM** (go-to-market: sales, marketing, customer success, partnerships) everywhere, including headlines and reason lines.
 - **Owner** shows the initials of the teammate who owns the outreach (empty when unassigned).
 
-**Rising** — the top 10 **In Range** companies by score (Series B or C, or Series A in deep tech; off-thesis companies left out). Too Early, Approaching B and Past Stage companies are still ranked in **All companies**. Search, sort (score, change, open roles, name) and **Filters**: Reach out, Type, Band, Decline, Owner and Outreach status. Active filters show as chips you can clear.
+**Rising** — the top 10 **In Range** companies by score (Series B or C, or Series A in deep tech; off-thesis companies left out). Too Early, Approaching B and Past Stage companies are still ranked in **All companies**. Search, sort (score, change, open roles, name) and **Filters**: Reach out, Type, Decline, Owner and Outreach status. Active filters show as chips you can clear.
 
 **All companies** — all 40 companies, in three views:
-- **List:** the same table with every company, plus Coverage and Hiring-in-country filters.
+- **List:** the same table with every company, plus Coverage and Hiring-in-country filters (countries listed by full name).
 - **Stage Fit board:** one column per stage (In Range, Approaching B, Too Early, Past Stage), so you can see who is at the right stage at a glance.
 - **Map:** a heatmap of open roles by country, to spot who is building teams abroad.
 
@@ -84,7 +85,7 @@ Three tabs across the top: **Rising**, **All companies** and **What's new**. Eve
   - **Comments:** add a note (who you spoke to, what's next), choose who it's from with "As", and it's saved with the date. Comments show newest first and can be deleted.
   - The five teammates are fictional, for the demo.
 
-**Compare** — tick the box at the start of up to three rows (or **+ Compare** on a company page), then press **Compare** in the tray at the bottom. Companies sit side by side: score, headline, hiring vs size, go-to-market share, team, countries, score over time, open roles over time (on one shared scale) and top signals.
+**Compare** — tick the box at the start of up to three rows (or **+ Compare** on a company page), then press **Compare** in the tray at the bottom. Companies sit side by side: score, headline, hiring vs size, GTM share, team, countries, score over time, open roles over time (on one shared scale) and top signals.
 
 **+ Add company** — add a company by name and website. It appears as **Pending** in All companies and is scored on the next run; **Copy CSV rows** gives the lines to paste into `data/companies.csv`.
 
@@ -129,7 +130,7 @@ Optional: put the dashboard behind **Cloudflare Access** (Zero Trust → Access 
 | 717 open roles (14 Nov) from job boards, Getro boards and careers pages, with posting dates | Score history before the first real run (12 Nov), based on those dummy snapshots |
 | Every role classified by function, seniority and country (Claude Haiku) | The five outreach teammates (fictional), and owners, statuses and comments (saved in your browser only) |
 | Sitemaps, About and newsroom pages, news in English and Hebrew | Companies added with + Add company (saved in your browser, scored on the next run) |
-| Scores, bands and reason lines | Logos are fetched live from Google's favicon service |
+| Scores and reason lines | Logos are fetched live from Google's favicon service |
 
 ## Where team data lives
 

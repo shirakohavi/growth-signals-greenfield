@@ -72,12 +72,12 @@ function headlineOf(sigs: { key: string; detail: string }[], decline: boolean): 
   if (!top) return "No growth signals";
   const num = (re: RegExp) => top.detail.match(re)?.[1];
   switch (true) {
-    case top.key === "gtm_buildout": return `${num(/^(\d+)/) ?? "4+"} go-to-market roles · ${top.detail.match(/in ([A-Z]{2})(?:,|$)/)?.[1] ?? ""}`.replace(/ · $/, "");
-    case top.key === "senior_gtm": return "Senior go-to-market hire";
+    case top.key === "gtm_buildout": return `${num(/^(\d+)/) ?? "4+"} GTM roles · ${top.detail.match(/in ([A-Z]{2})(?:,|$)/)?.[1] ?? ""}`.replace(/ · $/, "");
+    case top.key === "senior_gtm": return "Senior GTM hire";
     case top.key.startsWith("new_market:"): return `New market · ${top.key.slice(11)}`;
     case top.key === "speeding_up": return `${num(/^(\d+)/) ?? "5+"} new roles in 90 days`;
     case top.key === "rd_buildup": return `${num(/^(\d+)/) ?? "4+"} R&D roles in 90 days`;
-    case top.key === "gtm_mix": return "Hiring shifts to go-to-market";
+    case top.key === "gtm_mix": return "Hiring shifts to GTM";
     case top.key === "series_b_window": return "Series B window";
     case top.key === "partner_program": return "Partner program launched";
     case top.key === "plan": return /double/i.test(top.detail) ? "Plans to double headcount" : "Expansion plan announced";

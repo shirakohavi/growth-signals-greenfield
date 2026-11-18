@@ -87,7 +87,7 @@ select option { background: #061633; color: #ffffff; }
 
 /* list (Rising + table) */
 .list { background: var(--surface); border: 1px solid var(--edge); border-radius: var(--r-md); overflow: hidden; }
-.row { display: grid; grid-template-columns: 52px minmax(150px, 1.1fr) 56px 92px 140px 120px minmax(0, 1.3fr) 64px 48px 100px; gap: 12px; align-items: center; min-height: 58px; padding: 8px 20px; border-bottom: 1px solid var(--line); cursor: pointer; text-align: left; width: 100%; background: none; border-left: 0; border-right: 0; border-top: 0; }
+.row { display: grid; grid-template-columns: 52px minmax(150px, 1.1fr) 56px 92px 140px 120px minmax(0, 1.3fr) 64px 48px; gap: 12px; align-items: center; min-height: 58px; padding: 8px 20px; border-bottom: 1px solid var(--line); cursor: pointer; text-align: left; width: 100%; background: none; border-left: 0; border-right: 0; border-top: 0; }
 .row:last-child { border-bottom: 0; }
 .row:hover { background: var(--surface-2); }
 .row:active { background: var(--accent-soft); }
@@ -113,7 +113,7 @@ select option { background: #061633; color: #ffffff; }
 .row .hl { color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .row .sc { font-weight: 600; font-size: 18px; color: var(--ink-strong); text-align: right; letter-spacing: -0.02em; }
 .row .dl { text-align: right; font-size: 12px; font-weight: 600; }
-.lhead { display: grid; grid-template-columns: 52px minmax(150px, 1.1fr) 56px 92px 140px 120px minmax(0, 1.3fr) 64px 48px 100px; gap: 12px; padding: 10px 20px; border-bottom: 1px solid var(--line); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.lhead { display: grid; grid-template-columns: 52px minmax(150px, 1.1fr) 56px 92px 140px 120px minmax(0, 1.3fr) 64px 48px; gap: 12px; padding: 10px 20px; border-bottom: 1px solid var(--line); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
 .lhead .r { text-align: right; }
 .q { background: none; border: 1px solid var(--line); color: var(--faint); border-radius: 50%; width: 15px; height: 15px; font-size: 10px; line-height: 13px; padding: 0; margin-left: 4px; cursor: pointer; text-transform: none; vertical-align: 1px; }
 .q:hover { color: var(--ink-strong); border-color: var(--line-strong); }
@@ -353,11 +353,11 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
 /* Medium widths: drop Round and Team (both are in the company popup) so the headline keeps room. */
 @media (max-width: 1140px) and (min-width: 861px) {
   .row, .lhead { grid-template-columns: 52px minmax(150px, 1.1fr) 56px 92px 120px minmax(0, 1.3fr) 64px 48px; }
-  .row .rd, .row .mx, .lhead .hide-md { display: none; }
+  .row .rd, .lhead .hide-md { display: none; }
 }
 @media (max-width: 860px) {
   .row, .lhead { grid-template-columns: 46px minmax(0, 1fr) 56px; }
-  .row .ty, .row .st, .row .rd, .row .dl, .row .mx, .row .ow, .lhead .hide-sm { display: none; }
+  .row .ty, .row .st, .row .rd, .row .dl, .row .ow, .lhead .hide-sm { display: none; }
   .row .hl { grid-column: 2 / 3; grid-row: 2; font-size: 13px; color: var(--muted); }
   .row .sc { grid-row: 1 / 3; grid-column: 3; }
   .row { padding: 10px 16px; }
@@ -415,6 +415,9 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const store = { get(k, d) { try { const v = localStorage.getItem("ts3:" + k); return v ? { ...d, ...JSON.parse(v) } : d; } catch { return d; } }, set(k, v) { try { localStorage.setItem("ts3:" + k, JSON.stringify(v)); } catch {} } };
   const uniq = (a) => [...new Set(a.filter(Boolean))];
+  let REGION = null; try { REGION = new Intl.DisplayNames(["en"], { type: "region" }); } catch { /* old browser: codes */ }
+  const cname = (iso) => { try { return (REGION && /^[A-Z]{2}$/.test(iso) && REGION.of(iso)) || iso; } catch { return iso; } };
+  const countryOpts = (codes) => [["all", "Any Country"], ...codes.map((x) => [x, cname(x)]).sort((a, b) => a[1].localeCompare(b[1]))];
 
   const TYPE = { "Cybersecurity": "Cyber", "AI infrastructure": "AI Infra", "Deep tech": "Deep Tech", "Vertical AI": "Vertical AI", "Fintech": "Fintech", "Off-thesis": "Other" };
   // "Outside Thesis" is not shown as a fit label: the Type column already says "Other" for those companies.
@@ -433,7 +436,6 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
   // One source of truth for what every label means: hover tooltips and the Guide both read from here.
   const GLOSSARY = {
     score: "0–100. Sum of the company's growth signals (Points × Recency × Confidence). Plain arithmetic, no AI.",
-    band: "Exceptional 60+ · Strong growth story 40–59 · Some activity 20–39 · Quiet under 20.",
     change: "Score change since the last run. \"new\" = first run, nothing to compare yet.",
     reach: "Reach out now = score 60+ and In Range. Warm = score 40–59, In Range or Approaching B.",
     type: "Greenfield's five investment categories: Cyber, AI Infra, Deep Tech, Vertical AI, Fintech. Other = outside them.",
@@ -482,8 +484,8 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
   let D = null;
   const S = {
     view: "rising", open: null, guide: null, tab: "changes", showAll: false, showRoles: false, filtersOpen: false, addOpen: false, addErr: {},
-    rising: store.get("rising", { q: "", reach: "all", type: "all", status: "all", band: "all", decline: "all", owner: "all", outreach: "all", sort: "score" }),
-    all: store.get("all", { q: "", reach: "all", type: "all", status: "all", band: "all", decline: "all", coverage: "all", country: "all", owner: "all", outreach: "all", sort: "rank", dir: 1, mode: "list", hidden: false }),
+    rising: store.get("rising", { q: "", reach: "all", type: "all", status: "all", decline: "all", owner: "all", outreach: "all", sort: "score" }),
+    all: store.get("all", { q: "", reach: "all", type: "all", status: "all", decline: "all", coverage: "all", country: "all", owner: "all", outreach: "all", sort: "rank", dir: 1, mode: "list", hidden: false }),
     week: store.get("week2", { q: "", kind: "highlights", type: "all", country: "all", days: 14, sort: "date" }),
   };
   S.cmp = store.get("cmp", { list: [] }).list.slice(0, 3);
@@ -556,7 +558,6 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     if (f.type !== "all" && c.category !== f.type) return false;
     if (f.status !== "all" && c.fit !== f.status) return false;
     if (f.reach && f.reach !== "all" && c.reach !== f.reach) return false;
-    if (f.band !== "all" && c.band !== f.band) return false;
     if (f.decline === "yes" && !c.decline_flag) return false;
     if (f.decline === "no" && c.decline_flag) return false;
     if (f.coverage && f.coverage !== "all" && c.coverage !== f.coverage) return false;
@@ -594,7 +595,6 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
   const typeOpts = [["all", "All Types"], ...Object.entries(TYPE)];
   const statusOpts = (list) => [["all", "Any Stage Fit"], ...FITS.filter((x) => list.some((c) => c.fit === x)).map((x) => [x, x])];
   const reachOpts = [["all", "Anyone"], ["now", "Reach Out Now"], ["warm", "Warm"]];
-  const bandOpts = [["all", "All Bands"], ...["Exceptional", "Strong growth story", "Some activity", "Quiet"].map((x) => [x, title(x)])];
   const declOpts = [["all", "Any"], ["yes", "Decline Only"], ["no", "No Decline"]];
   const ownerOpts = [["all", "Anyone"], ["none", "Unassigned"], ...TEAM.map((m) => [m.id, m.name])];
   const outreachOpts = [["all", "Any Status"], ...OUTREACH.map((o) => [o.k, o.l])];
@@ -614,7 +614,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     // Rising is the "who fits our mandate" list: In Range companies on thesis only. All companies ranks every stage.
     const f = { ...S.rising, status: "all" }, ranked = D.companies.filter((c) => c.rank !== null && c.fit === "In Range" && !c.off_thesis);
     const list = ranked.filter((c) => pass(c, f)).sort(SORT[f.sort] || SORT.score).slice(0, 10);
-    const n = nActive(f, ["type", "band", "decline", "reach", "owner", "outreach"]);
+    const n = nActive(f, ["type", "decline", "reach", "owner", "outreach"]);
     return `<section class="hero"><div class="eyebrow">Top 10 rising</div><h1 class="top10">Company growth signals</h1><p class="scope">In Range companies only</p>${reachKey}</section>
       <div class="controls">
         <input type="search" id="q" placeholder="Search company" value="${esc(f.q)}" aria-label="Search company">
@@ -622,8 +622,8 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
         <span class="grow"></span>
         ${sel("sort", "", [["score", "Sort: Score"], ["change", "Sort: Change"], ["open", "Sort: Open Roles"], ["name", "Sort: Name"]], f.sort).replace(/<label>|<\/label>/g, "")}
       </div>
-      ${S.filtersOpen ? `<div class="fpanel">${sel("f-reach", tl("reach", "Reach Out"), reachOpts, f.reach || "all")}${sel("f-type", tl("type", "Type"), typeOpts, f.type)}${sel("f-band", tl("band", "Band"), bandOpts, f.band)}${sel("f-decline", tl("decline", "Decline"), declOpts, f.decline)}${crmFilters(f)}</div>` : ""}
-      ${activeChips(f, { reach: (v) => REACH[v], type: (v) => TYPE[v] || v, band: (v) => title(v), decline: (v) => (v === "yes" ? "Decline Only" : "No Decline"), ...crmChips })}
+      ${S.filtersOpen ? `<div class="fpanel">${sel("f-reach", tl("reach", "Reach Out"), reachOpts, f.reach || "all")}${sel("f-type", tl("type", "Type"), typeOpts, f.type)}${sel("f-decline", tl("decline", "Decline"), declOpts, f.decline)}${crmFilters(f)}</div>` : ""}
+      ${activeChips(f, { reach: (v) => REACH[v], type: (v) => TYPE[v] || v, decline: (v) => (v === "yes" ? "Decline Only" : "No Decline"), ...crmChips })}
       ${list.length ? `<div class="list">${listHead(false)}${list.map((c, i) => row(c, i + 1, false)).join("")}</div>` : `<p class="empty">No company matches. Clear a filter to see more.</p>`}
       <p class="more"><a href="#all">All ${D.companies.filter((c) => c.rank !== null).length} companies →</a></p>`;
   }
@@ -631,7 +631,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
   function listHead(table) {
     const f = S.all, sb = (k, l) => table ? `<button class="sortbtn" data-sort="${k}" aria-pressed="${f.sort === k}">${l}${f.sort === k ? (f.dir === 1 ? " ↑" : " ↓") : ""}</button>` : l;
     const h = (k, sk, l) => `<span${tipAttr(k)}>${sk ? sb(sk, l) : l}</span>`;
-    return `<div class="lhead"><span>${sb("rank", "#")}</span><span>${sb("name", "Company")}</span><span class="hide-sm">${h("owner", "owner", "Owner")}</span><span class="hide-sm">${h("type", "type", "Type")}</span><span class="hide-sm hide-md">${h("round", "round", "Round")}</span><span class="hide-sm">${h("status", "status", "Stage Fit")}</span><span class="hide-sm">${h("headline", null, "Headline")}</span><span class="r">${h("score", "score", "Score")}</span><span class="r hide-sm">${h("change", "change", "▲▼")}</span><span class="hide-sm hide-md">${h("team", null, "Team")}</span></div>`;
+    return `<div class="lhead"><span>${sb("rank", "#")}</span><span>${sb("name", "Company")}</span><span class="hide-sm">${h("owner", "owner", "Owner")}</span><span class="hide-sm">${h("type", "type", "Type")}</span><span class="hide-sm hide-md">${h("round", "round", "Round")}</span><span class="hide-sm">${h("status", "status", "Stage Fit")}</span><span class="hide-sm">${h("headline", null, "Headline")}</span><span class="r">${h("score", "score", "Score")}</span><span class="r hide-sm">${h("change", "change", "▲▼")}</span></div>`;
   }
   function row(c, rank, table) {
     const on = S.cmp.includes(c.slug);
@@ -645,7 +645,6 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
       <span class="hl">${esc(c.headline)}</span>
       <span class="sc num">${scoreCell(c)}</span>
       <span class="dl num">${delta(c)}</span>
-      <span class="mx">${mix(c)}</span>
     </div>`;
   }
 
@@ -655,7 +654,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     const hidden = D.companies.filter((c) => c.rank === null && pass(c, f));
     ranked.sort((a, b) => (SORT[f.sort] || SORT.rank)(a, b) * f.dir);
     const countries = uniq(D.companies.flatMap((c) => Object.keys(c.jobs_by_country || {}))).filter((k) => k !== "unknown").sort();
-    const n = nActive(f, ["type", "status", "band", "decline", "coverage", "country", "reach", "owner", "outreach"]);
+    const n = nActive(f, ["type", "status", "decline", "coverage", "country", "reach", "owner", "outreach"]);
     const head = `<section class="hero"><h1>All companies</h1><p class="muted">${ranked.length} companies</p>${reachKey}</section>
       <div class="controls">
         <input type="search" id="q" placeholder="Search company or sector" value="${esc(f.q)}" aria-label="Search company or sector">
@@ -665,8 +664,8 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
         <button class="btn primary" data-add>+ Add company</button>
         <div class="seg" role="group" aria-label="View as"><button data-mode="list" aria-pressed="${!["map", "fit"].includes(f.mode)}">List</button><button data-mode="fit" aria-pressed="${f.mode === "fit"}" data-tip="Companies grouped by stage fit">Stage Fit</button><button data-mode="map" aria-pressed="${f.mode === "map"}">Map</button></div>
       </div>
-      ${S.filtersOpen ? `<div class="fpanel">${sel("f-reach", tl("reach", "Reach Out"), reachOpts, f.reach || "all")}${sel("f-type", tl("type", "Type"), typeOpts, f.type)}${sel("f-status", tl("status", "Stage Fit"), statusOpts(D.companies), f.status)}${sel("f-band", tl("band", "Band"), bandOpts, f.band)}${sel("f-decline", tl("decline", "Decline"), declOpts, f.decline)}${sel("f-coverage", tl("coverage", "Coverage"), [["all", "Any Coverage"], ["full", "Full"], ["partial", "Partial"], ["low", "Low"]], f.coverage)}${sel("f-country", tl("country", "Hiring In"), [["all", "Any Country"], ...countries.map((x) => [x, x])], f.country)}${crmFilters(f)}</div>` : ""}
-      ${activeChips(f, { reach: (v) => REACH[v], type: (v) => TYPE[v] || v, status: (v) => v, band: (v) => title(v), decline: (v) => (v === "yes" ? "Decline Only" : "No Decline"), coverage: (v) => `Coverage: ${title(v)}`, country: (v) => `Hiring In ${v}`, ...crmChips })}`;
+      ${S.filtersOpen ? `<div class="fpanel">${sel("f-reach", tl("reach", "Reach Out"), reachOpts, f.reach || "all")}${sel("f-type", tl("type", "Type"), typeOpts, f.type)}${sel("f-status", tl("status", "Stage Fit"), statusOpts(D.companies), f.status)}${sel("f-decline", tl("decline", "Decline"), declOpts, f.decline)}${sel("f-coverage", tl("coverage", "Coverage"), [["all", "Any Coverage"], ["full", "Full"], ["partial", "Partial"], ["low", "Low"]], f.coverage)}${sel("f-country", tl("country", "Hiring In"), countryOpts(countries), f.country)}${crmFilters(f)}</div>` : ""}
+      ${activeChips(f, { reach: (v) => REACH[v], type: (v) => TYPE[v] || v, status: (v) => v, decline: (v) => (v === "yes" ? "Decline Only" : "No Decline"), coverage: (v) => `Coverage: ${title(v)}`, country: (v) => `Hiring In ${cname(v)}`, ...crmChips })}`;
     const added = addedCos().filter((c) => !f.q || c.name.toLowerCase().includes(f.q.toLowerCase()));
     const pendRows = added.length ? `<div class="pendgrp"><span>Added by you · scored on the next run (${added.length})</span><span class="grow"></span><button class="linkbtn" data-csv>Copy CSV rows</button></div>`
       + added.map((c) => `<div class="row" role="button" tabindex="0" data-open="${esc(c.slug)}"><span class="rk num"><span class="pend">New</span></span><span class="nm">${logo(c)}<span style="overflow:hidden;text-overflow:ellipsis">${esc(c.name)}</span>${stDot(c.slug)}</span>${ownerCell(c.slug)}<span class="ty">${esc(TYPE[c.category] || "")}</span><span class="rd num">${esc(c.round || "")}</span><span class="st"></span><span class="hl muted">${esc(c.domain)}</span><span class="sc num meta">–</span><span class="dl"></span><span class="mx"><button class="linkbtn" data-added-del="${esc(c.slug)}" style="font-size:12px">Remove</button></span></div>`).join("") : "";
@@ -751,8 +750,8 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
         <span class="grow"></span>
         ${sel("sort", "", [["date", "Sort: Newest"], ["company", "Sort: Company"]], f.sort).replace(/<label>|<\/label>/g, "")}
       </div>
-      ${S.filtersOpen ? `<div class="fpanel">${sel("f-days", "Period", [[7, "Last 7 Days"], [14, "Last 14 Days"], [30, "Last 30 Days"], [90, "Last 90 Days"]], f.days)}${sel("f-type", tl("type", "Type"), typeOpts, f.type)}${sel("f-country", tl("country", "Country"), [["all", "Any Country"], ...countries.map((x) => [x, x])], f.country)}</div>` : ""}
-      ${activeChips(f, { type: (v) => TYPE[v] || v, country: (v) => `In ${v}`, days: (v) => `Last ${v} Days` })}
+      ${S.filtersOpen ? `<div class="fpanel">${sel("f-days", "Period", [[7, "Last 7 Days"], [14, "Last 14 Days"], [30, "Last 30 Days"], [90, "Last 90 Days"]], f.days)}${sel("f-type", tl("type", "Type"), typeOpts, f.type)}${sel("f-country", tl("country", "Country"), countryOpts(countries), f.country)}</div>` : ""}
+      ${activeChips(f, { type: (v) => TYPE[v] || v, country: (v) => `In ${cname(v)}`, days: (v) => `Last ${v} Days` })}
       ${g.length ? `<div class="feed">${rows}</div>` : `<p class="empty">Nothing new in this period. Try All or a longer period.</p>`}`;
   }
 
@@ -813,7 +812,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
         <section class="main">
           <div class="ph">${logo(c, 52)}<div style="min-width:0"><h2 id="pname" style="font-size:30px">${esc(c.name)}</h2>
             <div class="meta" style="margin-top:4px">${[TYPE[c.category] || c.category, c.round_label, status(c)].filter(Boolean).map(esc).join(" · ")}${c.decline_flag ? " · " + DECL + " decline" : ""}</div>
-            <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">${pend ? `<span class="pend">Pending</span>` : ""}${c.reach ? `<span class="pill ${c.reach}" style="font-size:12px;font-weight:700" data-tip="${esc(GLOSSARY.reach)}">${REACH[c.reach]}</span>` : ""}${c.band ? `<span class="meta has-tip" tabindex="0" data-tip="${esc(GLOSSARY.band)}">${esc(c.band)}</span>` : ""}</div></div>
+            <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">${pend ? `<span class="pend">Pending</span>` : ""}${c.reach ? `<span class="pill ${c.reach}" style="font-size:12px;font-weight:700" data-tip="${esc(GLOSSARY.reach)}">${REACH[c.reach]}</span>` : ""}</div></div>
             ${pend ? "" : `<span class="big num has-tip" tabindex="0" data-tip="${esc(GLOSSARY.score)}" style="text-decoration:none">${c.score}</span>`}</div>
           <p class="lede">${esc(c.headline)}</p>
           ${c.reason ? `<p class="muted" style="margin:0">${esc(c.reason)}</p>` : ""}
@@ -837,10 +836,10 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
         <div class="ph"><h2 id="cname">Compare</h2><span style="margin-left:auto"></span><button class="x" data-close aria-label="Close">✕</button></div>
         <div class="cgrid" style="grid-template-columns: 110px repeat(${cs.length}, minmax(220px, 1fr)); margin-top:12px">
           ${row("", (c) => `<h2 style="display:flex;align-items:center;gap:10px">${logo(c, 30)}<button class="linkbtn" style="color:var(--ink-strong);font-size:20px" data-open="${esc(c.slug)}">${esc(c.name)}</button></h2><div class="meta">${esc(TYPE[c.category] || "")} · ${esc(c.round_label || "")}${status(c) ? ` · ${esc(status(c))}` : ""}</div><p style="margin:6px 0 0"><button class="linkbtn" data-cmp="${esc(c.slug)}" style="font-size:12px">Remove</button></p>`)}
-          ${row("Score", (c) => `<span class="big num">${c.score}</span>${c.reach ? ` <span class="pill ${c.reach}" style="font-size:11px;font-weight:700;margin-left:8px;vertical-align:8px">${REACH[c.reach]}</span>` : ""}<div class="meta">${esc(c.band)}${c.decline_flag ? " · decline" : ""}</div>`)}
+          ${row("Score", (c) => `<span class="big num">${c.score}</span>${c.reach ? ` <span class="pill ${c.reach}" style="font-size:11px;font-weight:700;margin-left:8px;vertical-align:8px">${REACH[c.reach]}</span>` : ""}${c.decline_flag ? `<div class="meta">decline</div>` : ""}`)}
           ${row("Headline", (c) => `<b style="color:var(--ink-strong)">${esc(c.headline)}</b>`)}
           ${row("Hiring vs size", (c) => sizeGauge(c))}
-          ${row("Go-to-market", (c) => c.gtm_share === null ? `<span class="meta">No listings</span>` : `<span class="big num" style="font-size:24px">${c.gtm_share}%</span> <span class="meta">of ${c.open_jobs} open roles${c.filled ? ` · ${c.filled} likely filled` : ""}</span>`)}
+          ${row("GTM share", (c) => c.gtm_share === null ? `<span class="meta">No listings</span>` : `<span class="big num" style="font-size:24px">${c.gtm_share}%</span> <span class="meta">of ${c.open_jobs} open roles${c.filled ? ` · ${c.filled} likely filled` : ""}</span>`)}
           ${row("Team", (c) => { const g = groups(c); return g.some((x) => x.n) ? mix(c, true) + mixLegend(g.filter((x) => x.n)) : `<span class="meta">No listings</span>`; })}
           ${row("Countries", (c) => ctry(c).length ? bars(ctry(c)) : `<span class="meta">None</span>`)}
           ${row("Score over time", (c) => scoreChart(c))}
@@ -892,7 +891,7 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
       <aside class="panel" role="dialog" aria-modal="true" aria-labelledby="gname">
         <div class="ph"><h2 id="gname">Guide</h2><span style="margin-left:auto"></span><button class="x" data-close aria-label="Close">✕</button></div>
         <p class="meta" style="margin:8px 0 0">Tip: hover any underlined label for its meaning.</p>
-        <h3 id="g-score">Score</h3>${t([["Score", GLOSSARY.score], ["Band", GLOSSARY.band], ["▲ ▼", GLOSSARY.change]])}
+        <h3 id="g-score">Score</h3>${t([["Score", GLOSSARY.score], ["▲ ▼", GLOSSARY.change]])}
         <h3 id="g-reach">Reach out</h3>${t([[`<span class="pill now">${REACH.now}</span>`, "Score 60+ and In Range."], [`<span class="pill warm">${REACH.warm}</span>`, "Score 40–59, In Range or Approaching B."]])}
         <h3 id="g-status">Stage Fit</h3>${t(FITS.map((k) => [k, GLOSSARY[k]]))}
         <h3 id="g-type">Columns</h3>${t([["Type", GLOSSARY.type], ["Round", GLOSSARY.round], ["Headline", GLOSSARY.headline], ["Team", GLOSSARY.team], ["Coverage", GLOSSARY.coverage], ["Decline ↓", GLOSSARY.decline]])}
@@ -1009,8 +1008,12 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
   document.addEventListener("focusin", (e) => { const t = e.target.closest?.("[data-tip]"); if (!t) { tip.hidden = true; return; } const r = t.getBoundingClientRect(); showTip(t, r.left, r.top); });
   document.addEventListener("focusout", () => { tip.hidden = true; });
   window.addEventListener("hashchange", route);
+  // "GTM", never "go-to-market", in any text the run produced (headlines, reason lines, signal details, feed).
+  const GTM_RE = /\bgo[- ]to[- ]market\b/gi;
+  const gtmWords = (o) => { if (Array.isArray(o)) o.forEach((v, i) => { if (typeof v === "string") o[i] = v.replace(GTM_RE, "GTM"); else gtmWords(v); });
+    else if (o && typeof o === "object") for (const k of Object.keys(o)) { if (typeof o[k] === "string") o[k] = o[k].replace(GTM_RE, "GTM"); else gtmWords(o[k]); } };
   const loadData = () => fetch("ranking.json", { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-    .then((d) => { mockChanges(d); stageFits(d); rankAll(d); D = d; $("#runDate").textContent = "Run " + fmtY(d.run_date); route(); });
+    .then((d) => { gtmWords(d); mockChanges(d); stageFits(d); rankAll(d); D = d; $("#runDate").textContent = "Run " + fmtY(d.run_date); route(); });
 
   // ------------------------------------------------------------ Run now
   // Two backends answer /api/run with the same shape:

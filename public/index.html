@@ -583,11 +583,14 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
   // Logos that load fine but can't be seen on the white tile (white on transparent), so they get initials.
   // Found by measuring every company's favicon on 13 Nov 2026: only Xtend's had no visible pixels.
   const BLANK_LOGOS = new Set(["xtend.me"]);
+  // Logos where Google's favicon cache can lag behind a rebrand: use the company's own site icon instead.
+  // Daylight: icon from daylight.ai (checked 18 Nov 2026).
+  const LOGO_URL = { "daylight.ai": "https://cdn.prod.website-files.com/6aa946b076ba7e8c277c5a3b/6af1b2f95e38899161c24f5b_daylight-webclip-256x256.png" };
   const coIni = (n) => { const w = String(n || "?").replace(/[^A-Za-z0-9 ]/g, " ").trim().split(/\s+/); return (w.length > 1 ? w[0][0] + w[1][0] : w[0].slice(0, 2)).toUpperCase(); };
   const logo = (c, px = 20) => {
     const d = (c.domain || "").trim(), st = !d || BLANK_LOGOS.has(d) ? "none" : LOGO.get(d), ini = coIni(c.name);
     if (st === "none") return `<span class="lg ini" style="--s:${px}px" aria-hidden="true">${esc(ini)}</span>`;
-    return `<span class="lg" style="--s:${px}px" aria-hidden="true"><img class="lgimg${st === "ok" ? " ok" : ""}" src="https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&amp;sz=64" alt="" decoding="async" data-domain="${esc(d)}" data-ini="${esc(ini)}"></span>`;
+    return `<span class="lg" style="--s:${px}px" aria-hidden="true"><img class="lgimg${st === "ok" ? " ok" : ""}" src="${esc(LOGO_URL[d] || `https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=64`)}" alt="" decoding="async" data-domain="${esc(d)}" data-ini="${esc(ini)}"></span>`;
   };
   const logoFail = (img) => { LOGO.set(img.dataset.domain, "none"); const box = img.parentElement; if (box) { box.classList.add("ini"); box.textContent = img.dataset.ini; } };
   document.addEventListener("load", (e) => { const img = e.target; if (!img.classList?.contains("lgimg")) return; if (img.naturalWidth < 32) logoFail(img); else { LOGO.set(img.dataset.domain, "ok"); img.classList.add("ok"); } }, true);

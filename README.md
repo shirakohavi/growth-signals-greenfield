@@ -52,7 +52,7 @@ npm run serve                       # open http://localhost:4180
 - `npm run pipeline` runs every step in order and stops at the first one that fails. Sources that fail inside a step keep their last data and are marked "not reached".
 - A full run takes about 20–40 minutes, because sites are fetched politely (3 s between requests to one site), and makes a few hundred Haiku calls, well under $1.
 - Locally, the dashboard's **Run now** button runs the pipeline on your machine; add `?dryrun` to the URL to try it without collecting anything.
-- Each step also runs on its own: `collect:ats`, `collect:pages`, `enrich`, `collect:footprint`, `compare`, `seed:dummy`, `score`, `build:dashboard`. `npm test` runs 53 rule tests; `npm run typecheck` checks types.
+- Each step also runs on its own: `collect:ats`, `collect:pages`, `enrich`, `collect:footprint`, `compare`, `seed:dummy`, `score`, `build:dashboard`. `npm test` runs 56 rule tests; `npm run typecheck` checks types.
 
 </details>
 

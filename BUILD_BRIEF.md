@@ -198,7 +198,7 @@ npm run compare           # dedupe, reposts, baseline
 npm run seed:dummy        # dummy history where no real history exists
 npm run score             # scores table + public/ranking.json (Claude Haiku reason lines)
 npm run build:dashboard   # public/index.html
-npm test                  # 53 rule tests
+npm test                  # 56 rule tests
 ```
 
 Then `npm run serve` and open http://localhost:4180 (any static server for `public/` works too; it just won't show Run now). The AI steps need `ANTHROPIC_API_KEY` in `.dev.vars`.

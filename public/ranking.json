@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T13:35:30.474Z",
+  "generated_at": "2026-11-18T21:06:41.809Z",
   "run_date": "2026-11-16",
   "note": "Signals marked dummy come from seeded history (is_dummy=1), not real past runs.",
   "rising_mode": "change",
@@ -3576,7 +3576,7 @@
       "portfolio": false,
       "score": 71,
       "band": "Exceptional",
-      "change": -15,
+      "change": 0,
       "coverage": "full",
       "decline_flag": false,
       "reason": "Upwind opened a Japan market entry with an Enterprise Account Executive role (14 Nov), and it lists 21 US GTM roles, 2 likely filled. It also added Regional VP of Sales hires for Benelux and DACH, and a partner page dated 3 Nov.",
@@ -3666,12 +3666,12 @@
       "score_series": [
         {
           "date": "2026-11-12",
-          "score": 61,
+          "score": 46,
           "dummy": false
         },
         {
           "date": "2026-11-14",
-          "score": 86,
+          "score": 71,
           "dummy": false
         },
         {
@@ -8391,7 +8391,7 @@
       "portfolio": false,
       "score": 51,
       "band": "Strong growth story",
-      "change": -15,
+      "change": 0,
       "coverage": "full",
       "decline_flag": false,
       "reason": "Zenity lists 14 open GTM roles in the US and a Head of Social hire. On 3 Aug it announced a plan to use Series C funds for Europe and Asia-Pacific expansion, plus Zenity Labs and product work.",
@@ -8452,12 +8452,12 @@
       "score_series": [
         {
           "date": "2026-11-12",
-          "score": 66,
+          "score": 51,
           "dummy": false
         },
         {
           "date": "2026-11-14",
-          "score": 66,
+          "score": 51,
           "dummy": false
         },
         {
@@ -9065,11 +9065,6 @@
           "source_url": "https://zenity.io/careers/remote-japan/senior-sales-engineer-japan/4C.D67"
         },
         {
-          "type": "presence",
-          "value": "Presence (US): 14 open GTM role(s) in US, e.g. \"Account Executive\"",
-          "source_url": "https://zenity.io/careers/remote-los-angeles-ca-united-states/account-executive/A9.47B"
-        },
-        {
           "type": "round",
           "value": "Exited stealth with $5M seed round led by Vertex Ventures and UpWest",
           "source_url": "https://zenity.io/company"
@@ -9092,6 +9087,11 @@
         {
           "type": "round",
           "value": "$125M Series C round led by Norwest to secure autonomous AI",
+          "source_url": "https://zenity.io/company"
+        },
+        {
+          "type": "validation",
+          "value": "Introduced support to secure and govern Microsoft Copilot for M365",
           "source_url": "https://zenity.io/company"
         }
       ],
@@ -9838,7 +9838,7 @@
       "portfolio": false,
       "score": 40,
       "band": "Strong growth story",
-      "change": -15,
+      "change": 0,
       "coverage": "full",
       "decline_flag": false,
       "reason": "Hiring 8 open GTM roles in the US shows a GTM team build-out. A senior GTM hire, Head of Strategic Partnerships, has also been made.",
@@ -9897,12 +9897,12 @@
       "score_series": [
         {
           "date": "2026-11-12",
-          "score": 55,
+          "score": 40,
           "dummy": false
         },
         {
           "date": "2026-11-14",
-          "score": 55,
+          "score": 40,
           "dummy": false
         },
         {
@@ -10093,11 +10093,6 @@
       ],
       "context": [
         {
-          "type": "presence",
-          "value": "Presence (US): 8 open GTM role(s) in US, e.g. \"Business Development Manager - West Coast\"",
-          "source_url": "https://www.withfaye.com/careers/Business-Development-Manager-West-Coast-2E.B54/"
-        },
-        {
           "type": "office",
           "value": "Company states it has offices around the world, supporting travelers 24/7 including weekends and holidays; no specific cities or countries named",
           "source_url": "https://www.withfaye.com/about/"
@@ -10130,6 +10125,11 @@
         {
           "type": "validation",
           "value": "Company says its AI-powered platform has received more than 20 global industry awards",
+          "source_url": "https://www.calcalistech.com/ctechnews/article/bjh1l9l8gx"
+        },
+        {
+          "type": "validation",
+          "value": "Selected as Calcalist's most promising startup in 2024",
           "source_url": "https://www.calcalistech.com/ctechnews/article/bjh1l9l8gx"
         }
       ],
@@ -10566,7 +10566,7 @@
       "portfolio": false,
       "score": 35,
       "band": "Some activity",
-      "change": 0,
+      "change": 15,
       "coverage": "full",
       "decline_flag": false,
       "reason": "Vega is building out its go-to-market team with 14 open GTM roles in the US. It also shows a new market entry in GB, with 3 open GTM roles there, dated 16 Nov.",
@@ -10627,12 +10627,12 @@
       "score_series": [
         {
           "date": "2026-11-12",
-          "score": 35,
+          "score": 20,
           "dummy": false
         },
         {
           "date": "2026-11-14",
-          "score": 35,
+          "score": 20,
           "dummy": false
         },
         {
@@ -12594,7 +12594,7 @@
       "portfolio": false,
       "score": 26,
       "band": "Some activity",
-      "change": -15,
+      "change": 0,
       "coverage": "full",
       "decline_flag": false,
       "reason": "Linx Security has 9 open GTM roles in the US. It published an industry page on 30 Oct (modern identity governance and administration), and was named a Representative Vendor in the 2026 Gartner Market Guide for Identity Governance and Administration on 21 Sep.",
@@ -12647,12 +12647,12 @@
       "score_series": [
         {
           "date": "2026-11-12",
-          "score": 41,
+          "score": 26,
           "dummy": false
         },
         {
           "date": "2026-11-14",
-          "score": 41,
+          "score": 26,
           "dummy": false
         },
         {
@@ -12990,11 +12990,6 @@
       ],
       "context": [
         {
-          "type": "presence",
-          "value": "Presence (US): 9 open GTM role(s) in US, e.g. \"Channel Account Manager, West\"",
-          "source_url": "https://www.linx.security/careers/channel-account-manager-west-1d-278"
-        },
-        {
           "type": "validation",
           "value": "recognized in Forrester The Workforce Identity Security Platforms Landscape, Q4 2025",
           "source_url": "https://www.linx.security/newsroom"
@@ -13023,6 +13018,11 @@
           "type": "office",
           "value": "Headquartered in New York, USA",
           "source_url": "https://www.prnewswire.com/il/news-releases/linx-security-expands-executive-leadership-to-accelerate-enterprise-growth-302915408.html"
+        },
+        {
+          "type": "presence",
+          "value": "Presence (US): 9 open GTM role(s) in US, e.g. \"Channel Account Manager, West\"",
+          "source_url": "https://www.linx.security/careers/channel-account-manager-west-1d-278"
         }
       ],
       "uses_dummy": false,
@@ -13043,7 +13043,7 @@
       "portfolio": false,
       "score": 25,
       "band": "Some activity",
-      "change": -15,
+      "change": 0,
       "coverage": "full",
       "decline_flag": false,
       "reason": "Onyx Security has 9 open GTM roles in the US. It also announced an expansion plan dated 01 Aug to use new funds for AI development and expanding in the US and other markets.",
@@ -13101,12 +13101,12 @@
       "score_series": [
         {
           "date": "2026-11-12",
-          "score": 40,
+          "score": 25,
           "dummy": false
         },
         {
           "date": "2026-11-14",
-          "score": 40,
+          "score": 25,
           "dummy": false
         },
         {
@@ -13317,11 +13317,6 @@
           "source_url": "https://www.timesofisrael.com/israeli-cyber-startup-raises-113m-to-secure-and-control-autonomous-ai-agents/"
         },
         {
-          "type": "presence",
-          "value": "Presence (US): 9 open GTM role(s) in US, e.g. \"Digital Marketing Manager\"",
-          "source_url": "https://www.comeet.com/jobs/onyxsecurity/BA.005/digital-marketing-manager/9E.276"
-        },
-        {
           "type": "round",
           "value": "Series B funding round of $113M announced (headline link on about page; lead investors and close date not stated)",
           "source_url": "https://www.onyx.security/about"
@@ -13350,6 +13345,11 @@
           "type": "validation",
           "value": "Integrates with Anthropic inference hooks to bring runtime security natively into Claude",
           "source_url": "https://www.onyx.security/newsroom"
+        },
+        {
+          "type": "office",
+          "value": "Team in Israel",
+          "source_url": "https://www.timesofisrael.com/israeli-cyber-startup-raises-113m-to-secure-and-control-autonomous-ai-agents/"
         }
       ],
       "uses_dummy": false,
@@ -13370,7 +13370,7 @@
       "portfolio": false,
       "score": 25,
       "band": "Some activity",
-      "change": -15,
+      "change": 0,
       "coverage": "full",
       "decline_flag": false,
       "reason": "NoTraffic has 10 open GTM roles in the US. It also announced on 24 Mar a plan to accelerate North American rollout, expecting deployment at 1 in 10 traffic agencies in the U.S. and Canada by mid-2026.",
@@ -13424,12 +13424,12 @@
       "score_series": [
         {
           "date": "2026-11-12",
-          "score": 35,
+          "score": 20,
           "dummy": false
         },
         {
           "date": "2026-11-14",
-          "score": 40,
+          "score": 25,
           "dummy": false
         },
         {
@@ -13671,11 +13671,6 @@
       ],
       "context": [
         {
-          "type": "presence",
-          "value": "Presence (US): 10 open GTM role(s) in US, e.g. \"Account Executive - Mountain States\"",
-          "source_url": "https://www.notraffic.com/careers/co/sales/F2.279/account-executive-mountain-states/all/?gh_src=lool+ventures+job+board"
-        },
-        {
           "type": "validation",
           "value": "Named to TIME100 Companies Industry Leaders in Transportation list",
           "source_url": "https://www.prnewswire.com/il/news-releases/notraffic-raises-90m-series-c-led-by-psg-equity-to-accelerate-growth-and-help-lead-the-ai-driven-traffic-management-revolution-302723143.html"
@@ -13689,6 +13684,11 @@
           "type": "validation",
           "value": "Named to TIME100 Companies Industry Leaders in Transportation list",
           "source_url": "https://www.prnewswire.com/news-releases/notraffic-raises-90m-series-c-led-by-psg-equity-to-accelerate-growth-and-help-lead-the-ai-driven-traffic-management-revolution-302723143.html"
+        },
+        {
+          "type": "presence",
+          "value": "Presence (US): 10 open GTM role(s) in US, e.g. \"Account Executive - Mountain States\"",
+          "source_url": "https://www.notraffic.com/careers/co/sales/F2.279/account-executive-mountain-states/all/?gh_src=lool+ventures+job+board"
         }
       ],
       "uses_dummy": false,
@@ -14254,7 +14254,7 @@
       "portfolio": false,
       "score": 23,
       "band": "Some activity",
-      "change": -15,
+      "change": 0,
       "coverage": "full",
       "decline_flag": false,
       "reason": "Nimble shows a GTM team build-out with 16 GTM roles open in the US, 3 now likely filled. It also added a new industry page, /solutions/retail, with sitemap lastmod 27 Oct.",
@@ -14313,12 +14313,12 @@
       "score_series": [
         {
           "date": "2026-11-12",
-          "score": 38,
+          "score": 23,
           "dummy": false
         },
         {
           "date": "2026-11-14",
-          "score": 38,
+          "score": 23,
           "dummy": false
         },
         {
@@ -14695,11 +14695,6 @@
       ],
       "context": [
         {
-          "type": "presence",
-          "value": "Presence (US): 13 open GTM role(s) in US, e.g. \"Enterprise Account Executive – Financial Services & Alternative Data\"",
-          "source_url": "https://www.nimbleway.com/open-position?enterprise-account-executive--financial-services--alternative-data&uid=54.57D"
-        },
-        {
           "type": "validation",
           "value": "Nimble launched as an official plugin on ChatGPT and Codex",
           "source_url": "https://www.nimbleway.com/about-us"
@@ -14728,6 +14723,11 @@
           "type": "office",
           "value": "Development center in Israel",
           "source_url": "https://en.globes.co.il/en/article-israeli-web-intelligence-co-nimble-raises-47m-1001535902"
+        },
+        {
+          "type": "presence",
+          "value": "Presence (US): 13 open GTM role(s) in US, e.g. \"Enterprise Account Executive – Financial Services & Alternative Data\"",
+          "source_url": "https://www.nimbleway.com/open-position?enterprise-account-executive--financial-services--alternative-data&uid=54.57D"
         }
       ],
       "uses_dummy": false,
@@ -14997,7 +14997,7 @@
       "portfolio": false,
       "score": 20,
       "band": "Some activity",
-      "change": -15,
+      "change": 0,
       "coverage": "full",
       "decline_flag": false,
       "reason": "groundcover has 10 open GTM roles in the US, which points to an active GTM team build-out. No dates were given for this signal.",
@@ -15058,12 +15058,12 @@
       "score_series": [
         {
           "date": "2026-11-12",
-          "score": 35,
+          "score": 20,
           "dummy": false
         },
         {
           "date": "2026-11-14",
-          "score": 35,
+          "score": 20,
           "dummy": false
         },
         {
@@ -15301,11 +15301,6 @@
           "source_url": "https://www.comeet.com/jobs/groundcover/88.008/account-executive---london/3B.474"
         },
         {
-          "type": "presence",
-          "value": "Presence (US): 10 open GTM role(s) in US, e.g. \"Account Executive\"",
-          "source_url": "https://www.comeet.com/jobs/groundcover/88.008/account-executive/F0.E6B"
-        },
-        {
           "type": "office",
           "value": "Headquartered in Tel Aviv, Israel",
           "source_url": "https://www.groundcover.com/about"
@@ -15333,6 +15328,11 @@
         {
           "type": "validation",
           "value": "Agent Mode powered by Google Vertex AI, natively in Google Cloud environments (shown at Google Cloud Next 2026)",
+          "source_url": "https://www.groundcover.com/news"
+        },
+        {
+          "type": "validation",
+          "value": "Enhanced Agent Mode shown at Microsoft Build 2026 and now live on Microsoft Azure as a BYOC platform",
           "source_url": "https://www.groundcover.com/news"
         }
       ],

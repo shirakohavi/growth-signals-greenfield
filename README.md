@@ -15,7 +15,7 @@ Growth Signals tracks 40 Israeli and Israel-related tech companies, turns dated 
 
 | Score | Reads as |
 |---|---|
-| 0–39 | Not yet |
+| 0–39 | Watch |
 | 40–59 | Warm |
 | 60–100 | Reach out now (if In Range) |
 
@@ -61,7 +61,7 @@ npm run serve                       # open http://localhost:4180
 Three tabs across the top: **Rising**, **All companies** and **What's new**. Every column header, filter and score has a tooltip (hover or tab to it), and **Guide** (top right) explains every term in one place.
 
 **How to read a row**
-- **Reach out now** companies (score 60+ and In Range) have a tinted row with a blue bar on the left and a **filled** score circle. **Warm** companies (40–59) have an **outlined** circle. The two dots under the page title are the legend.
+- **Reach out now** companies (score 60+ and In Range) have a tinted row with a blue bar on the left and a **filled** score circle. **Warm** companies (40–59) have an **outlined** circle. The two dots under the page title are the legend. Everyone else is **Watch** (score under 40, or not at our stage yet); the Reach out filter has all three.
 - **Chips:** Type (sector, each with its own color), Round (latest round and month) and Stage Fit (green = In Range, amber = Approaching B, grey = Too Early or Past Stage).
 - **▲▼** is the score change since the last run. The mix of open roles by team (R&D, Sales, Marketing, Customer success, Partnerships) is on each company page and in Compare, not in the main list.
 - **Wording:** the dashboard says **GTM** (go-to-market: sales, marketing, customer success, partnerships) everywhere, including headlines and reason lines.
@@ -72,13 +72,13 @@ Three tabs across the top: **Rising**, **All companies** and **What's new**. Eve
 **All companies** — all 40 companies, in three views:
 - **List:** the same table with every company, plus Coverage and Hiring-in-country filters (countries listed by full name).
 - **Stage Fit board:** one column per stage (In Range, Approaching B, Too Early, Past Stage), so you can see who is at the right stage at a glance.
-- **Map:** a heatmap of open roles by country, to spot who is building teams abroad.
+- **Map:** a heatmap of open roles by country (full country names; US and UK short), to spot who is building teams abroad.
 
 **What's new** — dated changes from the last 7, 14, 30 or 90 days, grouped by day. **Highlights** shows new markets (a country where a company posts its first sales role), funding, plans, new offices and risks first; **Roles**, **News**, **Site** and **Risks** narrow it down. Many new roles at one company collapse into one line you can expand. Every item links to its source.
 
 **Company page** (click any company)
 - The score with its one-line reason, links (website, careers, jobs, and "Check on LinkedIn" when coverage is low) and **score over time**.
-- **Changes:** every dated change with its source. **Why:** the scoring signals with points and sources. **Team:** open roles vs company size, roles by team and country, open roles over time and the full role list.
+- **Changes:** every dated change with its source. **Why:** the scoring signals with points and sources. **Team:** open roles vs company size (on a 0–100% scale), roles by team (R&D, Sales, CS & Partners, Marketing, and **Admin & Other**: finance, HR, legal, operations and roles that fit no other team) and country, open roles over time and the full role list. Charts show the value at every point.
 - **Outreach panel** (right side of the page), so the team can track who is talking to whom:
   - **Owner:** pick the teammate who owns the relationship. Their initials then show in the Owner column.
   - **Status:** Not contacted → Reached out → In conversation → Meeting set, or Passed. The panel shows when the status last changed, a small colored dot appears next to the company's name in every list, and Rising and All companies can be filtered by Owner and by Outreach status.

@@ -278,3 +278,9 @@ How AI was used to build Growth Signals, step by step. "I" is me (the candidate)
 - **Options I weighed:** remove the 15-point hint everywhere (31 companies drop 15; only 2 left at 60+), or count once. **My decision:** count once.
 - **Claude Code** dropped the hint when the same country already earns GTM build-out (it's shown as presence instead); markets seen arriving still get the full +25. 3 new tests, 1 updated (56 in all).
 - **Result after re-scoring (8 AI calls, reason lines only):** 8 companies changed, each −15: Upwind 71, Zenity 51, Faye 40, Linx 26, Onyx 25, NoTraffic 25, Nimble 23, groundcover 20. Reach out now: Daylight, Upwind and Unframe; Zenity moved to Warm.
+
+## Clean score changes and dashboard polish (18 Nov 2026)
+
+- **What I noticed:** after "count once", Upwind showed ▼15. Nothing changed at Upwind; only the rule did.
+- **Claude Code** wrote `scripts/restate_scores.ts`, which re-applies the new rule to the 12 and 14 Nov runs from their stored signals (18 past scores, no AI). Now ▲▼ shows only data changes: Upwind, Zenity, Faye and the rest are back to "=". Vega shows ▲15 because a new UK role was posted on 16 Nov. The rule now drops the hint only when its country is the one the build-out counted.
+- **Dashboard:** map with full country names and wider columns (US, UK and UAE short; Turkey in English); "Sort: Score Change ▲▼"; a third tier, **Watch**, for everyone who is neither Reach out now nor Warm; the company-size bar on a 0–100% scale; "G&A / Other" renamed "Admin & Other"; values shown on every chart point and whole-number lines on the open-roles chart.

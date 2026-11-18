@@ -197,16 +197,6 @@ export function scoreCompany(c: CompanyIn, jobs: JobIn[], events: EventIn[], sna
     if (n >= 4) out.push(sig("gtm_buildout", "GTM team build-out", 20, 1, 1, null,
       x.filled ? `${n} GTM roles in ${ctry}, ${x.filled} now likely filled` : `${n} open GTM roles in ${ctry}`, x.open[0]?.url ?? null));
   }
-  // ---- Count a market once: a first-run market hint is dropped when the same roles already earned GTM team
-  // build-out in that country (one fact, "they're hiring sales in the US", shouldn't score twice). It is shown
-  // as presence instead. Markets seen arriving after the first run always keep their full +25.
-  for (const h of hints) {
-    const iso = h.key.slice(11);
-    if (!byCountry.has(iso) || (byCountry.get(iso)!.open.length + byCountry.get(iso)!.filled) < 4) continue;
-    out.splice(out.indexOf(h), 1);
-    presence(h);
-  }
-
   // ---- Senior GTM hire (+20): VP/Head/Chief in Sales, Revenue, CS, Partnerships, Marketing (open post).
   const senior = gtmJobs.filter((j) => j.seniority === "VP+" && SENIOR_GTM.test(j.title));
   if (senior.length) out.push(sig("senior_gtm", "Senior GTM hire", 20, 1, 1, postedOf(senior[0]), senior.slice(0, 3).map((j) => j.title).join("; "), senior[0].url));
@@ -272,6 +262,11 @@ export function scoreCompany(c: CompanyIn, jobs: JobIn[], events: EventIn[], sna
     ? { headcount: c.headcount, open: jobs.length, pct: Math.round((jobs.length / c.headcount) * 100) } : null;
 
   const signals = keepBest(out.filter((s) => s.value !== 0)).sort((a, b) => b.value - a.value);
+  // Count a market once: a first-run market hint (not seen arriving) is dropped when the GTM build-out that
+  // counts already covers the same country, so one fact ("they're hiring sales in the US") doesn't score twice.
+  // It is shown as presence instead. Markets seen arriving after the first run keep their full +25.
+  const builtIn = signals.find((x) => x.key === "gtm_buildout")?.detail.match(/ in ([A-Z]{2})\b/)?.[1];
+  for (const h of hints) if (builtIn && h.key === `new_market:${builtIn}` && signals.includes(h)) { signals.splice(signals.indexOf(h), 1); presence(h); }
   // One hiring wave counts once: the strongest wave signal stays full, the others count half.
   const wave = signals.filter((s) => HIRING_WAVE.has(s.key) && s.value > 0);
   for (const s of wave.slice(1)) { s.value = Math.round(s.value * 5) / 10; s.detail += ` (half: same hiring wave as ${wave[0].name})`; }

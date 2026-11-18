@@ -153,13 +153,14 @@ Score = max(0, min(100, Σ SignalPoints_i × Recency_i × Confidence_i))
 - **Decline flag:** any negative signal in the last 12 months.
 - **Coverage:** full (job data + history), partial (website / news only), low (little found). "Not checked" is shown apart from "checked, nothing found".
 - **Bands:** 0–19 Quiet · 20–39 Some activity · 40–59 Strong growth story · 60+ Exceptional. Stored with each score, but **not shown in the dashboard** since 18 Nov: the score and the Reach out tiers say the same thing more simply.
-- **Reach out:** **Reach out now** = score 60+ and In Range. **Warm** = 40–59, In Range or Approaching B.
+- **Reach out:** **Reach out now** = score 60+ and In Range. **Warm** = 40–59, In Range or Approaching B. **Watch** = everyone else.
 - **Every signal carries a real / dummy label.**
 
 ## 11. Dashboard
 
 One static page (`src/dashboard/index.html` → `npm run build:dashboard` → `public/index.html`), styled after greenfield-growth.com (navy, Manrope, one soft-blue accent).
 
+- **Score change (▲▼) compares like with like:** when a scoring rule changes, `scripts/restate_scores.ts` re-applies it to past runs' stored signals, so the arrow shows changes in the data, not in the rules.
 - **Main lists** (Rising, All companies → List): no Team column since 18 Nov; the role mix by team stays on the company page and in Compare. All text says **GTM**, not "go-to-market" (the reason-line prompt asks for it, and the dashboard also rewrites older text on load).
 - **Rising:** the top 10 **In Range** companies by score (biggest movers once there are two real runs), with Reach out tiers. Off-thesis companies are left out. Changed on 17 Nov: Rising is the list to act on, so it shows only companies inside the mandate; All companies still ranks every stage.
 - **All companies:** List, **Stage Fit** board (one column per stage), Chart and Map (open roles by country). Search, filters (reach, type, stage fit, decline, coverage, country by full name, owner, outreach status) and sorting.

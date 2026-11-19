@@ -1041,7 +1041,10 @@ footer.foot { color: var(--muted); font-size: 12px; padding-block: 36px; }
     if (st.configured === false) { runBtn.hidden = true; runBar.hidden = true; return; }
     runBtn.hidden = false;
     runBtn.disabled = st.running; runBtn.textContent = st.running ? "Running…" : "Run now";
-    runBtn.title = st.finishedAt ? `Last run ${fmtY(st.finishedAt)}${st.trigger ? ` (${st.trigger})` : ""}${st.ok === false ? ", stopped early" : ""}` : "";
+    const last = st.finishedAt ? ` Last run: ${fmtY(st.finishedAt)}${st.trigger ? ` (${st.trigger})` : ""}${st.ok === false ? ", stopped early" : ""}.` : "";
+    runBtn.dataset.tip = st.running ? "A run is in progress. The dashboard updates itself when it's done."
+      : `Collect fresh data now instead of waiting for Monday's automatic run: job boards, careers pages, sitemaps and news for every company, then re-score. Takes about 30–40 minutes.${last}`;
+    runBtn.removeAttribute("title");
     // Show the strip while a run is going, or when this page saw it finish; not for old runs.
     if (!st.startedAt || !(st.running || runSeen)) { runBar.hidden = true; return; }
     const pct = st.running ? Math.max(4, ((Math.max(1, st.step) - 1) / Math.max(1, st.total)) * 100 + 100 / Math.max(1, st.total) / 2) : 100;
